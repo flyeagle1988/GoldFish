@@ -1,0 +1,31 @@
+message COLUMN_INFO
+{
+    required string colName = 1;
+    enum COLUMN_TYPE
+    {
+        STRING = 0;
+        INT = 1;
+        FLOAT = 2;
+        DOUBLE = 3;
+    }
+    required COLUMN_TYPE colType = 2 [default = STRING];
+}
+message TABLE_INFO
+{
+    required string tableName = 1;         
+    repeated COLUMN_INFO columnData = 2;
+    required uint32 rowNum = 3;
+    required uint64 tableSize = 4;
+}
+message DATABASE_INFO
+{
+    required int32 DBID = 1;    
+    repeated TABLE_INFO tableInfo = 2;
+}
+message MSG_RA_DC_DATABASE_INFO_GET_ACK
+{
+    required int32 statusCode = 1;    
+    required string statusMsg = 2;
+    repeated DATABASE_INFO dbInfo = 3;
+}
+

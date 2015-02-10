@@ -1,0 +1,4 @@
+message MSG_DC_DM_USER_IDENTIFY
+{
+	required string token = 1;
+}

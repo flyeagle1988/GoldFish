@@ -1,0 +1,14 @@
+message MSG_DC_DS_RA_INFO_SEND
+{
+    message RA_INFO
+    {
+        required string raIP = 1;
+        required uint32 raPort = 2;
+    }
+    repeated RA_INFO raInfo = 1;
+}
+
+message MSG_DS_DC_RA_INFO_SEND_ACK
+{
+    required int32 statusCode = 1;
+}

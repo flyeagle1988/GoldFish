@@ -1,0 +1,14 @@
+message MSG_DS_DC_HEARTBEAT_SEND
+{
+    required uint32 cpu = 1;
+    required uint32 memory = 2;
+    optional uint32 importTaskID = 3;
+    optional uint32 loadTaskID = 4;
+    optional uint32 importSchedule = 5;
+    optional uint32 loadSchedule = 6;
+}
+
+message MSG_DC_DS_HEARTBEAT_SEND_ACK
+{
+	required int32 statusCode = 1;
+}

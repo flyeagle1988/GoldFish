@@ -1,0 +1,17 @@
+message IMP_INFO
+{
+    required string tableName = 1;
+	required uint32 dbID = 2;
+    repeated string colName = 3;
+}
+message MSG_DC_RA_IMPORT_SIZE_INFO_GET
+{
+    required uint32 taskID = 1;
+    repeated IMP_INFO impInfo = 2;
+}
+
+message MSG_RA_DC_IMPORT_SIZE_INFO_GET_ACK
+{
+    required uint32 taskID = 1;
+    optional int32 statuscCode = 2;
+}

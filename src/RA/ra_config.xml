@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RA_CONFIG>
+    <!--数据库基本信息配置-->
+    <DataBase_Config>
+        <DB_ID>1</user>
+        <user>scott</user>
+        <passwd>tiger</passwd>
+        <connString>http://localhost:1521/ORCL</connString>
+    </DataBase_Config>
+    <!--监听DC连接端口-->
+    <DC_PORT>10010</DC_PORT>
+    <!--监听DS连接端口-->
+    <DS_PORT>10011</DS_PORT>
+    <!--增量数据每次导入规模-->
+    <DELTA_CAPACITY>100000</DELTA_CAPACITY>
+</RA_CONFIG>

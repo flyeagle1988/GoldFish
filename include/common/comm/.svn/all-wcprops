@@ -1,0 +1,239 @@
+K 25
+svn:wc:ra_dav:version-url
+V 204
+/svn/!svn/ver/23903/2%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE/2014-%E5%85%AC%E5%AE%89%E8%AD%A6%E5%A4%87%E5%AE%9E%E9%AA%8C%E5%AE%A4-%E5%86%85%E5%AD%98%E6%95%B0%E6%8D%AE%E5%BA%93/2code/trunk/include/common/comm
+END
+Error.h
+K 25
+svn:wc:ra_dav:version-url
+V 212
+/svn/!svn/ver/23903/2%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE/2014-%E5%85%AC%E5%AE%89%E8%AD%A6%E5%A4%87%E5%AE%9E%E9%AA%8C%E5%AE%A4-%E5%86%85%E5%AD%98%E6%95%B0%E6%8D%AE%E5%BA%93/2code/trunk/include/common/comm/Error.h
+END
+comm.h
+K 25
+svn:wc:ra_dav:version-url
+V 211
+/svn/!svn/ver/23903/2%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE/2014-%E5%85%AC%E5%AE%89%E8%AD%A6%E5%A4%87%E5%AE%9E%E9%AA%8C%E5%AE%A4-%E5%86%85%E5%AD%98%E6%95%B0%E6%8D%AE%E5%BA%93/2code/trunk/include/common/comm/comm.h
+END
+UnxDmnReader.h
+K 25
+svn:wc:ra_dav:version-url
+V 219
+/svn/!svn/ver/23903/2%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE/2014-%E5%85%AC%E5%AE%89%E8%AD%A6%E5%A4%87%E5%AE%9E%E9%AA%8C%E5%AE%A4-%E5%86%85%E5%AD%98%E6%95%B0%E6%8D%AE%E5%BA%93/2code/trunk/include/common/comm/UnxDmnReader.h
+END
+TaskManager.h
+K 25
+svn:wc:ra_dav:version-url
+V 218
+/svn/!svn/ver/23903/2%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE/2014-%E5%85%AC%E5%AE%89%E8%AD%A6%E5%A4%87%E5%AE%9E%E9%AA%8C%E5%AE%A4-%E5%86%85%E5%AD%98%E6%95%B0%E6%8D%AE%E5%BA%93/2code/trunk/include/common/comm/TaskManager.h
+END
+UDPAgentWriteCallback.h
+K 25
+svn:wc:ra_dav:version-url
+V 228
+/svn/!svn/ver/23903/2%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE/2014-%E5%85%AC%E5%AE%89%E8%AD%A6%E5%A4%87%E5%AE%9E%E9%AA%8C%E5%AE%A4-%E5%86%85%E5%AD%98%E6%95%B0%E6%8D%AE%E5%BA%93/2code/trunk/include/common/comm/UDPAgentWriteCallback.h
+END
+UDPSocket.h
+K 25
+svn:wc:ra_dav:version-url
+V 216
+/svn/!svn/ver/23903/2%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE/2014-%E5%85%AC%E5%AE%89%E8%AD%A6%E5%A4%87%E5%AE%9E%E9%AA%8C%E5%AE%A4-%E5%86%85%E5%AD%98%E6%95%B0%E6%8D%AE%E5%BA%93/2code/trunk/include/common/comm/UDPSocket.h
+END
+TCPAgent.h
+K 25
+svn:wc:ra_dav:version-url
+V 215
+/svn/!svn/ver/23903/2%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE/2014-%E5%85%AC%E5%AE%89%E8%AD%A6%E5%A4%87%E5%AE%9E%E9%AA%8C%E5%AE%A4-%E5%86%85%E5%AD%98%E6%95%B0%E6%8D%AE%E5%BA%93/2code/trunk/include/common/comm/TCPAgent.h
+END
+UnxDmnWriter.h
+K 25
+svn:wc:ra_dav:version-url
+V 219
+/svn/!svn/ver/23903/2%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE/2014-%E5%85%AC%E5%AE%89%E8%AD%A6%E5%A4%87%E5%AE%9E%E9%AA%8C%E5%AE%A4-%E5%86%85%E5%AD%98%E6%95%B0%E6%8D%AE%E5%BA%93/2code/trunk/include/common/comm/UnxDmnWriter.h
+END
+UnxDmnListenAgent.h
+K 25
+svn:wc:ra_dav:version-url
+V 224
+/svn/!svn/ver/23903/2%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE/2014-%E5%85%AC%E5%AE%89%E8%AD%A6%E5%A4%87%E5%AE%9E%E9%AA%8C%E5%AE%A4-%E5%86%85%E5%AD%98%E6%95%B0%E6%8D%AE%E5%BA%93/2code/trunk/include/common/comm/UnxDmnListenAgent.h
+END
+UDPReader.h
+K 25
+svn:wc:ra_dav:version-url
+V 216
+/svn/!svn/ver/23903/2%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE/2014-%E5%85%AC%E5%AE%89%E8%AD%A6%E5%A4%87%E5%AE%9E%E9%AA%8C%E5%AE%A4-%E5%86%85%E5%AD%98%E6%95%B0%E6%8D%AE%E5%BA%93/2code/trunk/include/common/comm/UDPReader.h
+END
+Epoll.h
+K 25
+svn:wc:ra_dav:version-url
+V 212
+/svn/!svn/ver/23903/2%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE/2014-%E5%85%AC%E5%AE%89%E8%AD%A6%E5%A4%87%E5%AE%9E%E9%AA%8C%E5%AE%A4-%E5%86%85%E5%AD%98%E6%95%B0%E6%8D%AE%E5%BA%93/2code/trunk/include/common/comm/Epoll.h
+END
+Tool.h
+K 25
+svn:wc:ra_dav:version-url
+V 211
+/svn/!svn/ver/23903/2%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE/2014-%E5%85%AC%E5%AE%89%E8%AD%A6%E5%A4%87%E5%AE%9E%E9%AA%8C%E5%AE%A4-%E5%86%85%E5%AD%98%E6%95%B0%E6%8D%AE%E5%BA%93/2code/trunk/include/common/comm/Tool.h
+END
+EpollEvent.h
+K 25
+svn:wc:ra_dav:version-url
+V 217
+/svn/!svn/ver/23903/2%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE/2014-%E5%85%AC%E5%AE%89%E8%AD%A6%E5%A4%87%E5%AE%9E%E9%AA%8C%E5%AE%A4-%E5%86%85%E5%AD%98%E6%95%B0%E6%8D%AE%E5%BA%93/2code/trunk/include/common/comm/EpollEvent.h
+END
+UDPAgentReadCallback.h
+K 25
+svn:wc:ra_dav:version-url
+V 227
+/svn/!svn/ver/23903/2%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE/2014-%E5%85%AC%E5%AE%89%E8%AD%A6%E5%A4%87%E5%AE%9E%E9%AA%8C%E5%AE%A4-%E5%86%85%E5%AD%98%E6%95%B0%E6%8D%AE%E5%BA%93/2code/trunk/include/common/comm/UDPAgentReadCallback.h
+END
+BaseReq.h
+K 25
+svn:wc:ra_dav:version-url
+V 214
+/svn/!svn/ver/23903/2%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE/2014-%E5%85%AC%E5%AE%89%E8%AD%A6%E5%A4%87%E5%AE%9E%E9%AA%8C%E5%AE%A4-%E5%86%85%E5%AD%98%E6%95%B0%E6%8D%AE%E5%BA%93/2code/trunk/include/common/comm/BaseReq.h
+END
+TCPListenAgent.h
+K 25
+svn:wc:ra_dav:version-url
+V 221
+/svn/!svn/ver/23903/2%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE/2014-%E5%85%AC%E5%AE%89%E8%AD%A6%E5%A4%87%E5%AE%9E%E9%AA%8C%E5%AE%A4-%E5%86%85%E5%AD%98%E6%95%B0%E6%8D%AE%E5%BA%93/2code/trunk/include/common/comm/TCPListenAgent.h
+END
+UDPWriter.h
+K 25
+svn:wc:ra_dav:version-url
+V 216
+/svn/!svn/ver/23903/2%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE/2014-%E5%85%AC%E5%AE%89%E8%AD%A6%E5%A4%87%E5%AE%9E%E9%AA%8C%E5%AE%A4-%E5%86%85%E5%AD%98%E6%95%B0%E6%8D%AE%E5%BA%93/2code/trunk/include/common/comm/UDPWriter.h
+END
+AgentManager.h
+K 25
+svn:wc:ra_dav:version-url
+V 219
+/svn/!svn/ver/23903/2%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE/2014-%E5%85%AC%E5%AE%89%E8%AD%A6%E5%A4%87%E5%AE%9E%E9%AA%8C%E5%AE%A4-%E5%86%85%E5%AD%98%E6%95%B0%E6%8D%AE%E5%BA%93/2code/trunk/include/common/comm/AgentManager.h
+END
+BaseTask.h
+K 25
+svn:wc:ra_dav:version-url
+V 215
+/svn/!svn/ver/23903/2%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE/2014-%E5%85%AC%E5%AE%89%E8%AD%A6%E5%A4%87%E5%AE%9E%E9%AA%8C%E5%AE%A4-%E5%86%85%E5%AD%98%E6%95%B0%E6%8D%AE%E5%BA%93/2code/trunk/include/common/comm/BaseTask.h
+END
+TCPAgentWriteCallback.h
+K 25
+svn:wc:ra_dav:version-url
+V 228
+/svn/!svn/ver/23903/2%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE/2014-%E5%85%AC%E5%AE%89%E8%AD%A6%E5%A4%87%E5%AE%9E%E9%AA%8C%E5%AE%A4-%E5%86%85%E5%AD%98%E6%95%B0%E6%8D%AE%E5%BA%93/2code/trunk/include/common/comm/TCPAgentWriteCallback.h
+END
+Agent.h
+K 25
+svn:wc:ra_dav:version-url
+V 212
+/svn/!svn/ver/23903/2%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE/2014-%E5%85%AC%E5%AE%89%E8%AD%A6%E5%A4%87%E5%AE%9E%E9%AA%8C%E5%AE%A4-%E5%86%85%E5%AD%98%E6%95%B0%E6%8D%AE%E5%BA%93/2code/trunk/include/common/comm/Agent.h
+END
+SocketAddress.h
+K 25
+svn:wc:ra_dav:version-url
+V 220
+/svn/!svn/ver/23903/2%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE/2014-%E5%85%AC%E5%AE%89%E8%AD%A6%E5%A4%87%E5%AE%9E%E9%AA%8C%E5%AE%A4-%E5%86%85%E5%AD%98%E6%95%B0%E6%8D%AE%E5%BA%93/2code/trunk/include/common/comm/SocketAddress.h
+END
+TCPSocket.h
+K 25
+svn:wc:ra_dav:version-url
+V 216
+/svn/!svn/ver/23903/2%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE/2014-%E5%85%AC%E5%AE%89%E8%AD%A6%E5%A4%87%E5%AE%9E%E9%AA%8C%E5%AE%A4-%E5%86%85%E5%AD%98%E6%95%B0%E6%8D%AE%E5%BA%93/2code/trunk/include/common/comm/TCPSocket.h
+END
+UnxDmnAgentReadCallback.h
+K 25
+svn:wc:ra_dav:version-url
+V 230
+/svn/!svn/ver/23903/2%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE/2014-%E5%85%AC%E5%AE%89%E8%AD%A6%E5%A4%87%E5%AE%9E%E9%AA%8C%E5%AE%A4-%E5%86%85%E5%AD%98%E6%95%B0%E6%8D%AE%E5%BA%93/2code/trunk/include/common/comm/UnxDmnAgentReadCallback.h
+END
+Reader.h
+K 25
+svn:wc:ra_dav:version-url
+V 213
+/svn/!svn/ver/23903/2%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE/2014-%E5%85%AC%E5%AE%89%E8%AD%A6%E5%A4%87%E5%AE%9E%E9%AA%8C%E5%AE%A4-%E5%86%85%E5%AD%98%E6%95%B0%E6%8D%AE%E5%BA%93/2code/trunk/include/common/comm/Reader.h
+END
+BufferManager.h
+K 25
+svn:wc:ra_dav:version-url
+V 220
+/svn/!svn/ver/23903/2%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE/2014-%E5%85%AC%E5%AE%89%E8%AD%A6%E5%A4%87%E5%AE%9E%E9%AA%8C%E5%AE%A4-%E5%86%85%E5%AD%98%E6%95%B0%E6%8D%AE%E5%BA%93/2code/trunk/include/common/comm/BufferManager.h
+END
+UDPAgent.h
+K 25
+svn:wc:ra_dav:version-url
+V 215
+/svn/!svn/ver/23903/2%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE/2014-%E5%85%AC%E5%AE%89%E8%AD%A6%E5%A4%87%E5%AE%9E%E9%AA%8C%E5%AE%A4-%E5%86%85%E5%AD%98%E6%95%B0%E6%8D%AE%E5%BA%93/2code/trunk/include/common/comm/UDPAgent.h
+END
+WriteCallback.h
+K 25
+svn:wc:ra_dav:version-url
+V 220
+/svn/!svn/ver/23903/2%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE/2014-%E5%85%AC%E5%AE%89%E8%AD%A6%E5%A4%87%E5%AE%9E%E9%AA%8C%E5%AE%A4-%E5%86%85%E5%AD%98%E6%95%B0%E6%8D%AE%E5%BA%93/2code/trunk/include/common/comm/WriteCallback.h
+END
+TCPReader.h
+K 25
+svn:wc:ra_dav:version-url
+V 216
+/svn/!svn/ver/23903/2%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE/2014-%E5%85%AC%E5%AE%89%E8%AD%A6%E5%A4%87%E5%AE%9E%E9%AA%8C%E5%AE%A4-%E5%86%85%E5%AD%98%E6%95%B0%E6%8D%AE%E5%BA%93/2code/trunk/include/common/comm/TCPReader.h
+END
+Writer.h
+K 25
+svn:wc:ra_dav:version-url
+V 213
+/svn/!svn/ver/23903/2%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE/2014-%E5%85%AC%E5%AE%89%E8%AD%A6%E5%A4%87%E5%AE%9E%E9%AA%8C%E5%AE%A4-%E5%86%85%E5%AD%98%E6%95%B0%E6%8D%AE%E5%BA%93/2code/trunk/include/common/comm/Writer.h
+END
+TCPAgentReadCallback.h
+K 25
+svn:wc:ra_dav:version-url
+V 227
+/svn/!svn/ver/23903/2%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE/2014-%E5%85%AC%E5%AE%89%E8%AD%A6%E5%A4%87%E5%AE%9E%E9%AA%8C%E5%AE%A4-%E5%86%85%E5%AD%98%E6%95%B0%E6%8D%AE%E5%BA%93/2code/trunk/include/common/comm/TCPAgentReadCallback.h
+END
+AppProtoSpec.h
+K 25
+svn:wc:ra_dav:version-url
+V 219
+/svn/!svn/ver/23903/2%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE/2014-%E5%85%AC%E5%AE%89%E8%AD%A6%E5%A4%87%E5%AE%9E%E9%AA%8C%E5%AE%A4-%E5%86%85%E5%AD%98%E6%95%B0%E6%8D%AE%E5%BA%93/2code/trunk/include/common/comm/AppProtoSpec.h
+END
+UnxDmnAgentWriteCallback.h
+K 25
+svn:wc:ra_dav:version-url
+V 231
+/svn/!svn/ver/23903/2%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE/2014-%E5%85%AC%E5%AE%89%E8%AD%A6%E5%A4%87%E5%AE%9E%E9%AA%8C%E5%AE%A4-%E5%86%85%E5%AD%98%E6%95%B0%E6%8D%AE%E5%BA%93/2code/trunk/include/common/comm/UnxDmnAgentWriteCallback.h
+END
+UnxDmnSocket.h
+K 25
+svn:wc:ra_dav:version-url
+V 219
+/svn/!svn/ver/23903/2%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE/2014-%E5%85%AC%E5%AE%89%E8%AD%A6%E5%A4%87%E5%AE%9E%E9%AA%8C%E5%AE%A4-%E5%86%85%E5%AD%98%E6%95%B0%E6%8D%AE%E5%BA%93/2code/trunk/include/common/comm/UnxDmnSocket.h
+END
+TCPWriter.h
+K 25
+svn:wc:ra_dav:version-url
+V 216
+/svn/!svn/ver/23903/2%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE/2014-%E5%85%AC%E5%AE%89%E8%AD%A6%E5%A4%87%E5%AE%9E%E9%AA%8C%E5%AE%A4-%E5%86%85%E5%AD%98%E6%95%B0%E6%8D%AE%E5%BA%93/2code/trunk/include/common/comm/TCPWriter.h
+END
+BaseHeader.h
+K 25
+svn:wc:ra_dav:version-url
+V 217
+/svn/!svn/ver/23903/2%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE/2014-%E5%85%AC%E5%AE%89%E8%AD%A6%E5%A4%87%E5%AE%9E%E9%AA%8C%E5%AE%A4-%E5%86%85%E5%AD%98%E6%95%B0%E6%8D%AE%E5%BA%93/2code/trunk/include/common/comm/BaseHeader.h
+END
+UnxDmnAgent.h
+K 25
+svn:wc:ra_dav:version-url
+V 218
+/svn/!svn/ver/23903/2%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE/2014-%E5%85%AC%E5%AE%89%E8%AD%A6%E5%A4%87%E5%AE%9E%E9%AA%8C%E5%AE%A4-%E5%86%85%E5%AD%98%E6%95%B0%E6%8D%AE%E5%BA%93/2code/trunk/include/common/comm/UnxDmnAgent.h
+END
+ReadCallback.h
+K 25
+svn:wc:ra_dav:version-url
+V 219
+/svn/!svn/ver/23903/2%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE/2014-%E5%85%AC%E5%AE%89%E8%AD%A6%E5%A4%87%E5%AE%9E%E9%AA%8C%E5%AE%A4-%E5%86%85%E5%AD%98%E6%95%B0%E6%8D%AE%E5%BA%93/2code/trunk/include/common/comm/ReadCallback.h
+END
+UnxDmnSocketAddress.h
+K 25
+svn:wc:ra_dav:version-url
+V 226
+/svn/!svn/ver/23903/2%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE/2014-%E5%85%AC%E5%AE%89%E8%AD%A6%E5%A4%87%E5%AE%9E%E9%AA%8C%E5%AE%A4-%E5%86%85%E5%AD%98%E6%95%B0%E6%8D%AE%E5%BA%93/2code/trunk/include/common/comm/UnxDmnSocketAddress.h
+END

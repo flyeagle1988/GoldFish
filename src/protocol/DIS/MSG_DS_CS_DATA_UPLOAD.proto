@@ -1,0 +1,46 @@
+message MSG_DS_CS_DATA_UPLOAD
+{
+    required string dbName = 1;
+    required string tableName = 2;
+    message TABLE_DICT_INFO
+    {
+        required string colName = 1;
+        enum COL_TYPE
+        {
+            STRING = 0;
+            INT = 1;
+            FLOAT = 2;
+            DOUBLE = 3;
+        }
+        required COL_TYPE colType = 2 [default = STRING];            
+        message DICT_DATA_INFO
+        {
+            optional string strValue = 1;
+            optional int32 iValue = 2;
+            optional float fValue = 3;
+            optional double dValue = 4;
+        }
+        repeated DICT_DATA_INFO dictData = 3;
+        repeated uint32 indexOffsets = 4;
+        repeated uint32 indexPost = 5;
+    }
+    repeated TABLE_DICT_INFO colDictData = 3;
+    message ROW_TABLE_INFO
+    {
+        required uint32 rowNum = 1;
+        message ROW_INFO
+        {
+            required string colName = 1;
+            required uint32 rowEntry = 2;
+        }
+        repeated ROW_INFO rowData = 2;
+    }
+    repeated ROW_TABLE_INFO rowTableData = 4;
+    required uint32 taskID = 5; 
+}
+
+message MSG_CS_DS_DATA_UPLOAD_ACK
+{
+    required uint32 taskID = 1;
+    required int32 statusCode = 2;
+}

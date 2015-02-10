@@ -1,0 +1,19 @@
+message MSG_DS_DC_RESOURCE_GET
+{
+	enum TYPE
+	{
+		CS = 0;
+		DS = 1;
+	}
+	required TYPE type = 1;
+    required int32 cpu = 2;
+    required int32 memory = 3;
+}
+
+message MSG_DC_DS_RESOURCE_INFO_ACK
+{
+    required int32 statuCode = 1;
+	repeated string ip = 2;
+	repeated int32 cpu = 3;
+	repeated int32 memory = 4;
+}

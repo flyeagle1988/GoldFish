@@ -1,0 +1,27 @@
+message ROW_INDEX
+{
+    required uint32 start = 1;
+	required uint32 end = 2;
+	required string csip = 3;
+}
+message TABLE_INDEX
+{
+	required string raip = 1;
+	required int32 dbid = 2;
+    required string tableName = 3;
+    repeated ROW_INDEX RowIndex = 4;
+}
+
+message MSG_DS_DC_ROW_INDEX_SEND
+{
+    required uint32 taskID = 1;
+    required uint32 loadTaskID = 2;
+    repeated TABLE_INDEX TableIndex = 3;
+}
+
+message MSG_DC_DS_ROW_INDEX_SEND_ACK
+{
+    required uint32 taskID = 1;
+    required uint32 loadTaskID = 2;
+    required int32 statusCode = 3;
+}

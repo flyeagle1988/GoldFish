@@ -1,0 +1,19 @@
+message MSG_DC_DS_IMPORT_INFO_SEND
+{
+    required uint32 taskID = 1;
+    message TABLE_INFO
+    {
+        required int32 dbid = 1;
+        required string raname = 2;
+        required string tablename = 3;
+        repeated string colName = 4;
+    }
+    repeated TABLE_INFO tableInfo = 2;
+}
+
+message MSG_DS_DC_IMPORT_INFO_SEND_ACK
+{
+    required uint32 taskID = 1;
+    required int32 statusCode = 2;
+    required string statusMsg = 3;
+}

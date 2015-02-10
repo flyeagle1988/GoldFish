@@ -1,0 +1,61 @@
+message IMP_TAB_INFO
+{
+    required string tableName = 1;
+    repeated string colName = 2;
+}
+message IMP_DB_INFO
+{
+    required uint32 dbID = 1;
+    repeated IMP_TAB_INFO tableInfo = 2;
+}
+message MSG_DS_RA_IMPORT_TASK_SEND
+{
+    required uint32 taskID = 1;
+    repeated IMP_DB_INFO dbInfo = 2;
+}
+
+message MSG_RA_DS_IMPORT_ERROR_INFO_ACK
+{
+    required uint32 taskID = 1;
+    required int32 statusCode = 2;
+    required string statusMsg = 3;
+}
+
+message COL_VALUE
+{
+    optional string strValue = 1;
+    optional int64 iValue = 2;
+    optional float fValue = 3;
+    optional double dValue = 4;
+    required uint64 rowNo = 5;
+}
+
+message COL_DATA
+{
+    enum COLUMN_TYPE
+    {
+        STRING = 0;
+        NUM = 1;
+    }
+    required string colName = 1;
+    required COLUMN_TYPE colType = 2 [default = STRING];
+    repeated COL_VALUE colValue = 3;
+}
+/*
+message TAB_DATA
+{
+    required string tableName = 1;
+    repeated COL_DATA colData = 2;
+}
+*/
+message MSG_RA_DS_IMPORT_TASK_ACK
+{
+    required uint32 taskID = 1;
+    required uint32 dbID = 2;
+    required string tableName = 3;
+    required uint32 subTaskNo = 4;
+    required uint32 subTaskNum = 5;
+    repeated COL_DATA colValue = 6;
+}
+
+
