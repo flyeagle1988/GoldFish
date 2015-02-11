@@ -14,7 +14,7 @@ class RAXmlParse
         RAXmlParse(const std::string fileName);
         ~RAXmlParse();
         int parse();
-		int parseDBConfig(xmlNodePtr cur, DB_INFO & dbInfo);
+		//int parseDBConfig(xmlNodePtr cur, DB_INFO & dbInfo);
 		int parseDBInfo(xmlNodePtr cur, DB_INFO & dbInfo);
 		int parseInfo(xmlNodePtr cur, const char * module);
 		void setDCPort(const unsigned int port)

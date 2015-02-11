@@ -26,9 +26,10 @@ class CLDBManager:public Singleton<CLDBManager>
 	public:
 		CLDBManager();
 		~CLDBManager();
-		void setDBInfo(DB_INFO dbInfo)
+		void setDBInfo(map<unsigned int , DB_INFO > dbInfo)
 		{
-			m_dbInfo[dbInfo.dbID] = dbInfo;
+			//m_dbInfo[dbInfo.dbID] = dbInfo;
+			m_dbInfo = dbInfo;
 		}
 		int initDB();
 		int readMetaData(unsigned int dbID, string &statusMsg, DB_META_INFO &dbMetaInfo);
