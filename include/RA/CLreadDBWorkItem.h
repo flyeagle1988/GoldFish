@@ -49,7 +49,7 @@ class CLreadDBWorkItem:public ThreadPoolWorkItem
 	private:
 		//unsigned int m_dcImpTaskID;	//DC import task id
 		//unsigned int m_impTaskID; //local RA CLimportTask ID
-		string m_readResult;
+		//string m_readResult;
 		unsigned int m_agentID;
 		IMPORT_INFO m_impTask;
 		

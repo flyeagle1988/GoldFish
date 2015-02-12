@@ -13,11 +13,12 @@
 using namespace std;
 const unsigned int PREFETCH = 5000;
 
-CLreadDBWorkItem::CLreadDBWorkItem():m_readResult("")
+CLreadDBWorkItem::CLreadDBWorkItem()
 {
 }
 CLreadDBWorkItem::~CLreadDBWorkItem()
 {
+	
 }
 int CLreadDBWorkItem::process()
 {
@@ -51,9 +52,20 @@ int CLreadDBWorkItem::process()
 	Statement * stmt = NULL;
 	ResultSet * rs = NULL;
 	vector<int> colType;
+	DB_INFO dbInfo = CLDBManager::getInstance()->getDBInfo(m_impTask.dbID);
+	ConnectionPool * connPool;
+
 	try
 	{
-		conn = CLDBManager::getInstance()->getConnection(m_impTask.dbID);
+		//conn = CLDBManager::getInstance()->getConnection(m_impTask.dbID);
+		
+		connPool =CLDBManager::getInstance()->getConnPool(dbInfo.dbID);
+		conn = connPool->createConnection(dbInfo.dbName, dbInfo.dbPasswd);
+		if(conn == NULL)
+		{
+			cerr << "CLreadDBWorkItem::process get Connection error!" << endl;
+			return FAILED;
+		}
 		MetaData custtab_metaData = conn->getMetaData(m_impTask.tableName, MetaData::PTYPE_TABLE);
 		vector <MetaData> listOfColumns = custtab_metaData.getVector(MetaData::ATTR_LIST_COLUMNS);
 
@@ -93,8 +105,7 @@ int CLreadDBWorkItem::process()
 		{
 			unsigned int k = 0;
 			while(rs->next())
-			{
-				
+			{	
 				int j = 1;
 				unsigned int rowNo = rs->getInt(j);
 				numOfRow.push_back(rowNo);
@@ -328,7 +339,10 @@ int CLreadDBWorkItem::process()
 	
 	stmt->closeResultSet(rs);
 	conn->terminateStatement(stmt);
-	CLDBManager::getInstance()->recycleConn(conn);
+	connPool->terminateConnection(conn);
+	//CLDBManager::getInstance()->recycleConn(conn);
 
 	return SUCCESSFUL;
 }
+
+

@@ -31,7 +31,8 @@ int CLgetMetaWorkItem::process()
 	{
 		DB_META_INFO dbMetaInfo;
 		dbMetaInfo.dbID = *it;
-		ret = CLDBManager::getInstance()->readMetaData(*it, statusMsg, dbMetaInfo);
+		ret = CLDBManager::getInstance()->readMetaData(*it, statusMsg);
+		dbMetaInfo = CLDBManager::getInstance()->getMetaData();
 		if(ret == FAILED)
 		{
 			statusCode = -17;

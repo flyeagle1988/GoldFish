@@ -223,7 +223,7 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 AUTOMAKE_OPTIONS = foreign
 ACLOCAL_AMFLAGS = -I m4
-SUBDIRS = src
+SUBDIRS = src test
 EXTRA_DIST = include bin lib doc build 
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-recursive

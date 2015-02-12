@@ -157,7 +157,8 @@ CLgetMetaDataTask.o: ../../../src/RA/CLgetMetaDataTask.cpp \
  ../../../include/common/comm/Agent.h \
  ../../../include/common/comm/EpollEvent.h /usr/include/libio.h \
  /usr/include/_G_config.h /usr/include/bits/sys_errlist.h \
- ../../../include/RA/CLDCAgent.h ../../../include/common/comm/TCPAgent.h \
+ /usr/include/bits/stdio.h ../../../include/RA/CLDCAgent.h \
+ ../../../include/common/comm/TCPAgent.h \
  ../../../include/common/comm/BaseHeader.h \
  ../../../include/common/comm/BufferManager.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/cstring \
@@ -575,6 +576,8 @@ CLgetMetaDataTask.o: ../../../src/RA/CLgetMetaDataTask.cpp \
 /usr/include/_G_config.h:
 
 /usr/include/bits/sys_errlist.h:
+
+/usr/include/bits/stdio.h:
 
 ../../../include/RA/CLDCAgent.h:
 

@@ -23,7 +23,7 @@ struct DB_INFO
         if(dbPasswd != dbInfo.dbPasswd)
             return false;
 		if(dbConnectString != dbInfo.dbConnectString)
-        return true;
+        	return true;
     }
 };
 struct DB_META

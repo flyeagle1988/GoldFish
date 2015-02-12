@@ -11,6 +11,7 @@ RAXmlParse::RAXmlParse(const string fileName):m_fileName(fileName)
 
 RAXmlParse::~RAXmlParse()
 {
+	
 }
 
 int RAXmlParse::parse()
@@ -45,7 +46,7 @@ int RAXmlParse::parse()
 	{
 		if(!xmlStrcmp(curNode->name, (const xmlChar*)"DataBase_Config"))
 		{
-			DB_INFO xmlDBInfo;
+			DB_INFO xmlDBInfo{0, "", "", ""};
 			parseDBInfo(curNode, xmlDBInfo);
 			m_dbInfoMap[xmlDBInfo.dbID] = xmlDBInfo;
 			//m_dbList.push_back(xmlDBInfo);
@@ -101,8 +102,13 @@ int RAXmlParse::parseDBInfo(xmlNodePtr cur, DB_INFO & dbInfo)
     	if (!xmlStrcmp(cur->name, (const xmlChar *)"connString"))
 		{
         	key = xmlNodeListGetString(m_doc, cur->xmlChildrenNode, 1);
-	        dbInfo.dbConnectString = (char *)key;
-    	    xmlFree(key);
+			if(key != NULL)
+			{
+				dbInfo.dbConnectString = (char *)key;
+	    	    xmlFree(key);
+			}
+			else
+				dbInfo.dbConnectString = "";
     	}
     	cur = cur->next;
     }

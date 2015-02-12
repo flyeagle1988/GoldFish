@@ -17410,7 +17410,7 @@ fi
 
 # Checks for library functions.
 
-ac_config_files="$ac_config_files Makefile src/Makefile src/common/Makefile src/common/comm/Makefile src/common/daemon/Makefile src/common/log/Makefile src/common/sys/Makefile src/common/odbc/Makefile src/common/Timer/Makefile src/common/util/Makefile src/common/xml/Makefile src/protocol/Makefile src/protocol/DIS/Makefile src/RA/Makefile"
+ac_config_files="$ac_config_files Makefile src/Makefile src/common/Makefile src/common/comm/Makefile src/common/daemon/Makefile src/common/log/Makefile src/common/sys/Makefile src/common/odbc/Makefile src/common/Timer/Makefile src/common/util/Makefile src/common/xml/Makefile src/protocol/Makefile src/protocol/DIS/Makefile src/RA/Makefile test/Makefile test/RA_TEST/Makefile test/DB_TEST/Makefile"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -18448,6 +18448,9 @@ do
     "src/protocol/Makefile") CONFIG_FILES="$CONFIG_FILES src/protocol/Makefile" ;;
     "src/protocol/DIS/Makefile") CONFIG_FILES="$CONFIG_FILES src/protocol/DIS/Makefile" ;;
     "src/RA/Makefile") CONFIG_FILES="$CONFIG_FILES src/RA/Makefile" ;;
+    "test/Makefile") CONFIG_FILES="$CONFIG_FILES test/Makefile" ;;
+    "test/RA_TEST/Makefile") CONFIG_FILES="$CONFIG_FILES test/RA_TEST/Makefile" ;;
+    "test/DB_TEST/Makefile") CONFIG_FILES="$CONFIG_FILES test/DB_TEST/Makefile" ;;
 
   *) { { $as_echo "$as_me:$LINENO: error: invalid argument: $ac_config_target" >&5
 $as_echo "$as_me: error: invalid argument: $ac_config_target" >&2;}

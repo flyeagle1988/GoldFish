@@ -67,6 +67,7 @@ int main(int argc,char * argv [])
 	RAXmlParse xmlParse(argv[1]);
 	xmlParse.parse();
 
+	CLDBManager::getInstance()->setDBInfo(xmlParse.getDBInfoMap());
 	dcAddr.setPort(xmlParse.getDCPort());
 	dsAddr.setPort(xmlParse.getDSPort());
 	

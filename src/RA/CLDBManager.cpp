@@ -12,8 +12,10 @@ CLDBManager::CLDBManager():m_connID(0)
 
 CLDBManager::~CLDBManager()
 {
+
 	try
 	{
+		//for()
 		for(ConnPoolMap::iterator it = m_connPoolMap.begin();
 					it != m_connPoolMap.end();
 					++it)
@@ -45,13 +47,18 @@ int CLDBManager::initDB()
 													it->second.dbPasswd, 
 													it->second.dbConnectString, 
 													minConn, maxConn, incrConn);
+			if(connPool != NULL)
+			{
+				cout << "CLDBManager::initDB: create Connection Pool of " << it->second.dbName << " success!" << endl;
+				m_connPoolMap.insert(make_pair(it->second.dbID, connPool));
+			}
 		}
 	}
 	catch(SQLException ex)
 	{
 		int statusCode = ex.getErrorCode();
 		string statusMsg = ex.getMessage();
-
+		cerr << "CLDBManager::initDB error " << statusCode << '\t' << statusMsg.c_str() << endl;
 		ERROR_LOG("CLDBManager::initDB error, %d, %s!", statusCode, statusMsg.c_str());
 		return FAILED;
 	}
@@ -60,6 +67,7 @@ int CLDBManager::initDB()
 int CLDBManager::getTableSize(unsigned int dbid, string &tableName, unsigned long &tableSize, unsigned long &rowNum)
 {
 	Connection * conn = NULL;
+	ConnectionPool * connPool = NULL;
 	Statement * stmt = NULL;
 	ResultSet * rs = NULL;
 	int ret = SUCCESSFUL;
@@ -68,9 +76,13 @@ int CLDBManager::getTableSize(unsigned int dbid, string &tableName, unsigned lon
 	tabName += tableName;
 	tabName += "\'";
 	sql += tabName;
+	DB_INFO dbInfo = m_dbInfo[dbid];
 	try
 	{
-		conn = getConnection(dbid);
+		//conn = getConnection(dbid);
+		connPool = m_connPoolMap[dbid];
+		conn = connPool->createConnection(dbInfo.dbName, dbInfo.dbPasswd);
+
 		if(conn == NULL)
 		{
 			cerr << "CLDBManager::getTableSize getConnection error!" << endl;
@@ -101,11 +113,13 @@ int CLDBManager::getTableSize(unsigned int dbid, string &tableName, unsigned lon
 	
 	stmt->closeResultSet(rs);
 	conn->terminateStatement(stmt);
-	recycleConn(conn);
+	
+	connPool->terminateConnection(conn);
+	
 	//m_connPool->terminateConnection(conn);
 	return ret;
 }
-
+/*
 Connection * CLDBManager::getConnection(unsigned int dbID)
 {
 	Connection * conn = NULL;	
@@ -115,7 +129,7 @@ Connection * CLDBManager::getConnection(unsigned int dbID)
 		ConnPoolMap::const_iterator it = m_connPoolMap.find(dbID);
 		if(it == m_connPoolMap.end())
 		{
-			cerr << "CLDBManager::getConnection no this connection" << endl;
+			cerr << "CLDBManager::getConnection no this connection pool" << endl;
 			return NULL;
 		}
 		else
@@ -123,10 +137,25 @@ Connection * CLDBManager::getConnection(unsigned int dbID)
 			DB_INFO dbInfo;
 			dbInfo = m_dbInfo[dbID];
 			connPool = it->second;
-			conn = connPool->createConnection(dbInfo.dbName, dbInfo.dbPasswd);
-			m_connMap[m_connID] = conn;
-			m_connIDMap[m_connID] = dbID;
-			m_connID++;
+			if(connPool == NULL)
+			{
+				cerr << "CLDBManager::getConnection get ConnPool NULL" << endl;
+			}
+			else
+			{
+				conn = connPool->createConnection(dbInfo.dbName, dbInfo.dbPasswd);
+			}
+			if(conn != NULL)
+			{
+				m_connMap.insert(make_pair(m_connID, conn));
+				m_connID++;
+				m_connIDMap.insert(make_pair(m_connID, dbID));
+				cout << "getConnection success!" << endl;
+			}
+			else
+			{
+				cerr << "CLDBManager::getConnection NULL" << endl;
+			}
 		}
 	}
 	catch(SQLException &ex)
@@ -139,7 +168,7 @@ Connection * CLDBManager::getConnection(unsigned int dbID)
 	return conn;
 }
 
-void CLDBManager::recycleConn(Connection *conn)
+void CLDBManager::recycleConn(Connection * conn)
 {
 	try
 	{
@@ -168,6 +197,7 @@ void CLDBManager::recycleConn(Connection *conn)
 		ERROR_LOG("CLDBManager::recycleConn error, %d, %s!", stCode, stmsg.c_str());
 	}
 }
+*/
 
 void CLDBManager::getDBID(vector < unsigned int > &dbIDVec)
 {
@@ -179,7 +209,7 @@ void CLDBManager::getDBID(vector < unsigned int > &dbIDVec)
 	}
 }
 
-int CLDBManager::readMetaData(unsigned int dbID, string &statusMsg, DB_META_INFO &dbMetaInfo)
+int CLDBManager::readMetaData(unsigned int dbID, string &statusMsg)
 {
 	Connection * conn = NULL;
 	Statement * stmt = NULL;
@@ -193,12 +223,14 @@ int CLDBManager::readMetaData(unsigned int dbID, string &statusMsg, DB_META_INFO
 	try
 	{
 		connPool = m_connPoolMap[dbID];
-		//conn = m_connPool->createConnection(m_dbInfo.dbName, m_dbInfo.dbPasswd, m_dbInfo.dbConnectString);
 		conn = connPool->createConnection(dbInfo.dbName, dbInfo.dbPasswd);
+		//conn = getConnection(dbID);
 		stmt = conn->createStatement(sql);
 		rs = stmt->executeQuery();
+
 		if(rs)
 		{
+			
 			while(rs->next())
 			{
 				DB_META dbMeta;
@@ -208,7 +240,6 @@ int CLDBManager::readMetaData(unsigned int dbID, string &statusMsg, DB_META_INFO
 
 				MetaData custtab_metaData = conn->getMetaData(dbMeta.tableName, MetaData::PTYPE_TABLE);
 				vector <MetaData> listOfColumns = custtab_metaData.getVector(MetaData::ATTR_LIST_COLUMNS);
-				//unsigned int uiColumnNum = listOfColumns.size();                            
 
 				for(vector<MetaData>::iterator i = listOfColumns.begin();                   
 					i != listOfColumns.end();                                   
@@ -266,7 +297,8 @@ int CLDBManager::readMetaData(unsigned int dbID, string &statusMsg, DB_META_INFO
 						}
 					}
 				}
-				dbMetaInfo.dbMetaData.push_back(dbMeta);
+				m_dbMetaInfo.dbID = dbID;
+				m_dbMetaInfo.dbMetaData.push_back(dbMeta);
 			}
 			statusMsg = "success";
 		}
@@ -274,6 +306,7 @@ int CLDBManager::readMetaData(unsigned int dbID, string &statusMsg, DB_META_INFO
 	catch(SQLException ex)
 	{
 		statusMsg = ex.getMessage();
+		cerr << "CLDBManager::readMetaData error, " << ex.getErrorCode() << '\t' << statusMsg.c_str() << endl;
 		ERROR_LOG("CLDBManager::getMetaData error, %d, %s",ex.getErrorCode(), statusMsg.c_str());
 		//statusCode = -17;
 		ret = FAILED;

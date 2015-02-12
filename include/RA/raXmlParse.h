@@ -7,12 +7,17 @@
 #include<list>
 
 #include "RA/dbInfo.h"
+typedef std::map<unsigned, DB_INFO> DBInfoMap;
 
 class RAXmlParse
 {
     public:
         RAXmlParse(const std::string fileName);
         ~RAXmlParse();
+		DBInfoMap getDBInfoMap()
+		{
+			return m_dbInfoMap;
+		}
         int parse();
 		//int parseDBConfig(xmlNodePtr cur, DB_INFO & dbInfo);
 		int parseDBInfo(xmlNodePtr cur, DB_INFO & dbInfo);
@@ -49,7 +54,7 @@ class RAXmlParse
         //typedef std::list<struct DB_INFO> DBInfoList;
         
         //DBInfoList m_dbList;
-        typedef std::map<unsigned, DB_INFO> DBInfoMap;
+        
 		DBInfoMap m_dbInfoMap;
 		std::string m_fileName;
 		

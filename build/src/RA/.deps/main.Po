@@ -106,7 +106,7 @@ main.o: ../../../src/RA/main.cpp \
  ../../../include/common/comm/TCPSocket.h \
  ../../../include/common/comm/EpollEvent.h /usr/include/libio.h \
  /usr/include/_G_config.h /usr/include/bits/stdio_lim.h \
- /usr/include/bits/sys_errlist.h \
+ /usr/include/bits/sys_errlist.h /usr/include/bits/stdio.h \
  ../../../include/common/comm/SocketAddress.h /usr/include/netinet/in.h \
  /usr/include/bits/in.h ../../../include/common/log/log.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/cerrno \
@@ -510,6 +510,8 @@ main.o: ../../../src/RA/main.cpp \
 /usr/include/bits/stdio_lim.h:
 
 /usr/include/bits/sys_errlist.h:
+
+/usr/include/bits/stdio.h:
 
 ../../../include/common/comm/SocketAddress.h:
 
