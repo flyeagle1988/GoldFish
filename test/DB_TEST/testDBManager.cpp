@@ -77,7 +77,7 @@ TEST(CLDBManager, getTableSize)//passed
 	ASSERT_TRUE(ret == 0);
 }
 
-TEST(CLDBManager, getDBID)
+TEST(CLDBManager, getDBID)//passed
 {
 	RAXmlParse xmlParse("../RA_TEST/ra_config.xml");
 	xmlParse.parse();
