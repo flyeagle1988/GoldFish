@@ -15,8 +15,8 @@ TEST(RAXmlParse, parse)
     databaseInfo.dbID = 1;
     databaseInfo.dbName = "scott";
     databaseInfo.dbPasswd = "tiger";
-	databaseInfo.dbConnectString = "http://localhost:1521/ORCL";
-
+	//databaseInfo.dbConnectString = "http://localhost:1521/ORCL";
+	databaseInfo.dbConnectString = "";
     DB_INFO databaseInfo2;
 
     databaseInfo2.dbID = 2;

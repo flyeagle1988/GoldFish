@@ -49,5 +49,7 @@ AC_CONFIG_FILES([Makefile
                  test/Makefile
                  test/RA_TEST/Makefile
                  test/DB_TEST/Makefile
+                 test/META_TEST/Makefile
+                 test/IMPORT_TEST/Makefile
                  ])
 AC_OUTPUT

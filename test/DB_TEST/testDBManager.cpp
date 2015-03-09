@@ -7,7 +7,7 @@ using namespace std;
 
 TEST(CLDBManager, initDB)//passed
 {
-	RAXmlParse xmlParse("../RA_TEST/ra_config.xml");
+	RAXmlParse xmlParse("ra_config.xml");
 	xmlParse.parse();
 
 	CLDBManager::getInstance()->setDBInfo(xmlParse.getDBInfoMap());
@@ -20,7 +20,7 @@ TEST(CLDBManager, initDB)//passed
 
 TEST(CLDBManager, readMetaData)//passed
 {
-	RAXmlParse xmlParse("../RA_TEST/ra_config.xml");
+	RAXmlParse xmlParse("ra_config.xml");
 	xmlParse.parse();
 
 	CLDBManager::getInstance()->setDBInfo(xmlParse.getDBInfoMap());
@@ -33,14 +33,15 @@ TEST(CLDBManager, readMetaData)//passed
 	cout<<"test readMetaData"<< endl;
 
 	map<unsigned int, DB_INFO>::iterator it = dbInfoMap.begin();
+/*
 	cout << "DB ID: " << it->first << '\t'
 		 << "DB Name: " << it->second.dbName << '\t'
 		 << "DB Passwd: " << it->second.dbPasswd << '\t'
 		 << "DB ConnString:" << it->second.dbConnectString << endl;
-	
+*/
 	rt = CLDBManager::getInstance()->readMetaData(it->second.dbID, statusMsg);
 	dbMetaInfo = CLDBManager::getInstance()->getMetaData();
-	
+/*	
 	for(vector<DB_META>::iterator iter = dbMetaInfo.dbMetaData.begin();
 								iter != dbMetaInfo.dbMetaData.end();
 								++iter)
@@ -54,14 +55,14 @@ TEST(CLDBManager, readMetaData)//passed
 				 	 << "ColumnType: " << (*iter).columnType[i] << endl;
 			}
 		}
-	
+*/
 	ASSERT_TRUE(rt == 0);
 
 }
 
 TEST(CLDBManager, getTableSize)//passed
 {
-	RAXmlParse xmlParse("../RA_TEST/ra_config.xml");
+	RAXmlParse xmlParse("ra_config.xml");
 	xmlParse.parse();
 
 	CLDBManager::getInstance()->setDBInfo(xmlParse.getDBInfoMap());
@@ -73,13 +74,13 @@ TEST(CLDBManager, getTableSize)//passed
 	unsigned long tableSize = 0;
 	unsigned long rowNum = 0;
 	int ret = CLDBManager::getInstance()->getTableSize(it->second.dbID, tableName, tableSize, rowNum);
-	cout << tableName.c_str() << '\t' << tableSize << '\t' << rowNum << endl;
+	//cout << tableName.c_str() << '\t' << tableSize << '\t' << rowNum << endl;
 	ASSERT_TRUE(ret == 0);
 }
 
 TEST(CLDBManager, getDBID)//passed
 {
-	RAXmlParse xmlParse("../RA_TEST/ra_config.xml");
+	RAXmlParse xmlParse("ra_config.xml");
 	xmlParse.parse();
 
 	CLDBManager::getInstance()->setDBInfo(xmlParse.getDBInfoMap());

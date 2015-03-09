@@ -158,7 +158,7 @@ Connection * CLDBManager::getConnection(unsigned int dbID)
 			}
 		}
 	}
-	catch(SQLException &ex)
+	catch(SQLException ex)
 	{
 		int stCode = ex.getErrorCode();
 		string stmsg = ex.getMessage();

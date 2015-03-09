@@ -57,8 +57,6 @@ int CLreadDBWorkItem::process()
 
 	try
 	{
-		//conn = CLDBManager::getInstance()->getConnection(m_impTask.dbID);
-		
 		connPool =CLDBManager::getInstance()->getConnPool(dbInfo.dbID);
 		conn = connPool->createConnection(dbInfo.dbName, dbInfo.dbPasswd);
 		if(conn == NULL)
@@ -115,7 +113,7 @@ int CLreadDBWorkItem::process()
 										i != colType.end();
 										++i)
 				{
-					string colName = m_impTask.colName[j-1];
+					string colName = m_impTask.colName[j-2];
 					switch(*i)
 					{
 						case OCCI_SQLT_DATE:
@@ -158,6 +156,7 @@ int CLreadDBWorkItem::process()
 							numMap[colName].push_back(nData);
 							break;
 						}
+						/*
 						case OCCI_SQLT_BLOB:
 						{
 							Blob tmpBlob(conn);
@@ -170,6 +169,7 @@ int CLreadDBWorkItem::process()
 							strMap[colName].push_back(strBlob);
 							break;
 						}
+						*/
 					}
 					j++;
 				}

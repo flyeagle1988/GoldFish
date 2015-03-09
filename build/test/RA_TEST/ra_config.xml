@@ -7,6 +7,12 @@
         <passwd>tiger</passwd>
         <connString></connString>
     </DataBase_Config>
+    <DataBase_Config>
+        <DB_ID>2</DB_ID>
+        <user>oracle</user>
+        <passwd>Oracle8020</passwd>
+        <connString>orcl</connString>
+    </DataBase_Config>
     <!--监听DC连接端口-->
     <DC_PORT>10010</DC_PORT>
     <!--监听DS连接端口-->
