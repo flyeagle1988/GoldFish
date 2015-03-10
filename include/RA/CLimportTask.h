@@ -1,7 +1,7 @@
 #ifndef CL_IMPORT_TASK_H_
 #define CL_IMPORT_TASK_H_
 #include "common/comm/BaseTask.h"
-#include "RA/dbInfo.h"
+#include "protocol/dbInfo.h"
 #include <string>
 #include <map>
 #include <queue>

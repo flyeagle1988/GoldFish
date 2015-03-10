@@ -37,7 +37,7 @@ int CLDBManager::initDB()
 {
 	try
 	{
-		m_env = Environment::createEnvironment(Environment::THREADED_MUTEXED);
+		m_env = Environment::createEnvironment(Environment::THREADED_UNMUTEXED);
 		for(map<unsigned int , DB_INFO >::iterator it = m_dbInfo.begin();
 						it != m_dbInfo.end();
 						++it)
@@ -49,7 +49,7 @@ int CLDBManager::initDB()
 													minConn, maxConn, incrConn);
 			if(connPool != NULL)
 			{
-				cout << "CLDBManager::initDB: create Connection Pool of " << it->second.dbName << " success!" << endl;
+				cout << "CLDBManager::initDB: create Connection Pool of " << it->second.dbID << " success!" << endl;
 				m_connPoolMap.insert(make_pair(it->second.dbID, connPool));
 			}
 		}
@@ -77,6 +77,7 @@ int CLDBManager::getTableSize(unsigned int dbid, string &tableName, unsigned lon
 	tabName += "\'";
 	sql += tabName;
 	DB_INFO dbInfo = m_dbInfo[dbid];
+
 	try
 	{
 		//conn = getConnection(dbid);
@@ -86,6 +87,7 @@ int CLDBManager::getTableSize(unsigned int dbid, string &tableName, unsigned lon
 		if(conn == NULL)
 		{
 			cerr << "CLDBManager::getTableSize getConnection error!" << endl;
+			return FAILED;
 		}
 		MetaData custtab_metaData = conn->getMetaData(tableName, MetaData::PTYPE_TABLE);
 		vector <MetaData> listOfColumns = custtab_metaData.getVector(MetaData::ATTR_LIST_COLUMNS);

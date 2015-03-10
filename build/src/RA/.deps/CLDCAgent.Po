@@ -18,7 +18,7 @@ CLDCAgent.o: ../../../src/RA/CLDCAgent.cpp \
  /usr/include/libio.h /usr/include/_G_config.h /usr/include/wchar.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/include/stdarg.h \
  /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h \
- /usr/include/bits/stdio.h ../../../include/common/comm/BufferManager.h \
+ ../../../include/common/comm/BufferManager.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/list \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_algobase.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/x86_64-redhat-linux/bits/c++config.h \
@@ -98,7 +98,8 @@ CLDCAgent.o: ../../../src/RA/CLDCAgent.cpp \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_heap.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_queue.h \
  ../../../include/RA/CLimportTask.h \
- ../../../include/common/comm/BaseTask.h ../../../include/RA/dbInfo.h \
+ ../../../include/common/comm/BaseTask.h \
+ ../../../include/protocol/dbInfo.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/map \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_tree.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_map.h \
@@ -267,8 +268,6 @@ CLDCAgent.o: ../../../src/RA/CLDCAgent.cpp \
 /usr/include/bits/stdio_lim.h:
 
 /usr/include/bits/sys_errlist.h:
-
-/usr/include/bits/stdio.h:
 
 ../../../include/common/comm/BufferManager.h:
 
@@ -460,7 +459,7 @@ CLDCAgent.o: ../../../src/RA/CLDCAgent.cpp \
 
 ../../../include/common/comm/BaseTask.h:
 
-../../../include/RA/dbInfo.h:
+../../../include/protocol/dbInfo.h:
 
 /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/map:
 

@@ -149,7 +149,7 @@ CLDBManager.o: ../../../test/DB_TEST/../../src/RA/CLDBManager.cpp \
  /usr/local/include/google/protobuf/extension_set.h \
  /usr/local/include/google/protobuf/generated_enum_reflection.h \
  /usr/local/include/google/protobuf/unknown_field_set.h \
- ../../../include/RA/dbInfo.h ../../../include/common/log/log.h \
+ ../../../include/protocol/dbInfo.h ../../../include/common/log/log.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/cstring \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/cerrno \
  /usr/include/errno.h /usr/include/bits/errno.h \
@@ -511,7 +511,7 @@ CLDBManager.o: ../../../test/DB_TEST/../../src/RA/CLDBManager.cpp \
 
 /usr/local/include/google/protobuf/unknown_field_set.h:
 
-../../../include/RA/dbInfo.h:
+../../../include/protocol/dbInfo.h:
 
 ../../../include/common/log/log.h:
 

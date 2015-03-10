@@ -89,7 +89,7 @@ CPPFLAGS =
 CXX = g++
 CXXCPP = g++ -E
 CXXDEPMODE = depmode=gcc3
-CXXFLAGS = -O2 -DNDEBUG -D__STDC_FORMAT_MACROS -D__STDC_CONSTANT_MACROS -Wall
+CXXFLAGS = -g2 -O0 -DDEBUG -D__STDC_FORMAT_MACROS -D__STDC_CONSTANT_MACROS -Wall -Werror
 CYGPATH_W = echo
 DEFS = -DHAVE_CONFIG_H
 DEPDIR = .deps
@@ -194,7 +194,7 @@ top_srcdir = ../../..
 INCLUDES = -I$(top_srcdir)/include -I/usr/local/include/libxml2 -I/home/oracle/liulu/trunk/test/gtest -I/usr/include/oracle/11.2/client64/
 metaTest_SOURCES = testMain.cpp \
 				   testGetMetaWorkItem.cpp \
-				   ../../src/RA/CLgetMeta.cpp \
+				   CLgetMeta.cpp \
 				../../src/RA/raXmlParse.cpp \
 				../../src/RA/CLDBManager.cpp 
 
@@ -312,20 +312,6 @@ include ./$(DEPDIR)/testMain.Po
 #	source='$<' object='$@' libtool=yes \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
 #	$(LTCXXCOMPILE) -c -o $@ $<
-
-CLgetMeta.o: ../../src/RA/CLgetMeta.cpp
-	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT CLgetMeta.o -MD -MP -MF $(DEPDIR)/CLgetMeta.Tpo -c -o CLgetMeta.o `test -f '../../src/RA/CLgetMeta.cpp' || echo '$(srcdir)/'`../../src/RA/CLgetMeta.cpp
-	$(am__mv) $(DEPDIR)/CLgetMeta.Tpo $(DEPDIR)/CLgetMeta.Po
-#	source='../../src/RA/CLgetMeta.cpp' object='CLgetMeta.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CLgetMeta.o `test -f '../../src/RA/CLgetMeta.cpp' || echo '$(srcdir)/'`../../src/RA/CLgetMeta.cpp
-
-CLgetMeta.obj: ../../src/RA/CLgetMeta.cpp
-	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT CLgetMeta.obj -MD -MP -MF $(DEPDIR)/CLgetMeta.Tpo -c -o CLgetMeta.obj `if test -f '../../src/RA/CLgetMeta.cpp'; then $(CYGPATH_W) '../../src/RA/CLgetMeta.cpp'; else $(CYGPATH_W) '$(srcdir)/../../src/RA/CLgetMeta.cpp'; fi`
-	$(am__mv) $(DEPDIR)/CLgetMeta.Tpo $(DEPDIR)/CLgetMeta.Po
-#	source='../../src/RA/CLgetMeta.cpp' object='CLgetMeta.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CLgetMeta.obj `if test -f '../../src/RA/CLgetMeta.cpp'; then $(CYGPATH_W) '../../src/RA/CLgetMeta.cpp'; else $(CYGPATH_W) '$(srcdir)/../../src/RA/CLgetMeta.cpp'; fi`
 
 raXmlParse.o: ../../src/RA/raXmlParse.cpp
 	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT raXmlParse.o -MD -MP -MF $(DEPDIR)/raXmlParse.Tpo -c -o raXmlParse.o `test -f '../../src/RA/raXmlParse.cpp' || echo '$(srcdir)/'`../../src/RA/raXmlParse.cpp

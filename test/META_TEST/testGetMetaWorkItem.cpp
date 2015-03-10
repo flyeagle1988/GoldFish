@@ -1,13 +1,13 @@
 #include <gtest/gtest.h>
 #include <iostream>
-#include "RA/CLgetMeta.h"
+#include "CLgetMeta.h"
 #include "RA/CLDBManager.h"
 #include "RA/raXmlParse.h"
 #include "common/comm/Error.h"
 #include "common/log/log.h"
 #include "protocol/DIS/MSG_DC_RA_DATABASE_INFO_GET.pb.h"
 #include "RA/CLDBManager.h"
-#include "RA/dbInfo.h"
+#include "protocol/dbInfo.h"
 using namespace std;
 
 TEST(CLgetMeta, process)//passed

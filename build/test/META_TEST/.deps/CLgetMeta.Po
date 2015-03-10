@@ -1,5 +1,5 @@
-CLgetMeta.o: ../../../test/META_TEST/../../src/RA/CLgetMeta.cpp \
- ../../../include/RA/CLgetMeta.h \
+CLgetMeta.o: ../../../test/META_TEST/CLgetMeta.cpp \
+ ../../../test/META_TEST/CLgetMeta.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/string \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/x86_64-redhat-linux/bits/c++config.h \
  /usr/include/bits/wordsize.h \
@@ -162,9 +162,9 @@ CLgetMeta.o: ../../../test/META_TEST/../../src/RA/CLgetMeta.cpp \
  /usr/include/oracle/11.2/client64/occiAQ.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/iostream \
  ../../../include/protocol/DIS/MSG_DS_RA_IMPORT_TASK_SEND.pb.h \
- ../../../include/RA/dbInfo.h
+ ../../../include/protocol/dbInfo.h
 
-../../../include/RA/CLgetMeta.h:
+../../../test/META_TEST/CLgetMeta.h:
 
 /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/string:
 
@@ -546,4 +546,4 @@ CLgetMeta.o: ../../../test/META_TEST/../../src/RA/CLgetMeta.cpp \
 
 ../../../include/protocol/DIS/MSG_DS_RA_IMPORT_TASK_SEND.pb.h:
 
-../../../include/RA/dbInfo.h:
+../../../include/protocol/dbInfo.h:

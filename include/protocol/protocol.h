@@ -43,6 +43,9 @@ const unsigned int IMPORT_DATA = 4;
 const unsigned int WAIT_WORKITEM = 2;
 const unsigned int FINISH = 3;
 
+const unsigned int DS_IMP_STATE = 1;
+const unsigned int DS_DELTA_STATE = 2;
+
 /*Protobuf Error Code*/
 const int PROTO_PARSE_ERROR = -40;
 #endif

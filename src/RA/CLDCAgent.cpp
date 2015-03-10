@@ -39,14 +39,6 @@ void CLDCAgent::readBack(InReq & req)
 		}
 		case DC_RA_IMPORT_SIZE_INFO_GET:
 		{
-			//string data(req.ioBuf, req.m_msgHeader.length);
-			/*
-			CLimportTask * pImpTask = TaskManager::getInstance()->create<CLimportTask>();
-
-			pImpTask->setAgentID(getID());
-			pImpTask->setImpTaskProto(data);
-			pImpTask->goNext();
-			*/
 			
 		}
 	}

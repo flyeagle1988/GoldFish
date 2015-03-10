@@ -65,11 +65,19 @@ int main(int argc,char * argv [])
     g_pDispatcher->init();
 
 	RAXmlParse xmlParse(argv[1]);
-	xmlParse.parse();
-
+	if(xmlParse.parse() < 0)
+	{
+		cerr << "main::xml parse error!" << endl;
+		return FAILED;
+	}
+	else
+	{
+		cout << "The XML file is parsed!" << endl;
+	}
 	CLDBManager::getInstance()->setDBInfo(xmlParse.getDBInfoMap());
-	dcAddr.setPort(xmlParse.getDCPort());
-	dsAddr.setPort(xmlParse.getDSPort());
+	CLDBManager::getInstance()->initDB();
+	dcAddr.setPort((unsigned short)xmlParse.getDCPort());
+	dsAddr.setPort((unsigned short)xmlParse.getDSPort());
 	
 	g_pListenDCAgent = (AgentManager::getInstance())->createAgent< TCPListenAgent<CLDCAgent> >(dcAddr);
 	g_pListenDCAgent->init();

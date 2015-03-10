@@ -3,7 +3,7 @@
 #include "common/comm/TCPAgent.h"
 #include "RA/CLDBManager.h"
 #include <queue>
-#include "RA/dbInfo.h"
+#include "protocol/dbInfo.h"
 class Epoll;
 class SocketAddress;
 class TCPSocket;

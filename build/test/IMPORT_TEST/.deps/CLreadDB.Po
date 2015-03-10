@@ -1,17 +1,17 @@
-CLreadDB.o: ../../../test/IMPORT_TEST/../../src/RA/CLreadDB.cpp \
- ../../../include/RA/CLreadDB.h ../../../include/common/comm/BaseHeader.h \
- /usr/include/sys/types.h /usr/include/features.h \
- /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h \
- /usr/include/gnu/stubs.h /usr/include/gnu/stubs-64.h \
- /usr/include/bits/types.h /usr/include/bits/typesizes.h \
- /usr/include/time.h \
+CLreadDB.o: ../../../test/IMPORT_TEST/CLreadDB.cpp \
+ ../../../test/IMPORT_TEST/CLreadDB.h \
+ ../../../include/common/comm/BaseHeader.h /usr/include/sys/types.h \
+ /usr/include/features.h /usr/include/sys/cdefs.h \
+ /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h \
+ /usr/include/gnu/stubs-64.h /usr/include/bits/types.h \
+ /usr/include/bits/typesizes.h /usr/include/time.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/include/stddef.h \
  /usr/include/endian.h /usr/include/bits/endian.h \
  /usr/include/bits/byteswap.h /usr/include/sys/select.h \
  /usr/include/bits/select.h /usr/include/bits/sigset.h \
  /usr/include/bits/time.h /usr/include/sys/sysmacros.h \
  /usr/include/bits/pthreadtypes.h /usr/include/stdint.h \
- /usr/include/bits/wchar.h ../../../include/RA/dbInfo.h \
+ /usr/include/bits/wchar.h ../../../include/protocol/dbInfo.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/string \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/x86_64-redhat-linux/bits/c++config.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/x86_64-redhat-linux/bits/os_defines.h \
@@ -79,7 +79,7 @@ CLreadDB.o: ../../../test/IMPORT_TEST/../../src/RA/CLreadDB.cpp \
  ../../../include/common/comm/Error.h \
  ../../../include/common/comm/EpollEvent.h /usr/include/libio.h \
  /usr/include/_G_config.h /usr/include/bits/stdio_lim.h \
- /usr/include/bits/sys_errlist.h /usr/include/bits/stdio.h \
+ /usr/include/bits/sys_errlist.h \
  ../../../include/common/comm/BufferManager.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/list \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_list.h \
@@ -196,7 +196,7 @@ CLreadDB.o: ../../../test/IMPORT_TEST/../../src/RA/CLreadDB.cpp \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_tempbuf.h \
  ../../../include/protocol/protocol.h
 
-../../../include/RA/CLreadDB.h:
+../../../test/IMPORT_TEST/CLreadDB.h:
 
 ../../../include/common/comm/BaseHeader.h:
 
@@ -242,7 +242,7 @@ CLreadDB.o: ../../../test/IMPORT_TEST/../../src/RA/CLreadDB.cpp \
 
 /usr/include/bits/wchar.h:
 
-../../../include/RA/dbInfo.h:
+../../../include/protocol/dbInfo.h:
 
 /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/string:
 
@@ -399,8 +399,6 @@ CLreadDB.o: ../../../test/IMPORT_TEST/../../src/RA/CLreadDB.cpp \
 /usr/include/bits/stdio_lim.h:
 
 /usr/include/bits/sys_errlist.h:
-
-/usr/include/bits/stdio.h:
 
 ../../../include/common/comm/BufferManager.h:
 

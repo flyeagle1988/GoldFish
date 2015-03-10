@@ -82,7 +82,7 @@ raXmlParse.o: ../../../test/IMPORT_TEST/../../src/RA/raXmlParse.cpp \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/istream.tcc \
  /usr/local/include/libxml2/libxml/xmlmemory.h /usr/include/libio.h \
  /usr/include/_G_config.h /usr/include/bits/stdio_lim.h \
- /usr/include/bits/sys_errlist.h /usr/include/bits/stdio.h \
+ /usr/include/bits/sys_errlist.h \
  /usr/local/include/libxml2/libxml/xmlversion.h \
  /usr/local/include/libxml2/libxml/xmlexports.h \
  /usr/local/include/libxml2/libxml/threads.h \
@@ -115,7 +115,7 @@ raXmlParse.o: ../../../test/IMPORT_TEST/../../src/RA/raXmlParse.cpp \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/list \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_list.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/list.tcc \
- ../../../include/RA/dbInfo.h \
+ ../../../include/protocol/dbInfo.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/vector \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_construct.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_uninitialized.h \
@@ -328,8 +328,6 @@ raXmlParse.o: ../../../test/IMPORT_TEST/../../src/RA/raXmlParse.cpp \
 
 /usr/include/bits/sys_errlist.h:
 
-/usr/include/bits/stdio.h:
-
 /usr/local/include/libxml2/libxml/xmlversion.h:
 
 /usr/local/include/libxml2/libxml/xmlexports.h:
@@ -412,7 +410,7 @@ raXmlParse.o: ../../../test/IMPORT_TEST/../../src/RA/raXmlParse.cpp \
 
 /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/list.tcc:
 
-../../../include/RA/dbInfo.h:
+../../../include/protocol/dbInfo.h:
 
 /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/vector:
 

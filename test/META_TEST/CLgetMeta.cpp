@@ -1,10 +1,10 @@
 //#include "RA/CLgetMetaWorkItem.h"
-#include "RA/CLgetMeta.h"
+#include "CLgetMeta.h"
 #include "common/comm/Error.h"
 #include "common/log/log.h"
 #include "protocol/DIS/MSG_DC_RA_DATABASE_INFO_GET.pb.h"
 #include "RA/CLDBManager.h"
-#include "RA/dbInfo.h"
+#include "protocol/dbInfo.h"
 
 using namespace std;
 

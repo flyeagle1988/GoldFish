@@ -104,7 +104,7 @@ CPPFLAGS =
 CXX = g++
 CXXCPP = g++ -E
 CXXDEPMODE = depmode=gcc3
-CXXFLAGS = -O2 -DNDEBUG -D__STDC_FORMAT_MACROS -D__STDC_CONSTANT_MACROS -Wall
+CXXFLAGS = -g2 -O0 -DDEBUG -D__STDC_FORMAT_MACROS -D__STDC_CONSTANT_MACROS -Wall -Werror
 CYGPATH_W = echo
 DEFS = -DHAVE_CONFIG_H
 DEPDIR = .deps
@@ -206,7 +206,7 @@ target_alias =
 top_build_prefix = ../
 top_builddir = ..
 top_srcdir = ../..
-SUBDIRS = protocol common RA 
+SUBDIRS = protocol common RA DS
 all: all-recursive
 
 .SUFFIXES:

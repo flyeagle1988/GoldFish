@@ -89,7 +89,7 @@ CPPFLAGS =
 CXX = g++
 CXXCPP = g++ -E
 CXXDEPMODE = depmode=gcc3
-CXXFLAGS = -O2 -DNDEBUG -D__STDC_FORMAT_MACROS -D__STDC_CONSTANT_MACROS -Wall
+CXXFLAGS = -g2 -O0 -DDEBUG -D__STDC_FORMAT_MACROS -D__STDC_CONSTANT_MACROS -Wall -Werror
 CYGPATH_W = echo
 DEFS = -DHAVE_CONFIG_H
 DEPDIR = .deps
@@ -196,7 +196,7 @@ impTest_SOURCES = testMain.cpp \
 				  testImport.cpp \
 				  ../../src/RA/CLDBManager.cpp \
 				  ../../src/RA/raXmlParse.cpp	\
-				  ../../src/RA/CLreadDB.cpp
+				  CLreadDB.cpp
 
 impTest_LDADD = $(top_srcdir)/lib/libcommon.la  $(top_srcdir)/lib/libprotocol.la /home/oracle/liulu/trunk/test/gtest/libgtest.a -lxml2 -lpthread -L/usr/lib/oracle/11.2/client64/lib/ -lclntsh -locci 
 all: all-am
@@ -340,20 +340,6 @@ raXmlParse.obj: ../../src/RA/raXmlParse.cpp
 #	source='../../src/RA/raXmlParse.cpp' object='raXmlParse.obj' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
 #	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o raXmlParse.obj `if test -f '../../src/RA/raXmlParse.cpp'; then $(CYGPATH_W) '../../src/RA/raXmlParse.cpp'; else $(CYGPATH_W) '$(srcdir)/../../src/RA/raXmlParse.cpp'; fi`
-
-CLreadDB.o: ../../src/RA/CLreadDB.cpp
-	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT CLreadDB.o -MD -MP -MF $(DEPDIR)/CLreadDB.Tpo -c -o CLreadDB.o `test -f '../../src/RA/CLreadDB.cpp' || echo '$(srcdir)/'`../../src/RA/CLreadDB.cpp
-	$(am__mv) $(DEPDIR)/CLreadDB.Tpo $(DEPDIR)/CLreadDB.Po
-#	source='../../src/RA/CLreadDB.cpp' object='CLreadDB.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CLreadDB.o `test -f '../../src/RA/CLreadDB.cpp' || echo '$(srcdir)/'`../../src/RA/CLreadDB.cpp
-
-CLreadDB.obj: ../../src/RA/CLreadDB.cpp
-	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT CLreadDB.obj -MD -MP -MF $(DEPDIR)/CLreadDB.Tpo -c -o CLreadDB.obj `if test -f '../../src/RA/CLreadDB.cpp'; then $(CYGPATH_W) '../../src/RA/CLreadDB.cpp'; else $(CYGPATH_W) '$(srcdir)/../../src/RA/CLreadDB.cpp'; fi`
-	$(am__mv) $(DEPDIR)/CLreadDB.Tpo $(DEPDIR)/CLreadDB.Po
-#	source='../../src/RA/CLreadDB.cpp' object='CLreadDB.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CLreadDB.obj `if test -f '../../src/RA/CLreadDB.cpp'; then $(CYGPATH_W) '../../src/RA/CLreadDB.cpp'; else $(CYGPATH_W) '$(srcdir)/../../src/RA/CLreadDB.cpp'; fi`
 
 mostlyclean-libtool:
 	-rm -f *.lo

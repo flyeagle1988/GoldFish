@@ -61,7 +61,7 @@ CLimportTask.o: ../../../src/RA/CLimportTask.cpp \
  /usr/include/libio.h /usr/include/_G_config.h /usr/include/wchar.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/include/stdarg.h \
  /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h \
- /usr/include/bits/stdio.h ../../../include/common/log/log.h \
+ ../../../include/common/log/log.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/cstring \
  /usr/include/string.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/cerrno \
@@ -172,7 +172,7 @@ CLimportTask.o: ../../../src/RA/CLimportTask.cpp \
  /usr/local/include/google/protobuf/extension_set.h \
  /usr/local/include/google/protobuf/generated_enum_reflection.h \
  /usr/local/include/google/protobuf/unknown_field_set.h \
- ../../../include/RA/dbInfo.h ../../../include/RA/CLimportTask.h \
+ ../../../include/protocol/dbInfo.h ../../../include/RA/CLimportTask.h \
  ../../../include/common/comm/BaseTask.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/queue \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/deque \
@@ -341,8 +341,6 @@ CLimportTask.o: ../../../src/RA/CLimportTask.cpp \
 /usr/include/bits/stdio_lim.h:
 
 /usr/include/bits/sys_errlist.h:
-
-/usr/include/bits/stdio.h:
 
 ../../../include/common/log/log.h:
 
@@ -598,7 +596,7 @@ CLimportTask.o: ../../../src/RA/CLimportTask.cpp \
 
 /usr/local/include/google/protobuf/unknown_field_set.h:
 
-../../../include/RA/dbInfo.h:
+../../../include/protocol/dbInfo.h:
 
 ../../../include/RA/CLimportTask.h:
 

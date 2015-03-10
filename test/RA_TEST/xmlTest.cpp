@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include <iostream>
 #include "RA/raXmlParse.h"
-#include "RA/dbInfo.h"
+#include "protocol/dbInfo.h"
 #include <map>
 using namespace std;
 

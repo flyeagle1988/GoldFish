@@ -1,18 +1,31 @@
-CLgetMetaWorkItem.o: \
- ../../../test/DB_TEST/../../src/RA/CLgetMetaWorkItem.cpp \
- ../../../include/RA/CLgetMetaWorkItem.h \
- ../../../include/common/sys/ThreadPoolWorkItem.h /usr/include/stdint.h \
+CLRAConnectAgent.o: ../../../src/DS/CLRAConnectAgent.cpp \
+ ../../../include/DS/CLRAConnectAgent.h \
+ ../../../include/common/comm/TCPAgent.h \
+ ../../../include/common/comm/Agent.h /usr/include/stdint.h \
  /usr/include/features.h /usr/include/sys/cdefs.h \
  /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h \
  /usr/include/gnu/stubs-64.h /usr/include/bits/wchar.h \
- ../../../include/common/sys/ThreadPoolDispatcher.h \
+ ../../../include/common/comm/Error.h \
+ ../../../include/common/comm/BaseHeader.h /usr/include/sys/types.h \
+ /usr/include/bits/types.h /usr/include/bits/typesizes.h \
+ /usr/include/time.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/include/stddef.h \
+ /usr/include/endian.h /usr/include/bits/endian.h \
+ /usr/include/bits/byteswap.h /usr/include/sys/select.h \
+ /usr/include/bits/select.h /usr/include/bits/sigset.h \
+ /usr/include/bits/time.h /usr/include/sys/sysmacros.h \
+ /usr/include/bits/pthreadtypes.h \
+ ../../../include/common/comm/EpollEvent.h /usr/include/stdio.h \
+ /usr/include/libio.h /usr/include/_G_config.h /usr/include/wchar.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/include/stdarg.h \
+ /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h \
+ ../../../include/common/comm/BufferManager.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/list \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_algobase.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/x86_64-redhat-linux/bits/c++config.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/x86_64-redhat-linux/bits/os_defines.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/x86_64-redhat-linux/bits/cpu_defines.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/cstddef \
- /usr/lib/gcc/x86_64-redhat-linux/4.4.7/include/stddef.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/functexcept.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/exception_defines.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/cpp_type_traits.h \
@@ -33,28 +46,26 @@ CLgetMetaWorkItem.o: \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_list.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/initializer_list \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/list.tcc \
- ../../../include/common/comm/Agent.h \
- ../../../include/common/comm/Error.h \
- ../../../include/common/comm/EpollEvent.h /usr/include/stdio.h \
- /usr/include/bits/types.h /usr/include/bits/typesizes.h \
- /usr/include/libio.h /usr/include/_G_config.h /usr/include/wchar.h \
- /usr/lib/gcc/x86_64-redhat-linux/4.4.7/include/stdarg.h \
- /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h \
- /usr/include/bits/stdio.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/cstring \
+ /usr/include/string.h /usr/include/xlocale.h /usr/include/sys/uio.h \
+ /usr/include/bits/uio.h ../../../include/common/comm/BaseReq.h \
+ /usr/include/netinet/in.h /usr/include/sys/socket.h \
+ /usr/include/bits/socket.h /usr/include/bits/sockaddr.h \
+ /usr/include/asm/socket.h /usr/include/asm-generic/socket.h \
+ /usr/include/asm/sockios.h /usr/include/asm-generic/sockios.h \
+ /usr/include/bits/in.h ../../../include/common/comm/SocketAddress.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/string \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stringfwd.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/char_traits.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/postypes.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/cwchar \
- /usr/include/xlocale.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/localefwd.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/x86_64-redhat-linux/bits/c++locale.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/clocale \
  /usr/include/locale.h /usr/include/bits/locale.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/iosfwd \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/cctype \
- /usr/include/ctype.h /usr/include/endian.h /usr/include/bits/endian.h \
- /usr/include/bits/byteswap.h \
+ /usr/include/ctype.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/ostream_insert.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/cxxabi-forced.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_function.h \
@@ -63,17 +74,31 @@ CLgetMetaWorkItem.o: \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/ext/atomicity.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/x86_64-redhat-linux/bits/gthr.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/x86_64-redhat-linux/bits/gthr-default.h \
- /usr/include/pthread.h /usr/include/sched.h /usr/include/time.h \
- /usr/include/bits/sched.h /usr/include/bits/time.h \
- /usr/include/bits/pthreadtypes.h /usr/include/bits/setjmp.h \
- /usr/include/unistd.h /usr/include/bits/posix_opt.h \
- /usr/include/bits/environments.h /usr/include/bits/confname.h \
- /usr/include/getopt.h \
+ /usr/include/pthread.h /usr/include/sched.h /usr/include/bits/sched.h \
+ /usr/include/bits/setjmp.h /usr/include/unistd.h \
+ /usr/include/bits/posix_opt.h /usr/include/bits/environments.h \
+ /usr/include/bits/confname.h /usr/include/getopt.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/x86_64-redhat-linux/bits/atomic_word.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/basic_string.tcc \
- ../../../include/common/log/log.h \
- /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/cstring \
- /usr/include/string.h \
+ ../../../include/common/comm/Reader.h \
+ ../../../include/common/comm/Writer.h \
+ ../../../include/common/comm/ReadCallback.h \
+ ../../../include/common/comm/WriteCallback.h \
+ ../../../include/common/comm/AppProtoSpec.h \
+ ../../../include/common/comm/TCPSocket.h \
+ ../../../include/protocol/dbInfo.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/vector \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_construct.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_uninitialized.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_vector.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_bvector.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/vector.tcc \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/map \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_tree.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_map.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_multimap.h \
+ ../../../include/common/comm/Epoll.h /usr/include/sys/epoll.h \
+ /usr/include/sys/time.h ../../../include/common/log/log.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/cerrno \
  /usr/include/errno.h /usr/include/bits/errno.h \
  /usr/include/linux/errno.h /usr/include/asm/errno.h \
@@ -81,31 +106,19 @@ CLgetMetaWorkItem.o: \
  ../../../include/common/log/Logger.h \
  ../../../include/common/sys/noncopyable.h \
  ../../../include/common/log/LoggerFactory.h \
- /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/map \
- /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_tree.h \
- /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_map.h \
- /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_multimap.h \
  ../../../include/common/sys/Singleton.h \
  ../../../include/common/log/LogLevel.h \
- ../../../include/protocol/DIS/MSG_DC_RA_DATABASE_INFO_GET.pb.h \
+ ../../../include/protocol/protocol.h \
+ ../../../include/protocol/DIS/MSG_DS_RA_IMPORT_TASK_SEND.pb.h \
  /usr/local/include/google/protobuf/stubs/common.h /usr/include/assert.h \
  /usr/include/stdlib.h /usr/include/bits/waitflags.h \
- /usr/include/bits/waitstatus.h /usr/include/sys/types.h \
- /usr/include/sys/select.h /usr/include/bits/select.h \
- /usr/include/bits/sigset.h /usr/include/sys/sysmacros.h \
- /usr/include/alloca.h \
+ /usr/include/bits/waitstatus.h /usr/include/alloca.h \
  /usr/local/include/google/protobuf/generated_message_util.h \
  /usr/local/include/google/protobuf/stubs/once.h \
  /usr/local/include/google/protobuf/stubs/atomicops.h \
  /usr/local/include/google/protobuf/stubs/platform_macros.h \
  /usr/local/include/google/protobuf/stubs/atomicops_internals_x86_gcc.h \
  /usr/local/include/google/protobuf/message.h \
- /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/vector \
- /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_construct.h \
- /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_uninitialized.h \
- /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_vector.h \
- /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_bvector.h \
- /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/vector.tcc \
  /usr/local/include/google/protobuf/message_lite.h \
  /usr/local/include/google/protobuf/descriptor.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/set \
@@ -140,41 +153,13 @@ CLgetMetaWorkItem.o: \
  /usr/local/include/google/protobuf/extension_set.h \
  /usr/local/include/google/protobuf/generated_enum_reflection.h \
  /usr/local/include/google/protobuf/unknown_field_set.h \
- ../../../include/RA/CLDBManager.h \
- /usr/include/oracle/11.2/client64/occi.h \
- /usr/include/oracle/11.2/client64/occiCommon.h \
- /usr/include/oracle/11.2/client64/oci.h \
- /usr/include/oracle/11.2/client64/oratypes.h \
- /usr/lib/gcc/x86_64-redhat-linux/4.4.7/include/limits.h \
- /usr/lib/gcc/x86_64-redhat-linux/4.4.7/include/syslimits.h \
- /usr/include/limits.h /usr/include/bits/posix1_lim.h \
- /usr/include/bits/local_lim.h /usr/include/linux/limits.h \
- /usr/include/bits/posix2_lim.h /usr/include/bits/xopen_lim.h \
- /usr/include/oracle/11.2/client64/ocidfn.h \
- /usr/include/oracle/11.2/client64/oci1.h \
- /usr/include/oracle/11.2/client64/oro.h \
- /usr/include/oracle/11.2/client64/ori.h \
- /usr/include/oracle/11.2/client64/ort.h \
- /usr/include/oracle/11.2/client64/orl.h \
- /usr/include/oracle/11.2/client64/ociextp.h \
- /usr/include/oracle/11.2/client64/ociapr.h \
- /usr/include/oracle/11.2/client64/ociap.h \
- /usr/include/oracle/11.2/client64/nzt.h \
- /usr/include/oracle/11.2/client64/nzerror.h \
- /usr/include/oracle/11.2/client64/ocixmldb.h \
- /usr/include/oracle/11.2/client64/oci8dp.h \
- /usr/include/oracle/11.2/client64/ocixstream.h \
- /usr/include/oracle/11.2/client64/occiData.h \
- /usr/include/oracle/11.2/client64/occiControl.h \
- /usr/include/oracle/11.2/client64/occiObjects.h \
- /usr/include/oracle/11.2/client64/occiAQ.h \
- /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/iostream \
- ../../../include/protocol/DIS/MSG_DS_RA_IMPORT_TASK_SEND.pb.h \
- ../../../include/RA/dbInfo.h
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/iostream
 
-../../../include/RA/CLgetMetaWorkItem.h:
+../../../include/DS/CLRAConnectAgent.h:
 
-../../../include/common/sys/ThreadPoolWorkItem.h:
+../../../include/common/comm/TCPAgent.h:
+
+../../../include/common/comm/Agent.h:
 
 /usr/include/stdint.h:
 
@@ -190,7 +175,55 @@ CLgetMetaWorkItem.o: \
 
 /usr/include/bits/wchar.h:
 
-../../../include/common/sys/ThreadPoolDispatcher.h:
+../../../include/common/comm/Error.h:
+
+../../../include/common/comm/BaseHeader.h:
+
+/usr/include/sys/types.h:
+
+/usr/include/bits/types.h:
+
+/usr/include/bits/typesizes.h:
+
+/usr/include/time.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/include/stddef.h:
+
+/usr/include/endian.h:
+
+/usr/include/bits/endian.h:
+
+/usr/include/bits/byteswap.h:
+
+/usr/include/sys/select.h:
+
+/usr/include/bits/select.h:
+
+/usr/include/bits/sigset.h:
+
+/usr/include/bits/time.h:
+
+/usr/include/sys/sysmacros.h:
+
+/usr/include/bits/pthreadtypes.h:
+
+../../../include/common/comm/EpollEvent.h:
+
+/usr/include/stdio.h:
+
+/usr/include/libio.h:
+
+/usr/include/_G_config.h:
+
+/usr/include/wchar.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/include/stdarg.h:
+
+/usr/include/bits/stdio_lim.h:
+
+/usr/include/bits/sys_errlist.h:
+
+../../../include/common/comm/BufferManager.h:
 
 /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/list:
 
@@ -203,8 +236,6 @@ CLgetMetaWorkItem.o: \
 /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/x86_64-redhat-linux/bits/cpu_defines.h:
 
 /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/cstddef:
-
-/usr/lib/gcc/x86_64-redhat-linux/4.4.7/include/stddef.h:
 
 /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/functexcept.h:
 
@@ -246,31 +277,37 @@ CLgetMetaWorkItem.o: \
 
 /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/list.tcc:
 
-../../../include/common/comm/Agent.h:
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/cstring:
 
-../../../include/common/comm/Error.h:
+/usr/include/string.h:
 
-../../../include/common/comm/EpollEvent.h:
+/usr/include/xlocale.h:
 
-/usr/include/stdio.h:
+/usr/include/sys/uio.h:
 
-/usr/include/bits/types.h:
+/usr/include/bits/uio.h:
 
-/usr/include/bits/typesizes.h:
+../../../include/common/comm/BaseReq.h:
 
-/usr/include/libio.h:
+/usr/include/netinet/in.h:
 
-/usr/include/_G_config.h:
+/usr/include/sys/socket.h:
 
-/usr/include/wchar.h:
+/usr/include/bits/socket.h:
 
-/usr/lib/gcc/x86_64-redhat-linux/4.4.7/include/stdarg.h:
+/usr/include/bits/sockaddr.h:
 
-/usr/include/bits/stdio_lim.h:
+/usr/include/asm/socket.h:
 
-/usr/include/bits/sys_errlist.h:
+/usr/include/asm-generic/socket.h:
 
-/usr/include/bits/stdio.h:
+/usr/include/asm/sockios.h:
+
+/usr/include/asm-generic/sockios.h:
+
+/usr/include/bits/in.h:
+
+../../../include/common/comm/SocketAddress.h:
 
 /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/string:
 
@@ -281,8 +318,6 @@ CLgetMetaWorkItem.o: \
 /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/postypes.h:
 
 /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/cwchar:
-
-/usr/include/xlocale.h:
 
 /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/localefwd.h:
 
@@ -299,12 +334,6 @@ CLgetMetaWorkItem.o: \
 /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/cctype:
 
 /usr/include/ctype.h:
-
-/usr/include/endian.h:
-
-/usr/include/bits/endian.h:
-
-/usr/include/bits/byteswap.h:
 
 /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/ostream_insert.h:
 
@@ -326,13 +355,7 @@ CLgetMetaWorkItem.o: \
 
 /usr/include/sched.h:
 
-/usr/include/time.h:
-
 /usr/include/bits/sched.h:
-
-/usr/include/bits/time.h:
-
-/usr/include/bits/pthreadtypes.h:
 
 /usr/include/bits/setjmp.h:
 
@@ -350,11 +373,47 @@ CLgetMetaWorkItem.o: \
 
 /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/basic_string.tcc:
 
+../../../include/common/comm/Reader.h:
+
+../../../include/common/comm/Writer.h:
+
+../../../include/common/comm/ReadCallback.h:
+
+../../../include/common/comm/WriteCallback.h:
+
+../../../include/common/comm/AppProtoSpec.h:
+
+../../../include/common/comm/TCPSocket.h:
+
+../../../include/protocol/dbInfo.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/vector:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_construct.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_uninitialized.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_vector.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_bvector.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/vector.tcc:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/map:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_tree.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_map.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_multimap.h:
+
+../../../include/common/comm/Epoll.h:
+
+/usr/include/sys/epoll.h:
+
+/usr/include/sys/time.h:
+
 ../../../include/common/log/log.h:
-
-/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/cstring:
-
-/usr/include/string.h:
 
 /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/cerrno:
 
@@ -376,19 +435,13 @@ CLgetMetaWorkItem.o: \
 
 ../../../include/common/log/LoggerFactory.h:
 
-/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/map:
-
-/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_tree.h:
-
-/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_map.h:
-
-/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_multimap.h:
-
 ../../../include/common/sys/Singleton.h:
 
 ../../../include/common/log/LogLevel.h:
 
-../../../include/protocol/DIS/MSG_DC_RA_DATABASE_INFO_GET.pb.h:
+../../../include/protocol/protocol.h:
+
+../../../include/protocol/DIS/MSG_DS_RA_IMPORT_TASK_SEND.pb.h:
 
 /usr/local/include/google/protobuf/stubs/common.h:
 
@@ -399,16 +452,6 @@ CLgetMetaWorkItem.o: \
 /usr/include/bits/waitflags.h:
 
 /usr/include/bits/waitstatus.h:
-
-/usr/include/sys/types.h:
-
-/usr/include/sys/select.h:
-
-/usr/include/bits/select.h:
-
-/usr/include/bits/sigset.h:
-
-/usr/include/sys/sysmacros.h:
 
 /usr/include/alloca.h:
 
@@ -423,18 +466,6 @@ CLgetMetaWorkItem.o: \
 /usr/local/include/google/protobuf/stubs/atomicops_internals_x86_gcc.h:
 
 /usr/local/include/google/protobuf/message.h:
-
-/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/vector:
-
-/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_construct.h:
-
-/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_uninitialized.h:
-
-/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_vector.h:
-
-/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_bvector.h:
-
-/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/vector.tcc:
 
 /usr/local/include/google/protobuf/message_lite.h:
 
@@ -504,70 +535,4 @@ CLgetMetaWorkItem.o: \
 
 /usr/local/include/google/protobuf/unknown_field_set.h:
 
-../../../include/RA/CLDBManager.h:
-
-/usr/include/oracle/11.2/client64/occi.h:
-
-/usr/include/oracle/11.2/client64/occiCommon.h:
-
-/usr/include/oracle/11.2/client64/oci.h:
-
-/usr/include/oracle/11.2/client64/oratypes.h:
-
-/usr/lib/gcc/x86_64-redhat-linux/4.4.7/include/limits.h:
-
-/usr/lib/gcc/x86_64-redhat-linux/4.4.7/include/syslimits.h:
-
-/usr/include/limits.h:
-
-/usr/include/bits/posix1_lim.h:
-
-/usr/include/bits/local_lim.h:
-
-/usr/include/linux/limits.h:
-
-/usr/include/bits/posix2_lim.h:
-
-/usr/include/bits/xopen_lim.h:
-
-/usr/include/oracle/11.2/client64/ocidfn.h:
-
-/usr/include/oracle/11.2/client64/oci1.h:
-
-/usr/include/oracle/11.2/client64/oro.h:
-
-/usr/include/oracle/11.2/client64/ori.h:
-
-/usr/include/oracle/11.2/client64/ort.h:
-
-/usr/include/oracle/11.2/client64/orl.h:
-
-/usr/include/oracle/11.2/client64/ociextp.h:
-
-/usr/include/oracle/11.2/client64/ociapr.h:
-
-/usr/include/oracle/11.2/client64/ociap.h:
-
-/usr/include/oracle/11.2/client64/nzt.h:
-
-/usr/include/oracle/11.2/client64/nzerror.h:
-
-/usr/include/oracle/11.2/client64/ocixmldb.h:
-
-/usr/include/oracle/11.2/client64/oci8dp.h:
-
-/usr/include/oracle/11.2/client64/ocixstream.h:
-
-/usr/include/oracle/11.2/client64/occiData.h:
-
-/usr/include/oracle/11.2/client64/occiControl.h:
-
-/usr/include/oracle/11.2/client64/occiObjects.h:
-
-/usr/include/oracle/11.2/client64/occiAQ.h:
-
 /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/iostream:
-
-../../../include/protocol/DIS/MSG_DS_RA_IMPORT_TASK_SEND.pb.h:
-
-../../../include/RA/dbInfo.h:

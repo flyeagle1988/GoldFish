@@ -8,7 +8,7 @@
 #include "common/sys/Singleton.h"
 #include <iostream>
 #include "protocol/DIS/MSG_DS_RA_IMPORT_TASK_SEND.pb.h" 
-#include "RA/dbInfo.h"
+#include "protocol/dbInfo.h"
 
 using std::vector;
 using std::string;

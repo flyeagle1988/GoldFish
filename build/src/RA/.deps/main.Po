@@ -96,6 +96,8 @@ main.o: ../../../src/RA/main.cpp \
  /usr/include/string.h /usr/include/errno.h /usr/include/bits/errno.h \
  /usr/include/linux/errno.h /usr/include/asm/errno.h \
  /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
+ /usr/include/libio.h /usr/include/_G_config.h \
+ /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h \
  ../../../include/common/comm/Agent.h \
  ../../../include/common/comm/AgentManager.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/map \
@@ -104,9 +106,7 @@ main.o: ../../../src/RA/main.cpp \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_multimap.h \
  ../../../include/common/sys/Singleton.h \
  ../../../include/common/comm/TCPSocket.h \
- ../../../include/common/comm/EpollEvent.h /usr/include/libio.h \
- /usr/include/_G_config.h /usr/include/bits/stdio_lim.h \
- /usr/include/bits/sys_errlist.h /usr/include/bits/stdio.h \
+ ../../../include/common/comm/EpollEvent.h \
  ../../../include/common/comm/SocketAddress.h /usr/include/netinet/in.h \
  /usr/include/bits/in.h ../../../include/common/log/log.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/cerrno \
@@ -190,7 +190,7 @@ main.o: ../../../src/RA/main.cpp \
  /usr/local/include/google/protobuf/extension_set.h \
  /usr/local/include/google/protobuf/generated_enum_reflection.h \
  /usr/local/include/google/protobuf/unknown_field_set.h \
- ../../../include/RA/dbInfo.h ../../../include/RA/CLDCAgent.h \
+ ../../../include/protocol/dbInfo.h ../../../include/RA/CLDCAgent.h \
  ../../../include/common/comm/TCPAgent.h \
  ../../../include/common/comm/BaseHeader.h \
  ../../../include/common/comm/BufferManager.h \
@@ -485,6 +485,14 @@ main.o: ../../../src/RA/main.cpp \
 
 /usr/include/asm-generic/errno-base.h:
 
+/usr/include/libio.h:
+
+/usr/include/_G_config.h:
+
+/usr/include/bits/stdio_lim.h:
+
+/usr/include/bits/sys_errlist.h:
+
 ../../../include/common/comm/Agent.h:
 
 ../../../include/common/comm/AgentManager.h:
@@ -502,16 +510,6 @@ main.o: ../../../src/RA/main.cpp \
 ../../../include/common/comm/TCPSocket.h:
 
 ../../../include/common/comm/EpollEvent.h:
-
-/usr/include/libio.h:
-
-/usr/include/_G_config.h:
-
-/usr/include/bits/stdio_lim.h:
-
-/usr/include/bits/sys_errlist.h:
-
-/usr/include/bits/stdio.h:
 
 ../../../include/common/comm/SocketAddress.h:
 
@@ -699,7 +697,7 @@ main.o: ../../../src/RA/main.cpp \
 
 /usr/local/include/google/protobuf/unknown_field_set.h:
 
-../../../include/RA/dbInfo.h:
+../../../include/protocol/dbInfo.h:
 
 ../../../include/RA/CLDCAgent.h:
 

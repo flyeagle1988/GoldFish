@@ -27,6 +27,10 @@ void CLDSAgent::readBack(InReq & req)
 	{
 		case DS_RA_IMPORT_TASK_SEND:
 		{
+			SocketAddress addr;
+			getOppAddr(addr);
+			
+			cout << "DS Import Task Accepted from " << addr.getIP() << endl;
 			string data(req.ioBuf, req.m_msgHeader.length);
 			MSG_DS_RA_IMPORT_TASK_SEND dsImportTask;
 			if(!dsImportTask.ParseFromString(data))

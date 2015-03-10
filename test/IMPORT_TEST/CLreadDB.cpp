@@ -1,4 +1,4 @@
-#include "RA/CLreadDB.h"
+#include "CLreadDB.h"
 #include "RA/CLDSAgent.h"
 #include "common/comm/Error.h"
 #include "common/log/log.h"
@@ -288,7 +288,10 @@ int CLreadDB::process()
 							fVtTemp.swap(it->second);
 						}
 					}
-					
+
+					int typeSize = raImpTaskAck.ByteSize();
+					int length = raImpTaskAck.colvalue_size();
+					cout << "typeSize: " << typeSize << '\t' << "typeSize: " << length << endl;
 					string data;
 					
 					if(!raImpTaskAck.SerializeToString(&data))
@@ -302,13 +305,23 @@ int CLreadDB::process()
 						if(pAgent == NULL)
 						{
 							cerr << "CLreadDBWorkItem::process get CLDSAgent error!" << endl;
+							
+							stmt->closeResultSet(rs);
+							conn->terminateStatement(stmt);
+							connPool->terminateConnection(conn);
+
+							return FAILED;
 						}
-						MsgHeader msgHeader;
-						msgHeader.cmd = RA_DS_IMPORT_TASK_ACK;
-						msgHeader.length = data.length();
-						pAgent->sendPackage(msgHeader, data.c_str());
-						data.clear();
+						else
+						{
+							MsgHeader msgHeader;
+							msgHeader.cmd = RA_DS_IMPORT_TASK_ACK;
+							msgHeader.length = data.length();
+							pAgent->sendPackage(msgHeader, data.c_str());
+							
+						}
 					*/
+						data.clear();
 						if(rowNum > rowNumPerSend)
 						{
 							rowNum -= rowNumPerSend;
@@ -348,7 +361,20 @@ int CLreadDB::process()
 		msgHeader.length = data.length();
 		/*
 		CLDSAgent * pAgent = dynamic_cast<CLDSAgent *>((AgentManager::getInstance())->get(getAgentID()));
-		pAgent->sendPackage(msgHeader, data.c_str());
+		if(pAgent == NULL)
+		{
+			cerr << "CLreadDBWorkItem::process:catch get CLDSAgent error" << endl;			
+			stmt->closeResultSet(rs);
+			conn->terminateStatement(stmt);
+			connPool->terminateConnection(conn);
+
+			return FAILED;
+		}
+		else
+		{
+			pAgent->sendPackage(msgHeader, data.c_str());
+		}
+		
 		*/
 		data.clear();
 

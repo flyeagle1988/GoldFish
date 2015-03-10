@@ -6,7 +6,7 @@
 #include<string>
 #include<list>
 
-#include "RA/dbInfo.h"
+#include "protocol/dbInfo.h"
 typedef std::map<unsigned, DB_INFO> DBInfoMap;
 
 class RAXmlParse

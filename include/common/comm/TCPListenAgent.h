@@ -5,7 +5,7 @@
 #include <iostream>
 #include <cstring>
 #include <errno.h>
-
+#include <stdio.h>
 #include "common/comm/Error.h"
 #include "common/comm/Agent.h"
 #include "common/comm/AgentManager.h"
@@ -79,6 +79,7 @@ int TCPListenAgent<ConcreteAgent>::recvData( void )
             return FAILED;
         }
     }
+	printf("connection from %s, port %d\n", oppositeAddr.getIP(), oppositeAddr.getPort());
     TCPSocket connSock( connfd );
     if ( connSock.setNonblock() < 0
             || connSock.disableLinger() < 0

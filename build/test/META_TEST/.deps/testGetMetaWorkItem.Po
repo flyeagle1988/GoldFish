@@ -91,8 +91,8 @@ testGetMetaWorkItem.o: ../../../test/META_TEST/testGetMetaWorkItem.cpp \
  /usr/include/bits/select.h /usr/include/bits/sigset.h \
  /usr/include/sys/sysmacros.h /usr/include/alloca.h /usr/include/libio.h \
  /usr/include/_G_config.h /usr/include/bits/stdio_lim.h \
- /usr/include/bits/sys_errlist.h /usr/include/bits/stdio.h \
- /usr/include/string.h /usr/include/sys/stat.h /usr/include/bits/stat.h \
+ /usr/include/bits/sys_errlist.h /usr/include/string.h \
+ /usr/include/sys/stat.h /usr/include/bits/stat.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/iostream \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/istream \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/istream.tcc \
@@ -132,7 +132,7 @@ testGetMetaWorkItem.o: ../../../test/META_TEST/testGetMetaWorkItem.cpp \
  /usr/include/gtest/internal/gtest-param-util-generated.h \
  /usr/include/gtest/gtest_prod.h /usr/include/gtest/gtest-test-part.h \
  /usr/include/gtest/gtest-typed-test.h \
- /usr/include/gtest/gtest_pred_impl.h ../../../include/RA/CLgetMeta.h \
+ /usr/include/gtest/gtest_pred_impl.h ../../../test/META_TEST/CLgetMeta.h \
  ../../../include/RA/CLDBManager.h \
  /usr/include/oracle/11.2/client64/occi.h \
  /usr/include/oracle/11.2/client64/occiCommon.h \
@@ -184,7 +184,7 @@ testGetMetaWorkItem.o: ../../../test/META_TEST/testGetMetaWorkItem.cpp \
  /usr/local/include/google/protobuf/extension_set.h \
  /usr/local/include/google/protobuf/generated_enum_reflection.h \
  /usr/local/include/google/protobuf/unknown_field_set.h \
- ../../../include/RA/dbInfo.h ../../../include/RA/raXmlParse.h \
+ ../../../include/protocol/dbInfo.h ../../../include/RA/raXmlParse.h \
  /usr/local/include/libxml2/libxml/xmlmemory.h \
  /usr/local/include/libxml2/libxml/xmlversion.h \
  /usr/local/include/libxml2/libxml/xmlexports.h \
@@ -446,8 +446,6 @@ testGetMetaWorkItem.o: ../../../test/META_TEST/testGetMetaWorkItem.cpp \
 
 /usr/include/bits/sys_errlist.h:
 
-/usr/include/bits/stdio.h:
-
 /usr/include/string.h:
 
 /usr/include/sys/stat.h:
@@ -552,7 +550,7 @@ testGetMetaWorkItem.o: ../../../test/META_TEST/testGetMetaWorkItem.cpp \
 
 /usr/include/gtest/gtest_pred_impl.h:
 
-../../../include/RA/CLgetMeta.h:
+../../../test/META_TEST/CLgetMeta.h:
 
 ../../../include/RA/CLDBManager.h:
 
@@ -664,7 +662,7 @@ testGetMetaWorkItem.o: ../../../test/META_TEST/testGetMetaWorkItem.cpp \
 
 /usr/local/include/google/protobuf/unknown_field_set.h:
 
-../../../include/RA/dbInfo.h:
+../../../include/protocol/dbInfo.h:
 
 ../../../include/RA/raXmlParse.h:
 

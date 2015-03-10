@@ -151,14 +151,14 @@ CLgetMetaDataTask.o: ../../../src/RA/CLgetMetaDataTask.cpp \
  /usr/local/include/google/protobuf/extension_set.h \
  /usr/local/include/google/protobuf/generated_enum_reflection.h \
  /usr/local/include/google/protobuf/unknown_field_set.h \
- ../../../include/RA/dbInfo.h ../../../include/RA/CLgetMetaWorkItem.h \
+ ../../../include/protocol/dbInfo.h \
+ ../../../include/RA/CLgetMetaWorkItem.h \
  ../../../include/common/sys/ThreadPoolWorkItem.h \
  ../../../include/common/sys/ThreadPoolDispatcher.h \
  ../../../include/common/comm/Agent.h \
  ../../../include/common/comm/EpollEvent.h /usr/include/libio.h \
  /usr/include/_G_config.h /usr/include/bits/sys_errlist.h \
- /usr/include/bits/stdio.h ../../../include/RA/CLDCAgent.h \
- ../../../include/common/comm/TCPAgent.h \
+ ../../../include/RA/CLDCAgent.h ../../../include/common/comm/TCPAgent.h \
  ../../../include/common/comm/BaseHeader.h \
  ../../../include/common/comm/BufferManager.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/cstring \
@@ -559,7 +559,7 @@ CLgetMetaDataTask.o: ../../../src/RA/CLgetMetaDataTask.cpp \
 
 /usr/local/include/google/protobuf/unknown_field_set.h:
 
-../../../include/RA/dbInfo.h:
+../../../include/protocol/dbInfo.h:
 
 ../../../include/RA/CLgetMetaWorkItem.h:
 
@@ -576,8 +576,6 @@ CLgetMetaDataTask.o: ../../../src/RA/CLgetMetaDataTask.cpp \
 /usr/include/_G_config.h:
 
 /usr/include/bits/sys_errlist.h:
-
-/usr/include/bits/stdio.h:
 
 ../../../include/RA/CLDCAgent.h:
 

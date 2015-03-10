@@ -36,7 +36,7 @@ int RAXmlParse::parse()
 
 	if(xmlStrcmp(curNode->name, (const xmlChar*)"RA_CONFIG"))
 	{
-		cerr << "The Root name is not RA_COFIG, chech the name again!" << endl;
+		cerr << "The Root name is not RA_COFIG, check the name again!" << endl;
 		xmlFreeDoc(m_doc);
 		return FAILED;
 	}
@@ -46,7 +46,11 @@ int RAXmlParse::parse()
 	{
 		if(!xmlStrcmp(curNode->name, (const xmlChar*)"DataBase_Config"))
 		{
-			DB_INFO xmlDBInfo{0, "", "", ""};
+			DB_INFO xmlDBInfo;
+			xmlDBInfo.dbID = 0;
+			xmlDBInfo.dbName = "";
+			xmlDBInfo.dbPasswd = "";
+			xmlDBInfo.dbConnectString = "";
 			parseDBInfo(curNode, xmlDBInfo);
 			m_dbInfoMap[xmlDBInfo.dbID] = xmlDBInfo;
 			//m_dbList.push_back(xmlDBInfo);

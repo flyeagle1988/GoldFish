@@ -5,7 +5,7 @@
 #include "RA/CLDBManager.h"
 #include "RA/CLimportTask.h"
 #include "RA/CLreadDBWorkItem.h"
-#include "RA/dbInfo.h"
+#include "protocol/dbInfo.h"
 #include "protocol/DIS/MSG_DS_RA_IMPORT_TASK_SEND.pb.h"
 #include "protocol/protocol.h"
 #include <iostream>

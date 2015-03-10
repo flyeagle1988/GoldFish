@@ -46,6 +46,7 @@ AC_CONFIG_FILES([Makefile
                  src/protocol/Makefile
                  src/protocol/DIS/Makefile
                  src/RA/Makefile
+                 src/DS/Makefile
                  test/Makefile
                  test/RA_TEST/Makefile
                  test/DB_TEST/Makefile

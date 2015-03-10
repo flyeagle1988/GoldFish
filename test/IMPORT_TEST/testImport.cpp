@@ -1,11 +1,11 @@
 #include <gtest/gtest.h>
 #include <iostream>
-#include "RA/CLreadDB.h"
+#include "CLreadDB.h"
 #include "RA/CLDBManager.h"
 #include "RA/raXmlParse.h"
 #include "common/comm/Error.h"
 #include "common/log/log.h"
-#include "RA/dbInfo.h"
+#include "protocol/dbInfo.h"
 
 TEST(CLreadDB, process)
 {

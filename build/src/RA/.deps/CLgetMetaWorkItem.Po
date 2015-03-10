@@ -39,7 +39,6 @@ CLgetMetaWorkItem.o: ../../../src/RA/CLgetMetaWorkItem.cpp \
  /usr/include/libio.h /usr/include/_G_config.h /usr/include/wchar.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/include/stdarg.h \
  /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h \
- /usr/include/bits/stdio.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/string \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stringfwd.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/char_traits.h \
@@ -169,7 +168,7 @@ CLgetMetaWorkItem.o: ../../../src/RA/CLgetMetaWorkItem.cpp \
  /usr/include/oracle/11.2/client64/occiAQ.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/iostream \
  ../../../include/protocol/DIS/MSG_DS_RA_IMPORT_TASK_SEND.pb.h \
- ../../../include/RA/dbInfo.h ../../../include/common/comm/Epoll.h \
+ ../../../include/protocol/dbInfo.h ../../../include/common/comm/Epoll.h \
  /usr/include/sys/epoll.h /usr/include/sys/time.h \
  ../../../include/common/sys/ThreadPool.h \
  ../../../include/common/sys/Thread.h ../../../include/common/sys/Mutex.h \
@@ -275,8 +274,6 @@ CLgetMetaWorkItem.o: ../../../src/RA/CLgetMetaWorkItem.cpp \
 /usr/include/bits/stdio_lim.h:
 
 /usr/include/bits/sys_errlist.h:
-
-/usr/include/bits/stdio.h:
 
 /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/string:
 
@@ -576,7 +573,7 @@ CLgetMetaWorkItem.o: ../../../src/RA/CLgetMetaWorkItem.cpp \
 
 ../../../include/protocol/DIS/MSG_DS_RA_IMPORT_TASK_SEND.pb.h:
 
-../../../include/RA/dbInfo.h:
+../../../include/protocol/dbInfo.h:
 
 ../../../include/common/comm/Epoll.h:
 

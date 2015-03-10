@@ -3,7 +3,7 @@
 
 #include "common/sys/ThreadPoolWorkItem.h"
 #include "common/comm/BaseHeader.h"
-#include "RA/dbInfo.h"
+#include "protocol/dbInfo.h"
 #include <vector>
 #include <string>
 using std::vector;

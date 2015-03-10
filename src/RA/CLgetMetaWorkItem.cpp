@@ -3,7 +3,7 @@
 #include "common/log/log.h"
 #include "protocol/DIS/MSG_DC_RA_DATABASE_INFO_GET.pb.h"
 #include "RA/CLDBManager.h"
-#include "RA/dbInfo.h"
+#include "protocol/dbInfo.h"
 
 #include "common/comm/Epoll.h"
 #include "common/sys/ThreadPool.h"
