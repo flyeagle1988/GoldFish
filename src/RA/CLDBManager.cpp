@@ -6,7 +6,7 @@
 using namespace std;
 
 
-CLDBManager::CLDBManager():m_connID(0)
+CLDBManager::CLDBManager()
 {
 }
 
@@ -15,7 +15,6 @@ CLDBManager::~CLDBManager()
 
 	try
 	{
-		//for()
 		for(ConnPoolMap::iterator it = m_connPoolMap.begin();
 					it != m_connPoolMap.end();
 					++it)
@@ -49,7 +48,7 @@ int CLDBManager::initDB()
 													minConn, maxConn, incrConn);
 			if(connPool != NULL)
 			{
-				cout << "CLDBManager::initDB: create Connection Pool of " << it->second.dbID << " success!" << endl;
+				cout << "CLDBManager::initDB: create Connection Pool of \" " << it->second.dbID << " \" success!" << endl;
 				m_connPoolMap.insert(make_pair(it->second.dbID, connPool));
 			}
 		}
@@ -82,6 +81,12 @@ int CLDBManager::getTableSize(unsigned int dbid, string &tableName, unsigned lon
 	{
 		//conn = getConnection(dbid);
 		connPool = m_connPoolMap[dbid];
+		if(connPool == NULL)
+		{
+			cerr << "CLDBManager::getTableSize: get ConnPool error" << endl;
+			
+			return FAILED;
+		}
 		conn = connPool->createConnection(dbInfo.dbName, dbInfo.dbPasswd);
 
 		if(conn == NULL)
@@ -115,10 +120,8 @@ int CLDBManager::getTableSize(unsigned int dbid, string &tableName, unsigned lon
 	
 	stmt->closeResultSet(rs);
 	conn->terminateStatement(stmt);
-	
 	connPool->terminateConnection(conn);
 	
-	//m_connPool->terminateConnection(conn);
 	return ret;
 }
 /*
@@ -225,14 +228,23 @@ int CLDBManager::readMetaData(unsigned int dbID, string &statusMsg)
 	try
 	{
 		connPool = m_connPoolMap[dbID];
+		if(connPool == NULL)
+		{
+			cerr << "CLDBManager::readMetaData: get ConnPool error!" << endl;
+			return FAILED;
+		}
 		conn = connPool->createConnection(dbInfo.dbName, dbInfo.dbPasswd);
+		if(conn == NULL)
+		{
+			cerr << "CLDBManager::readMetaData: getConnection error!" << endl;
+			return FAILED;
+		}
 		//conn = getConnection(dbID);
 		stmt = conn->createStatement(sql);
 		rs = stmt->executeQuery();
 
 		if(rs)
-		{
-			
+		{	
 			while(rs->next())
 			{
 				DB_META dbMeta;

@@ -36,12 +36,16 @@ int CLgetMetaWorkItem::process()
 		DB_META_INFO dbMetaInfo;
 		dbMetaInfo.dbID = *it;
 		ret = CLDBManager::getInstance()->readMetaData(*it, statusMsg);
-		dbMetaInfo = CLDBManager::getInstance()->getMetaData();
+		
 		if(ret == FAILED)
 		{
 			statusCode = -17;
 		}
-		dbMetaInfoVec.push_back(dbMetaInfo);
+		else
+		{
+			dbMetaInfo = CLDBManager::getInstance()->getMetaData();
+			dbMetaInfoVec.push_back(dbMetaInfo);
+		}
 	}
 
 	MSG_RA_DC_DATABASE_INFO_GET_ACK raDBInfo;

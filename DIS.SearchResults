@@ -1,3 +1,7 @@
----- getDBID Matches (2 in 2 files) ----
-CLDBManager.cpp (src\ra):void CLDBManager::getDBID(vector < unsigned int > &dbIDVec)
-CLDBManager.h (include\ra):		void getDBID(vector<unsigned int> &);
+---- LOG_USER Matches (6 in 1 files) ----
+SyslogAppender.cpp (src\common\log):    openlog( NULL, LOG_PID, LOG_USER );
+SyslogAppender.cpp (src\common\log):        ::syslog( LOG_USER | LOG_DEBUG, buffer );
+SyslogAppender.cpp (src\common\log):        ::syslog( LOG_USER | LOG_INFO, buffer );
+SyslogAppender.cpp (src\common\log):        ::syslog( LOG_USER | LOG_WARNING, buffer );
+SyslogAppender.cpp (src\common\log):        ::syslog( LOG_USER | LOG_ERR, buffer );
+SyslogAppender.cpp (src\common\log):        ::syslog( LOG_USER | LOG_EMERG, buffer );

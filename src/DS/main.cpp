@@ -1,4 +1,6 @@
 #include "DS/CLRAConnectAgent.h"
+#include "DS/CLDCConnectAgent.h"
+#include "DS/DSXmlParse.h"
 #include "common/comm/Epoll.h"
 #include "common/comm/TCPListenAgent.h"
 #include "common/comm/AgentManager.h"
@@ -12,10 +14,10 @@
 using util::conv::conv;
 
 Epoll * g_pEpoll  = NULL;
-CLRAConnectAgent * g_RAConnectAgent = NULL;
-SocketAddress raAddr;
+//CLRAConnectAgent * g_RAConnectAgent = NULL;
+//SocketAddress raAddr;
 const int EPOLLSIZE = 1024;
-
+const char * filePath = "../build/Config/ds_config.xml";
 void doExit(int signo)
 {
     if (signo == SIGINT)       
@@ -48,11 +50,22 @@ int main(int argc, char *argv[])
         g_pEpoll = NULL;
         return FAILED;
     }
-    
-    raAddr.setAddress(argv[1],conv<unsigned short,char*>(argv[2]));
 
-    g_RAConnectAgent = (AgentManager::getInstance())->createAgent<CLRAConnectAgent>(raAddr);
-    g_RAConnectAgent->init();
+	DSXmlParse dsXmlParse(filePath);
+	if(dsXmlParse.parse() == FAILED)
+	{
+		cerr << "main:parse xml error!" << endl;
+		return FAILED;
+	}
+	map<string, unsigned short> dsAddrMap = dsXmlParse.getDCAddr();
+	SocketAddress dcAddr;
+	map<string, unsigned short>::iterator it = dsAddrMap.begin();
+	dcAddr.setAddress(it->first.c_str(), it->second);
+	CLDCConnectAgent * pDCConnectAgent = (AgentManager::getInstance())->createAgent<CLDCConnectAgent>(dcAddr);
+	pDCConnectAgent->init();
+    //raAddr.setAddress(argv[1],conv<unsigned short,char*>(argv[2]));
+    //g_RAConnectAgent = (AgentManager::getInstance())->createAgent<CLRAConnectAgent>(raAddr);
+    //g_RAConnectAgent->init();
 
 
     if ( signal(SIGINT, doExit) == SIG_ERR )

@@ -60,10 +60,17 @@ void CLDSAgent::readBack(InReq & req)
 						pImpTask->impTaskEnqueue(impInfo);
 					}
 				}
-				
 				pImpTask->goNext();
-			}
-			
+			}	
+			break;
+		}
+		case DS_RA_DELTA_DATA_SEND_ACK:
+		{
+
+			break;
+		}
+		default:
+		{
 			break;
 		}
 	}

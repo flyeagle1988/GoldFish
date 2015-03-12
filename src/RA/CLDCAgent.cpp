@@ -39,7 +39,31 @@ void CLDCAgent::readBack(InReq & req)
 		}
 		case DC_RA_IMPORT_SIZE_INFO_GET:
 		{
-			
+			MSG_DC_RA_IMPORT_SIZE_INFO_GET impSizeInfo;
+			string data(req.ioBuf, req.m_msgHeader.length);
+			if(!impSizeInfo.ParseFromString(data))
+			{
+				cerr << "CLDCAgent::readBack:parse Protobuf error!" << endl;
+			}
+			else
+			{
+				MsgHeader msgHeader;
+				msgHeader.cmd = RA_DC_IMPORT_SIZE_INFO_GET_ACK;
+				MSG_RA_DC_IMPORT_SIZE_INFO_GET_ACK impSizeInfoAck;
+				unsigned int taskID = impSizeInfo.taskid();
+				impSizeInfoAck.set_taskid(taskID);
+				impSizeInfoAck.set_statusccode(0);
+				string sendData;
+				if(!impSizeInfoAck.SerializeToString(&sendData))
+				{
+					cerr << "CLDCAgent::readBack serialize to string error!" << endl;
+				}
+				else
+				{
+					msgHeader.length = sendData.length();
+					sendPackage(msgHeader, sendData.c_str());
+				}
+			}
 		}
 	}
 }

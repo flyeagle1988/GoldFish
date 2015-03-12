@@ -92,6 +92,7 @@ int main(int argc,char * argv [])
 	
     g_pEpoll->run();
 
+	CLDBManager::destroyInstance();
     AgentManager::destroyInstance();
     TaskManager::destroyInstance();    
 

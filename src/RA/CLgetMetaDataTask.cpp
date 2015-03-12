@@ -66,14 +66,21 @@ void CLgetMetaDataTask::recvWorkItem(ThreadPoolWorkItem *pWorkItem)
 		pWorkItem = NULL;
 	}
 	CLDCAgent * pAgent = dynamic_cast<CLDCAgent *>(AgentManager::getInstance()->get(getAgentID()));
-	string data;
-	data = getData();
-	MsgHeader msgHeader;
-	msgHeader.cmd = RA_DC_DATABASE_INFO_SEND_ACK;
-	msgHeader.length = data.length();
-	pAgent->sendPackage(msgHeader, data.c_str());
-	data.clear();
-	this->setState(FINISH);
-	goNext();
+	if(pAgent == NULL)
+	{
+		ERROR_LOG("CLgetMetaDataTask::recvWorkItem:get CLDCAgent error!");
+	}
+	else
+	{
+		string data;
+		data = getData();
+		MsgHeader msgHeader;
+		msgHeader.cmd = RA_DC_DATABASE_INFO_SEND_ACK;
+		msgHeader.length = data.length();
+		pAgent->sendPackage(msgHeader, data.c_str());
+		data.clear();
+		this->setState(FINISH);
+		goNext();
+	}
 }
 

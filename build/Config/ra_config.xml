@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <RA_CONFIG>
     <!--数据库基本信息配置-->
-    <DataBase_Config>
+    <DATABASE_CONFIG>
         <DB_ID>1</DB_ID>
-        <user>scott</user>
-        <passwd>tiger</passwd>
-        <connString></connString>
-    </DataBase_Config>
+        <USER>scott</USER>
+        <PASSWD>tiger</PASSWD>
+        <CONNSTRING></CONNSTRING>
+    </DATABASE_CONFIG>
     <!--监听DC连接端口-->
     <DC_PORT>10010</DC_PORT>
     <!--监听DS连接端口-->

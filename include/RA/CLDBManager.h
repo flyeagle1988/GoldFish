@@ -57,7 +57,6 @@ class CLDBManager:public Singleton<CLDBManager>
 		ConnPoolMap m_connPoolMap;
 		ConnIDMap m_connIDMap;
 		ConnMap m_connMap;
-		unsigned int m_connID;
 		DB_META_INFO m_dbMetaInfo;
 		Environment * m_env;
 };

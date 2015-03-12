@@ -61,6 +61,11 @@ int CLreadDBWorkItem::process()
 		try
 		{
 			connPool =CLDBManager::getInstance()->getConnPool(dbInfo.dbID);
+			if(connPool == NULL)
+			{
+				cerr << "CLreadDBWorkItem::process getConnPool error!" << endl;
+				return FAILED;
+			}
 			conn = connPool->createConnection(dbInfo.dbName, dbInfo.dbPasswd);
 			if(conn == NULL)
 			{
@@ -289,23 +294,19 @@ int CLreadDBWorkItem::process()
 						}
 						
 						string data;
-						
 						if(!raImpTaskAck.SerializeToString(&data))
 						{
 							cerr << "CLreadDBWorkItem::process SerializeToString error" << endl;
 						}
 						else
 						{
-						
 							CLDSAgent * pAgent = dynamic_cast<CLDSAgent *>((AgentManager::getInstance())->get(getAgentID()));
 							if(pAgent == NULL)
 							{
-								cerr << "CLreadDBWorkItem::process get CLDSAgent error!" << endl;
-								
+								cerr << "CLreadDBWorkItem::process get CLDSAgent error!" << endl;	
 								stmt->closeResultSet(rs);
 								conn->terminateStatement(stmt);
 								connPool->terminateConnection(conn);
-	
 								return FAILED;
 							}
 							else
@@ -313,29 +314,24 @@ int CLreadDBWorkItem::process()
 								MsgHeader msgHeader;
 								msgHeader.cmd = RA_DS_IMPORT_TASK_ACK;
 								msgHeader.length = data.length();
-								pAgent->sendPackage(msgHeader, data.c_str());
-								
+								pAgent->sendPackage(msgHeader, data.c_str());					
+								data.clear();
 							}
-						
-							data.clear();
-							if(rowNum > rowNumPerSend)
+
+							if(rowNum > k)
 							{
-								rowNum -= rowNumPerSend;
+								rowNum -= k;
+								rowNumPerSend = (rowNum > 500000) ? 500000:rowNum;
 							}
 							else if(rowNum == rowNumPerSend)
 							{
 								break;
 							}
-							else
-							{
-								rowNumPerSend = rowNum;
-							}
+
 							k = 0;
 							noOfPack++;
-						}
-						
+						}	
 					}
-				
 				}
 			}
 		}
@@ -363,17 +359,13 @@ int CLreadDBWorkItem::process()
 				stmt->closeResultSet(rs);
 				conn->terminateStatement(stmt);
 				connPool->terminateConnection(conn);
-	
 				return FAILED;
 			}
 			else
 			{
 				pAgent->sendPackage(msgHeader, data.c_str());
+				data.clear();
 			}
-			
-			
-			data.clear();
-	
 			return FAILED;
 		}
 		
@@ -384,6 +376,4 @@ int CLreadDBWorkItem::process()
 	
 		return SUCCESSFUL;
 	}
-
-
 

@@ -4,7 +4,7 @@ message MSG_DC_DS_IMPORT_INFO_SEND
     message TABLE_INFO
     {
         required int32 dbid = 1;
-        required string raname = 2;
+        required string raname = 2; //exam: 192.168.1.81:10011
         required string tablename = 3;
         repeated string colName = 4;
     }

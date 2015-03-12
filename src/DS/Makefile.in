@@ -51,7 +51,8 @@ CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
 am___top_srcdir__bin_DS_OBJECTS = main.$(OBJEXT) \
-	CLRAConnectAgent.$(OBJEXT)
+	CLRAConnectAgent.$(OBJEXT) CLDCConnectAgent.$(OBJEXT) \
+	CLRAManager.$(OBJEXT) DSXmlParse.$(OBJEXT)
 __top_srcdir__bin_DS_OBJECTS = $(am___top_srcdir__bin_DS_OBJECTS)
 __top_srcdir__bin_DS_DEPENDENCIES = $(top_srcdir)/lib/libcommon.la \
 	$(top_srcdir)/lib/libprotocol.la
@@ -193,7 +194,10 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 INCLUDES = -I$(top_srcdir)/include -I$(top_srcdir)/include/protocol/DIS/ -I/usr/include/oracle/11.2/client64/ -I/usr/local/include/libxml2
 __top_srcdir__bin_DS_SOURCES = main.cpp \
-							   CLRAConnectAgent.cpp
+							   CLRAConnectAgent.cpp \
+							   CLDCConnectAgent.cpp \
+							   CLRAManager.cpp		\
+							   DSXmlParse.cpp
 
 __top_srcdir__bin_DS_LDADD = $(top_srcdir)/lib/libcommon.la $(top_srcdir)/lib/libprotocol.la -L/usr/lib/oracle/11.2/client64/lib/ -lclntsh -locci -lxml2
 all: all-am
@@ -286,7 +290,10 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/CLDCConnectAgent.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/CLRAConnectAgent.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/CLRAManager.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/DSXmlParse.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/main.Po@am__quote@
 
 .cpp.o:

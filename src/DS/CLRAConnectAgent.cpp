@@ -38,13 +38,12 @@ int CLRAConnectAgent::connectAfter(bool bConnect)
 {
 	if(bConnect)
 	{
-
 		MsgHeader msgHeader;
 		msgHeader.cmd = DS_RA_IMPORT_TASK_SEND;
 		
 		MSG_DS_RA_IMPORT_TASK_SEND impTask;
-		unsigned int taskid = 1;
-		impTask.set_taskid(taskid);
+		
+		impTask.set_taskid(1);
 		IMP_DB_INFO * impDBInfo = impTask.add_dbinfo();
 		impDBInfo->set_dbid(1);
 

@@ -36,7 +36,7 @@ int RAXmlParse::parse()
 
 	if(xmlStrcmp(curNode->name, (const xmlChar*)"RA_CONFIG"))
 	{
-		cerr << "The Root name is not RA_COFIG, check the name again!" << endl;
+		cerr << "The Root name is not RA_CONFIG, check the name again!" << endl;
 		xmlFreeDoc(m_doc);
 		return FAILED;
 	}
@@ -44,7 +44,7 @@ int RAXmlParse::parse()
 	curNode = curNode->xmlChildrenNode;
 	while(curNode != NULL)
 	{
-		if(!xmlStrcmp(curNode->name, (const xmlChar*)"DataBase_Config"))
+		if(!xmlStrcmp(curNode->name, (const xmlChar*)"DATABASE_CONFIG"))
 		{
 			DB_INFO xmlDBInfo;
 			xmlDBInfo.dbID = 0;
@@ -73,7 +73,7 @@ int RAXmlParse::parse()
 		curNode = curNode->next;
 	}
 	xmlFreeDoc(m_doc);
-    return 0;
+    return SUCCESSFUL;
 }
 
 int RAXmlParse::parseDBInfo(xmlNodePtr cur, DB_INFO & dbInfo)
@@ -89,21 +89,21 @@ int RAXmlParse::parseDBInfo(xmlNodePtr cur, DB_INFO & dbInfo)
         	dbInfo.dbID= atoi((char *)key);
 	        xmlFree(key);
     	}
-	    if (!xmlStrcmp(cur->name, (const xmlChar *)"user"))
+	    else if (!xmlStrcmp(cur->name, (const xmlChar *)"USER"))
 		{
         	key = xmlNodeListGetString(m_doc, cur->xmlChildrenNode, 1);
         	dbInfo.dbName= (char *)key;
 	        xmlFree(key);
     	}
 
-	    if (!xmlStrcmp(cur->name, (const xmlChar *)"passwd"))
+	    else if (!xmlStrcmp(cur->name, (const xmlChar *)"PASSWD"))
 		{
         	key = xmlNodeListGetString(m_doc, cur->xmlChildrenNode, 1);
 	        dbInfo.dbPasswd = (char *)key;
     	    xmlFree(key);
     	}
 
-    	if (!xmlStrcmp(cur->name, (const xmlChar *)"connString"))
+    	else if (!xmlStrcmp(cur->name, (const xmlChar *)"CONNSTRING"))
 		{
         	key = xmlNodeListGetString(m_doc, cur->xmlChildrenNode, 1);
 			if(key != NULL)

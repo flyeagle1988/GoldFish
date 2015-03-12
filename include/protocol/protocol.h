@@ -20,7 +20,7 @@ const unsigned int DS_CS_DELTA_UPLOAD = 0x0b;
 const unsigned int CS_DS_DELTA_DATA_INFO_SEND_ACK = 0x0c;
 
 const unsigned int DS_DC_HEARTBEAT_SEND = 0x0d;
-const unsigned int DS_DC_HEARTBEAT_SEND_ACK = 0x0e;
+const unsigned int DC_DS_HEARTBEAT_SEND_ACK = 0x0e;
 
 const unsigned int DS_DC_LOCATION_INDEX_SEND = 0x0f;
 const unsigned int DC_DS_LOCATION_INDEX_SEND_ACK = 0x10;

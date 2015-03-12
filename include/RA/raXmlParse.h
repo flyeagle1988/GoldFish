@@ -1,5 +1,5 @@
-#ifndef XML_RA_PARSE_H_
-#define XML_RA_PARSE_H_
+#ifndef RA_XML_PARSE_H_
+#define RA_XML_PARSE_H_
 #include<iostream>
 #include<libxml/xmlmemory.h>
 #include<libxml/parser.h>
