@@ -3,7 +3,7 @@
 #include "common/comm/Error.h"
 #include "common/log/log.h"
 #include "common/comm/AgentManager.h"
-
+#include "common/DevLog/DevLog.h"
 #include "RA/CLDBManager.h"
 #include <sys/sysinfo.h> 
 #include <algorithm>
@@ -11,7 +11,9 @@
 #include "protocol/DIS/MSG_DS_RA_IMPORT_TASK_SEND.pb.h"
 #include "protocol/protocol.h"
 using namespace std;
+
 const unsigned int PREFETCH = 5000;
+extern DevLog *g_pDevLog;
 
 CLreadDBWorkItem::CLreadDBWorkItem()
 {
@@ -63,13 +65,13 @@ int CLreadDBWorkItem::process()
 			connPool =CLDBManager::getInstance()->getConnPool(dbInfo.dbID);
 			if(connPool == NULL)
 			{
-				cerr << "CLreadDBWorkItem::process getConnPool error!" << endl;
+				DEV_LOG_ERROR("CLreadDBWorkItem::process getConnPool error!");
 				return FAILED;
 			}
 			conn = connPool->createConnection(dbInfo.dbName, dbInfo.dbPasswd);
 			if(conn == NULL)
 			{
-				cerr << "CLreadDBWorkItem::process get Connection error!" << endl;
+				DEV_LOG_ERROR("CLreadDBWorkItem::process get Connection error!");
 				return FAILED;
 			}
 			MetaData custtab_metaData = conn->getMetaData(m_impTask.tableName, MetaData::PTYPE_TABLE);
@@ -296,14 +298,14 @@ int CLreadDBWorkItem::process()
 						string data;
 						if(!raImpTaskAck.SerializeToString(&data))
 						{
-							cerr << "CLreadDBWorkItem::process SerializeToString error" << endl;
+							DEV_LOG_ERROR("CLreadDBWorkItem::process SerializeToString error");
 						}
 						else
 						{
 							CLDSAgent * pAgent = dynamic_cast<CLDSAgent *>((AgentManager::getInstance())->get(getAgentID()));
 							if(pAgent == NULL)
 							{
-								cerr << "CLreadDBWorkItem::process get CLDSAgent error!" << endl;	
+								DEV_LOG_ERROR("CLreadDBWorkItem::process get CLDSAgent error!");	
 								stmt->closeResultSet(rs);
 								conn->terminateStatement(stmt);
 								connPool->terminateConnection(conn);
@@ -339,9 +341,10 @@ int CLreadDBWorkItem::process()
 		{
 			int statusCode = ex.getErrorCode();
 			string statusMsg = ex.getMessage();
+			string msg = "CLreadDBWorkItem::process get data error, " + intToStr(statusCode) + ", " + statusMsg;
+			//ERROR_LOG("CLreadDBWorkItem::process get data error, %d, %s", statusCode, statusMsg.c_str());
+			DEV_LOG_ERROR(msg);
 			
-			ERROR_LOG("CLreadDBWorkItem::process get data error, %d, %s", statusCode, statusMsg.c_str());
-	
 			MSG_RA_DS_IMPORT_ERROR_INFO_ACK impErrAck;
 			impErrAck.set_taskid(m_impTask.taskid);
 			impErrAck.set_statuscode(-28);
@@ -355,7 +358,7 @@ int CLreadDBWorkItem::process()
 			CLDSAgent * pAgent = dynamic_cast<CLDSAgent *>((AgentManager::getInstance())->get(getAgentID()));
 			if(pAgent == NULL)
 			{
-				cerr << "CLreadDBWorkItem::process:catch get CLDSAgent error" << endl;			
+				DEV_LOG_ERROR("CLreadDBWorkItem::process:catch get CLDSAgent error");			
 				stmt->closeResultSet(rs);
 				conn->terminateStatement(stmt);
 				connPool->terminateConnection(conn);

@@ -85,7 +85,7 @@ XMLConfig.lo: ../../../../src/common/xml/XMLConfig.cpp \
  /usr/local/include/libxml2/libxml/xmlexports.h \
  /usr/local/include/libxml2/libxml/tree.h /usr/include/libio.h \
  /usr/include/_G_config.h /usr/include/bits/stdio_lim.h \
- /usr/include/bits/sys_errlist.h /usr/include/bits/stdio.h \
+ /usr/include/bits/sys_errlist.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/include/limits.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/include/syslimits.h \
  /usr/include/limits.h /usr/include/bits/posix1_lim.h \
@@ -348,8 +348,6 @@ XMLConfig.lo: ../../../../src/common/xml/XMLConfig.cpp \
 /usr/include/bits/stdio_lim.h:
 
 /usr/include/bits/sys_errlist.h:
-
-/usr/include/bits/stdio.h:
 
 /usr/lib/gcc/x86_64-redhat-linux/4.4.7/include/limits.h:
 

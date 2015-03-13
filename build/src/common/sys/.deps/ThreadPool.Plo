@@ -87,7 +87,7 @@ ThreadPool.lo: ../../../../src/common/sys/ThreadPool.cpp \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/istream.tcc \
  /usr/include/libio.h /usr/include/_G_config.h \
  /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h \
- /usr/include/bits/stdio.h ../../../../include/common/sys/ThreadPool.h \
+ ../../../../include/common/sys/ThreadPool.h \
  ../../../../include/common/sys/Thread.h \
  ../../../../include/common/sys/ThreadPoolWorkItem.h \
  /usr/include/stdint.h \
@@ -336,8 +336,6 @@ ThreadPool.lo: ../../../../src/common/sys/ThreadPool.cpp \
 /usr/include/bits/stdio_lim.h:
 
 /usr/include/bits/sys_errlist.h:
-
-/usr/include/bits/stdio.h:
 
 ../../../../include/common/sys/ThreadPool.h:
 

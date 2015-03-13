@@ -91,8 +91,8 @@ testMain.o: ../../../test/META_TEST/testMain.cpp \
  /usr/include/bits/select.h /usr/include/bits/sigset.h \
  /usr/include/sys/sysmacros.h /usr/include/alloca.h /usr/include/libio.h \
  /usr/include/_G_config.h /usr/include/bits/stdio_lim.h \
- /usr/include/bits/sys_errlist.h /usr/include/bits/stdio.h \
- /usr/include/string.h /usr/include/sys/stat.h /usr/include/bits/stat.h \
+ /usr/include/bits/sys_errlist.h /usr/include/string.h \
+ /usr/include/sys/stat.h /usr/include/bits/stat.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/iostream \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/istream \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/istream.tcc \
@@ -361,8 +361,6 @@ testMain.o: ../../../test/META_TEST/testMain.cpp \
 /usr/include/bits/stdio_lim.h:
 
 /usr/include/bits/sys_errlist.h:
-
-/usr/include/bits/stdio.h:
 
 /usr/include/string.h:
 

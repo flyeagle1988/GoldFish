@@ -4,11 +4,11 @@
 #include "protocol/protocol.h"
 #include "protocol/DIS/MSG_DC_RA_DATABASE_INFO_GET.pb.h"
 #include "protocol/DIS/MSG_DC_RA_IMPORT_SIZE_INFO_GET.pb.h"
-
+#include "common/DevLog/DevLog.h"
 #include "common/comm/TaskManager.h"
 #include "common/log/log.h"
 
-
+extern DevLog * g_pDevLog;
 CLDCAgent::CLDCAgent()
 {
 }
@@ -29,7 +29,7 @@ void CLDCAgent::readBack(InReq & req)
 {
 	switch(req.m_msgHeader.cmd)
 	{
-		case DC_RA_DATABASE_INFO_SEND:
+		case DC_RA_DATABASE_INFO_GET:
 		{
 			CLgetMetaDataTask * pGetMetaTask = TaskManager::getInstance()->create<CLgetMetaDataTask>();
 
@@ -43,7 +43,7 @@ void CLDCAgent::readBack(InReq & req)
 			string data(req.ioBuf, req.m_msgHeader.length);
 			if(!impSizeInfo.ParseFromString(data))
 			{
-				cerr << "CLDCAgent::readBack:parse Protobuf error!" << endl;
+				DEV_LOG_ERROR("CLDCAgent::readBack:parse Protobuf error!");
 			}
 			else
 			{
@@ -56,7 +56,7 @@ void CLDCAgent::readBack(InReq & req)
 				string sendData;
 				if(!impSizeInfoAck.SerializeToString(&sendData))
 				{
-					cerr << "CLDCAgent::readBack serialize to string error!" << endl;
+					DEV_LOG_ERROR("CLDCAgent::readBack serialize to string error!");
 				}
 				else
 				{

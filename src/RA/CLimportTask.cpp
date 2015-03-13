@@ -2,6 +2,7 @@
 #include "common/comm/AgentManager.h"
 #include "common/sys/ThreadPoolDispatcher.h"
 #include "common/log/log.h"
+#include "common/DevLog/DevLog.h"
 #include "RA/CLDBManager.h"
 #include "RA/CLimportTask.h"
 #include "RA/CLreadDBWorkItem.h"
@@ -10,6 +11,8 @@
 #include "protocol/protocol.h"
 #include <iostream>
 #include <sys/sysinfo.h> 
+
+extern DevLog *g_pDevLog;
 
 CLimportTask::CLimportTask():m_state(CREATE_TASK)
 {
@@ -56,7 +59,7 @@ int CLimportTask::goNext()
 		}
 		default:
 		{
-            ERROR_LOG("CLimportTask::goNext no this state");
+            DEV_LOG_ERROR("CLimportTask::goNext no this state");
             return FAILED;
             break;
 		}

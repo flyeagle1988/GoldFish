@@ -1,23 +1,30 @@
-#include "DS/CLRAConnectAgent.h"
-#include "DS/CLDCConnectAgent.h"
-#include "DS/DSXmlParse.h"
 #include "common/comm/Epoll.h"
 #include "common/comm/TCPListenAgent.h"
+#include "common/Timer/Timer.h"
 #include "common/comm/AgentManager.h"
 #include "common/comm/TaskManager.h"
 #include "common/log/log.h"
 #include "common/util/util.h"
-
+#include "common/DevLog/DevLog.h"
 #include <stdlib.h>
 #include <signal.h>
 #include <cstdio>
+#include "DS/CLRAConnectAgent.h"
+#include "DS/CLDCConnectAgent.h"
+#include "DS/DSXmlParse.h"
+
 using util::conv::conv;
 
 Epoll * g_pEpoll  = NULL;
 //CLRAConnectAgent * g_RAConnectAgent = NULL;
-//SocketAddress raAddr;
+TimerManager * g_pTimerManager = NULL;
+
+CLDCConnectAgent * g_pDCConnectAgent = NULL;
 const int EPOLLSIZE = 1024;
 const char * filePath = "../build/Config/ds_config.xml";
+DevLog *g_pDevLog = NULL;
+
+
 void doExit(int signo)
 {
     if (signo == SIGINT)       
@@ -36,12 +43,15 @@ void doExit(int signo)
 
 int main(int argc, char *argv[])
 {
-    if ( argc != 3 )
+	//Log init
+	string LogFileName = "../build/log/DS.log";
+    g_pDevLog = new DevLog(LogFileName.c_str());
+    if(g_pDevLog->init() < 0)
     {
-        cout << "Usage: " << argv[0] << " IP Port" << endl;
+        RED_MSG("main: DevLog init Error");
         return FAILED;
     }
-
+	//Epoll init
     g_pEpoll = new Epoll();
     if ( g_pEpoll->initialize(EPOLLSIZE) == FAILED )
     {
@@ -50,19 +60,37 @@ int main(int argc, char *argv[])
         g_pEpoll = NULL;
         return FAILED;
     }
-
+	//Parse XML file
 	DSXmlParse dsXmlParse(filePath);
 	if(dsXmlParse.parse() == FAILED)
 	{
 		cerr << "main:parse xml error!" << endl;
 		return FAILED;
 	}
-	map<string, unsigned short> dsAddrMap = dsXmlParse.getDCAddr();
+	
 	SocketAddress dcAddr;
-	map<string, unsigned short>::iterator it = dsAddrMap.begin();
-	dcAddr.setAddress(it->first.c_str(), it->second);
-	CLDCConnectAgent * pDCConnectAgent = (AgentManager::getInstance())->createAgent<CLDCConnectAgent>(dcAddr);
-	pDCConnectAgent->init();
+	string dcIP = dsXmlParse.getDCIP();	
+	unsigned dcPort = dsXmlParse.getDCPort();
+	dcAddr.setAddress(dcIP.c_str(), dcPort);
+	dcIP = "DC Address: " + dcIP + ":" + intToStr(dcPort);
+	DEV_LOG(LEVENT,OUT_BOTH,dcIP);
+	//connect DC
+	g_pDCConnectAgent = (AgentManager::getInstance())->createAgent<CLDCConnectAgent>(dcAddr);
+	if(g_pDCConnectAgent->init() < 0)
+	{
+		DEV_LOG_ERROR("main: connect to DC error!");
+		return FAILED;
+	}
+
+    g_pTimerManager = new TimerManager();    
+	if(g_pTimerManager->init() < 0)
+	{
+		DEV_LOG_ERROR("main: init TimerManager error!");
+		return FAILED;
+	}
+	g_pTimerManager->registerThread(::pthread_self());
+
+	
     //raAddr.setAddress(argv[1],conv<unsigned short,char*>(argv[2]));
     //g_RAConnectAgent = (AgentManager::getInstance())->createAgent<CLRAConnectAgent>(raAddr);
     //g_RAConnectAgent->init();

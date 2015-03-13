@@ -79,7 +79,7 @@ Writer.lo: ../../../../src/common/comm/Writer.cpp \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/basic_string.tcc \
  ../../../../include/common/comm/Reader.h /usr/include/libio.h \
  /usr/include/_G_config.h /usr/include/bits/stdio_lim.h \
- /usr/include/bits/sys_errlist.h /usr/include/bits/stdio.h \
+ /usr/include/bits/sys_errlist.h \
  ../../../../include/common/comm/ReadCallback.h \
  ../../../../include/common/comm/WriteCallback.h \
  ../../../../include/common/comm/AppProtoSpec.h \
@@ -316,8 +316,6 @@ Writer.lo: ../../../../src/common/comm/Writer.cpp \
 /usr/include/bits/stdio_lim.h:
 
 /usr/include/bits/sys_errlist.h:
-
-/usr/include/bits/stdio.h:
 
 ../../../../include/common/comm/ReadCallback.h:
 

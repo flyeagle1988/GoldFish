@@ -130,7 +130,8 @@ int TCPAgent::connect()
     }
     if ( m_socket.connect( m_addr ) < 0 )
     {
-
+		cerr << "Connect to " << m_addr.getIP() << ":" << m_addr.getPort() << " error, check the address!" << endl;
+		return FAILED;
     }
 
     return SUCCESSFUL;

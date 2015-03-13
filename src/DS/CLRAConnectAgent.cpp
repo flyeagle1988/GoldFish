@@ -1,11 +1,19 @@
 #include "DS/CLRAConnectAgent.h"
+#include "DS/CLDCConnectAgent.h"
 #include "common/comm/Epoll.h"
 #include "common/comm/SocketAddress.h"
+#include "common/comm/AgentManager.h"
 #include "common/log/log.h"
+#include "common/DevLog/DevLog.h"
 #include "protocol/protocol.h"
 #include "protocol/DIS/MSG_DS_RA_IMPORT_TASK_SEND.pb.h"
+#include "protocol/DIS/MSG_DC_DS_IMPORT_INFO_SEND.pb.h"
+#include "DS/CLimpTaskManager.h"
 #include <iostream>
+
 using namespace std;
+extern DevLog *g_pDevLog;
+extern CLDCConnectAgent * g_pDCConnectAgent;
 CLRAConnectAgent::CLRAConnectAgent()
 {
 }
@@ -28,7 +36,7 @@ int CLRAConnectAgent::init()
 {
 	if(this->connect() != SUCCESSFUL)
 	{
-		ERROR_LOG("CLRAConnectAgent::init connect error!");
+		DEV_LOG_ERROR("CLRAConnectAgent::init connect error!");
 		return FAILED;
 	}
 	return SUCCESSFUL;
@@ -38,26 +46,7 @@ int CLRAConnectAgent::connectAfter(bool bConnect)
 {
 	if(bConnect)
 	{
-		MsgHeader msgHeader;
-		msgHeader.cmd = DS_RA_IMPORT_TASK_SEND;
-		
-		MSG_DS_RA_IMPORT_TASK_SEND impTask;
-		
-		impTask.set_taskid(1);
-		IMP_DB_INFO * impDBInfo = impTask.add_dbinfo();
-		impDBInfo->set_dbid(1);
-
-		IMP_TAB_INFO * impTabInfo = impDBInfo->add_tableinfo();
-		impTabInfo->set_tablename("TEST");
-		impTabInfo->add_colname("ID");
-		impTabInfo->add_colname("NAME");
-		impTabInfo->add_colname("JOB");
-		string data;
-		
-		impTask.SerializeToString(&data);
-		msgHeader.length = data.length();
-		sendPackage(msgHeader, data.c_str());
-
+	
 		return SUCCESSFUL;
 	}
 	else
@@ -72,7 +61,35 @@ void CLRAConnectAgent::readBack(InReq &req)
 	{
 		case RA_DS_IMPORT_ERROR_INFO_ACK:
 		{
+			string data(req.ioBuf, req.m_msgHeader.length);
+			MSG_RA_DS_IMPORT_ERROR_INFO_ACK impErrInfoAck;
+			if(!impErrInfoAck.ParseFromString(data))
+			{
+				DEV_LOG_ERROR("CLRAConnectAgent::readBack import error parse from string error!");
+			}
+			else
+			{
+				MSG_DS_DC_IMPORT_INFO_SEND_ACK impInfoAck;
+				impInfoAck.set_taskid(impErrInfoAck.taskid());
+				impInfoAck.set_statuscode(impErrInfoAck.statuscode());
+				string statusMsg = impErrInfoAck.statusmsg();
+				impInfoAck.set_statusmsg(statusMsg);
 
+				string sendData;
+				if(!impInfoAck.SerializeToString(&sendData))
+				{
+					DEV_LOG_ERROR("CLRAConnectAgent::readBack import error serialize to proto error!");
+				}
+				else
+				{
+					MsgHeader msgHeader;
+					msgHeader.cmd = DS_DC_IMPORT_INFO_SEND_ACK;
+					msgHeader.length = sendData.length();
+
+					g_pDCConnectAgent->sendPackage(msgHeader, sendData.c_str());
+				}
+
+			}
 			break;
 		}
 		case RA_DS_IMPORT_TASK_ACK:
@@ -81,55 +98,18 @@ void CLRAConnectAgent::readBack(InReq &req)
 			MSG_RA_DS_IMPORT_TASK_ACK impTask;
 			if(!impTask.ParseFromString(data))
 			{
-				cerr << "CLRAConnectAgent::readBack parse from string error!" << endl;
+				DEV_LOG_ERROR("CLRAConnectAgent::readBack Import_Task_Ack parse from string error!");
 			}
 			else
 			{
-				NumMap numMap;
-				StrMap strMap;
+				if(impTask.subtaskno() == 0)
+				{
 
-				unsigned int subTaskNo = impTask.subtaskno();
-				unsigned int subTaskNum = impTask.subtasknum();
+				}
+				else
+				{
 
-				cout << "subTaskNo: " << subTaskNo << '\t' << "subTaskNum: " << subTaskNum << endl;
-				for(int i = 0; i < impTask.colvalue_size(); i++)
-				{
-					const COL_DATA & colData = impTask.colvalue(i);
-					string colName = colData.colname();
-					if(colData.coltype() == COL_DATA_COLUMN_TYPE_STRING)
-					{
-						for(int j = 0; j < colData.colvalue_size(); j++)
-						{
-							const COL_VALUE & colValue = colData.colvalue(j);
-							string strData = colValue.strvalue();
-							strMap[colName].push_back(strData);
-						}
-					}
-					else if(colData.coltype() == COL_DATA_COLUMN_TYPE_NUM)
-					{
-						for(int j = 0; j < colData.colvalue_size(); j++)
-						{
-							const COL_VALUE & colValue = colData.colvalue(j);
-							double numData = colValue.dvalue();
-							numMap[colName].push_back(numData);
-						}
-					}
-					
 				}
-				for(StrMap::iterator it = strMap.begin();
-									it != strMap.end();
-									++it)
-				{
-					cout << it->first.c_str() << '\t' << it->second.size() << endl;
-				}
-									
-				for(NumMap::iterator it = numMap.begin();
-									it != numMap.end();
-									++it)
-				{
-					cout << it->first.c_str() << '\t' << it->second.size() << endl;
-				}
-				
 			}
 			break;
 		}

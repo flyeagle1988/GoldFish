@@ -115,8 +115,9 @@ MSG_DC_RA_DATABASE_INFO_GET.pb.lo: \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/map \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_map.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_multimap.h \
- /usr/local/include/google/protobuf/generated_enum_reflection.h \
  /usr/local/include/google/protobuf/unknown_field_set.h \
+ ../../../../include/protocol/DIS/common.pb.h \
+ /usr/local/include/google/protobuf/generated_enum_reflection.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/algorithm \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_algo.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/cstdlib \
@@ -411,9 +412,11 @@ MSG_DC_RA_DATABASE_INFO_GET.pb.lo: \
 
 /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_multimap.h:
 
-/usr/local/include/google/protobuf/generated_enum_reflection.h:
-
 /usr/local/include/google/protobuf/unknown_field_set.h:
+
+../../../../include/protocol/DIS/common.pb.h:
+
+/usr/local/include/google/protobuf/generated_enum_reflection.h:
 
 /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/algorithm:
 

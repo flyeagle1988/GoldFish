@@ -49,7 +49,6 @@ Epoll.lo: ../../../../src/common/comm/Epoll.cpp /usr/include/time.h \
  /usr/include/libio.h /usr/include/_G_config.h /usr/include/wchar.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/include/stdarg.h \
  /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h \
- /usr/include/bits/stdio.h \
  ../../../../include/common/comm/BufferManager.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/cstring \
  /usr/include/sys/uio.h /usr/include/bits/uio.h \
@@ -254,8 +253,6 @@ Epoll.lo: ../../../../src/common/comm/Epoll.cpp /usr/include/time.h \
 /usr/include/bits/stdio_lim.h:
 
 /usr/include/bits/sys_errlist.h:
-
-/usr/include/bits/stdio.h:
 
 ../../../../include/common/comm/BufferManager.h:
 

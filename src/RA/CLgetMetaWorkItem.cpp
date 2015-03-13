@@ -2,14 +2,16 @@
 #include "common/comm/Error.h"
 #include "common/log/log.h"
 #include "protocol/DIS/MSG_DC_RA_DATABASE_INFO_GET.pb.h"
+#include "protocol/DIS/common.pb.h"
 #include "RA/CLDBManager.h"
 #include "protocol/dbInfo.h"
-
+#include "common/DevLog/DevLog.h"
 #include "common/comm/Epoll.h"
 #include "common/sys/ThreadPool.h"
 #include "common/util/util.h"
 using namespace std;
 
+extern DevLog * g_pDevLog;
 CLgetMetaWorkItem::CLgetMetaWorkItem():m_metaData("")
 {
 
@@ -56,7 +58,7 @@ int CLgetMetaWorkItem::process()
 							it != dbIDVec.end();
 							++it)
 	{
-		DATABASE_INFO *dbInfo = raDBInfo.add_dbinfo();
+		DATABASE_INFO * dbInfo = raDBInfo.add_dbinfo();
 		dbInfo->set_dbid(*it);
 		for(vector<DB_META_INFO>::iterator iter = dbMetaInfoVec.begin();
 								iter != dbMetaInfoVec.end();
@@ -66,36 +68,48 @@ int CLgetMetaWorkItem::process()
 								i != (*iter).dbMetaData.end();
 								++i)
 			{
-				TABLE_INFO * tabInfo = dbInfo->add_tableinfo();
-				tabInfo->set_tablename((*i).tableName);
+				TB_INFO * tabInfo = dbInfo->add_tbinfo();
+				tabInfo->set_tbname((*i).tableName);
 				tabInfo->set_rownum((*i).rowNum);
-				tabInfo->set_tablesize((*i).tableSize);
+				tabInfo->set_tbsize((*i).tableSize);
 				int j = 0;
 				for(vector<string>::iterator sit = (*i).columns.begin();
 									sit != (*i).columns.end();
 									++sit)
 				{
-					COLUMN_INFO * colInfo = tabInfo->add_columndata();
-					colInfo->set_colname(*sit);
+					COLUMN_INFO * colInfo = tabInfo->add_columninfo();
+					colInfo->set_columnname(*sit);
 					switch((*i).columnType[j])
 					{
 						case 0:
 						{
-							colInfo->set_coltype(COLUMN_INFO_COLUMN_TYPE_STRING);
+							colInfo->set_columntype(COLUMN_INFO_ColumnType_VARCHAR);
 							break;
 						}
 						case 1:
 						{
-							colInfo->set_coltype(COLUMN_INFO_COLUMN_TYPE_INT);
+							colInfo->set_columntype(COLUMN_INFO_ColumnType_INTTYPE);
 							break;
 						}
 						case 2:
 						{
-							colInfo->set_coltype(COLUMN_INFO_COLUMN_TYPE_FLOAT);
+							colInfo->set_columntype(COLUMN_INFO_ColumnType_DOUBLETYPE);
+							break;
 						}
 						case 3:
 						{
-							colInfo->set_coltype(COLUMN_INFO_COLUMN_TYPE_DOUBLE);
+							colInfo->set_columntype(COLUMN_INFO_ColumnType_BLOB);
+							break;
+						}
+						case 4:
+						{
+							colInfo->set_columntype(COLUMN_INFO_ColumnType_TIMESTAMP);
+							break;
+						}
+						default:
+						{
+							colInfo->set_columntype(COLUMN_INFO_ColumnType_VARCHAR);
+							break;
 						}
 					}
 					j++;
@@ -106,7 +120,7 @@ int CLgetMetaWorkItem::process()
 	string data;
 	if(!raDBInfo.SerializeToString(&data))
 	{
-		cerr << "CLgetMetaWorkItem::process: serialize to string error!" << endl;
+		DEV_LOG_ERROR("CLgetMetaWorkItem::process: serialize to string error!");
 		return FAILED;
 	}
 	setData(data);

@@ -7,9 +7,11 @@
 #include "common/sys/ThreadPoolDispatcher.h"
 #include "common/comm/BaseHeader.h"
 #include "common/log/log.h"
+#include "common/DevLog/DevLog.h"
 #include "protocol/DIS/MSG_DC_RA_DATABASE_INFO_GET.pb.h"
 #include "protocol/protocol.h"
 
+extern DevLog * g_pDevLog;
 
 CLgetMetaDataTask::CLgetMetaDataTask():
 					m_state(READ_METADATA)
@@ -68,14 +70,14 @@ void CLgetMetaDataTask::recvWorkItem(ThreadPoolWorkItem *pWorkItem)
 	CLDCAgent * pAgent = dynamic_cast<CLDCAgent *>(AgentManager::getInstance()->get(getAgentID()));
 	if(pAgent == NULL)
 	{
-		ERROR_LOG("CLgetMetaDataTask::recvWorkItem:get CLDCAgent error!");
+		DEV_LOG_ERROR("CLgetMetaDataTask::recvWorkItem:get CLDCAgent error!");
 	}
 	else
 	{
 		string data;
 		data = getData();
 		MsgHeader msgHeader;
-		msgHeader.cmd = RA_DC_DATABASE_INFO_SEND_ACK;
+		msgHeader.cmd = RA_DC_DATABASE_INFO_GET_ACK;
 		msgHeader.length = data.length();
 		pAgent->sendPackage(msgHeader, data.c_str());
 		data.clear();

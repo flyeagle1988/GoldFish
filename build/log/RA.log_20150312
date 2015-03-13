@@ -1,0 +1,51 @@
+
+
+=======================DevLog starts==========================
+
+
+=======================DevLog starts==========================
+
+
+=======================DevLog starts==========================
+
+
+=======================DevLog starts==========================
+
+
+=======================DevLog starts==========================
+
+
+=======================DevLog starts==========================
+
+
+=======================DevLog starts==========================
+2015-03-12 17:44:13 [5142:7f86d55d8720] EVENT   	CLDBManager::initDB: create Connection Pool sucess!
+
+
+=======================DevLog starts==========================
+2015-03-12 17:48:02 [541d:7f4073ff7720] EVENT   	CLDBManager::initDB: create Connection Pool sucess!
+
+
+=======================DevLog starts==========================
+2015-03-12 17:48:56 [57b9:7fb8d2acc720] EVENT   	CLDBManager::initDB: create Connection Pool sucess!
+
+
+=======================DevLog starts==========================
+2015-03-12 17:49:34 [5ac3:7fcac79ba720] EVENT   	CLDBManager::initDB: create Connection Pool sucess!
+
+
+=======================DevLog starts==========================
+2015-03-12 17:50:33 [5b72:7ff84ce25720] EVENT   	LDBManager::initDB: create Connection Pool sucess!
+
+
+=======================DevLog starts==========================
+2015-03-12 17:55:00 [5c3c:7fc995126720] EVENT   	CLDBManager::initDB: create Connection Pool 1sucess!
+
+
+=======================DevLog starts==========================
+2015-03-12 17:55:28 [5ce3:7f25e5c24720] EVENT   	CLDBManager::initDB: create Connection Pool " 1 "sucess!
+
+
+=======================DevLog starts==========================
+2015-03-12 17:57:49 [5d9a:7ffec43c4720] ERROR   	CLDBManager::initDB error 1017 ORA-01017: invalid username/password; logon denied
+ [in ../../../src/RA/CLDBManager.cpp on line 73]

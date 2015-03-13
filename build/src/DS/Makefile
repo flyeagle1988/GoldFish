@@ -52,7 +52,9 @@ am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
 am___top_srcdir__bin_DS_OBJECTS = main.$(OBJEXT) \
 	CLRAConnectAgent.$(OBJEXT) CLDCConnectAgent.$(OBJEXT) \
-	CLRAManager.$(OBJEXT) DSXmlParse.$(OBJEXT)
+	CLimpTaskManager.$(OBJEXT) CLHeartBeatTimer.$(OBJEXT) \
+	DSXmlParse.$(OBJEXT) CLcreateIndexTask.$(OBJEXT) \
+	CLcreateDeltaTask.$(OBJEXT) CLCSConnectAgent.$(OBJEXT)
 __top_srcdir__bin_DS_OBJECTS = $(am___top_srcdir__bin_DS_OBJECTS)
 __top_srcdir__bin_DS_DEPENDENCIES = $(top_srcdir)/lib/libcommon.la \
 	$(top_srcdir)/lib/libprotocol.la
@@ -112,7 +114,7 @@ INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
 LD = /usr/bin/ld -m elf_x86_64
 LDFLAGS = 
 LIBOBJS = 
-LIBS = -lprotobuf -lodbc -lxml2 -lrt -lpthread 
+LIBS = -lprotobuf -lxml2 -lrt -lpthread 
 LIBTOOL = $(SHELL) $(top_builddir)/libtool
 LIPO = 
 LN_S = ln -s
@@ -196,8 +198,12 @@ INCLUDES = -I$(top_srcdir)/include -I$(top_srcdir)/include/protocol/DIS/ -I/usr/
 __top_srcdir__bin_DS_SOURCES = main.cpp \
 							   CLRAConnectAgent.cpp \
 							   CLDCConnectAgent.cpp \
-							   CLRAManager.cpp		\
-							   DSXmlParse.cpp
+							   CLimpTaskManager.cpp		\
+							   CLHeartBeatTimer.cpp		\
+							   DSXmlParse.cpp  \
+							   CLcreateIndexTask.cpp \
+							   CLcreateDeltaTask.cpp \
+							   CLCSConnectAgent.cpp
 
 __top_srcdir__bin_DS_LDADD = $(top_srcdir)/lib/libcommon.la $(top_srcdir)/lib/libprotocol.la -L/usr/lib/oracle/11.2/client64/lib/ -lclntsh -locci -lxml2
 all: all-am
@@ -290,9 +296,13 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+include ./$(DEPDIR)/CLCSConnectAgent.Po
 include ./$(DEPDIR)/CLDCConnectAgent.Po
+include ./$(DEPDIR)/CLHeartBeatTimer.Po
 include ./$(DEPDIR)/CLRAConnectAgent.Po
-include ./$(DEPDIR)/CLRAManager.Po
+include ./$(DEPDIR)/CLcreateDeltaTask.Po
+include ./$(DEPDIR)/CLcreateIndexTask.Po
+include ./$(DEPDIR)/CLimpTaskManager.Po
 include ./$(DEPDIR)/DSXmlParse.Po
 include ./$(DEPDIR)/main.Po
 

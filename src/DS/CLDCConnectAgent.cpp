@@ -2,15 +2,17 @@
 #include "common/comm/SocketAddress.h"
 #include "common/comm/AgentManager.h"
 #include "common/log/log.h"
+#include "common/DevLog/DevLog.h"
 #include "protocol/protocol.h"
 #include "protocol/DIS/MSG_DC_DS_RA_INFO_SEND.pb.h"
 #include "protocol/DIS/MSG_DC_DS_IMPORT_INFO_SEND.pb.h"
 #include "protocol/DIS/MSG_DS_RA_IMPORT_TASK_SEND.pb.h"
 #include "DS/CLDCConnectAgent.h"
 #include "DS/CLRAConnectAgent.h"
-#include "DS/CLRAManager.h"
+#include "DS/CLimpTaskManager.h"
 #include <sstream>
 
+extern DevLog * g_pDevLog;
 CLDCConnectAgent::CLDCConnectAgent()
 {
 }
@@ -32,7 +34,7 @@ int CLDCConnectAgent::init()
 {
 	if(this->connect() != SUCCESSFUL)
 	{
-		ERROR_LOG("CLDCConnectAgent::init connect error!");
+		DEV_LOG_ERROR("CLDCConnectAgent::init connect error!");
 		return FAILED;
 	}
 	return SUCCESSFUL;
@@ -57,7 +59,7 @@ void CLDCConnectAgent::readBack(InReq & req)
 			MSG_DC_DS_RA_INFO_SEND raInfo;
 			if(!raInfo.ParseFromString(data))
 			{
-				ERROR_LOG("CLDCConnectAgent::readBack RA_INFO parse from string error!");
+				DEV_LOG_ERROR("CLDCConnectAgent::readBack RA_INFO parse from string error!");
 			}
 			else
 			{
@@ -77,7 +79,9 @@ void CLDCConnectAgent::readBack(InReq & req)
 						(AgentManager::getInstance())->createAgent<CLRAConnectAgent>(raAddr);
    					if(pRAConnectAgent->init() == FAILED)
    					{
-						ERROR_LOG("CLDCConnectAgent::readBack init CLRAConnectAgent error, %s:%d",raIP.c_str(), raPort);
+   						string msg = "CLDCConnectAgent::readBack init CLRAConnectAgent error, " + raIP + ":" + intToStr((int)raPort);
+						//ERROR_LOG("CLDCConnectAgent::readBack init CLRAConnectAgent error, %s:%d",raIP.c_str(), raPort);
+						DEV_LOG_ERROR(msg);
 						statusCode = -18;
 					}
 					else
@@ -88,7 +92,7 @@ void CLDCConnectAgent::readBack(InReq & req)
 						ss >> raPortStr;
 						raIP += ":" + raPortStr;
 						unsigned int agentID = pRAConnectAgent->getID();
-						(CLRAManager::getInstance())->setRAAgentID(raIP, agentID);	
+						(CLimpTaskManager::getInstance())->setRAAgentID(raIP, agentID);	
 						statusCode = 0;
 					}
 				}
@@ -106,10 +110,11 @@ void CLDCConnectAgent::readBack(InReq & req)
 			MSG_DC_DS_IMPORT_INFO_SEND impInfo;
 			if(!impInfo.ParseFromString(data))
 			{
-				ERROR_LOG("CLDCConnectAgent::readBack IMPORT parse from string error!");
+				DEV_LOG_ERROR("CLDCConnectAgent::readBack IMPORT parse from string error!");
 			}
 			else
 			{
+				CLimpTaskManager::getInstance()->setImpTaskID(impInfo.taskid(), getID());
 				for(int i = 0; i < impInfo.tableinfo_size(); i++)
 				{
 					const MSG_DC_DS_IMPORT_INFO_SEND_TABLE_INFO & impInfoTableInfo = impInfo.tableinfo(i);
@@ -120,6 +125,7 @@ void CLDCConnectAgent::readBack(InReq & req)
 					IMP_TAB_INFO * impTabInfo = impDBInfo->add_tableinfo();
 					string tableName = impTabInfo->tablename();
 					impTabInfo->set_tablename(tableName);
+
 					for(int j = 0; j < impInfoTableInfo.colname_size(); j++)
 					{
 						impTabInfo->add_colname(impInfoTableInfo.colname(j));
@@ -131,12 +137,15 @@ void CLDCConnectAgent::readBack(InReq & req)
 					msgHeader.cmd = DS_RA_IMPORT_TASK_SEND;
 					msgHeader.length = sendData.length();
 					string raName = impInfoTableInfo.raname();
-					unsigned int agentID = CLRAManager::getInstance()->getRAAgentID(raName);
+					unsigned int agentID = CLimpTaskManager::getInstance()->getRAAgentID(raName);
 					CLRAConnectAgent * pRAConnAgent = 
 						dynamic_cast<CLRAConnectAgent *>((AgentManager::getInstance())->get(agentID));
+
 					if(pRAConnAgent == NULL)
 					{
-						ERROR_LOG("CLDCConnectAgent::readBack get RAAgent error, RA Name: %s", raName.c_str());
+						string msg = "CLDCConnectAgent::readBack get RAAgent error, RA Name: " + raName;
+						//ERROR_LOG("CLDCConnectAgent::readBack get RAAgent error, RA Name: %s", raName.c_str());
+						DEV_LOG_ERROR(msg);
 					}
 					else
 					{
@@ -144,12 +153,21 @@ void CLDCConnectAgent::readBack(InReq & req)
 					}
 				}
 
-				
+				MsgHeader msgheader;
+				msgheader.cmd = DS_DC_IMPORT_INFO_SEND_ACK;
+				MSG_DS_DC_IMPORT_INFO_SEND_ACK impInfoSendAck;
+				impInfoSendAck.set_taskid(impInfo.taskid());
+				impInfoSendAck.set_statuscode(0);
+				impInfoSendAck.set_statusmsg("Import info received!");
+				string sdData;
+				impInfoSendAck.SerializeToString(&sdData);
+				sendPackage(msgheader, sdData.c_str());
 			}
 			break;
 		}
 		case DC_DS_HEARTBEAT_SEND_ACK:
 		{
+			
 			break;
 		}
 	}
@@ -167,7 +185,7 @@ int CLDCConnectAgent::sendPackage(MsgHeader &header, const char *dataStr)
     }
     if (this->writeToBuffer(sendBuf, msgLength) == FAILED)
     {
-        DEBUG_LOG("\nIn CLDCConnectAgent:: sendPackage(): write data error!\n");
+        DEV_LOG_ERROR("\nIn CLDCConnectAgent:: sendPackage(): write data error!\n");
         return FAILED;
     }
     return SUCCESSFUL;

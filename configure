@@ -17128,75 +17128,7 @@ _ACEOF
 
 fi
 
-
-{ $as_echo "$as_me:$LINENO: checking for main in -lodbc" >&5
-$as_echo_n "checking for main in -lodbc... " >&6; }
-if test "${ac_cv_lib_odbc_main+set}" = set; then
-  $as_echo_n "(cached) " >&6
-else
-  ac_check_lib_save_LIBS=$LIBS
-LIBS="-lodbc  $LIBS"
-cat >conftest.$ac_ext <<_ACEOF
-/* confdefs.h.  */
-_ACEOF
-cat confdefs.h >>conftest.$ac_ext
-cat >>conftest.$ac_ext <<_ACEOF
-/* end confdefs.h.  */
-
-
-int
-main ()
-{
-return main ();
-  ;
-  return 0;
-}
-_ACEOF
-rm -f conftest.$ac_objext conftest$ac_exeext
-if { (ac_try="$ac_link"
-case "(($ac_try" in
-  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
-  *) ac_try_echo=$ac_try;;
-esac
-eval ac_try_echo="\"\$as_me:$LINENO: $ac_try_echo\""
-$as_echo "$ac_try_echo") >&5
-  (eval "$ac_link") 2>conftest.er1
-  ac_status=$?
-  grep -v '^ *+' conftest.er1 >conftest.err
-  rm -f conftest.er1
-  cat conftest.err >&5
-  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); } && {
-	 test -z "$ac_c_werror_flag" ||
-	 test ! -s conftest.err
-       } && test -s conftest$ac_exeext && {
-	 test "$cross_compiling" = yes ||
-	 $as_test_x conftest$ac_exeext
-       }; then
-  ac_cv_lib_odbc_main=yes
-else
-  $as_echo "$as_me: failed program was:" >&5
-sed 's/^/| /' conftest.$ac_ext >&5
-
-	ac_cv_lib_odbc_main=no
-fi
-
-rm -rf conftest.dSYM
-rm -f core conftest.err conftest.$ac_objext conftest_ipa8_conftest.oo \
-      conftest$ac_exeext conftest.$ac_ext
-LIBS=$ac_check_lib_save_LIBS
-fi
-{ $as_echo "$as_me:$LINENO: result: $ac_cv_lib_odbc_main" >&5
-$as_echo "$ac_cv_lib_odbc_main" >&6; }
-if test "x$ac_cv_lib_odbc_main" = x""yes; then
-  cat >>confdefs.h <<_ACEOF
-#define HAVE_LIBODBC 1
-_ACEOF
-
-  LIBS="-lodbc $LIBS"
-
-fi
-
+#AC_CHECK_LIB(odbc, main)
 
 { $as_echo "$as_me:$LINENO: checking for main in -locci" >&5
 $as_echo_n "checking for main in -locci... " >&6; }
@@ -17410,7 +17342,7 @@ fi
 
 # Checks for library functions.
 
-ac_config_files="$ac_config_files Makefile src/Makefile src/common/Makefile src/common/comm/Makefile src/common/daemon/Makefile src/common/log/Makefile src/common/sys/Makefile src/common/odbc/Makefile src/common/Timer/Makefile src/common/util/Makefile src/common/xml/Makefile src/protocol/Makefile src/protocol/DIS/Makefile src/RA/Makefile src/DS/Makefile test/Makefile test/RA_TEST/Makefile test/DB_TEST/Makefile test/META_TEST/Makefile test/IMPORT_TEST/Makefile"
+ac_config_files="$ac_config_files Makefile src/Makefile src/common/Makefile src/common/comm/Makefile src/common/daemon/Makefile src/common/DevLog/Makefile src/common/log/Makefile src/common/sys/Makefile src/common/Timer/Makefile src/common/util/Makefile src/common/xml/Makefile src/protocol/Makefile src/protocol/DIS/Makefile src/RA/Makefile src/DS/Makefile test/Makefile test/RA_TEST/Makefile test/DB_TEST/Makefile test/META_TEST/Makefile test/IMPORT_TEST/Makefile"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -18439,9 +18371,9 @@ do
     "src/common/Makefile") CONFIG_FILES="$CONFIG_FILES src/common/Makefile" ;;
     "src/common/comm/Makefile") CONFIG_FILES="$CONFIG_FILES src/common/comm/Makefile" ;;
     "src/common/daemon/Makefile") CONFIG_FILES="$CONFIG_FILES src/common/daemon/Makefile" ;;
+    "src/common/DevLog/Makefile") CONFIG_FILES="$CONFIG_FILES src/common/DevLog/Makefile" ;;
     "src/common/log/Makefile") CONFIG_FILES="$CONFIG_FILES src/common/log/Makefile" ;;
     "src/common/sys/Makefile") CONFIG_FILES="$CONFIG_FILES src/common/sys/Makefile" ;;
-    "src/common/odbc/Makefile") CONFIG_FILES="$CONFIG_FILES src/common/odbc/Makefile" ;;
     "src/common/Timer/Makefile") CONFIG_FILES="$CONFIG_FILES src/common/Timer/Makefile" ;;
     "src/common/util/Makefile") CONFIG_FILES="$CONFIG_FILES src/common/util/Makefile" ;;
     "src/common/xml/Makefile") CONFIG_FILES="$CONFIG_FILES src/common/xml/Makefile" ;;

@@ -15,8 +15,7 @@ EpollEvent.lo: ../../../../src/common/comm/EpollEvent.cpp \
  /usr/include/libio.h /usr/include/_G_config.h /usr/include/wchar.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/include/stdarg.h \
  /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h \
- /usr/include/bits/stdio.h ../../../../include/common/comm/Epoll.h \
- /usr/include/sys/time.h \
+ ../../../../include/common/comm/Epoll.h /usr/include/sys/time.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/list \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_algobase.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/x86_64-redhat-linux/bits/c++config.h \
@@ -146,8 +145,6 @@ EpollEvent.lo: ../../../../src/common/comm/EpollEvent.cpp \
 /usr/include/bits/stdio_lim.h:
 
 /usr/include/bits/sys_errlist.h:
-
-/usr/include/bits/stdio.h:
 
 ../../../../include/common/comm/Epoll.h:
 

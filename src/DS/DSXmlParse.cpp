@@ -46,13 +46,15 @@ int DSXmlParse::parse()
 		{
 			parseDSConfig(curNode);
 		}
+		/*
 		else
 		{
 			cerr << "DSXmlParse::parse no this item: " << (char *)curNode->name << endl;
 			return FAILED;
 		}
+		*/
+		curNode = curNode->next;
 	}
-
 	xmlFreeDoc(m_doc);
     return SUCCESSFUL;
 }

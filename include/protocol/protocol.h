@@ -7,8 +7,8 @@ const unsigned int DS_DC_IMPORT_INFO_SEND_ACK = 0x02;
 const unsigned int DC_DS_RA_INFO_SEND = 0x03;
 const unsigned int DS_DC_RA_INFO_SEND_ACK = 0x04;
 
-const unsigned int DC_RA_DATABASE_INFO_SEND = 0x05;
-const unsigned int RA_DC_DATABASE_INFO_SEND_ACK = 0x06;
+const unsigned int DC_RA_DATABASE_INFO_GET = 0x05;
+const unsigned int RA_DC_DATABASE_INFO_GET_ACK = 0x06;
 
 const unsigned int DC_RA_IMPORT_SIZE_INFO_GET = 0x07;
 const unsigned int RA_DC_IMPORT_SIZE_INFO_GET_ACK = 0x08;
@@ -35,6 +35,8 @@ const unsigned int DC_RA_DELTA_DATA_INFO_SEND_ACK = 0x15;
 const unsigned int RA_DS_DELTA_DATA_SEND = 0x16;
 const unsigned int DS_RA_DELTA_DATA_SEND_ACK = 0x17;
 
+const unsigned int DS_DC_RESOURCE_GET = 0x18;
+const unsigned int DC_DS_RESOURCE_INFO_ACK = 0x19;
 
 const unsigned int READ_METADATA = 1;
 const unsigned int CREATE_TASK = 5;

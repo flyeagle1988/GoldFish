@@ -23,7 +23,7 @@ UDPSocket.lo: ../../../../src/common/comm/UDPSocket.cpp \
  /usr/include/_G_config.h /usr/include/wchar.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/include/stdarg.h \
  /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h \
- /usr/include/bits/stdio.h ../../../../include/common/comm/BaseHeader.h \
+ ../../../../include/common/comm/BaseHeader.h \
  ../../../../include/common/comm/UDPSocket.h \
  ../../../../include/common/comm/SocketAddress.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/string \
@@ -192,8 +192,6 @@ UDPSocket.lo: ../../../../src/common/comm/UDPSocket.cpp \
 /usr/include/bits/stdio_lim.h:
 
 /usr/include/bits/sys_errlist.h:
-
-/usr/include/bits/stdio.h:
 
 ../../../../include/common/comm/BaseHeader.h:
 

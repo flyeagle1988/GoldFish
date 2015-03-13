@@ -58,7 +58,7 @@ am__objects_1 = MSG_DC_DS_IMPORT_INFO_SEND.pb.lo \
 	MSG_DS_RA_IMPORT_TASK_SEND.pb.lo \
 	MSG_DC_RA_IMPORT_SIZE_INFO_GET.pb.lo \
 	MSG_DS_DC_LOCATION_INDEX_SEND.pb.lo \
-	MSG_RA_DC_DELTA_DATA_INFO_SEND.pb.lo
+	MSG_RA_DC_DELTA_DATA_INFO_SEND.pb.lo common.pb.lo
 nodist___top_srcdir__lib_libprotocol_la_OBJECTS = $(am__objects_1)
 __top_srcdir__lib_libprotocol_la_OBJECTS =  \
 	$(nodist___top_srcdir__lib_libprotocol_la_OBJECTS)
@@ -165,7 +165,7 @@ INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
 LD = /usr/bin/ld -m elf_x86_64
 LDFLAGS = 
 LIBOBJS = 
-LIBS = -lprotobuf -lodbc -lxml2 -lrt -lpthread 
+LIBS = -lprotobuf -lxml2 -lrt -lpthread 
 LIBTOOL = $(SHELL) $(top_builddir)/libtool
 LIPO = 
 LN_S = ln -s
@@ -275,7 +275,9 @@ PROTOOUTPUT = MSG_DC_DS_IMPORT_INFO_SEND.pb.h \
 			MSG_DS_DC_LOCATION_INDEX_SEND.pb.h \
 			MSG_DS_DC_LOCATION_INDEX_SEND.pb.cc \
 			MSG_RA_DC_DELTA_DATA_INFO_SEND.pb.h \
-			MSG_RA_DC_DELTA_DATA_INFO_SEND.pb.cc
+			MSG_RA_DC_DELTA_DATA_INFO_SEND.pb.cc \
+			common.pb.h \
+			common.pb.cc
 
 PROTOINPUT = MSG_DC_DS_IMPORT_INFO_SEND.proto \
 		   MSG_DS_CS_DATA_UPLOAD.proto \
@@ -289,7 +291,8 @@ PROTOINPUT = MSG_DC_DS_IMPORT_INFO_SEND.proto \
 		   MSG_DS_RA_IMPORT_TASK_SEND.proto \
 		   MSG_DC_RA_IMPORT_SIZE_INFO_GET.proto \
 		   MSG_DS_DC_LOCATION_INDEX_SEND.proto \
-		   MSG_RA_DC_DELTA_DATA_INFO_SEND.proto
+		   MSG_RA_DC_DELTA_DATA_INFO_SEND.proto  \
+		   common.proto
 
 EXTRA_DIST = $(PROTOINPUT)
 PROTODIR = $(top_srcdir)/src/protocol/DIS
@@ -362,6 +365,7 @@ include ./$(DEPDIR)/MSG_DS_DC_ROW_INDEX_SEND.pb.Plo
 include ./$(DEPDIR)/MSG_DS_RA_IMPORT_TASK_SEND.pb.Plo
 include ./$(DEPDIR)/MSG_RA_DC_DELTA_DATA_INFO_SEND.pb.Plo
 include ./$(DEPDIR)/MSG_RA_DS_DELTA_DATA_SEND.pb.Plo
+include ./$(DEPDIR)/common.pb.Plo
 
 .cc.o:
 	$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<

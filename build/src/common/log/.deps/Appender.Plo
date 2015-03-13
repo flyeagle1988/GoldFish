@@ -13,8 +13,8 @@ Appender.lo: ../../../../src/common/log/Appender.cpp \
  /usr/include/_G_config.h /usr/include/wchar.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/include/stdarg.h \
  /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h \
- /usr/include/bits/stdio.h /usr/include/time.h /usr/include/bits/time.h \
- /usr/include/xlocale.h /usr/include/sys/types.h /usr/include/endian.h \
+ /usr/include/time.h /usr/include/bits/time.h /usr/include/xlocale.h \
+ /usr/include/sys/types.h /usr/include/endian.h \
  /usr/include/bits/endian.h /usr/include/bits/byteswap.h \
  /usr/include/sys/select.h /usr/include/bits/select.h \
  /usr/include/bits/sigset.h /usr/include/sys/sysmacros.h \
@@ -108,8 +108,6 @@ Appender.lo: ../../../../src/common/log/Appender.cpp \
 /usr/include/bits/stdio_lim.h:
 
 /usr/include/bits/sys_errlist.h:
-
-/usr/include/bits/stdio.h:
 
 /usr/include/time.h:
 

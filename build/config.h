@@ -13,9 +13,6 @@
 /* Define to 1 if you have the `occi' library (-locci). */
 /* #undef HAVE_LIBOCCI */
 
-/* Define to 1 if you have the `odbc' library (-lodbc). */
-#define HAVE_LIBODBC 1
-
 /* Define to 1 if you have the `protobuf' library (-lprotobuf). */
 #define HAVE_LIBPROTOBUF 1
 

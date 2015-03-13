@@ -6,7 +6,7 @@
 #include "common/comm/TaskManager.h"
 #include "common/sys/ThreadPool.h"
 #include "common/util/util.h"
-
+#include "common/DevLog/DevLog.h"
 #include "RA/CLDBManager.h"
 #include "RA/CLDCAgent.h"
 #include "RA/CLDSAgent.h"
@@ -14,8 +14,7 @@
 #include <signal.h>
 
 using util::conv::conv;
-
-
+DevLog *g_pDevLog = NULL;
 Epoll  *g_pEpoll  = NULL;
 TCPListenAgent<CLDCAgent> *g_pListenDCAgent = NULL;
 TCPListenAgent<CLDSAgent> *g_pListenDSAgent = NULL;
@@ -46,8 +45,17 @@ int main(int argc,char * argv [])
 		cout << "usage:" << argv[0] << "xml file " << endl;
 		return FAILED;
 	}
-
+	string LogFileName = "../build/log/RA.log";
 	g_pEpoll = new Epoll();
+	
+    g_pDevLog = new DevLog(LogFileName.c_str());
+    if(g_pDevLog->init() < 0)
+    {
+        RED_MSG("main: DevLog init Error");
+        return FAILED;
+    }
+	//LogLevel LogLevel(LEVEL_HIGH);
+    //g_pDevLog->setLogLevel(LEVEL_HIGH);
 
 	if(g_pEpoll->initialize(EPOLLSIZE) == FAILED)
 	{

@@ -18,16 +18,9 @@
 
 namespace {
 
-const ::google::protobuf::Descriptor* COLUMN_INFO_descriptor_ = NULL;
+const ::google::protobuf::Descriptor* MSG_DC_RA_DATABASE_INFO_GET_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  COLUMN_INFO_reflection_ = NULL;
-const ::google::protobuf::EnumDescriptor* COLUMN_INFO_COLUMN_TYPE_descriptor_ = NULL;
-const ::google::protobuf::Descriptor* TABLE_INFO_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  TABLE_INFO_reflection_ = NULL;
-const ::google::protobuf::Descriptor* DATABASE_INFO_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  DATABASE_INFO_reflection_ = NULL;
+  MSG_DC_RA_DATABASE_INFO_GET_reflection_ = NULL;
 const ::google::protobuf::Descriptor* MSG_RA_DC_DATABASE_INFO_GET_ACK_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   MSG_RA_DC_DATABASE_INFO_GET_ACK_reflection_ = NULL;
@@ -41,58 +34,21 @@ void protobuf_AssignDesc_MSG_5fDC_5fRA_5fDATABASE_5fINFO_5fGET_2eproto() {
     ::google::protobuf::DescriptorPool::generated_pool()->FindFileByName(
       "MSG_DC_RA_DATABASE_INFO_GET.proto");
   GOOGLE_CHECK(file != NULL);
-  COLUMN_INFO_descriptor_ = file->message_type(0);
-  static const int COLUMN_INFO_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(COLUMN_INFO, colname_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(COLUMN_INFO, coltype_),
+  MSG_DC_RA_DATABASE_INFO_GET_descriptor_ = file->message_type(0);
+  static const int MSG_DC_RA_DATABASE_INFO_GET_offsets_[1] = {
   };
-  COLUMN_INFO_reflection_ =
+  MSG_DC_RA_DATABASE_INFO_GET_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
-      COLUMN_INFO_descriptor_,
-      COLUMN_INFO::default_instance_,
-      COLUMN_INFO_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(COLUMN_INFO, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(COLUMN_INFO, _unknown_fields_),
+      MSG_DC_RA_DATABASE_INFO_GET_descriptor_,
+      MSG_DC_RA_DATABASE_INFO_GET::default_instance_,
+      MSG_DC_RA_DATABASE_INFO_GET_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_DC_RA_DATABASE_INFO_GET, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_DC_RA_DATABASE_INFO_GET, _unknown_fields_),
       -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(COLUMN_INFO));
-  COLUMN_INFO_COLUMN_TYPE_descriptor_ = COLUMN_INFO_descriptor_->enum_type(0);
-  TABLE_INFO_descriptor_ = file->message_type(1);
-  static const int TABLE_INFO_offsets_[4] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TABLE_INFO, tablename_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TABLE_INFO, columndata_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TABLE_INFO, rownum_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TABLE_INFO, tablesize_),
-  };
-  TABLE_INFO_reflection_ =
-    new ::google::protobuf::internal::GeneratedMessageReflection(
-      TABLE_INFO_descriptor_,
-      TABLE_INFO::default_instance_,
-      TABLE_INFO_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TABLE_INFO, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TABLE_INFO, _unknown_fields_),
-      -1,
-      ::google::protobuf::DescriptorPool::generated_pool(),
-      ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(TABLE_INFO));
-  DATABASE_INFO_descriptor_ = file->message_type(2);
-  static const int DATABASE_INFO_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DATABASE_INFO, dbid_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DATABASE_INFO, tableinfo_),
-  };
-  DATABASE_INFO_reflection_ =
-    new ::google::protobuf::internal::GeneratedMessageReflection(
-      DATABASE_INFO_descriptor_,
-      DATABASE_INFO::default_instance_,
-      DATABASE_INFO_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DATABASE_INFO, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DATABASE_INFO, _unknown_fields_),
-      -1,
-      ::google::protobuf::DescriptorPool::generated_pool(),
-      ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(DATABASE_INFO));
-  MSG_RA_DC_DATABASE_INFO_GET_ACK_descriptor_ = file->message_type(3);
+      sizeof(MSG_DC_RA_DATABASE_INFO_GET));
+  MSG_RA_DC_DATABASE_INFO_GET_ACK_descriptor_ = file->message_type(1);
   static const int MSG_RA_DC_DATABASE_INFO_GET_ACK_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_RA_DC_DATABASE_INFO_GET_ACK, statuscode_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_RA_DC_DATABASE_INFO_GET_ACK, statusmsg_),
@@ -122,11 +78,7 @@ inline void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    COLUMN_INFO_descriptor_, &COLUMN_INFO::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    TABLE_INFO_descriptor_, &TABLE_INFO::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    DATABASE_INFO_descriptor_, &DATABASE_INFO::default_instance());
+    MSG_DC_RA_DATABASE_INFO_GET_descriptor_, &MSG_DC_RA_DATABASE_INFO_GET::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     MSG_RA_DC_DATABASE_INFO_GET_ACK_descriptor_, &MSG_RA_DC_DATABASE_INFO_GET_ACK::default_instance());
 }
@@ -134,12 +86,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
 }  // namespace
 
 void protobuf_ShutdownFile_MSG_5fDC_5fRA_5fDATABASE_5fINFO_5fGET_2eproto() {
-  delete COLUMN_INFO::default_instance_;
-  delete COLUMN_INFO_reflection_;
-  delete TABLE_INFO::default_instance_;
-  delete TABLE_INFO_reflection_;
-  delete DATABASE_INFO::default_instance_;
-  delete DATABASE_INFO_reflection_;
+  delete MSG_DC_RA_DATABASE_INFO_GET::default_instance_;
+  delete MSG_DC_RA_DATABASE_INFO_GET_reflection_;
   delete MSG_RA_DC_DATABASE_INFO_GET_ACK::default_instance_;
   delete MSG_RA_DC_DATABASE_INFO_GET_ACK_reflection_;
 }
@@ -150,28 +98,18 @@ void protobuf_AddDesc_MSG_5fDC_5fRA_5fDATABASE_5fINFO_5fGET_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
+  ::protobuf_AddDesc_common_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n!MSG_DC_RA_DATABASE_INFO_GET.proto\"\214\001\n\013"
-    "COLUMN_INFO\022\017\n\007colName\030\001 \002(\t\0221\n\007colType\030"
-    "\002 \002(\0162\030.COLUMN_INFO.COLUMN_TYPE:\006STRING\""
-    "9\n\013COLUMN_TYPE\022\n\n\006STRING\020\000\022\007\n\003INT\020\001\022\t\n\005F"
-    "LOAT\020\002\022\n\n\006DOUBLE\020\003\"d\n\nTABLE_INFO\022\021\n\ttabl"
-    "eName\030\001 \002(\t\022 \n\ncolumnData\030\002 \003(\0132\014.COLUMN"
-    "_INFO\022\016\n\006rowNum\030\003 \002(\r\022\021\n\ttableSize\030\004 \002(\004"
-    "\"=\n\rDATABASE_INFO\022\014\n\004DBID\030\001 \002(\005\022\036\n\ttable"
-    "Info\030\002 \003(\0132\013.TABLE_INFO\"h\n\037MSG_RA_DC_DAT"
-    "ABASE_INFO_GET_ACK\022\022\n\nstatusCode\030\001 \002(\005\022\021"
-    "\n\tstatusMsg\030\002 \002(\t\022\036\n\006dbInfo\030\003 \003(\0132\016.DATA"
-    "BASE_INFO", 449);
+    "\n!MSG_DC_RA_DATABASE_INFO_GET.proto\032\014com"
+    "mon.proto\"\035\n\033MSG_DC_RA_DATABASE_INFO_GET"
+    "\"h\n\037MSG_RA_DC_DATABASE_INFO_GET_ACK\022\022\n\ns"
+    "tatusCode\030\001 \002(\005\022\021\n\tstatusMsg\030\002 \002(\t\022\036\n\006db"
+    "Info\030\003 \003(\0132\016.DATABASE_INFO", 186);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "MSG_DC_RA_DATABASE_INFO_GET.proto", &protobuf_RegisterTypes);
-  COLUMN_INFO::default_instance_ = new COLUMN_INFO();
-  TABLE_INFO::default_instance_ = new TABLE_INFO();
-  DATABASE_INFO::default_instance_ = new DATABASE_INFO();
+  MSG_DC_RA_DATABASE_INFO_GET::default_instance_ = new MSG_DC_RA_DATABASE_INFO_GET();
   MSG_RA_DC_DATABASE_INFO_GET_ACK::default_instance_ = new MSG_RA_DC_DATABASE_INFO_GET_ACK();
-  COLUMN_INFO::default_instance_->InitAsDefaultInstance();
-  TABLE_INFO::default_instance_->InitAsDefaultInstance();
-  DATABASE_INFO::default_instance_->InitAsDefaultInstance();
+  MSG_DC_RA_DATABASE_INFO_GET::default_instance_->InitAsDefaultInstance();
   MSG_RA_DC_DATABASE_INFO_GET_ACK::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_MSG_5fDC_5fRA_5fDATABASE_5fINFO_5fGET_2eproto);
 }
@@ -185,616 +123,116 @@ struct StaticDescriptorInitializer_MSG_5fDC_5fRA_5fDATABASE_5fINFO_5fGET_2eproto
 
 // ===================================================================
 
-const ::google::protobuf::EnumDescriptor* COLUMN_INFO_COLUMN_TYPE_descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return COLUMN_INFO_COLUMN_TYPE_descriptor_;
-}
-bool COLUMN_INFO_COLUMN_TYPE_IsValid(int value) {
-  switch(value) {
-    case 0:
-    case 1:
-    case 2:
-    case 3:
-      return true;
-    default:
-      return false;
-  }
-}
-
 #ifndef _MSC_VER
-const COLUMN_INFO_COLUMN_TYPE COLUMN_INFO::STRING;
-const COLUMN_INFO_COLUMN_TYPE COLUMN_INFO::INT;
-const COLUMN_INFO_COLUMN_TYPE COLUMN_INFO::FLOAT;
-const COLUMN_INFO_COLUMN_TYPE COLUMN_INFO::DOUBLE;
-const COLUMN_INFO_COLUMN_TYPE COLUMN_INFO::COLUMN_TYPE_MIN;
-const COLUMN_INFO_COLUMN_TYPE COLUMN_INFO::COLUMN_TYPE_MAX;
-const int COLUMN_INFO::COLUMN_TYPE_ARRAYSIZE;
-#endif  // _MSC_VER
-#ifndef _MSC_VER
-const int COLUMN_INFO::kColNameFieldNumber;
-const int COLUMN_INFO::kColTypeFieldNumber;
 #endif  // !_MSC_VER
 
-COLUMN_INFO::COLUMN_INFO()
+MSG_DC_RA_DATABASE_INFO_GET::MSG_DC_RA_DATABASE_INFO_GET()
   : ::google::protobuf::Message() {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:COLUMN_INFO)
+  // @@protoc_insertion_point(constructor:MSG_DC_RA_DATABASE_INFO_GET)
 }
 
-void COLUMN_INFO::InitAsDefaultInstance() {
+void MSG_DC_RA_DATABASE_INFO_GET::InitAsDefaultInstance() {
 }
 
-COLUMN_INFO::COLUMN_INFO(const COLUMN_INFO& from)
+MSG_DC_RA_DATABASE_INFO_GET::MSG_DC_RA_DATABASE_INFO_GET(const MSG_DC_RA_DATABASE_INFO_GET& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:COLUMN_INFO)
+  // @@protoc_insertion_point(copy_constructor:MSG_DC_RA_DATABASE_INFO_GET)
 }
 
-void COLUMN_INFO::SharedCtor() {
-  ::google::protobuf::internal::GetEmptyString();
+void MSG_DC_RA_DATABASE_INFO_GET::SharedCtor() {
   _cached_size_ = 0;
-  colname_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  coltype_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
-COLUMN_INFO::~COLUMN_INFO() {
-  // @@protoc_insertion_point(destructor:COLUMN_INFO)
+MSG_DC_RA_DATABASE_INFO_GET::~MSG_DC_RA_DATABASE_INFO_GET() {
+  // @@protoc_insertion_point(destructor:MSG_DC_RA_DATABASE_INFO_GET)
   SharedDtor();
 }
 
-void COLUMN_INFO::SharedDtor() {
-  if (colname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    delete colname_;
-  }
+void MSG_DC_RA_DATABASE_INFO_GET::SharedDtor() {
   if (this != default_instance_) {
   }
 }
 
-void COLUMN_INFO::SetCachedSize(int size) const {
+void MSG_DC_RA_DATABASE_INFO_GET::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* COLUMN_INFO::descriptor() {
+const ::google::protobuf::Descriptor* MSG_DC_RA_DATABASE_INFO_GET::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return COLUMN_INFO_descriptor_;
+  return MSG_DC_RA_DATABASE_INFO_GET_descriptor_;
 }
 
-const COLUMN_INFO& COLUMN_INFO::default_instance() {
+const MSG_DC_RA_DATABASE_INFO_GET& MSG_DC_RA_DATABASE_INFO_GET::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_MSG_5fDC_5fRA_5fDATABASE_5fINFO_5fGET_2eproto();
   return *default_instance_;
 }
 
-COLUMN_INFO* COLUMN_INFO::default_instance_ = NULL;
+MSG_DC_RA_DATABASE_INFO_GET* MSG_DC_RA_DATABASE_INFO_GET::default_instance_ = NULL;
 
-COLUMN_INFO* COLUMN_INFO::New() const {
-  return new COLUMN_INFO;
+MSG_DC_RA_DATABASE_INFO_GET* MSG_DC_RA_DATABASE_INFO_GET::New() const {
+  return new MSG_DC_RA_DATABASE_INFO_GET;
 }
 
-void COLUMN_INFO::Clear() {
-  if (_has_bits_[0 / 32] & 3) {
-    if (has_colname()) {
-      if (colname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-        colname_->clear();
-      }
-    }
-    coltype_ = 0;
-  }
+void MSG_DC_RA_DATABASE_INFO_GET::Clear() {
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
 
-bool COLUMN_INFO::MergePartialFromCodedStream(
+bool MSG_DC_RA_DATABASE_INFO_GET::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:COLUMN_INFO)
+  // @@protoc_insertion_point(parse_start:MSG_DC_RA_DATABASE_INFO_GET)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
     if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required string colName = 1;
-      case 1: {
-        if (tag == 10) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_colname()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-            this->colname().data(), this->colname().length(),
-            ::google::protobuf::internal::WireFormat::PARSE,
-            "colname");
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(16)) goto parse_colType;
-        break;
-      }
-
-      // required .COLUMN_INFO.COLUMN_TYPE colType = 2 [default = STRING];
-      case 2: {
-        if (tag == 16) {
-         parse_colType:
-          int value;
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
-                 input, &value)));
-          if (::COLUMN_INFO_COLUMN_TYPE_IsValid(value)) {
-            set_coltype(static_cast< ::COLUMN_INFO_COLUMN_TYPE >(value));
-          } else {
-            mutable_unknown_fields()->AddVarint(2, value);
-          }
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectAtEnd()) goto success;
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0 ||
-            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
+  handle_unusual:
+    if (tag == 0 ||
+        ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+        ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+      goto success;
     }
+    DO_(::google::protobuf::internal::WireFormat::SkipField(
+          input, tag, mutable_unknown_fields()));
   }
 success:
-  // @@protoc_insertion_point(parse_success:COLUMN_INFO)
+  // @@protoc_insertion_point(parse_success:MSG_DC_RA_DATABASE_INFO_GET)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:COLUMN_INFO)
+  // @@protoc_insertion_point(parse_failure:MSG_DC_RA_DATABASE_INFO_GET)
   return false;
 #undef DO_
 }
 
-void COLUMN_INFO::SerializeWithCachedSizes(
+void MSG_DC_RA_DATABASE_INFO_GET::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:COLUMN_INFO)
-  // required string colName = 1;
-  if (has_colname()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->colname().data(), this->colname().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "colname");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->colname(), output);
-  }
-
-  // required .COLUMN_INFO.COLUMN_TYPE colType = 2 [default = STRING];
-  if (has_coltype()) {
-    ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      2, this->coltype(), output);
-  }
-
+  // @@protoc_insertion_point(serialize_start:MSG_DC_RA_DATABASE_INFO_GET)
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:COLUMN_INFO)
+  // @@protoc_insertion_point(serialize_end:MSG_DC_RA_DATABASE_INFO_GET)
 }
 
-::google::protobuf::uint8* COLUMN_INFO::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* MSG_DC_RA_DATABASE_INFO_GET::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:COLUMN_INFO)
-  // required string colName = 1;
-  if (has_colname()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->colname().data(), this->colname().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "colname");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->colname(), target);
-  }
-
-  // required .COLUMN_INFO.COLUMN_TYPE colType = 2 [default = STRING];
-  if (has_coltype()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      2, this->coltype(), target);
-  }
-
+  // @@protoc_insertion_point(serialize_to_array_start:MSG_DC_RA_DATABASE_INFO_GET)
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:COLUMN_INFO)
+  // @@protoc_insertion_point(serialize_to_array_end:MSG_DC_RA_DATABASE_INFO_GET)
   return target;
 }
 
-int COLUMN_INFO::ByteSize() const {
+int MSG_DC_RA_DATABASE_INFO_GET::ByteSize() const {
   int total_size = 0;
-
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required string colName = 1;
-    if (has_colname()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->colname());
-    }
-
-    // required .COLUMN_INFO.COLUMN_TYPE colType = 2 [default = STRING];
-    if (has_coltype()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::EnumSize(this->coltype());
-    }
-
-  }
-  if (!unknown_fields().empty()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void COLUMN_INFO::MergeFrom(const ::google::protobuf::Message& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  const COLUMN_INFO* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const COLUMN_INFO*>(
-      &from);
-  if (source == NULL) {
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-    MergeFrom(*source);
-  }
-}
-
-void COLUMN_INFO::MergeFrom(const COLUMN_INFO& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_colname()) {
-      set_colname(from.colname());
-    }
-    if (from.has_coltype()) {
-      set_coltype(from.coltype());
-    }
-  }
-  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-}
-
-void COLUMN_INFO::CopyFrom(const ::google::protobuf::Message& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void COLUMN_INFO::CopyFrom(const COLUMN_INFO& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool COLUMN_INFO::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
-
-  return true;
-}
-
-void COLUMN_INFO::Swap(COLUMN_INFO* other) {
-  if (other != this) {
-    std::swap(colname_, other->colname_);
-    std::swap(coltype_, other->coltype_);
-    std::swap(_has_bits_[0], other->_has_bits_[0]);
-    _unknown_fields_.Swap(&other->_unknown_fields_);
-    std::swap(_cached_size_, other->_cached_size_);
-  }
-}
-
-::google::protobuf::Metadata COLUMN_INFO::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = COLUMN_INFO_descriptor_;
-  metadata.reflection = COLUMN_INFO_reflection_;
-  return metadata;
-}
-
-
-// ===================================================================
-
-#ifndef _MSC_VER
-const int TABLE_INFO::kTableNameFieldNumber;
-const int TABLE_INFO::kColumnDataFieldNumber;
-const int TABLE_INFO::kRowNumFieldNumber;
-const int TABLE_INFO::kTableSizeFieldNumber;
-#endif  // !_MSC_VER
-
-TABLE_INFO::TABLE_INFO()
-  : ::google::protobuf::Message() {
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:TABLE_INFO)
-}
-
-void TABLE_INFO::InitAsDefaultInstance() {
-}
-
-TABLE_INFO::TABLE_INFO(const TABLE_INFO& from)
-  : ::google::protobuf::Message() {
-  SharedCtor();
-  MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:TABLE_INFO)
-}
-
-void TABLE_INFO::SharedCtor() {
-  ::google::protobuf::internal::GetEmptyString();
-  _cached_size_ = 0;
-  tablename_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  rownum_ = 0u;
-  tablesize_ = GOOGLE_ULONGLONG(0);
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-TABLE_INFO::~TABLE_INFO() {
-  // @@protoc_insertion_point(destructor:TABLE_INFO)
-  SharedDtor();
-}
-
-void TABLE_INFO::SharedDtor() {
-  if (tablename_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    delete tablename_;
-  }
-  if (this != default_instance_) {
-  }
-}
-
-void TABLE_INFO::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* TABLE_INFO::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return TABLE_INFO_descriptor_;
-}
-
-const TABLE_INFO& TABLE_INFO::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_MSG_5fDC_5fRA_5fDATABASE_5fINFO_5fGET_2eproto();
-  return *default_instance_;
-}
-
-TABLE_INFO* TABLE_INFO::default_instance_ = NULL;
-
-TABLE_INFO* TABLE_INFO::New() const {
-  return new TABLE_INFO;
-}
-
-void TABLE_INFO::Clear() {
-#define OFFSET_OF_FIELD_(f) (reinterpret_cast<char*>(      \
-  &reinterpret_cast<TABLE_INFO*>(16)->f) - \
-   reinterpret_cast<char*>(16))
-
-#define ZR_(first, last) do {                              \
-    size_t f = OFFSET_OF_FIELD_(first);                    \
-    size_t n = OFFSET_OF_FIELD_(last) - f + sizeof(last);  \
-    ::memset(&first, 0, n);                                \
-  } while (0)
-
-  if (_has_bits_[0 / 32] & 13) {
-    ZR_(tablesize_, rownum_);
-    if (has_tablename()) {
-      if (tablename_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-        tablename_->clear();
-      }
-    }
-  }
-
-#undef OFFSET_OF_FIELD_
-#undef ZR_
-
-  columndata_.Clear();
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  mutable_unknown_fields()->Clear();
-}
-
-bool TABLE_INFO::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:TABLE_INFO)
-  for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required string tableName = 1;
-      case 1: {
-        if (tag == 10) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_tablename()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-            this->tablename().data(), this->tablename().length(),
-            ::google::protobuf::internal::WireFormat::PARSE,
-            "tablename");
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(18)) goto parse_columnData;
-        break;
-      }
-
-      // repeated .COLUMN_INFO columnData = 2;
-      case 2: {
-        if (tag == 18) {
-         parse_columnData:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-                input, add_columndata()));
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(18)) goto parse_columnData;
-        if (input->ExpectTag(24)) goto parse_rowNum;
-        break;
-      }
-
-      // required uint32 rowNum = 3;
-      case 3: {
-        if (tag == 24) {
-         parse_rowNum:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &rownum_)));
-          set_has_rownum();
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(32)) goto parse_tableSize;
-        break;
-      }
-
-      // required uint64 tableSize = 4;
-      case 4: {
-        if (tag == 32) {
-         parse_tableSize:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
-                 input, &tablesize_)));
-          set_has_tablesize();
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectAtEnd()) goto success;
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0 ||
-            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:TABLE_INFO)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:TABLE_INFO)
-  return false;
-#undef DO_
-}
-
-void TABLE_INFO::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:TABLE_INFO)
-  // required string tableName = 1;
-  if (has_tablename()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->tablename().data(), this->tablename().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "tablename");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->tablename(), output);
-  }
-
-  // repeated .COLUMN_INFO columnData = 2;
-  for (int i = 0; i < this->columndata_size(); i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, this->columndata(i), output);
-  }
-
-  // required uint32 rowNum = 3;
-  if (has_rownum()) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->rownum(), output);
-  }
-
-  // required uint64 tableSize = 4;
-  if (has_tablesize()) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt64(4, this->tablesize(), output);
-  }
-
-  if (!unknown_fields().empty()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:TABLE_INFO)
-}
-
-::google::protobuf::uint8* TABLE_INFO::SerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:TABLE_INFO)
-  // required string tableName = 1;
-  if (has_tablename()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->tablename().data(), this->tablename().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "tablename");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->tablename(), target);
-  }
-
-  // repeated .COLUMN_INFO columnData = 2;
-  for (int i = 0; i < this->columndata_size(); i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        2, this->columndata(i), target);
-  }
-
-  // required uint32 rowNum = 3;
-  if (has_rownum()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->rownum(), target);
-  }
-
-  // required uint64 tableSize = 4;
-  if (has_tablesize()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(4, this->tablesize(), target);
-  }
-
-  if (!unknown_fields().empty()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:TABLE_INFO)
-  return target;
-}
-
-int TABLE_INFO::ByteSize() const {
-  int total_size = 0;
-
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required string tableName = 1;
-    if (has_tablename()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->tablename());
-    }
-
-    // required uint32 rowNum = 3;
-    if (has_rownum()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::UInt32Size(
-          this->rownum());
-    }
-
-    // required uint64 tableSize = 4;
-    if (has_tablesize()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::UInt64Size(
-          this->tablesize());
-    }
-
-  }
-  // repeated .COLUMN_INFO columnData = 2;
-  total_size += 1 * this->columndata_size();
-  for (int i = 0; i < this->columndata_size(); i++) {
-    total_size +=
-      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        this->columndata(i));
-  }
 
   if (!unknown_fields().empty()) {
     total_size +=
@@ -807,10 +245,10 @@ int TABLE_INFO::ByteSize() const {
   return total_size;
 }
 
-void TABLE_INFO::MergeFrom(const ::google::protobuf::Message& from) {
+void MSG_DC_RA_DATABASE_INFO_GET::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const TABLE_INFO* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const TABLE_INFO*>(
+  const MSG_DC_RA_DATABASE_INFO_GET* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const MSG_DC_RA_DATABASE_INFO_GET*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -819,322 +257,40 @@ void TABLE_INFO::MergeFrom(const ::google::protobuf::Message& from) {
   }
 }
 
-void TABLE_INFO::MergeFrom(const TABLE_INFO& from) {
+void MSG_DC_RA_DATABASE_INFO_GET::MergeFrom(const MSG_DC_RA_DATABASE_INFO_GET& from) {
   GOOGLE_CHECK_NE(&from, this);
-  columndata_.MergeFrom(from.columndata_);
-  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_tablename()) {
-      set_tablename(from.tablename());
-    }
-    if (from.has_rownum()) {
-      set_rownum(from.rownum());
-    }
-    if (from.has_tablesize()) {
-      set_tablesize(from.tablesize());
-    }
-  }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void TABLE_INFO::CopyFrom(const ::google::protobuf::Message& from) {
+void MSG_DC_RA_DATABASE_INFO_GET::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void TABLE_INFO::CopyFrom(const TABLE_INFO& from) {
+void MSG_DC_RA_DATABASE_INFO_GET::CopyFrom(const MSG_DC_RA_DATABASE_INFO_GET& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool TABLE_INFO::IsInitialized() const {
-  if ((_has_bits_[0] & 0x0000000d) != 0x0000000d) return false;
+bool MSG_DC_RA_DATABASE_INFO_GET::IsInitialized() const {
 
-  if (!::google::protobuf::internal::AllAreInitialized(this->columndata())) return false;
   return true;
 }
 
-void TABLE_INFO::Swap(TABLE_INFO* other) {
+void MSG_DC_RA_DATABASE_INFO_GET::Swap(MSG_DC_RA_DATABASE_INFO_GET* other) {
   if (other != this) {
-    std::swap(tablename_, other->tablename_);
-    columndata_.Swap(&other->columndata_);
-    std::swap(rownum_, other->rownum_);
-    std::swap(tablesize_, other->tablesize_);
-    std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
   }
 }
 
-::google::protobuf::Metadata TABLE_INFO::GetMetadata() const {
+::google::protobuf::Metadata MSG_DC_RA_DATABASE_INFO_GET::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = TABLE_INFO_descriptor_;
-  metadata.reflection = TABLE_INFO_reflection_;
-  return metadata;
-}
-
-
-// ===================================================================
-
-#ifndef _MSC_VER
-const int DATABASE_INFO::kDBIDFieldNumber;
-const int DATABASE_INFO::kTableInfoFieldNumber;
-#endif  // !_MSC_VER
-
-DATABASE_INFO::DATABASE_INFO()
-  : ::google::protobuf::Message() {
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:DATABASE_INFO)
-}
-
-void DATABASE_INFO::InitAsDefaultInstance() {
-}
-
-DATABASE_INFO::DATABASE_INFO(const DATABASE_INFO& from)
-  : ::google::protobuf::Message() {
-  SharedCtor();
-  MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:DATABASE_INFO)
-}
-
-void DATABASE_INFO::SharedCtor() {
-  _cached_size_ = 0;
-  dbid_ = 0;
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-DATABASE_INFO::~DATABASE_INFO() {
-  // @@protoc_insertion_point(destructor:DATABASE_INFO)
-  SharedDtor();
-}
-
-void DATABASE_INFO::SharedDtor() {
-  if (this != default_instance_) {
-  }
-}
-
-void DATABASE_INFO::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* DATABASE_INFO::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return DATABASE_INFO_descriptor_;
-}
-
-const DATABASE_INFO& DATABASE_INFO::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_MSG_5fDC_5fRA_5fDATABASE_5fINFO_5fGET_2eproto();
-  return *default_instance_;
-}
-
-DATABASE_INFO* DATABASE_INFO::default_instance_ = NULL;
-
-DATABASE_INFO* DATABASE_INFO::New() const {
-  return new DATABASE_INFO;
-}
-
-void DATABASE_INFO::Clear() {
-  dbid_ = 0;
-  tableinfo_.Clear();
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  mutable_unknown_fields()->Clear();
-}
-
-bool DATABASE_INFO::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:DATABASE_INFO)
-  for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required int32 DBID = 1;
-      case 1: {
-        if (tag == 8) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &dbid_)));
-          set_has_dbid();
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(18)) goto parse_tableInfo;
-        break;
-      }
-
-      // repeated .TABLE_INFO tableInfo = 2;
-      case 2: {
-        if (tag == 18) {
-         parse_tableInfo:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-                input, add_tableinfo()));
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(18)) goto parse_tableInfo;
-        if (input->ExpectAtEnd()) goto success;
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0 ||
-            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:DATABASE_INFO)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:DATABASE_INFO)
-  return false;
-#undef DO_
-}
-
-void DATABASE_INFO::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:DATABASE_INFO)
-  // required int32 DBID = 1;
-  if (has_dbid()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->dbid(), output);
-  }
-
-  // repeated .TABLE_INFO tableInfo = 2;
-  for (int i = 0; i < this->tableinfo_size(); i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, this->tableinfo(i), output);
-  }
-
-  if (!unknown_fields().empty()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:DATABASE_INFO)
-}
-
-::google::protobuf::uint8* DATABASE_INFO::SerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:DATABASE_INFO)
-  // required int32 DBID = 1;
-  if (has_dbid()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->dbid(), target);
-  }
-
-  // repeated .TABLE_INFO tableInfo = 2;
-  for (int i = 0; i < this->tableinfo_size(); i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        2, this->tableinfo(i), target);
-  }
-
-  if (!unknown_fields().empty()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:DATABASE_INFO)
-  return target;
-}
-
-int DATABASE_INFO::ByteSize() const {
-  int total_size = 0;
-
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required int32 DBID = 1;
-    if (has_dbid()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-          this->dbid());
-    }
-
-  }
-  // repeated .TABLE_INFO tableInfo = 2;
-  total_size += 1 * this->tableinfo_size();
-  for (int i = 0; i < this->tableinfo_size(); i++) {
-    total_size +=
-      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        this->tableinfo(i));
-  }
-
-  if (!unknown_fields().empty()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void DATABASE_INFO::MergeFrom(const ::google::protobuf::Message& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  const DATABASE_INFO* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const DATABASE_INFO*>(
-      &from);
-  if (source == NULL) {
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-    MergeFrom(*source);
-  }
-}
-
-void DATABASE_INFO::MergeFrom(const DATABASE_INFO& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  tableinfo_.MergeFrom(from.tableinfo_);
-  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_dbid()) {
-      set_dbid(from.dbid());
-    }
-  }
-  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-}
-
-void DATABASE_INFO::CopyFrom(const ::google::protobuf::Message& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void DATABASE_INFO::CopyFrom(const DATABASE_INFO& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool DATABASE_INFO::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
-
-  if (!::google::protobuf::internal::AllAreInitialized(this->tableinfo())) return false;
-  return true;
-}
-
-void DATABASE_INFO::Swap(DATABASE_INFO* other) {
-  if (other != this) {
-    std::swap(dbid_, other->dbid_);
-    tableinfo_.Swap(&other->tableinfo_);
-    std::swap(_has_bits_[0], other->_has_bits_[0]);
-    _unknown_fields_.Swap(&other->_unknown_fields_);
-    std::swap(_cached_size_, other->_cached_size_);
-  }
-}
-
-::google::protobuf::Metadata DATABASE_INFO::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = DATABASE_INFO_descriptor_;
-  metadata.reflection = DATABASE_INFO_reflection_;
+  metadata.descriptor = MSG_DC_RA_DATABASE_INFO_GET_descriptor_;
+  metadata.reflection = MSG_DC_RA_DATABASE_INFO_GET_reflection_;
   return metadata;
 }
 

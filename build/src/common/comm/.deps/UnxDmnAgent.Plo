@@ -77,8 +77,7 @@ UnxDmnAgent.lo: ../../../../src/common/comm/UnxDmnAgent.cpp \
  ../../../../include/common/comm/Reader.h \
  ../../../../include/common/comm/Error.h /usr/include/libio.h \
  /usr/include/_G_config.h /usr/include/bits/stdio_lim.h \
- /usr/include/bits/sys_errlist.h /usr/include/bits/stdio.h \
- ../../../../include/common/comm/Writer.h \
+ /usr/include/bits/sys_errlist.h ../../../../include/common/comm/Writer.h \
  ../../../../include/common/comm/ReadCallback.h \
  ../../../../include/common/comm/WriteCallback.h \
  ../../../../include/common/comm/AppProtoSpec.h \
@@ -323,8 +322,6 @@ UnxDmnAgent.lo: ../../../../src/common/comm/UnxDmnAgent.cpp \
 /usr/include/bits/stdio_lim.h:
 
 /usr/include/bits/sys_errlist.h:
-
-/usr/include/bits/stdio.h:
 
 ../../../../include/common/comm/Writer.h:
 

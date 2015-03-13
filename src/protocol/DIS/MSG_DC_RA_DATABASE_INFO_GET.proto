@@ -1,3 +1,9 @@
+import "common.proto";
+message MSG_DC_RA_DATABASE_INFO_GET
+{
+}
+
+/*
 message COLUMN_INFO
 {
     required string colName = 1;
@@ -22,10 +28,13 @@ message DATABASE_INFO
     required int32 DBID = 1;    
     repeated TABLE_INFO tableInfo = 2;
 }
+*/
+
 message MSG_RA_DC_DATABASE_INFO_GET_ACK
 {
     required int32 statusCode = 1;    
     required string statusMsg = 2;
-    repeated DATABASE_INFO dbInfo = 3;
+    //repeated DATABASE_INFO dbInfo = 3;
+	repeated DATABASE_INFO dbInfo = 3;
 }
 

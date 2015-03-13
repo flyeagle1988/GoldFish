@@ -181,7 +181,19 @@ CLDCAgent.o: ../../../src/RA/CLDCAgent.cpp \
  /usr/local/include/google/protobuf/unknown_field_set.h \
  ../../../include/protocol/protocol.h \
  ../../../include/protocol/DIS/MSG_DC_RA_DATABASE_INFO_GET.pb.h \
+ ../../../include/protocol/DIS/common.pb.h \
  ../../../include/protocol/DIS/MSG_DC_RA_IMPORT_SIZE_INFO_GET.pb.h \
+ ../../../include/common/DevLog/DevLog.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/fstream \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/codecvt.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/cstdio \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/x86_64-redhat-linux/bits/basic_file.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/x86_64-redhat-linux/bits/c++io.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/fstream.tcc \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/sstream \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/sstream.tcc \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/iomanip \
+ ../../../include/common/DevLog/FunctionTrace.h \
  ../../../include/common/comm/TaskManager.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/tr1/functional \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/typeinfo \
@@ -635,7 +647,31 @@ CLDCAgent.o: ../../../src/RA/CLDCAgent.cpp \
 
 ../../../include/protocol/DIS/MSG_DC_RA_DATABASE_INFO_GET.pb.h:
 
+../../../include/protocol/DIS/common.pb.h:
+
 ../../../include/protocol/DIS/MSG_DC_RA_IMPORT_SIZE_INFO_GET.pb.h:
+
+../../../include/common/DevLog/DevLog.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/fstream:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/codecvt.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/cstdio:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/x86_64-redhat-linux/bits/basic_file.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/x86_64-redhat-linux/bits/c++io.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/fstream.tcc:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/sstream:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/sstream.tcc:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/iomanip:
+
+../../../include/common/DevLog/FunctionTrace.h:
 
 ../../../include/common/comm/TaskManager.h:
 

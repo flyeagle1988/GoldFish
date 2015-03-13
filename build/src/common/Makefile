@@ -49,7 +49,7 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 LTLIBRARIES = $(noinst_LTLIBRARIES)
 __top_srcdir__lib_libcommon_la_DEPENDENCIES = comm/libcomm.la \
-	daemon/libdaemon.la log/liblog.la odbc/libodbc.la \
+	daemon/libdaemon.la DevLog/libdevlog.la log/liblog.la \
 	sys/libsys.la Timer/libtimer.la util/libutil.la xml/libxml.la
 am___top_srcdir__lib_libcommon_la_OBJECTS =
 __top_srcdir__lib_libcommon_la_OBJECTS =  \
@@ -145,7 +145,7 @@ INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
 LD = /usr/bin/ld -m elf_x86_64
 LDFLAGS = 
 LIBOBJS = 
-LIBS = -lprotobuf -lodbc -lxml2 -lrt -lpthread 
+LIBS = -lprotobuf -lxml2 -lrt -lpthread 
 LIBTOOL = $(SHELL) $(top_builddir)/libtool
 LIPO = 
 LN_S = ln -s
@@ -227,12 +227,12 @@ top_builddir = ../..
 top_srcdir = ../../..
 INCLUDES = -I$(top_srcdir)/include
 noinst_LTLIBRARIES = $(top_srcdir)/lib/libcommon.la
-SUBDIRS = comm daemon log  odbc sys Timer util xml
+SUBDIRS = comm daemon DevLog log sys Timer util xml
 __top_srcdir__lib_libcommon_la_SOURCES = 
 __top_srcdir__lib_libcommon_la_LIBADD = comm/libcomm.la \
 									  daemon/libdaemon.la \
+									  DevLog/libdevlog.la	\
 									  log/liblog.la \
-									  odbc/libodbc.la \
 									  sys/libsys.la \
 									  Timer/libtimer.la \
 									  util/libutil.la \

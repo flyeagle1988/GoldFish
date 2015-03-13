@@ -17,7 +17,7 @@ old_library='libcommon.a'
 inherited_linker_flags=' -pthread'
 
 # Libraries that this one depends upon.
-dependency_libs=' /usr/local/lib/libprotobuf.la -lodbc /usr/local/lib/libxml2.la -ldl -lm -lrt -lpthread'
+dependency_libs=' /usr/local/lib/libprotobuf.la /usr/local/lib/libxml2.la -ldl -lm -lrt -lpthread'
 
 # Names of additional weak libraries provided by this library
 weak_library_names=''

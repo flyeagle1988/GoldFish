@@ -8,14 +8,15 @@
 using std::string;
 using std::map;
 using std::vector;
+using std::multimap;
 
 class Epoll;
 class SocketAddress;
 class TCPSocket;
 
 
-typedef map<string, vector<double> > NumMap;
-typedef map<string, vector<string> > StrMap;
+typedef multimap<string, uint64_t> StrMultiMap;
+typedef multimap<double, uint64_t> NumMultiMap;
 
 class CLRAConnectAgent:public TCPAgent
 {

@@ -14,8 +14,8 @@ UDPAgent.lo: ../../../../src/common/comm/UDPAgent.cpp \
  /usr/include/libio.h /usr/include/_G_config.h /usr/include/wchar.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/include/stdarg.h \
  /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h \
- /usr/include/bits/stdio.h /usr/include/stdint.h \
- /usr/include/bits/wchar.h ../../../../include/common/comm/UDPAgent.h \
+ /usr/include/stdint.h /usr/include/bits/wchar.h \
+ ../../../../include/common/comm/UDPAgent.h \
  ../../../../include/common/comm/Agent.h \
  ../../../../include/common/comm/Error.h \
  ../../../../include/common/comm/BufferManager.h \
@@ -160,8 +160,6 @@ UDPAgent.lo: ../../../../src/common/comm/UDPAgent.cpp \
 /usr/include/bits/stdio_lim.h:
 
 /usr/include/bits/sys_errlist.h:
-
-/usr/include/bits/stdio.h:
 
 /usr/include/stdint.h:
 

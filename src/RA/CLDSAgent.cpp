@@ -4,9 +4,10 @@
 //#include "protocol/DIS/MSG_RA_DS_DELTA_DATA_SEND_pb.h"
 #include "common/comm/TaskManager.h"
 #include "common/log/log.h"
+#include "common/DevLog/DevLog.h"
 #include "RA/CLimportTask.h"
 
-
+extern DevLog * g_pDevLog;
 CLDSAgent::CLDSAgent()
 {
 }
@@ -29,13 +30,15 @@ void CLDSAgent::readBack(InReq & req)
 		{
 			SocketAddress addr;
 			getOppAddr(addr);
-			
-			cout << "DS Import Task Accepted from " << addr.getIP() << endl;
+			string ip = addr.getIP();
+			string msg = "DS Import Task Accepted from " + ip;
+			DEV_LOG(LEVENT,OUT_BOTH,msg);
+
 			string data(req.ioBuf, req.m_msgHeader.length);
 			MSG_DS_RA_IMPORT_TASK_SEND dsImportTask;
 			if(!dsImportTask.ParseFromString(data))
 			{
-				cerr << "CLDSAgent::readBack ParseFromString error!" << endl;
+				DEV_LOG_ERROR("CLDSAgent::readBack ParseFromString error!");
 			}
 			else
 			{

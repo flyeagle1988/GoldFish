@@ -2,9 +2,12 @@
 #include <assert.h>
 #include "common/log/log.h"
 #include "common/comm/Error.h"
+#include "common/DevLog/DevLog.h"
+#include <sstream>
 //using namespace oracle::occi; 
 using namespace std;
 
+extern DevLog *g_pDevLog;
 
 CLDBManager::CLDBManager()
 {
@@ -22,13 +25,22 @@ CLDBManager::~CLDBManager()
 			m_env->terminateConnectionPool(it->second);
 		}
 		Environment::terminateEnvironment(m_env);
-		cout << "CLDBManager::~CLDBManager Oracle Environment Terminated!" << endl;
+		//cout << "CLDBManager::~CLDBManager Oracle Environment Terminated!" << endl;
+		DEV_LOG(LEVENT, OUT_SCR, "CLDBManager::~CLDBManager Oracle Environment Terminated!");
 	}
 	catch(SQLException ex)
 	{
 		string statusMsg = ex.getMessage();
 		int statusCode = ex.getErrorCode();
-		ERROR_LOG("CLDBManager::~CLDBManager Oracle Environment Terminated ERROR, %d, %s! ", statusCode, statusMsg.c_str());
+		string msg = "CLDBManager::~CLDBManager Oracle Environment Terminated ERROR, ";
+		
+		std::stringstream ss;
+		ss << statusCode;
+		string code;
+		ss >> code;
+		msg += code + statusMsg;
+		//ERROR_LOG("CLDBManager::~CLDBManager Oracle Environment Terminated ERROR, %d, %s! ", statusCode, statusMsg.c_str());
+		DEV_LOG(LERROR, OUT_BOTH, msg);
 	}
 }
 
@@ -48,7 +60,8 @@ int CLDBManager::initDB()
 													minConn, maxConn, incrConn);
 			if(connPool != NULL)
 			{
-				cout << "CLDBManager::initDB: create Connection Pool of \" " << it->second.dbID << " \" success!" << endl;
+				string msg = "CLDBManager::initDB: create Connection Pool \" " + intToStr(it->second.dbID) + " \" sucess!";
+				DEV_LOG(LEVENT, OUT_BOTH, msg);
 				m_connPoolMap.insert(make_pair(it->second.dbID, connPool));
 			}
 		}
@@ -56,9 +69,8 @@ int CLDBManager::initDB()
 	catch(SQLException ex)
 	{
 		int statusCode = ex.getErrorCode();
-		string statusMsg = ex.getMessage();
-		cerr << "CLDBManager::initDB error " << statusCode << '\t' << statusMsg.c_str() << endl;
-		ERROR_LOG("CLDBManager::initDB error, %d, %s!", statusCode, statusMsg.c_str());
+		string statusMsg = "CLDBManager::initDB error: " + intToStr(statusCode) + ", " + ex.getMessage();
+		DEV_LOG_ERROR(statusMsg);
 		return FAILED;
 	}
 	return SUCCESSFUL;
@@ -83,15 +95,14 @@ int CLDBManager::getTableSize(unsigned int dbid, string &tableName, unsigned lon
 		connPool = m_connPoolMap[dbid];
 		if(connPool == NULL)
 		{
-			cerr << "CLDBManager::getTableSize: get ConnPool error" << endl;
-			
+			DEV_LOG_ERROR("CLDBManager::getTableSize: get ConnPool error");
 			return FAILED;
 		}
 		conn = connPool->createConnection(dbInfo.dbName, dbInfo.dbPasswd);
 
 		if(conn == NULL)
 		{
-			cerr << "CLDBManager::getTableSize getConnection error!" << endl;
+			DEV_LOG_ERROR("CLDBManager::getTableSize getConnection error!");
 			return FAILED;
 		}
 		MetaData custtab_metaData = conn->getMetaData(tableName, MetaData::PTYPE_TABLE);
@@ -109,12 +120,13 @@ int CLDBManager::getTableSize(unsigned int dbid, string &tableName, unsigned lon
 				rowNum = rs->getDouble(2);
 			}
 		}
+		DEV_LOG(LEVENT, OUT_BOTH, "CLDBManager::getTableSize " + tableName + " sucess!");
 	}
 	catch(SQLException ex)
 	{
 		int stCode = ex.getErrorCode();
-		string stmsg = ex.getMessage();
-		ERROR_LOG("CLDBManager::getTableSize error, %d, %s", stCode, stmsg.c_str());
+		string stmsg = "CLDBManager::getTableSize error: " + intToStr(stCode) + ", " + ex.getMessage();
+		DEV_LOG_ERROR(stmsg);
 		ret = FAILED;
 	}
 	
@@ -230,16 +242,15 @@ int CLDBManager::readMetaData(unsigned int dbID, string &statusMsg)
 		connPool = m_connPoolMap[dbID];
 		if(connPool == NULL)
 		{
-			cerr << "CLDBManager::readMetaData: get ConnPool error!" << endl;
+			DEV_LOG_ERROR("CLDBManager::readMetaData: get ConnPool error!");
 			return FAILED;
 		}
 		conn = connPool->createConnection(dbInfo.dbName, dbInfo.dbPasswd);
 		if(conn == NULL)
 		{
-			cerr << "CLDBManager::readMetaData: getConnection error!" << endl;
+			DEV_LOG_ERROR("CLDBManager::readMetaData: getConnection error!");
 			return FAILED;
 		}
-		//conn = getConnection(dbID);
 		stmt = conn->createStatement(sql);
 		rs = stmt->executeQuery();
 
@@ -268,40 +279,40 @@ int CLDBManager::readMetaData(unsigned int dbID, string &statusMsg)
 						case OCCI_SQLT_DATE:
 						case OCCI_SQLT_DAT:
 						{
-							dbMeta.columnType.push_back(0);	//STRING:0
+							dbMeta.columnType.push_back(0);	//  VARCHAR(string):0
 							break;
 						}
 						case OCCI_SQLT_TIMESTAMP:
 						case OCCI_SQLT_TIMESTAMP_TZ:
 						{
-							dbMeta.columnType.push_back(0);
+							dbMeta.columnType.push_back(4);	//Timestamp(string):4
 							break;
 						}
 						case OCCI_SQLT_STR:
 						case OCCI_SQLT_VCS:
 						case OCCI_SQLT_CHR:
 						{
-							dbMeta.columnType.push_back(0);
+							dbMeta.columnType.push_back(0);	// VARCHAR(string):0
 							break;
 						}
 						case OCCIINT:
 						{
-							dbMeta.columnType.push_back(1); //INT:1
+							dbMeta.columnType.push_back(1); //INTTYPE:1
 							break;
 						}
 						case OCCIFLOAT:
 						{
-							dbMeta.columnType.push_back(2); //FLOAT:2
+							dbMeta.columnType.push_back(2); //DOUBLETYPE:2
 							break;
 						}
 						case OCCI_SQLT_NUM:
 						{
-							dbMeta.columnType.push_back(3); //DOUBLE:3
+							dbMeta.columnType.push_back(2); //DOUBLE:2
 							break;
 						}
 						case OCCI_SQLT_BLOB:
 						{
-							dbMeta.columnType.push_back(0);//STRING:0
+							dbMeta.columnType.push_back(3);//BLOB(STRING):3
 							break;
 						}
 						default:
@@ -320,8 +331,9 @@ int CLDBManager::readMetaData(unsigned int dbID, string &statusMsg)
 	catch(SQLException ex)
 	{
 		statusMsg = ex.getMessage();
-		cerr << "CLDBManager::readMetaData error, " << ex.getErrorCode() << '\t' << statusMsg.c_str() << endl;
-		ERROR_LOG("CLDBManager::getMetaData error, %d, %s",ex.getErrorCode(), statusMsg.c_str());
+		string msg = "CLDBManager::readMetaData error, " + intToStr(ex.getErrorCode()) + ", " + statusMsg;
+		DEV_LOG_ERROR(msg);
+		//ERROR_LOG("CLDBManager::getMetaData error, %d, %s",ex.getErrorCode(), statusMsg.c_str());
 		//statusCode = -17;
 		ret = FAILED;
 		

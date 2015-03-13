@@ -322,7 +322,7 @@ on `(hostname || uname -n) 2>/dev/null | sed 1q`
 "
 
 # Files that config.status was made for.
-config_files=" Makefile src/Makefile src/common/Makefile src/common/comm/Makefile src/common/daemon/Makefile src/common/log/Makefile src/common/sys/Makefile src/common/odbc/Makefile src/common/Timer/Makefile src/common/util/Makefile src/common/xml/Makefile src/protocol/Makefile src/protocol/DIS/Makefile src/RA/Makefile src/DS/Makefile test/Makefile test/RA_TEST/Makefile test/DB_TEST/Makefile test/META_TEST/Makefile test/IMPORT_TEST/Makefile"
+config_files=" Makefile src/Makefile src/common/Makefile src/common/comm/Makefile src/common/daemon/Makefile src/common/DevLog/Makefile src/common/log/Makefile src/common/sys/Makefile src/common/Timer/Makefile src/common/util/Makefile src/common/xml/Makefile src/protocol/Makefile src/protocol/DIS/Makefile src/RA/Makefile src/DS/Makefile test/Makefile test/RA_TEST/Makefile test/DB_TEST/Makefile test/META_TEST/Makefile test/IMPORT_TEST/Makefile"
 config_headers=" config.h"
 config_commands=" depfiles libtool"
 
@@ -728,9 +728,9 @@ do
     "src/common/Makefile") CONFIG_FILES="$CONFIG_FILES src/common/Makefile" ;;
     "src/common/comm/Makefile") CONFIG_FILES="$CONFIG_FILES src/common/comm/Makefile" ;;
     "src/common/daemon/Makefile") CONFIG_FILES="$CONFIG_FILES src/common/daemon/Makefile" ;;
+    "src/common/DevLog/Makefile") CONFIG_FILES="$CONFIG_FILES src/common/DevLog/Makefile" ;;
     "src/common/log/Makefile") CONFIG_FILES="$CONFIG_FILES src/common/log/Makefile" ;;
     "src/common/sys/Makefile") CONFIG_FILES="$CONFIG_FILES src/common/sys/Makefile" ;;
-    "src/common/odbc/Makefile") CONFIG_FILES="$CONFIG_FILES src/common/odbc/Makefile" ;;
     "src/common/Timer/Makefile") CONFIG_FILES="$CONFIG_FILES src/common/Timer/Makefile" ;;
     "src/common/util/Makefile") CONFIG_FILES="$CONFIG_FILES src/common/util/Makefile" ;;
     "src/common/xml/Makefile") CONFIG_FILES="$CONFIG_FILES src/common/xml/Makefile" ;;
@@ -889,7 +889,7 @@ S["INSTALL_PROGRAM"]="${INSTALL}"
 S["target_alias"]=""
 S["host_alias"]=""
 S["build_alias"]=""
-S["LIBS"]="-lprotobuf -lodbc -lxml2 -lrt -lpthread "
+S["LIBS"]="-lprotobuf -lxml2 -lrt -lpthread "
 S["ECHO_T"]=""
 S["ECHO_N"]="-n"
 S["ECHO_C"]=""
@@ -988,7 +988,6 @@ D["LT_OBJDIR"]=" \".libs/\""
 D["HAVE_LIBPTHREAD"]=" 1"
 D["HAVE_LIBRT"]=" 1"
 D["HAVE_LIBXML2"]=" 1"
-D["HAVE_LIBODBC"]=" 1"
 D["HAVE_LIBPROTOBUF"]=" 1"
   for (key in D) D_is_set[key] = 1
   FS = ""

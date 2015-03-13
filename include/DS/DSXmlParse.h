@@ -25,11 +25,14 @@ class DSXmlParse
 		{
 			m_dcPort = port;
 		}
-		DCAddrMap getDCAddr() const
+
+		string getDCIP() const
 		{
-			DCAddrMap dcAddr;
-			dcAddr.insert(make_pair(m_dcIP, m_dcPort));
-			return dcAddr;
+			return m_dcIP;
+		}
+		unsigned short getDCPort() const
+		{
+			return m_dcPort;
 		}
 	private:
 		

@@ -22,7 +22,7 @@ AC_ARG_ENABLE(debug, [  --enable-debug	Enable DEBUG output. ],
 AC_CHECK_LIB(pthread, main)
 AC_CHECK_LIB(rt, main)
 AC_CHECK_LIB(xml2, main)
-AC_CHECK_LIB(odbc, main)
+#AC_CHECK_LIB(odbc, main)
 AC_CHECK_LIB(occi, main)
 AC_CHECK_LIB(clntsh, main)
 AC_CHECK_LIB(protobuf, main)
@@ -37,9 +37,9 @@ AC_CONFIG_FILES([Makefile
                  src/common/Makefile
                  src/common/comm/Makefile
                  src/common/daemon/Makefile
+                 src/common/DevLog/Makefile
                  src/common/log/Makefile
                  src/common/sys/Makefile
-                 src/common/odbc/Makefile
                  src/common/Timer/Makefile
                  src/common/util/Makefile
                  src/common/xml/Makefile
