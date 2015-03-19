@@ -4,7 +4,7 @@
 #include "common/comm/Error.h"
 #include "common/DevLog/DevLog.h"
 #include <sstream>
-//using namespace oracle::occi; 
+
 using namespace std;
 
 extern DevLog *g_pDevLog;
@@ -15,7 +15,6 @@ CLDBManager::CLDBManager()
 
 CLDBManager::~CLDBManager()
 {
-
 	try
 	{
 		for(ConnPoolMap::iterator it = m_connPoolMap.begin();
@@ -25,7 +24,6 @@ CLDBManager::~CLDBManager()
 			m_env->terminateConnectionPool(it->second);
 		}
 		Environment::terminateEnvironment(m_env);
-		//cout << "CLDBManager::~CLDBManager Oracle Environment Terminated!" << endl;
 		DEV_LOG(LEVENT, OUT_SCR, "CLDBManager::~CLDBManager Oracle Environment Terminated!");
 	}
 	catch(SQLException ex)
@@ -61,9 +59,17 @@ int CLDBManager::initDB()
 			if(connPool != NULL)
 			{
 				string msg = "CLDBManager::initDB: create Connection Pool \" " + intToStr(it->second.dbID) + " \" sucess!";
+				//cout << msg.c_str() << endl;
 				DEV_LOG(LEVENT, OUT_BOTH, msg);
 				m_connPoolMap.insert(make_pair(it->second.dbID, connPool));
 			}
+		}
+		for(ConnPoolMap::iterator it = m_connPoolMap.begin();
+								it != m_connPoolMap.end();
+								++it)
+		{
+			DB_INFO dbInfo = getDBInfo(it->first);
+			analyzeTable(it->second, dbInfo);
 		}
 	}
 	catch(SQLException ex)
@@ -111,15 +117,12 @@ int CLDBManager::getTableSize(unsigned int dbid, string &tableName, unsigned lon
 	
 		stmt = conn->createStatement(sql);
 		rs = stmt->executeQuery();
-
-		if(rs)
+		while(rs->next())
 		{
-			while(rs->next())
-			{
-				tableSize = rs->getDouble(1);
-				rowNum = rs->getDouble(2);
-			}
+			tableSize = rs->getDouble(1);
+			rowNum = rs->getDouble(2);
 		}
+
 		DEV_LOG(LEVENT, OUT_BOTH, "CLDBManager::getTableSize " + tableName + " sucess!");
 	}
 	catch(SQLException ex)
@@ -136,86 +139,56 @@ int CLDBManager::getTableSize(unsigned int dbid, string &tableName, unsigned lon
 	
 	return ret;
 }
-/*
-Connection * CLDBManager::getConnection(unsigned int dbID)
-{
-	Connection * conn = NULL;	
-	ConnectionPool * connPool;
-	try
-	{
-		ConnPoolMap::const_iterator it = m_connPoolMap.find(dbID);
-		if(it == m_connPoolMap.end())
-		{
-			cerr << "CLDBManager::getConnection no this connection pool" << endl;
-			return NULL;
-		}
-		else
-		{
-			DB_INFO dbInfo;
-			dbInfo = m_dbInfo[dbID];
-			connPool = it->second;
-			if(connPool == NULL)
-			{
-				cerr << "CLDBManager::getConnection get ConnPool NULL" << endl;
-			}
-			else
-			{
-				conn = connPool->createConnection(dbInfo.dbName, dbInfo.dbPasswd);
-			}
-			if(conn != NULL)
-			{
-				m_connMap.insert(make_pair(m_connID, conn));
-				m_connID++;
-				m_connIDMap.insert(make_pair(m_connID, dbID));
-				cout << "getConnection success!" << endl;
-			}
-			else
-			{
-				cerr << "CLDBManager::getConnection NULL" << endl;
-			}
-		}
-	}
-	catch(SQLException ex)
-	{
-		int stCode = ex.getErrorCode();
-		string stmsg = ex.getMessage();
-		ERROR_LOG("CLDBManager::getDBConnection error, %d, %s!", stCode, stmsg.c_str());
-		conn = NULL;
-	}
-	return conn;
-}
 
-void CLDBManager::recycleConn(Connection * conn)
+int CLDBManager::analyzeTable(ConnectionPool * connPool, DB_INFO &dbInfo)
 {
+	Connection * conn = NULL;
+	Statement * stmt = NULL;
+	Statement * analyzeStmt = NULL;
+	ResultSet * rs = NULL;
+	string sqlTable = "select table_name from user_tables";
+	int ret = SUCCESSFUL;
 	try
 	{
-		ConnMap::iterator it;
-		for(it = m_connMap.begin();	it != m_connMap.end(); ++it)
+		if(connPool ==NULL)
 		{
-			if(it->second == conn)
-			{
-				unsigned int dbID;
-				dbID = m_connIDMap[it->first];
-				ConnectionPool * connPool;
-				connPool = m_connPoolMap[dbID];
-				connPool->terminateConnection(conn);
-			}
+			DEV_LOG_ERROR("CLDBManager::analyzeTable: connPool is NULL!");
+			return FAILED;
 		}
-		if(it == m_connMap.end())
+		conn = connPool->createConnection(dbInfo.dbName, dbInfo.dbPasswd);
+		if(conn == NULL)
 		{
-			cerr << "CLDBManager::recycleConn error!" << endl;
+			DEV_LOG_ERROR("CLDBManager::analyzeTable: getConnection error!");
+			return FAILED;
 		}
 		
+		stmt = conn->createStatement(); 
+		stmt->setSQL(sqlTable);
+		rs = stmt->executeQuery();
+
+		while(rs->next())
+		{
+			string tableName = rs->getString(1);				
+			string sql = "analyze table " + tableName + " compute statistics";
+			analyzeStmt = conn->createStatement(); 
+			analyzeStmt->setSQL(sql);
+			analyzeStmt->executeUpdate();
+		}
+
 	}
 	catch(SQLException ex)
 	{
 		int stCode = ex.getErrorCode();
-		string stmsg = ex.getMessage();
-		ERROR_LOG("CLDBManager::recycleConn error, %d, %s!", stCode, stmsg.c_str());
+		string stmsg = "CLDBManager::analyzeTable error: " + intToStr(stCode) + ", " + ex.getMessage();
+		DEV_LOG_ERROR(stmsg);
+		ret = FAILED;
 	}
+	
+	conn->terminateStatement(stmt);
+	conn->terminateStatement(analyzeStmt);
+	connPool->terminateConnection(conn);
+	return ret;
 }
-*/
-
 void CLDBManager::getDBID(vector < unsigned int > &dbIDVec)
 {
 	for(map<unsigned int , DB_INFO >::iterator it = m_dbInfo.begin();
@@ -226,13 +199,14 @@ void CLDBManager::getDBID(vector < unsigned int > &dbIDVec)
 	}
 }
 
-int CLDBManager::readMetaData(unsigned int dbID, string &statusMsg)
+int CLDBManager::readMetaData(unsigned int dbID, string &statusMsg, DB_META_INFO &dbMetaInfo)
 {
 	Connection * conn = NULL;
 	Statement * stmt = NULL;
 	ResultSet * rs = NULL;
 	int ret = SUCCESSFUL;
 	string sql = "select table_name,num_rows * avg_row_len, num_rows from user_tables";
+	//string sql = "select table_name from user_tab_comments";
 	DB_INFO dbInfo = m_dbInfo[dbID];
 
 	ConnectionPool * connPool;
@@ -254,79 +228,76 @@ int CLDBManager::readMetaData(unsigned int dbID, string &statusMsg)
 		stmt = conn->createStatement(sql);
 		rs = stmt->executeQuery();
 
-		if(rs)
-		{	
-			while(rs->next())
-			{
-				DB_META dbMeta;
-				dbMeta.tableName = rs->getString(1);
-				dbMeta.tableSize = rs->getDouble(2);
-				dbMeta.rowNum = rs->getDouble(3);
+		while(rs->next())
+		{
+			DB_META dbMeta;
+			dbMeta.tableName = rs->getString(1);
+			dbMeta.tableSize = rs->getDouble(2);
+			dbMeta.rowNum = rs->getDouble(3);
 
-				MetaData custtab_metaData = conn->getMetaData(dbMeta.tableName, MetaData::PTYPE_TABLE);
-				vector <MetaData> listOfColumns = custtab_metaData.getVector(MetaData::ATTR_LIST_COLUMNS);
+			MetaData custtab_metaData = conn->getMetaData(dbMeta.tableName, MetaData::PTYPE_TABLE);
+			vector <MetaData> listOfColumns = custtab_metaData.getVector(MetaData::ATTR_LIST_COLUMNS);
 
-				for(vector<MetaData>::iterator i = listOfColumns.begin();                   
-					i != listOfColumns.end();                                   
-					++i)                                                        
-				{                                                                           
-					MetaData columnObj = *i;                                                
-					string colName = columnObj.getString(MetaData::ATTR_NAME);
-					int colType = columnObj.getInt(MetaData::ATTR_DATA_TYPE);
-					dbMeta.columns.push_back(colName);
-					switch(colType)
+			for(vector<MetaData>::iterator i = listOfColumns.begin();                   
+											i != listOfColumns.end();                                   
+										++i)                                                        
+			{                                                                           
+				MetaData columnObj = *i;                                                
+				string colName = columnObj.getString(MetaData::ATTR_NAME);
+				int colType = columnObj.getInt(MetaData::ATTR_DATA_TYPE);
+				dbMeta.columns.push_back(colName);
+				switch(colType)
+				{
+					case OCCI_SQLT_DATE:
+					case OCCI_SQLT_DAT:
 					{
-						case OCCI_SQLT_DATE:
-						case OCCI_SQLT_DAT:
-						{
-							dbMeta.columnType.push_back(0);	//  VARCHAR(string):0
-							break;
-						}
-						case OCCI_SQLT_TIMESTAMP:
-						case OCCI_SQLT_TIMESTAMP_TZ:
-						{
-							dbMeta.columnType.push_back(4);	//Timestamp(string):4
-							break;
-						}
-						case OCCI_SQLT_STR:
-						case OCCI_SQLT_VCS:
-						case OCCI_SQLT_CHR:
-						{
-							dbMeta.columnType.push_back(0);	// VARCHAR(string):0
-							break;
-						}
-						case OCCIINT:
-						{
-							dbMeta.columnType.push_back(1); //INTTYPE:1
-							break;
-						}
-						case OCCIFLOAT:
-						{
-							dbMeta.columnType.push_back(2); //DOUBLETYPE:2
-							break;
-						}
-						case OCCI_SQLT_NUM:
-						{
-							dbMeta.columnType.push_back(2); //DOUBLE:2
-							break;
-						}
-						case OCCI_SQLT_BLOB:
-						{
-							dbMeta.columnType.push_back(3);//BLOB(STRING):3
-							break;
-						}
-						default:
-						{
-							dbMeta.columnType.push_back(0);
-							break;
-						}
+						dbMeta.columnType.push_back(0);	//  VARCHAR(string):0
+						break;
+					}
+					case OCCI_SQLT_TIMESTAMP:
+					case OCCI_SQLT_TIMESTAMP_TZ:
+					{
+						dbMeta.columnType.push_back(4);	//Timestamp(string):4
+						break;
+					}
+					case OCCI_SQLT_STR:
+					case OCCI_SQLT_VCS:
+					case OCCI_SQLT_CHR:
+					{
+						dbMeta.columnType.push_back(0);	// VARCHAR(string):0
+						break;
+					}
+					case OCCIINT:
+					{
+						dbMeta.columnType.push_back(1); //INTTYPE:1
+						break;
+					}
+					case OCCIFLOAT:
+					{
+						dbMeta.columnType.push_back(2); //DOUBLETYPE:2
+						break;
+					}
+					case OCCI_SQLT_NUM:
+					{
+						dbMeta.columnType.push_back(2); //DOUBLE:2
+						break;
+					}
+					case OCCI_SQLT_BLOB:
+					{
+						dbMeta.columnType.push_back(3);//BLOB(STRING):3
+						break;
+					}
+					default:
+					{
+						dbMeta.columnType.push_back(0);
+						break;
 					}
 				}
-				m_dbMetaInfo.dbID = dbID;
-				m_dbMetaInfo.dbMetaData.push_back(dbMeta);
 			}
-			statusMsg = "success";
+			dbMetaInfo.dbID = dbID;
+			dbMetaInfo.dbMetaData.push_back(dbMeta);
 		}
+		statusMsg = "success";
 	}
 	catch(SQLException ex)
 	{

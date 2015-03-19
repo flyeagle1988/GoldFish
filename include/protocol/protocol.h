@@ -37,7 +37,7 @@ const unsigned int DS_RA_DELTA_DATA_SEND_ACK = 0x17;
 
 const unsigned int DS_DC_RESOURCE_GET = 0x18;
 const unsigned int DC_DS_RESOURCE_INFO_ACK = 0x19;
-
+/*Task State*/
 const unsigned int READ_METADATA = 1;
 const unsigned int CREATE_TASK = 5;
 const unsigned int IMPORT_DATA = 4;
@@ -45,8 +45,8 @@ const unsigned int IMPORT_DATA = 4;
 const unsigned int WAIT_WORKITEM = 2;
 const unsigned int FINISH = 3;
 
-const unsigned int DS_IMP_STATE = 1;
-const unsigned int DS_DELTA_STATE = 2;
+const unsigned int DS_IMP_STATE = 6;
+const unsigned int DS_DELTA_STATE = 7;
 
 /*Protobuf Error Code*/
 const int PROTO_PARSE_ERROR = -40;

@@ -1,3 +1,5 @@
+import "MSG_DS_RA_IMPORT_TASK_SEND.proto"
+/*
 message MSG_DS_CS_DATA_UPLOAD
 {
     required string dbName = 1;
@@ -39,8 +41,18 @@ message MSG_DS_CS_DATA_UPLOAD
     required uint32 taskID = 5; 
 }
 
+*/
+
+//每个报文包含一列数据
+message MSG_DS_CS_DATA_UPLOAD
+{
+    required uint32 uplTaskID = 1;      //DS接收到数据，进行数据加载的taskID
+    required int32 dbID = 2;
+    required string tableName = 3;
+    required COL_DATA colData = 4;
+}
 message MSG_CS_DS_DATA_UPLOAD_ACK
 {
-    required uint32 taskID = 1;
+    required uint32 uplTaskID = 1;
     required int32 statusCode = 2;
 }

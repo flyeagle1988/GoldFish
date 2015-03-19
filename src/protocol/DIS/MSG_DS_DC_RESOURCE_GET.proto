@@ -1,3 +1,4 @@
+/*
 message MSG_DS_DC_RESOURCE_GET
 {
 	enum TYPE
@@ -16,4 +17,20 @@ message MSG_DC_DS_RESOURCE_INFO_ACK
 	repeated string ip = 2;
 	repeated int32 cpu = 3;
 	repeated int32 memory = 4;
+}
+*/
+message MSG_DS_DC_RESOURCE_GET
+{
+    required uint32 taskID = 1;
+    required uint32 importSize = 2;
+}
+message CS_INFO
+{
+    required string csIP = 1;
+    required uint32 memory = 2;
+}
+message MSG_DC_DS_RESOURCE_GET_ACK
+{
+    required uint32 taskID = 1;
+    repeated CS_INFO csInfo = 2;
 }

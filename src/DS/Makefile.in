@@ -54,7 +54,8 @@ am___top_srcdir__bin_DS_OBJECTS = main.$(OBJEXT) \
 	CLRAConnectAgent.$(OBJEXT) CLDCConnectAgent.$(OBJEXT) \
 	CLimpTaskManager.$(OBJEXT) CLHeartBeatTimer.$(OBJEXT) \
 	DSXmlParse.$(OBJEXT) CLcreateIndexTask.$(OBJEXT) \
-	CLcreateDeltaTask.$(OBJEXT) CLCSConnectAgent.$(OBJEXT)
+	CLcreateDeltaTask.$(OBJEXT) CLCSConnectAgent.$(OBJEXT) \
+	CLcreateIndexWorkItem.$(OBJEXT)
 __top_srcdir__bin_DS_OBJECTS = $(am___top_srcdir__bin_DS_OBJECTS)
 __top_srcdir__bin_DS_DEPENDENCIES = $(top_srcdir)/lib/libcommon.la \
 	$(top_srcdir)/lib/libprotocol.la
@@ -203,7 +204,8 @@ __top_srcdir__bin_DS_SOURCES = main.cpp \
 							   DSXmlParse.cpp  \
 							   CLcreateIndexTask.cpp \
 							   CLcreateDeltaTask.cpp \
-							   CLCSConnectAgent.cpp
+							   CLCSConnectAgent.cpp  \
+							   CLcreateIndexWorkItem.cpp
 
 __top_srcdir__bin_DS_LDADD = $(top_srcdir)/lib/libcommon.la $(top_srcdir)/lib/libprotocol.la -L/usr/lib/oracle/11.2/client64/lib/ -lclntsh -locci -lxml2
 all: all-am
@@ -302,6 +304,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/CLRAConnectAgent.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/CLcreateDeltaTask.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/CLcreateIndexTask.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/CLcreateIndexWorkItem.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/CLimpTaskManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/DSXmlParse.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/main.Po@am__quote@

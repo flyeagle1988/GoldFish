@@ -170,7 +170,8 @@ CLDCConnectAgent.o: ../../../src/DS/CLDCConnectAgent.cpp \
  ../../../include/common/comm/WriteCallback.h \
  ../../../include/common/comm/AppProtoSpec.h \
  ../../../include/common/comm/TCPSocket.h \
- ../../../include/protocol/dbInfo.h \
+ ../../../include/DS/CLHeartBeatTimer.h \
+ ../../../include/common/Timer/Timer.h ../../../include/protocol/dbInfo.h \
  ../../../include/DS/CLRAConnectAgent.h \
  ../../../include/DS/CLimpTaskManager.h
 
@@ -581,6 +582,10 @@ CLDCConnectAgent.o: ../../../src/DS/CLDCConnectAgent.cpp \
 ../../../include/common/comm/AppProtoSpec.h:
 
 ../../../include/common/comm/TCPSocket.h:
+
+../../../include/DS/CLHeartBeatTimer.h:
+
+../../../include/common/Timer/Timer.h:
 
 ../../../include/protocol/dbInfo.h:
 

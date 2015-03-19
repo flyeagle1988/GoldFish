@@ -27,10 +27,13 @@ CLDCAgent::~CLDCAgent()
 
 void CLDCAgent::readBack(InReq & req)
 {
+	cout << "cmd: " << req.m_msgHeader.cmd << endl;
+	cout << "Packet length: " << req.m_msgHeader.length << endl;
 	switch(req.m_msgHeader.cmd)
 	{
 		case DC_RA_DATABASE_INFO_GET:
 		{
+			cout << "DataBase Info get!" << endl;
 			CLgetMetaDataTask * pGetMetaTask = TaskManager::getInstance()->create<CLgetMetaDataTask>();
 
 			pGetMetaTask->setAgentID(getID());
@@ -64,6 +67,12 @@ void CLDCAgent::readBack(InReq & req)
 					sendPackage(msgHeader, sendData.c_str());
 				}
 			}
+		}
+		default:
+		{
+			cout << "Unknown cmd: " << req.m_msgHeader.cmd << endl;
+			cout << "Packet length: " << req.m_msgHeader.length << endl;
+			break;
 		}
 	}
 }

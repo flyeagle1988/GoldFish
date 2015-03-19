@@ -3,6 +3,7 @@
 #include "common/Timer/Timer.h"
 #include "common/comm/AgentManager.h"
 #include "common/comm/TaskManager.h"
+#include "common/sys/ThreadPool.h"
 #include "common/log/log.h"
 #include "common/util/util.h"
 #include "common/DevLog/DevLog.h"
@@ -18,7 +19,8 @@ using util::conv::conv;
 Epoll * g_pEpoll  = NULL;
 //CLRAConnectAgent * g_RAConnectAgent = NULL;
 TimerManager * g_pTimerManager = NULL;
-
+ThreadPool *g_pThreadPool = NULL;
+ThreadPoolDispatcher *g_pDispatcher = NULL;
 CLDCConnectAgent * g_pDCConnectAgent = NULL;
 const int EPOLLSIZE = 1024;
 const char * filePath = "../build/Config/ds_config.xml";
@@ -51,6 +53,13 @@ int main(int argc, char *argv[])
         RED_MSG("main: DevLog init Error");
         return FAILED;
     }
+	//ThreadPool init
+    g_pThreadPool = new ThreadPool();
+    g_pThreadPool->start();
+	
+    g_pDispatcher = (AgentManager::getInstance())->createAgent<ThreadPoolDispatcher>();
+    g_pDispatcher->init();
+	
 	//Epoll init
     g_pEpoll = new Epoll();
     if ( g_pEpoll->initialize(EPOLLSIZE) == FAILED )
@@ -88,8 +97,6 @@ int main(int argc, char *argv[])
 		DEV_LOG_ERROR("main: init TimerManager error!");
 		return FAILED;
 	}
-	g_pTimerManager->registerThread(::pthread_self());
-
 	
     //raAddr.setAddress(argv[1],conv<unsigned short,char*>(argv[2]));
     //g_RAConnectAgent = (AgentManager::getInstance())->createAgent<CLRAConnectAgent>(raAddr);

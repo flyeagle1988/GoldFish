@@ -14,10 +14,6 @@ class Epoll;
 class SocketAddress;
 class TCPSocket;
 
-
-typedef multimap<string, uint64_t> StrMultiMap;
-typedef multimap<double, uint64_t> NumMultiMap;
-
 class CLRAConnectAgent:public TCPAgent
 {
 	public:

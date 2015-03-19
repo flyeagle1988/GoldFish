@@ -32,11 +32,13 @@ class CLDBManager:public Singleton<CLDBManager>
 			m_dbInfo = dbInfo;
 		}
 		int initDB();
-		int readMetaData(unsigned int dbID, string &statusMsg);
+		int readMetaData(unsigned int dbID, string &statusMsg, DB_META_INFO &dbMetaInfo);
+		/*
 		DB_META_INFO getMetaData()
 		{
 			return m_dbMetaInfo;
 		}
+		*/
 		//Connection * getConnection(unsigned int);
 		//void recycleConn(Connection *);
 		void getDBID(vector<unsigned int> &);
@@ -48,16 +50,21 @@ class CLDBManager:public Singleton<CLDBManager>
 		{
 			return m_connPoolMap[dbid];
 		}
+		string getDBUserName(unsigned int dbid) 
+		{
+			return m_dbInfo[dbid].dbName;
+		}
 		int getTableSize(unsigned int dbid, string &tableName, unsigned long &tableSize, unsigned long &rowNum);
+		int analyzeTable(ConnectionPool *, DB_INFO &);
 	private:
 		typedef map<unsigned int, ConnectionPool *> ConnPoolMap;	//map<dbid, connpool>
 		typedef map<unsigned int , unsigned int > ConnIDMap;		//map<>
 		typedef map<unsigned int, Connection *> ConnMap;		//map<connID, conn*>
-		map<unsigned int , DB_INFO > m_dbInfo;
+		map<unsigned int , DB_INFO > m_dbInfo;			//map<dbid, DB_INFO>
 		ConnPoolMap m_connPoolMap;
 		ConnIDMap m_connIDMap;
 		ConnMap m_connMap;
-		DB_META_INFO m_dbMetaInfo;
+		//DB_META_INFO m_dbMetaInfo;
 		Environment * m_env;
 };
 

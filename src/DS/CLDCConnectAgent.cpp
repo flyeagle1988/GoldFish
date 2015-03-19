@@ -13,21 +13,23 @@
 #include <sstream>
 
 extern DevLog * g_pDevLog;
-CLDCConnectAgent::CLDCConnectAgent()
+CLDCConnectAgent::CLDCConnectAgent():m_pHeartBeatTimer(NULL)
 {
 }
 
-CLDCConnectAgent::CLDCConnectAgent(const SocketAddress &addr):TCPAgent(addr)
+CLDCConnectAgent::CLDCConnectAgent(const SocketAddress &addr):
+			TCPAgent(addr), m_pHeartBeatTimer(NULL)
 {
 }
 
 CLDCConnectAgent::CLDCConnectAgent(const TCPSocket &sock, const SocketAddress &addr):
-	TCPAgent(sock, addr)
+	TCPAgent(sock, addr), m_pHeartBeatTimer(NULL)
 {
 }
 
 CLDCConnectAgent::~CLDCConnectAgent()
 {
+	delete m_pHeartBeatTimer;
 }
 
 int CLDCConnectAgent::init()
@@ -44,7 +46,8 @@ int CLDCConnectAgent::connectAfter(bool bConnect)
 {
 	if(bConnect)
 	{
-		
+		m_pHeartBeatTimer = new CLHeartBeatTimer(HEART_OVERTIME);
+		m_pHeartBeatTimer->attachTimer();
 	}
 	return SUCCESSFUL;
 }
@@ -167,7 +170,7 @@ void CLDCConnectAgent::readBack(InReq & req)
 		}
 		case DC_DS_HEARTBEAT_SEND_ACK:
 		{
-			
+			m_pHeartBeatTimer->updateExpiredTime(HEART_OVERTIME);
 			break;
 		}
 	}

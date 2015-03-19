@@ -3,7 +3,7 @@
  *
  *    Filename:  Timer.h
  *
- * Description:  å®šæ—¶å™¨å®ç°
+ * Description:  ¶¨Ê±Æ÷ÊµÏÖ
  *
  * =============================================================
  */
@@ -37,8 +37,8 @@ using namespace std;
 #define    TIMER_MAXPIPES       100
 
 /**
- * @brief å®šæ—¶å™¨
- * é€šè¿‡ç»§æ‰¿æ­¤ç±»ï¼Œå¹¶é‡å†™doActionæ–¹æ³•æ¥å®ç°ä¸åŒçš„å®šæ—¶ä»»åŠ¡
+ * @brief ¶¨Ê±Æ÷
+ * Í¨¹ı¼Ì³Ğ´ËÀà£¬²¢ÖØĞ´doAction·½·¨À´ÊµÏÖ²»Í¬µÄ¶¨Ê±ÈÎÎñ
  *
  */
 class Timer
@@ -49,7 +49,7 @@ public:
     Timer( unsigned int, long pri = 1 );
 
     /**
-     * @brief å®šæ—¶å™¨åˆ°æœŸåçš„åŠ¨ä½œ
+     * @brief ¶¨Ê±Æ÷µ½ÆÚºóµÄ¶¯×÷
      *
      * @return
      */
@@ -59,16 +59,16 @@ public:
     }
 
     /**
-     * @brief æ›´æ–°åˆ°æœŸæ—¶é—´
+     * @brief ¸üĞÂµ½ÆÚÊ±¼ä
      *
-     * @param int åˆ°æœŸæ—¶é—´ï¼Œç›¸å¯¹æ—¶é—´
+     * @param int µ½ÆÚÊ±¼ä£¬Ïà¶ÔÊ±¼ä
      *
      * @return
      */
     virtual int updateExpiredTime( unsigned int );
 
     /**
-     * @brief æ¸…å†Œåˆ°TimerManager
+     * @brief Çå²áµ½TimerManager
      *
      * @param Epoll
      *
@@ -77,80 +77,80 @@ public:
     int attachTimer();
 
     /**
-     * @brief ä»TimerManagerä¸­åˆ é™¤
+     * @brief ´ÓTimerManagerÖĞÉ¾³ı
      *
      * @return
      */
     int detachTimer( void );
 
     /**
-     * @brief è·å–åˆ°æœŸæ—¶é—´ï¼Œç»å¯¹æ—¶é—´
+     * @brief »ñÈ¡µ½ÆÚÊ±¼ä£¬¾ø¶ÔÊ±¼ä
      *
      * @return
      */
     unsigned int getExpiredTime() const;
 
     /**
-     * @brief è®¾ç½®åˆ°æœŸæ—¶é—´ï¼Œç›¸å¯¹æ—¶é—´
+     * @brief ÉèÖÃµ½ÆÚÊ±¼ä£¬Ïà¶ÔÊ±¼ä
      *
-     * @param int åˆ°æœŸæ—¶é—´
+     * @param int µ½ÆÚÊ±¼ä
      *
      * @return
      */
     int setExpiredTime( unsigned int );
 
     /**
-     * @brief è·å–æ­¤Timerä¼˜å…ˆçº§
+     * @brief »ñÈ¡´ËTimerÓÅÏÈ¼¶
      *
      * @return
      */
     long getPriority() const;
 
     /**
-     * @brief è®¾ç½®ä¼˜å…ˆçº§,
-     * ä¼˜å…ˆçº§å†³å®šåŒä¸€çº¿ç¨‹ä¸‹å‘çš„Timeråˆ°æœŸæ—¶çš„å¤„ç†é¡ºåº
+     * @brief ÉèÖÃÓÅÏÈ¼¶,
+     * ÓÅÏÈ¼¶¾ö¶¨Í¬Ò»Ïß³ÌÏÂ·¢µÄTimerµ½ÆÚÊ±µÄ´¦ÀíË³Ğò
      *
-     * @param long ä¼˜å…ˆçº§
+     * @param long ÓÅÏÈ¼¶
      */
     void setPriority( long );
 
     /**
-     * @brief åˆ›å»ºæ­¤Timerçš„çº¿ç¨‹ID
+     * @brief ´´½¨´ËTimerµÄÏß³ÌID
      *
      * @return
      */
     pthread_t getTid() const;
 
     /**
-     * @brief Timeræ˜¯å¦å·²ç»è¢«detach
+     * @brief TimerÊÇ·ñÒÑ¾­±»detach
      *
      * @return
      */
     bool detached( void ) const;
 
     /**
-     * @brief Timeræ˜¯å¦æ­£åœ¨è¢«æ”¹å˜
+     * @brief TimerÊÇ·ñÕıÔÚ±»¸Ä±ä
      *
      * @return
      */
     int changing( void ) const;
 
     /**
-     * @brief m_Changeingè®¡æ•°å‡1ï¼Œ
-     * Timeråˆ°æœŸäº‹ä»¶è¢«å¿½ç•¥ä¸€æ¬¡
+     * @brief m_Changeing¼ÆÊı¼õ1£¬
+     * Timerµ½ÆÚÊÂ¼ş±»ºöÂÔÒ»´Î
      */
     void cancelChange();
 
     /**
-     * @brief Timeræ˜¯å¦å·²å®Œæˆï¼Œ
-     * å³å·²åˆ°æœŸ
+     * @brief TimerÊÇ·ñÒÑÍê³É£¬
+     * ¼´ÒÑµ½ÆÚ
      *
      * @return
      */
     bool isDone() const;
 
     /**
-     * @brief è®¾ç½®TimerçŠ¶æ€ä¸ºå·²å®Œæˆ
+     * @brief ÉèÖÃTimer×´Ì¬ÎªÒÑÍê³É
      */
     void setDone();
 
@@ -161,15 +161,15 @@ private:
     bool m_bDetached; //whether this Timers obj has been detached
     bool m_bDone;
 
-    // Timeræ›´æ–°åˆ°æœŸæ—¶é—´çš„è®¡æ•°
-    // å¦‚æœTimeræ­£åœ¨è¢«æ”¹å˜ï¼ˆm_Changingä¸ä¸º0ï¼‰ï¼Œ
-    // åˆ™æ­¤æ—¶Timeråˆ°æœŸäº‹ä»¶åº”è¯¥è¢«å¿½ç•¥
+    // Timer¸üĞÂµ½ÆÚÊ±¼äµÄ¼ÆÊı
+    // Èç¹ûTimerÕıÔÚ±»¸Ä±ä£¨m_Changing²»Îª0£©£¬
+    // Ôò´ËÊ±Timerµ½ÆÚÊÂ¼şÓ¦¸Ã±»ºöÂÔ
     int m_changing;
 
     pthread_t m_tid;  //the thread id of the thread that created this Timer obj
     long m_pri;  //the priority
-    unsigned int m_timeOutLen;  //time out length, ç›¸å¯¹æ—¶é—´
-    unsigned int m_expiredTime;  //timer will be expired at this imeï¼Œç»å¯¹æ—¶é—´
+    unsigned int m_timeOutLen;  //time out length, Ïà¶ÔÊ±¼ä
+    unsigned int m_expiredTime;  //timer will be expired at this ime£¬¾ø¶ÔÊ±¼ä
 };
 
 //the rule for sorting of multiset
@@ -191,8 +191,8 @@ struct LessPri : public std::binary_function<Timer*, Timer*, bool>
 
 
 /**
- * @brief TimerManagerç”¨ä¸€ä¸ªçº¿ç¨‹æ¥ç»´æŠ¤æ‰€æœ‰Timerï¼Œ
- * Timeråˆ°æœŸåï¼ŒTimerMangerå°†å…¶å†™å›ç›¸åº”ä¸»çº¿ç¨‹
+ * @brief TimerManagerÓÃÒ»¸öÏß³ÌÀ´Î¬»¤ËùÓĞTimer£¬
+ * Timerµ½ÆÚºó£¬TimerManger½«ÆäĞ´»ØÏàÓ¦Ö÷Ïß³Ì
  */
 class TimerManager : public Agent
 {
@@ -201,28 +201,28 @@ public:
     virtual ~TimerManager();
 
     /**
-     * @brief TimerMangeråˆå§‹åŒ–ï¼Œ
-     * ä¸»è¦è¿›è¡ŒSIGALRMä¿¡å·å¤„ç†è®¾ç½®
+     * @brief TimerManger³õÊ¼»¯£¬
+     * Ö÷Òª½øĞĞSIGALRMĞÅºÅ´¦ÀíÉèÖÃ
      *
      * @return
      */
     int init();                   //initialize the TimerThread
 
     /**
-     * @brief å°†æŸçº¿ç¨‹æ³¨å†Œåˆ°TimerManagerï¼Œ
-     * è¿™å°†å¯¼è‡´åœ¨TimerManagerçº¿ç¨‹å’Œæ³¨å†Œçº¿ç¨‹ä¹‹é—´å»ºç«‹ä¸€æ ¹ç®¡é“ï¼Œ
-     * å¹¶ä¸”æ­¤ç®¡é“çš„è¯»ç«¯æ³¨å†Œåˆ°æŒ‡å®šEpollï¼ŒTimerMnagerå¯ä»¥é€šè¿‡
-     * æ­¤ç®¡é“å‘çº¿ç¨‹å›å†™Timeråˆ°æœŸä¿¡æ¯
+     * @brief ½«Ä³Ïß³Ì×¢²áµ½TimerManager£¬
+     * Õâ½«µ¼ÖÂÔÚTimerManagerÏß³ÌºÍ×¢²áÏß³ÌÖ®¼ä½¨Á¢Ò»¸ù¹ÜµÀ£¬
+     * ²¢ÇÒ´Ë¹ÜµÀµÄ¶Á¶Ë×¢²áµ½Ö¸¶¨Epoll£¬TimerMnager¿ÉÒÔÍ¨¹ı
+     * ´Ë¹ÜµÀÏòÏß³Ì»ØĞ´Timerµ½ÆÚĞÅÏ¢
      *
-     * @param pthread_t æ³¨å†Œçº¿ç¨‹
-     * @param Epoll æ³¨å†ŒEpoll
+     * @param pthread_t ×¢²áÏß³Ì
+     * @param Epoll ×¢²áEpoll
      *
      * @return
      */
     int registerThread( pthread_t );       //
 
     /**
-     * @brief ä»Timer listç§»é™¤Timer
+     * @brief ´ÓTimer listÒÆ³ıTimer
      *
      * @param Timer
      *
@@ -231,8 +231,8 @@ public:
     int removeTimer( const Timer* );    //remove the address of a Timer obj from m_timerList
 
     /**
-     * @brief æ’å…¥Timeråˆ°Timer list,
-     * æŒ‰åˆ°æœŸæ—¶é—´ï¼ˆç»å¯¹æ—¶é—´ï¼‰æ’åº
+     * @brief ²åÈëTimerµ½Timer list,
+     * °´µ½ÆÚÊ±¼ä£¨¾ø¶ÔÊ±¼ä£©ÅÅĞò
      *
      * @param Timer
      *
@@ -241,20 +241,20 @@ public:
     int insertTimer( Timer* );    //insert the address of a Timer obj from m_timerList
 
     /**
-     * @brief æ£€æŸ¥æ˜¯å¦æœ‰Timeråˆ°æœŸï¼Œ
-     * å¦‚æœæœ‰å°†å…¶å†™å›ç›¸åº”ä¸‹å‘çº¿ç¨‹
+     * @brief ¼ì²éÊÇ·ñÓĞTimerµ½ÆÚ£¬
+     * Èç¹ûÓĞ½«ÆäĞ´»ØÏàÓ¦ÏÂ·¢Ïß³Ì
      */
     void checkTimeOut( void );     //check m_timerList and remove all timed out members
 
     /**
-     * @brief TimerMangerçº¿ç¨‹è¯»å–ä¸Šå±‚ä¸‹å‘çš„TimeræŒ‡ä»¤
+     * @brief TimerMangerÏß³Ì¶ÁÈ¡ÉÏ²ãÏÂ·¢µÄTimerÖ¸Áî
      *
      * @return
      */
     Timer* recvTimer();          //TimerManager reads message queue 1
 
     /**
-     * @brief å°†åˆ°æœŸTimerå†™å›æ³¨å†Œçº¿ç¨‹
+     * @brief ½«µ½ÆÚTimerĞ´»Ø×¢²áÏß³Ì
      *
      * @param Timer
      *
@@ -263,30 +263,30 @@ public:
     int sendTimer( Timer* );      //TimerManager writes message queue 2
 
     /**
-     * @brief æ³¨å†Œçº¿ç¨‹ä»TimerManageræ¥æ”¶ä¸€ä¸ªåˆ°æœŸTimer
+     * @brief ×¢²áÏß³Ì´ÓTimerManager½ÓÊÕÒ»¸öµ½ÆÚTimer
      *
      * @return
      */
     Timer* MTRecvTimer();        //main thread read message queue 2
 
     /**
-     * @brief ä¸»çº¿ç¨‹ä¸‹å‘TimeræŒ‡ä»¤
+     * @brief Ö÷Ïß³ÌÏÂ·¢TimerÖ¸Áî
      *
-     * @param Timer æ¬²æ“ä½œçš„Timer
-     * @param int Timeræ“ä½œæŒ‡ä»¤
+     * @param Timer Óû²Ù×÷µÄTimer
+     * @param int Timer²Ù×÷Ö¸Áî
      */
     void MTSendTimer( Timer*, int cmd = TIMER_CMD_ADD ); //main thread write message queue 1
 
     /**
-     * @brief å½“å‰Timerä¸ªæ•°
+     * @brief µ±Ç°Timer¸öÊı
      *
      * @return
      */
     int getLength() const;              //return the length of m_timerList
 
     /**
-     * @brief å›å†™ç®¡é“è¯»äº‹ä»¶åˆ°æ¥ï¼Œä¸»çº¿ç¨‹æ¥æ”¶è¿‡æœŸTimerï¼Œ
-     * æ‰§è¡ŒdoAction
+     * @brief »ØĞ´¹ÜµÀ¶ÁÊÂ¼şµ½À´£¬Ö÷Ïß³Ì½ÓÊÕ¹ıÆÚTimer£¬
+     * Ö´ĞĞdoAction
      *
      * @return
      */
@@ -307,7 +307,7 @@ private:
 
     EpollEvent m_epollEvent;
 
-    // ä¸ºæ¯ä¸ªæ³¨å†Œçº¿ç¨‹ç»´æŠ¤ä¸€æ ¹å›å†™ç®¡é“
+    // ÎªÃ¿¸ö×¢²áÏß³ÌÎ¬»¤Ò»¸ù»ØĞ´¹ÜµÀ
     std::map<pthread_t, int> m_msgRPipeList;
     std::map<pthread_t, int> m_msgWPipeList;
 

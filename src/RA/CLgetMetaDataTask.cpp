@@ -79,7 +79,10 @@ void CLgetMetaDataTask::recvWorkItem(ThreadPoolWorkItem *pWorkItem)
 		MsgHeader msgHeader;
 		msgHeader.cmd = RA_DC_DATABASE_INFO_GET_ACK;
 		msgHeader.length = data.length();
+		cout << "Send to DC length: " << msgHeader.length << endl;
 		pAgent->sendPackage(msgHeader, data.c_str());
+		cout << "send to DC!" << endl;
+
 		data.clear();
 		this->setState(FINISH);
 		goNext();

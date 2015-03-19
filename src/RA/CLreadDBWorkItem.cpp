@@ -24,7 +24,7 @@ CLreadDBWorkItem::~CLreadDBWorkItem()
 }
 int CLreadDBWorkItem::process()
 	{
-		string sql = "select rownum, ";
+		string sql = "select rowid, rownum, ";
 		for(vector<string>::iterator it = m_impTask.colName.begin();
 							it != m_impTask.colName.end();
 							++it)
@@ -108,23 +108,25 @@ int CLreadDBWorkItem::process()
 			NumMap numMap;
 			IntMap iMap;
 			FloatMap fMap;
-			vector<unsigned int> numOfRow;
+			vector<unsigned int> rowNumVec;
+			vector<string>	rowIDVec;
 			if(rs)
 			{
 				unsigned int k = 0;
 				while(rs->next())
 				{	
-					int j = 1;
-	
+					int j = 2;
+					string rowID = rs->getString(1);
 					unsigned int rowNo = rs->getInt(j);
-					numOfRow.push_back(rowNo);
+					rowNumVec.push_back(rowNo);
+					rowIDVec.push_back(rowID);
 					++j;
 	
 					for(vector<int>::iterator i = colType.begin();
 											i != colType.end();
 											++i)
 					{
-						string colName = m_impTask.colName[j-2];
+						string colName = m_impTask.colName[j-3];
 						switch(*i)
 						{
 							case OCCI_SQLT_DATE:
@@ -167,7 +169,7 @@ int CLreadDBWorkItem::process()
 								numMap[colName].push_back(nData);
 								break;
 							}
-							/*
+							
 							case OCCI_SQLT_BLOB:
 							{
 								Blob tmpBlob(conn);
@@ -180,7 +182,13 @@ int CLreadDBWorkItem::process()
 								strMap[colName].push_back(strBlob);
 								break;
 							}
-							*/
+							
+							default:
+							{
+								string strData = rs->getString(j);
+								strMap[colName].push_back(strData);
+								break;
+							}
 						}
 						j++;
 					}
@@ -194,7 +202,26 @@ int CLreadDBWorkItem::process()
 						raImpTaskAck.set_tablename(m_impTask.tableName);
 						raImpTaskAck.set_subtasknum(numOfPack);
 						raImpTaskAck.set_subtaskno(noOfPack);
-	
+
+						//set rowid
+						if(!rowIDVec.empty())
+						{
+							COL_DATA * colData = raImpTaskAck.add_colvalue();
+							colData->set_colname("RowID");
+							colData->set_coltype(COL_DATA_COLUMN_TYPE_STRING);
+							int n = 0;
+							for(vector<string>::iterator it = rowIDVec.begin();
+														it != rowIDVec.end();
+														++it)
+							{
+								COL_VALUE * colValue = colData->add_colvalue();
+								colValue->set_strvalue(*it);
+								colValue->set_rowno(rowNumVec[n]);
+								n++;
+							}
+							vector<string> iVtTemp;
+							iVtTemp.swap(rowIDVec);
+						}
 						if(!strMap.empty()) 
 						{
 							for(StrMap::iterator it = strMap.begin();
@@ -213,7 +240,7 @@ int CLreadDBWorkItem::process()
 								{
 									COL_VALUE * colValue = colData->add_colvalue();
 									colValue->set_strvalue(*iter);
-									colValue->set_rowno(numOfRow[n]);
+									colValue->set_rowno(rowNumVec[n]);
 									
 									n++;
 								}
@@ -230,7 +257,7 @@ int CLreadDBWorkItem::process()
 							{
 								COL_DATA * colData = raImpTaskAck.add_colvalue();
 								colData->set_colname(it->first);
-								colData->set_coltype(COL_DATA_COLUMN_TYPE_NUM);
+								colData->set_coltype(COL_DATA_COLUMN_TYPE_DOUBLE);
 	
 								int n = 0;
 								for(vector<double>::iterator iter = it->second.begin();
@@ -239,7 +266,7 @@ int CLreadDBWorkItem::process()
 								{
 									COL_VALUE * colValue = colData->add_colvalue();
 									colValue->set_dvalue(*iter);
-									colValue->set_rowno(numOfRow[n]);
+									colValue->set_rowno(rowNumVec[n]);
 									
 									n++;
 								}
@@ -256,7 +283,7 @@ int CLreadDBWorkItem::process()
 							{
 								COL_DATA * colData = raImpTaskAck.add_colvalue();
 								colData->set_colname(it->first);
-								colData->set_coltype(COL_DATA_COLUMN_TYPE_NUM);
+								colData->set_coltype(COL_DATA_COLUMN_TYPE_INT);
 								int n = 0;
 								for(vector<int>::iterator iter = it->second.begin();
 												iter != it->second.end();
@@ -264,7 +291,7 @@ int CLreadDBWorkItem::process()
 								{
 									COL_VALUE * colValue = colData->add_colvalue();
 									colValue->set_ivalue(*iter);
-									colValue->set_rowno(numOfRow[n]);
+									colValue->set_rowno(rowNumVec[n]);
 									n++;
 								}
 								vector<int> iVtTemp;
@@ -279,7 +306,7 @@ int CLreadDBWorkItem::process()
 							{
 								COL_DATA * colData = raImpTaskAck.add_colvalue();
 								colData->set_colname(it->first);
-								colData->set_coltype(COL_DATA_COLUMN_TYPE_NUM);
+								colData->set_coltype(COL_DATA_COLUMN_TYPE_FLOAT);
 								int n = 0;
 								for(vector<float>::iterator iter = it->second.begin();
 													iter != it->second.end();
@@ -287,7 +314,7 @@ int CLreadDBWorkItem::process()
 								{
 									COL_VALUE * colValue = colData->add_colvalue();
 									colValue->set_fvalue(*iter);
-									colValue->set_rowno(numOfRow[n]);
+									colValue->set_rowno(rowNumVec[n]);
 									n++;
 								}
 								vector<float> fVtTemp;
@@ -316,6 +343,8 @@ int CLreadDBWorkItem::process()
 								MsgHeader msgHeader;
 								msgHeader.cmd = RA_DS_IMPORT_TASK_ACK;
 								msgHeader.length = data.length();
+								msgHeader.para1 = raImpTaskAck.subtaskno();
+								msgHeader.para2 = raImpTaskAck.subtasknum();
 								pAgent->sendPackage(msgHeader, data.c_str());					
 								data.clear();
 							}

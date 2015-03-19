@@ -5,10 +5,10 @@
 class CLHeartBeatTimer:public Timer
 {
 	public:
-		CLHeartBeatTimer(unsigned int timeLen, long prio);
+		CLHeartBeatTimer(unsigned int timeLen, long prio = 1);
 		~CLHeartBeatTimer();
 		int doAction(void);
 	private:
-		
+		int m_retryNo;
 };
 #endif

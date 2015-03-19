@@ -25,6 +25,14 @@ TEST(CLDBManager, readMetaData)//passed
 
 	CLDBManager::getInstance()->setDBInfo(xmlParse.getDBInfoMap());
 	map<unsigned int, DB_INFO> dbInfoMap = xmlParse.getDBInfoMap();
+
+	map<unsigned int, DB_INFO>::iterator it = dbInfoMap.begin();
+
+	cout << "DB ID: " << it->first << '\t'
+		 << "DB Name: " << it->second.dbName << '\t'
+		 << "DB Passwd: " << it->second.dbPasswd << '\t'
+		 << "DB ConnString:" << it->second.dbConnectString << endl;
+
 	CLDBManager::getInstance()->initDB();
 
 	int rt = -1;
@@ -32,16 +40,11 @@ TEST(CLDBManager, readMetaData)//passed
 	DB_META_INFO dbMetaInfo;
 	cout<<"test readMetaData"<< endl;
 
-	map<unsigned int, DB_INFO>::iterator it = dbInfoMap.begin();
-/*
-	cout << "DB ID: " << it->first << '\t'
-		 << "DB Name: " << it->second.dbName << '\t'
-		 << "DB Passwd: " << it->second.dbPasswd << '\t'
-		 << "DB ConnString:" << it->second.dbConnectString << endl;
-*/
-	rt = CLDBManager::getInstance()->readMetaData(it->second.dbID, statusMsg);
-	dbMetaInfo = CLDBManager::getInstance()->getMetaData();
-/*	
+
+
+	rt = CLDBManager::getInstance()->readMetaData(it->second.dbID, statusMsg, dbMetaInfo);
+	//dbMetaInfo = CLDBManager::getInstance()->getMetaData();
+	
 	for(vector<DB_META>::iterator iter = dbMetaInfo.dbMetaData.begin();
 								iter != dbMetaInfo.dbMetaData.end();
 								++iter)
@@ -55,7 +58,7 @@ TEST(CLDBManager, readMetaData)//passed
 				 	 << "ColumnType: " << (*iter).columnType[i] << endl;
 			}
 		}
-*/
+
 	ASSERT_TRUE(rt == 0);
 
 }

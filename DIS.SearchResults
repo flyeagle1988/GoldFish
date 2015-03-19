@@ -1,2 +1,5 @@
----- check paradir Matches (1 in 1 files) ----
-DevLog.cpp (src\common\devlog):    GREEN_MSG( "check paradir" );
+---- analyzeTable Matches (4 in 2 files) ----
+CLDBManager.cpp (src\ra):int CLDBManager::analyzeTable(ConnectionPool * connPool, const string &tableName, DB_INFO &dbInfo)
+CLDBManager.cpp (src\ra):			DEV_LOG_ERROR("CLDBManager::analyzeTable: getConnection error!");
+CLDBManager.cpp (src\ra):		string stmsg = "CLDBManager::analyzeTable error: " + intToStr(stCode) + ", " + ex.getMessage();
+CLDBManager.h (include\ra):		int analyzeTable(ConnectionPool *, const string &, DB_INFO &);

@@ -646,7 +646,7 @@ TimerManager::recvData()
         {
             break;
         }
-        if ( p->changing() )  // 濡傛灉Timer姝ｅ湪琚敼鍙橈紝蹇界暐姝ゆ浜嬩欢
+        if ( p->changing() )  // 如果Timer正在被改变，忽略此次事件
         {
             p->cancelChange();
             continue;

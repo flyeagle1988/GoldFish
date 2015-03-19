@@ -1,8 +1,10 @@
 #include "DS/CLRAConnectAgent.h"
 #include "DS/CLDCConnectAgent.h"
+#include "DS/CLcreateIndexTask.h"
 #include "common/comm/Epoll.h"
 #include "common/comm/SocketAddress.h"
 #include "common/comm/AgentManager.h"
+#include "common/comm/TaskManager.h"
 #include "common/log/log.h"
 #include "common/DevLog/DevLog.h"
 #include "protocol/protocol.h"
@@ -95,23 +97,14 @@ void CLRAConnectAgent::readBack(InReq &req)
 		case RA_DS_IMPORT_TASK_ACK:
 		{
 			string data(req.ioBuf, req.m_msgHeader.length);
-			MSG_RA_DS_IMPORT_TASK_ACK impTask;
-			if(!impTask.ParseFromString(data))
+			if(req.m_msgHeader.para1 == 0)
 			{
-				DEV_LOG_ERROR("CLRAConnectAgent::readBack Import_Task_Ack parse from string error!");
+				CLcreateIndexTask *pCreateIndexTask = TaskManager::getInstance()->create<CLcreateIndexTask>();
+				pCreateIndexTask->setAgentID(getID());
+				pCreateIndexTask->setData(data);
+				pCreateIndexTask->goNext();
 			}
-			else
-			{
-				if(impTask.subtaskno() == 0)
-				{
 
-				}
-				else
-				{
-
-				}
-			}
-			break;
 		}
 		
 	}

@@ -9,6 +9,7 @@ __top_srcdir__bin_DS_SOURCES = main.cpp \
 							   DSXmlParse.cpp  \
 							   CLcreateIndexTask.cpp \
 							   CLcreateDeltaTask.cpp \
-							   CLCSConnectAgent.cpp
+							   CLCSConnectAgent.cpp  \
+							   CLcreateIndexWorkItem.cpp
 __top_srcdir__bin_DS_LDADD = $(top_srcdir)/lib/libcommon.la $(top_srcdir)/lib/libprotocol.la -L/usr/lib/oracle/11.2/client64/lib/ -lclntsh -locci -lxml2
 

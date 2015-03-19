@@ -35,7 +35,9 @@ message COL_DATA
     enum COLUMN_TYPE
     {
         STRING = 0;
-        NUM = 1;
+        INT = 1;
+        FLOAT = 2;
+        DOUBLE = 3;
     }
     required string colName = 1;
     required COLUMN_TYPE colType = 2 [default = STRING];

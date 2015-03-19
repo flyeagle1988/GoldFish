@@ -98,9 +98,27 @@ CLRAConnectAgent.o: ../../../src/DS/CLRAConnectAgent.cpp \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_map.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_multimap.h \
  ../../../include/DS/CLDCConnectAgent.h \
- ../../../include/common/comm/Epoll.h /usr/include/sys/epoll.h \
- /usr/include/sys/time.h ../../../include/common/comm/AgentManager.h \
+ ../../../include/DS/CLHeartBeatTimer.h \
+ ../../../include/common/Timer/Timer.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/set \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_set.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_multiset.h \
+ /usr/include/sys/epoll.h ../../../include/DS/CLcreateIndexTask.h \
+ ../../../include/common/comm/BaseTask.h \
+ ../../../include/common/comm/Epoll.h /usr/include/sys/time.h \
+ ../../../include/common/comm/AgentManager.h \
  ../../../include/common/sys/Singleton.h \
+ ../../../include/common/comm/TaskManager.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/tr1/functional \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/typeinfo \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/tr1/tuple \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/utility \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_relops.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/tr1/type_traits \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/tr1_impl/type_traits \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/tr1/functional_hash.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/tr1_impl/functional_hash.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/tr1_impl/functional \
  ../../../include/common/log/log.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/cerrno \
  /usr/include/errno.h /usr/include/bits/errno.h \
@@ -154,15 +172,10 @@ CLRAConnectAgent.o: ../../../src/DS/CLRAConnectAgent.cpp \
  /usr/local/include/google/protobuf/message.h \
  /usr/local/include/google/protobuf/message_lite.h \
  /usr/local/include/google/protobuf/descriptor.h \
- /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/set \
- /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_set.h \
- /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_multiset.h \
  /usr/local/include/google/protobuf/repeated_field.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/iterator \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stream_iterator.h \
  /usr/local/include/google/protobuf/stubs/type_traits.h \
- /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/utility \
- /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_relops.h \
  /usr/local/include/google/protobuf/stubs/template_util.h \
  /usr/local/include/google/protobuf/extension_set.h \
  /usr/local/include/google/protobuf/generated_enum_reflection.h \
@@ -424,15 +437,51 @@ CLRAConnectAgent.o: ../../../src/DS/CLRAConnectAgent.cpp \
 
 ../../../include/DS/CLDCConnectAgent.h:
 
-../../../include/common/comm/Epoll.h:
+../../../include/DS/CLHeartBeatTimer.h:
+
+../../../include/common/Timer/Timer.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/set:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_set.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_multiset.h:
 
 /usr/include/sys/epoll.h:
+
+../../../include/DS/CLcreateIndexTask.h:
+
+../../../include/common/comm/BaseTask.h:
+
+../../../include/common/comm/Epoll.h:
 
 /usr/include/sys/time.h:
 
 ../../../include/common/comm/AgentManager.h:
 
 ../../../include/common/sys/Singleton.h:
+
+../../../include/common/comm/TaskManager.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/tr1/functional:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/typeinfo:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/tr1/tuple:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/utility:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_relops.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/tr1/type_traits:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/tr1_impl/type_traits:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/tr1/functional_hash.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/tr1_impl/functional_hash.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/tr1_impl/functional:
 
 ../../../include/common/log/log.h:
 
@@ -552,12 +601,6 @@ CLRAConnectAgent.o: ../../../src/DS/CLRAConnectAgent.cpp \
 
 /usr/local/include/google/protobuf/descriptor.h:
 
-/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/set:
-
-/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_set.h:
-
-/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_multiset.h:
-
 /usr/local/include/google/protobuf/repeated_field.h:
 
 /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/iterator:
@@ -565,10 +608,6 @@ CLRAConnectAgent.o: ../../../src/DS/CLRAConnectAgent.cpp \
 /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stream_iterator.h:
 
 /usr/local/include/google/protobuf/stubs/type_traits.h:
-
-/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/utility:
-
-/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_relops.h:
 
 /usr/local/include/google/protobuf/stubs/template_util.h:
 

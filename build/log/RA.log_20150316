@@ -1,0 +1,136 @@
+
+
+=======================DevLog starts==========================
+
+
+=======================DevLog starts==========================
+2015-03-16 14:17:50 [5ec7:7f98ea923720] EVENT   	CLDBManager::initDB: create Connection Pool " 1 " sucess!
+
+
+=======================DevLog starts==========================
+2015-03-16 14:31:18 [5f3b:7f8d80fe3720] EVENT   	CLDBManager::initDB: create Connection Pool " 1 " sucess!
+
+
+=======================DevLog starts==========================
+2015-03-16 14:41:46 [6039:7f135461f720] EVENT   	CLDBManager::initDB: create Connection Pool " 1 " sucess!
+
+
+=======================DevLog starts==========================
+2015-03-16 14:54:09 [60ab:7f83cf3ad720] EVENT   	CLDBManager::initDB: create Connection Pool " 1 " sucess!
+
+
+=======================DevLog starts==========================
+2015-03-16 14:56:28 [60cd:7fa7c870a720] EVENT   	CLDBManager::initDB: create Connection Pool " 1 " sucess!
+
+
+=======================DevLog starts==========================
+2015-03-16 14:58:59 [6189:7fcc4a0cc720] EVENT   	CLDBManager::initDB: create Connection Pool " 1 " sucess!
+
+
+=======================DevLog starts==========================
+2015-03-16 15:04:09 [6262:7fafd3dd5720] EVENT   	CLDBManager::initDB: create Connection Pool " 1 " sucess!
+
+
+=======================DevLog starts==========================
+2015-03-16 15:06:49 [6280:7fa03b2f1720] EVENT   	CLDBManager::initDB: create Connection Pool " 1 " sucess!
+
+
+=======================DevLog starts==========================
+2015-03-16 15:07:36 [632e:7f3529d77720] EVENT   	CLDBManager::initDB: create Connection Pool " 1 " sucess!
+
+
+=======================DevLog starts==========================
+2015-03-16 15:33:34 [6486:7fa9f9e33720] EVENT   	CLDBManager::initDB: create Connection Pool " 1 " sucess!
+
+
+=======================DevLog starts==========================
+2015-03-16 15:35:52 [6538:7fbe304a9720] EVENT   	CLDBManager::initDB: create Connection Pool " 1 " sucess!
+
+
+=======================DevLog starts==========================
+2015-03-16 15:46:34 [658f:7f062498f720] EVENT   	CLDBManager::initDB: create Connection Pool " 1 " sucess!
+
+
+=======================DevLog starts==========================
+2015-03-16 15:48:01 [65b1:7fe028ebc720] EVENT   	CLDBManager::initDB: create Connection Pool " 1 " sucess!
+
+
+=======================DevLog starts==========================
+2015-03-16 15:55:02 [669e:7f018ff41720] EVENT   	CLDBManager::initDB: create Connection Pool " 1 " sucess!
+
+
+=======================DevLog starts==========================
+2015-03-16 16:01:22 [6cae:7f5a35371720] EVENT   	CLDBManager::initDB: create Connection Pool " 1 " sucess!
+
+
+=======================DevLog starts==========================
+2015-03-16 16:03:51 [6d6b:7f9d8d356720] EVENT   	CLDBManager::initDB: create Connection Pool " 1 " sucess!
+
+
+=======================DevLog starts==========================
+2015-03-16 16:12:16 [6dc3:7fd8680e7720] EVENT   	CLDBManager::initDB: create Connection Pool " 1 " sucess!
+2015-03-16 16:12:16 [6dc3:7fd8680e7720] EVENT   	CLDBManager::initDB: create Connection Pool " 2 " sucess!
+
+
+=======================DevLog starts==========================
+2015-03-16 16:25:36 [6ebe:7ff084621720] EVENT   	CLDBManager::initDB: create Connection Pool " 1 " sucess!
+2015-03-16 16:25:36 [6ebe:7ff084621720] EVENT   	CLDBManager::initDB: create Connection Pool " 2 " sucess!
+2015-03-16 16:26:00 [6ebe:7ff08321d700] ERROR   	CLDBManager::readMetaData error, 904, ORA-00904: "NUM_ROWS": invalid identifier
+ [in ../../../src/RA/CLDBManager.cpp on line 336]
+
+
+=======================DevLog starts==========================
+2015-03-16 16:32:48 [6f97:7f37ee9a1720] EVENT   	CLDBManager::initDB: create Connection Pool " 1 " sucess!
+2015-03-16 16:32:48 [6f97:7f37ee9a1720] EVENT   	CLDBManager::initDB: create Connection Pool " 2 " sucess!
+2015-03-16 16:32:53 [6f97:7f37e5d91700] ERROR   	CLDBManager::readMetaData error, 32109, ORA-32109: invalid column or parameter position
+ [in ../../../src/RA/CLDBManager.cpp on line 336]
+2015-03-16 16:32:53 [6f97:7f37e5d91700] ERROR   	CLDBManager::readMetaData error, 32109, ORA-32109: invalid column or parameter position
+ [in ../../../src/RA/CLDBManager.cpp on line 336]
+
+
+=======================DevLog starts==========================
+2015-03-16 16:34:04 [7046:7f4d626d1720] EVENT   	CLDBManager::initDB: create Connection Pool " 1 " sucess!
+2015-03-16 16:34:04 [7046:7f4d626d1720] EVENT   	CLDBManager::initDB: create Connection Pool " 2 " sucess!
+
+
+=======================DevLog starts==========================
+
+
+=======================DevLog starts==========================
+2015-03-16 16:59:58 [2d5e:7f848c04f720] EVENT   	CLDBManager::initDB: create Connection Pool " 1 " sucess!
+2015-03-16 16:59:58 [2d5e:7f848c04f720] EVENT   	CLDBManager::initDB: create Connection Pool " 2 " sucess!
+
+
+=======================DevLog starts==========================
+2015-03-16 17:02:22 [2ec0:7f4814881720] EVENT   	CLDBManager::initDB: create Connection Pool " 1 " sucess!
+2015-03-16 17:02:22 [2ec0:7f4814881720] EVENT   	CLDBManager::initDB: create Connection Pool " 2 " sucess!
+
+
+=======================DevLog starts==========================
+2015-03-16 17:03:06 [2f68:7fddcfed8720] EVENT   	CLDBManager::initDB: create Connection Pool " 1 " sucess!
+2015-03-16 17:03:06 [2f68:7fddcfed8720] EVENT   	CLDBManager::initDB: create Connection Pool " 2 " sucess!
+
+
+=======================DevLog starts==========================
+2015-03-16 17:15:02 [305e:7f7aa80e2720] EVENT   	CLDBManager::initDB: create Connection Pool " 1 " sucess!
+2015-03-16 17:15:02 [305e:7f7aa80e2720] EVENT   	CLDBManager::initDB: create Connection Pool " 2 " sucess!
+
+
+=======================DevLog starts==========================
+2015-03-16 17:16:31 [3113:7f36e7152720] EVENT   	CLDBManager::initDB: create Connection Pool " 1 " sucess!
+2015-03-16 17:16:31 [3113:7f36e7152720] EVENT   	CLDBManager::initDB: create Connection Pool " 2 " sucess!
+
+
+=======================DevLog starts==========================
+2015-03-16 17:19:49 [31d2:7f36bd154720] EVENT   	CLDBManager::initDB: create Connection Pool " 1 " sucess!
+2015-03-16 17:19:49 [31d2:7f36bd154720] EVENT   	CLDBManager::initDB: create Connection Pool " 2 " sucess!
+
+
+=======================DevLog starts==========================
+2015-03-16 17:25:55 [3355:7f5fa197a720] EVENT   	CLDBManager::initDB: create Connection Pool " 1 " sucess!
+2015-03-16 17:25:55 [3355:7f5fa197a720] EVENT   	CLDBManager::initDB: create Connection Pool " 2 " sucess!
+
+
+=======================DevLog starts==========================
+2015-03-16 17:55:25 [35de:7f1300391720] EVENT   	CLDBManager::initDB: create Connection Pool " 1 " sucess!
+2015-03-16 17:55:25 [35de:7f1300391720] EVENT   	CLDBManager::initDB: create Connection Pool " 2 " sucess!

@@ -236,14 +236,15 @@ void protobuf_AddDesc_MSG_5fDS_5fRA_5fIMPORT_5fTASK_5fSEND_2eproto() {
     "statusCode\030\002 \002(\005\022\021\n\tstatusMsg\030\003 \002(\t\"\\\n\tC"
     "OL_VALUE\022\020\n\010strValue\030\001 \001(\t\022\016\n\006iValue\030\002 \001"
     "(\003\022\016\n\006fValue\030\003 \001(\002\022\016\n\006dValue\030\004 \001(\001\022\r\n\005ro"
-    "wNo\030\005 \002(\004\"\215\001\n\010COL_DATA\022\017\n\007colName\030\001 \002(\t\022"
+    "wNo\030\005 \002(\004\"\244\001\n\010COL_DATA\022\017\n\007colName\030\001 \002(\t\022"
     ".\n\007colType\030\002 \002(\0162\025.COL_DATA.COLUMN_TYPE:"
-    "\006STRING\022\034\n\010colValue\030\003 \003(\0132\n.COL_VALUE\"\"\n"
-    "\013COLUMN_TYPE\022\n\n\006STRING\020\000\022\007\n\003NUM\020\001\"\220\001\n\031MS"
-    "G_RA_DS_IMPORT_TASK_ACK\022\016\n\006taskID\030\001 \002(\r\022"
-    "\014\n\004dbID\030\002 \002(\r\022\021\n\ttableName\030\003 \002(\t\022\021\n\tsubT"
-    "askNo\030\004 \002(\r\022\022\n\nsubTaskNum\030\005 \002(\r\022\033\n\010colVa"
-    "lue\030\006 \003(\0132\t.COL_DATA", 700);
+    "\006STRING\022\034\n\010colValue\030\003 \003(\0132\n.COL_VALUE\"9\n"
+    "\013COLUMN_TYPE\022\n\n\006STRING\020\000\022\007\n\003INT\020\001\022\t\n\005FLO"
+    "AT\020\002\022\n\n\006DOUBLE\020\003\"\220\001\n\031MSG_RA_DS_IMPORT_TA"
+    "SK_ACK\022\016\n\006taskID\030\001 \002(\r\022\014\n\004dbID\030\002 \002(\r\022\021\n\t"
+    "tableName\030\003 \002(\t\022\021\n\tsubTaskNo\030\004 \002(\r\022\022\n\nsu"
+    "bTaskNum\030\005 \002(\r\022\033\n\010colValue\030\006 \003(\0132\t.COL_D"
+    "ATA", 723);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "MSG_DS_RA_IMPORT_TASK_SEND.proto", &protobuf_RegisterTypes);
   IMP_TAB_INFO::default_instance_ = new IMP_TAB_INFO();
@@ -1846,6 +1847,8 @@ bool COL_DATA_COLUMN_TYPE_IsValid(int value) {
   switch(value) {
     case 0:
     case 1:
+    case 2:
+    case 3:
       return true;
     default:
       return false;
@@ -1854,7 +1857,9 @@ bool COL_DATA_COLUMN_TYPE_IsValid(int value) {
 
 #ifndef _MSC_VER
 const COL_DATA_COLUMN_TYPE COL_DATA::STRING;
-const COL_DATA_COLUMN_TYPE COL_DATA::NUM;
+const COL_DATA_COLUMN_TYPE COL_DATA::INT;
+const COL_DATA_COLUMN_TYPE COL_DATA::FLOAT;
+const COL_DATA_COLUMN_TYPE COL_DATA::DOUBLE;
 const COL_DATA_COLUMN_TYPE COL_DATA::COLUMN_TYPE_MIN;
 const COL_DATA_COLUMN_TYPE COL_DATA::COLUMN_TYPE_MAX;
 const int COL_DATA::COLUMN_TYPE_ARRAYSIZE;
