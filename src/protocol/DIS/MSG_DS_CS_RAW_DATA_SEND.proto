@@ -1,0 +1,35 @@
+//获取CS列表后保持列与CS的映射，保证后续数据的发送
+message DIC_VALUE
+{
+    optional string strValue = 1;
+    optional int32 iValue = 2;
+    optional float fValue = 3;
+    optional double dValue = 4;
+        //required uint64 rowNum = 5;
+}
+message MSG_DS_CS_RAW_DATA_SEND     //the groupkey vectors of one column
+{
+    required uint32 taskID = 1;
+    required uint32 dbID = 2;
+    required string tableName = 3;
+    required string columnName = 4;
+    enum COL_TYPE
+    {
+        STRING = 1;
+        INT = 2;
+        FLOAT = 3;
+        DOUBLE = 4;
+    }    
+    required COL_TYPE columnType = 5;
+    //repeated COL_VALUE columnValue = 6;
+    repeated DIC_VALUE dicValue = 6;
+    repeated uint64 indexOffsets = 7;
+    repeated uint64 indexPosting = 8;
+    required uint32 sliceNo = 9;        //子表序号
+    required uint32 sliceNum = 10;       //子表个数
+}
+message MSG_CS_DS_RAW_DATA_SEND_ACK
+{
+    required uint32 taskID = 1;
+    required int32 statusCode = 2;
+}

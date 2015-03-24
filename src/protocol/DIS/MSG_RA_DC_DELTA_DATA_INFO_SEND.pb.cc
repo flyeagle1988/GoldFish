@@ -38,7 +38,8 @@ void protobuf_AssignDesc_MSG_5fRA_5fDC_5fDELTA_5fDATA_5fINFO_5fSEND_2eproto() {
       "MSG_RA_DC_DELTA_DATA_INFO_SEND.proto");
   GOOGLE_CHECK(file != NULL);
   MSG_RA_DC_DELTA_DATA_INFO_SEND_descriptor_ = file->message_type(0);
-  static const int MSG_RA_DC_DELTA_DATA_INFO_SEND_offsets_[1] = {
+  static const int MSG_RA_DC_DELTA_DATA_INFO_SEND_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_RA_DC_DELTA_DATA_INFO_SEND, dbid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_RA_DC_DELTA_DATA_INFO_SEND, tabledeltainfo_),
   };
   MSG_RA_DC_DELTA_DATA_INFO_SEND_reflection_ =
@@ -55,7 +56,7 @@ void protobuf_AssignDesc_MSG_5fRA_5fDC_5fDELTA_5fDATA_5fINFO_5fSEND_2eproto() {
   MSG_RA_DC_DELTA_DATA_INFO_SEND_TABLE_INFO_descriptor_ = MSG_RA_DC_DELTA_DATA_INFO_SEND_descriptor_->nested_type(0);
   static const int MSG_RA_DC_DELTA_DATA_INFO_SEND_TABLE_INFO_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_RA_DC_DELTA_DATA_INFO_SEND_TABLE_INFO, tablename_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_RA_DC_DELTA_DATA_INFO_SEND_TABLE_INFO, tabledeltasize_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_RA_DC_DELTA_DATA_INFO_SEND_TABLE_INFO, deltarownum_),
   };
   MSG_RA_DC_DELTA_DATA_INFO_SEND_TABLE_INFO_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -121,13 +122,13 @@ void protobuf_AddDesc_MSG_5fRA_5fDC_5fDELTA_5fDATA_5fINFO_5fSEND_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n$MSG_RA_DC_DELTA_DATA_INFO_SEND.proto\"\235"
-    "\001\n\036MSG_RA_DC_DELTA_DATA_INFO_SEND\022B\n\016tab"
-    "leDeltaInfo\030\001 \003(\0132*.MSG_RA_DC_DELTA_DATA"
-    "_INFO_SEND.TABLE_INFO\0327\n\nTABLE_INFO\022\021\n\tt"
-    "ableName\030\001 \002(\t\022\026\n\016tableDeltaSize\030\002 \002(\r\"8"
-    "\n\"MSG_DC_RA_DELTA_DATA_INFO_SEND_ACK\022\022\n\n"
-    "statusCode\030\001 \002(\005", 256);
+    "\n$MSG_RA_DC_DELTA_DATA_INFO_SEND.proto\"\250"
+    "\001\n\036MSG_RA_DC_DELTA_DATA_INFO_SEND\022\014\n\004dbI"
+    "D\030\001 \002(\r\022B\n\016tableDeltaInfo\030\002 \003(\0132*.MSG_RA"
+    "_DC_DELTA_DATA_INFO_SEND.TABLE_INFO\0324\n\nT"
+    "ABLE_INFO\022\021\n\ttableName\030\001 \002(\t\022\023\n\013deltaRow"
+    "Num\030\002 \002(\r\"8\n\"MSG_DC_RA_DELTA_DATA_INFO_S"
+    "END_ACK\022\022\n\nstatusCode\030\001 \002(\005", 267);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "MSG_RA_DC_DELTA_DATA_INFO_SEND.proto", &protobuf_RegisterTypes);
   MSG_RA_DC_DELTA_DATA_INFO_SEND::default_instance_ = new MSG_RA_DC_DELTA_DATA_INFO_SEND();
@@ -150,7 +151,7 @@ struct StaticDescriptorInitializer_MSG_5fRA_5fDC_5fDELTA_5fDATA_5fINFO_5fSEND_2e
 
 #ifndef _MSC_VER
 const int MSG_RA_DC_DELTA_DATA_INFO_SEND_TABLE_INFO::kTableNameFieldNumber;
-const int MSG_RA_DC_DELTA_DATA_INFO_SEND_TABLE_INFO::kTableDeltaSizeFieldNumber;
+const int MSG_RA_DC_DELTA_DATA_INFO_SEND_TABLE_INFO::kDeltaRowNumFieldNumber;
 #endif  // !_MSC_VER
 
 MSG_RA_DC_DELTA_DATA_INFO_SEND_TABLE_INFO::MSG_RA_DC_DELTA_DATA_INFO_SEND_TABLE_INFO()
@@ -173,7 +174,7 @@ void MSG_RA_DC_DELTA_DATA_INFO_SEND_TABLE_INFO::SharedCtor() {
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
   tablename_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  tabledeltasize_ = 0u;
+  deltarownum_ = 0u;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -218,7 +219,7 @@ void MSG_RA_DC_DELTA_DATA_INFO_SEND_TABLE_INFO::Clear() {
         tablename_->clear();
       }
     }
-    tabledeltasize_ = 0u;
+    deltarownum_ = 0u;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -246,18 +247,18 @@ bool MSG_RA_DC_DELTA_DATA_INFO_SEND_TABLE_INFO::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(16)) goto parse_tableDeltaSize;
+        if (input->ExpectTag(16)) goto parse_deltaRowNum;
         break;
       }
 
-      // required uint32 tableDeltaSize = 2;
+      // required uint32 deltaRowNum = 2;
       case 2: {
         if (tag == 16) {
-         parse_tableDeltaSize:
+         parse_deltaRowNum:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &tabledeltasize_)));
-          set_has_tabledeltasize();
+                 input, &deltarownum_)));
+          set_has_deltarownum();
         } else {
           goto handle_unusual;
         }
@@ -300,9 +301,9 @@ void MSG_RA_DC_DELTA_DATA_INFO_SEND_TABLE_INFO::SerializeWithCachedSizes(
       1, this->tablename(), output);
   }
 
-  // required uint32 tableDeltaSize = 2;
-  if (has_tabledeltasize()) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->tabledeltasize(), output);
+  // required uint32 deltaRowNum = 2;
+  if (has_deltarownum()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->deltarownum(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -326,9 +327,9 @@ void MSG_RA_DC_DELTA_DATA_INFO_SEND_TABLE_INFO::SerializeWithCachedSizes(
         1, this->tablename(), target);
   }
 
-  // required uint32 tableDeltaSize = 2;
-  if (has_tabledeltasize()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->tabledeltasize(), target);
+  // required uint32 deltaRowNum = 2;
+  if (has_deltarownum()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->deltarownum(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -350,11 +351,11 @@ int MSG_RA_DC_DELTA_DATA_INFO_SEND_TABLE_INFO::ByteSize() const {
           this->tablename());
     }
 
-    // required uint32 tableDeltaSize = 2;
-    if (has_tabledeltasize()) {
+    // required uint32 deltaRowNum = 2;
+    if (has_deltarownum()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
-          this->tabledeltasize());
+          this->deltarownum());
     }
 
   }
@@ -387,8 +388,8 @@ void MSG_RA_DC_DELTA_DATA_INFO_SEND_TABLE_INFO::MergeFrom(const MSG_RA_DC_DELTA_
     if (from.has_tablename()) {
       set_tablename(from.tablename());
     }
-    if (from.has_tabledeltasize()) {
-      set_tabledeltasize(from.tabledeltasize());
+    if (from.has_deltarownum()) {
+      set_deltarownum(from.deltarownum());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -415,7 +416,7 @@ bool MSG_RA_DC_DELTA_DATA_INFO_SEND_TABLE_INFO::IsInitialized() const {
 void MSG_RA_DC_DELTA_DATA_INFO_SEND_TABLE_INFO::Swap(MSG_RA_DC_DELTA_DATA_INFO_SEND_TABLE_INFO* other) {
   if (other != this) {
     std::swap(tablename_, other->tablename_);
-    std::swap(tabledeltasize_, other->tabledeltasize_);
+    std::swap(deltarownum_, other->deltarownum_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -434,6 +435,7 @@ void MSG_RA_DC_DELTA_DATA_INFO_SEND_TABLE_INFO::Swap(MSG_RA_DC_DELTA_DATA_INFO_S
 // -------------------------------------------------------------------
 
 #ifndef _MSC_VER
+const int MSG_RA_DC_DELTA_DATA_INFO_SEND::kDbIDFieldNumber;
 const int MSG_RA_DC_DELTA_DATA_INFO_SEND::kTableDeltaInfoFieldNumber;
 #endif  // !_MSC_VER
 
@@ -455,6 +457,7 @@ MSG_RA_DC_DELTA_DATA_INFO_SEND::MSG_RA_DC_DELTA_DATA_INFO_SEND(const MSG_RA_DC_D
 
 void MSG_RA_DC_DELTA_DATA_INFO_SEND::SharedCtor() {
   _cached_size_ = 0;
+  dbid_ = 0u;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -490,6 +493,7 @@ MSG_RA_DC_DELTA_DATA_INFO_SEND* MSG_RA_DC_DELTA_DATA_INFO_SEND::New() const {
 }
 
 void MSG_RA_DC_DELTA_DATA_INFO_SEND::Clear() {
+  dbid_ = 0u;
   tabledeltainfo_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -505,16 +509,30 @@ bool MSG_RA_DC_DELTA_DATA_INFO_SEND::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .MSG_RA_DC_DELTA_DATA_INFO_SEND.TABLE_INFO tableDeltaInfo = 1;
+      // required uint32 dbID = 1;
       case 1: {
-        if (tag == 10) {
+        if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &dbid_)));
+          set_has_dbid();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_tableDeltaInfo;
+        break;
+      }
+
+      // repeated .MSG_RA_DC_DELTA_DATA_INFO_SEND.TABLE_INFO tableDeltaInfo = 2;
+      case 2: {
+        if (tag == 18) {
          parse_tableDeltaInfo:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
                 input, add_tabledeltainfo()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(10)) goto parse_tableDeltaInfo;
+        if (input->ExpectTag(18)) goto parse_tableDeltaInfo;
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -544,10 +562,15 @@ failure:
 void MSG_RA_DC_DELTA_DATA_INFO_SEND::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:MSG_RA_DC_DELTA_DATA_INFO_SEND)
-  // repeated .MSG_RA_DC_DELTA_DATA_INFO_SEND.TABLE_INFO tableDeltaInfo = 1;
+  // required uint32 dbID = 1;
+  if (has_dbid()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->dbid(), output);
+  }
+
+  // repeated .MSG_RA_DC_DELTA_DATA_INFO_SEND.TABLE_INFO tableDeltaInfo = 2;
   for (int i = 0; i < this->tabledeltainfo_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->tabledeltainfo(i), output);
+      2, this->tabledeltainfo(i), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -560,11 +583,16 @@ void MSG_RA_DC_DELTA_DATA_INFO_SEND::SerializeWithCachedSizes(
 ::google::protobuf::uint8* MSG_RA_DC_DELTA_DATA_INFO_SEND::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:MSG_RA_DC_DELTA_DATA_INFO_SEND)
-  // repeated .MSG_RA_DC_DELTA_DATA_INFO_SEND.TABLE_INFO tableDeltaInfo = 1;
+  // required uint32 dbID = 1;
+  if (has_dbid()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->dbid(), target);
+  }
+
+  // repeated .MSG_RA_DC_DELTA_DATA_INFO_SEND.TABLE_INFO tableDeltaInfo = 2;
   for (int i = 0; i < this->tabledeltainfo_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        1, this->tabledeltainfo(i), target);
+        2, this->tabledeltainfo(i), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -578,7 +606,16 @@ void MSG_RA_DC_DELTA_DATA_INFO_SEND::SerializeWithCachedSizes(
 int MSG_RA_DC_DELTA_DATA_INFO_SEND::ByteSize() const {
   int total_size = 0;
 
-  // repeated .MSG_RA_DC_DELTA_DATA_INFO_SEND.TABLE_INFO tableDeltaInfo = 1;
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // required uint32 dbID = 1;
+    if (has_dbid()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->dbid());
+    }
+
+  }
+  // repeated .MSG_RA_DC_DELTA_DATA_INFO_SEND.TABLE_INFO tableDeltaInfo = 2;
   total_size += 1 * this->tabledeltainfo_size();
   for (int i = 0; i < this->tabledeltainfo_size(); i++) {
     total_size +=
@@ -612,6 +649,11 @@ void MSG_RA_DC_DELTA_DATA_INFO_SEND::MergeFrom(const ::google::protobuf::Message
 void MSG_RA_DC_DELTA_DATA_INFO_SEND::MergeFrom(const MSG_RA_DC_DELTA_DATA_INFO_SEND& from) {
   GOOGLE_CHECK_NE(&from, this);
   tabledeltainfo_.MergeFrom(from.tabledeltainfo_);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_dbid()) {
+      set_dbid(from.dbid());
+    }
+  }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
@@ -628,6 +670,7 @@ void MSG_RA_DC_DELTA_DATA_INFO_SEND::CopyFrom(const MSG_RA_DC_DELTA_DATA_INFO_SE
 }
 
 bool MSG_RA_DC_DELTA_DATA_INFO_SEND::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
 
   if (!::google::protobuf::internal::AllAreInitialized(this->tabledeltainfo())) return false;
   return true;
@@ -635,6 +678,7 @@ bool MSG_RA_DC_DELTA_DATA_INFO_SEND::IsInitialized() const {
 
 void MSG_RA_DC_DELTA_DATA_INFO_SEND::Swap(MSG_RA_DC_DELTA_DATA_INFO_SEND* other) {
   if (other != this) {
+    std::swap(dbid_, other->dbid_);
     tabledeltainfo_.Swap(&other->tabledeltainfo_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);

@@ -9,7 +9,7 @@ using namespace std;
 
 extern DevLog *g_pDevLog;
 
-CLDBManager::CLDBManager()
+CLDBManager::CLDBManager():m_env(NULL)
 {
 }
 

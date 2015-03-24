@@ -38,9 +38,11 @@ void protobuf_AssignDesc_MSG_5fDC_5fDS_5fIMPORT_5fINFO_5fSEND_2eproto() {
       "MSG_DC_DS_IMPORT_INFO_SEND.proto");
   GOOGLE_CHECK(file != NULL);
   MSG_DC_DS_IMPORT_INFO_SEND_descriptor_ = file->message_type(0);
-  static const int MSG_DC_DS_IMPORT_INFO_SEND_offsets_[2] = {
+  static const int MSG_DC_DS_IMPORT_INFO_SEND_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_DC_DS_IMPORT_INFO_SEND, taskid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_DC_DS_IMPORT_INFO_SEND, tableinfo_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_DC_DS_IMPORT_INFO_SEND, isdelta_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_DC_DS_IMPORT_INFO_SEND, tablerownumber_),
   };
   MSG_DC_DS_IMPORT_INFO_SEND_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -126,14 +128,15 @@ void protobuf_AddDesc_MSG_5fDC_5fDS_5fIMPORT_5fINFO_5fSEND_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n MSG_DC_DS_IMPORT_INFO_SEND.proto\"\267\001\n\032M"
+    "\n MSG_DC_DS_IMPORT_INFO_SEND.proto\"\340\001\n\032M"
     "SG_DC_DS_IMPORT_INFO_SEND\022\016\n\006taskID\030\001 \002("
     "\r\0229\n\ttableInfo\030\002 \003(\0132&.MSG_DC_DS_IMPORT_"
-    "INFO_SEND.TABLE_INFO\032N\n\nTABLE_INFO\022\014\n\004db"
-    "id\030\001 \002(\005\022\016\n\006raname\030\002 \002(\t\022\021\n\ttablename\030\003 "
-    "\002(\t\022\017\n\007colName\030\004 \003(\t\"W\n\036MSG_DS_DC_IMPORT"
-    "_INFO_SEND_ACK\022\016\n\006taskID\030\001 \002(\r\022\022\n\nstatus"
-    "Code\030\002 \002(\005\022\021\n\tstatusMsg\030\003 \002(\t", 309);
+    "INFO_SEND.TABLE_INFO\022\017\n\007isDelta\030\003 \002(\010\022\026\n"
+    "\016tableRowNumber\030\004 \001(\r\032N\n\nTABLE_INFO\022\014\n\004d"
+    "bid\030\001 \002(\005\022\016\n\006raname\030\002 \002(\t\022\021\n\ttablename\030\003"
+    " \002(\t\022\017\n\007colName\030\004 \003(\t\"W\n\036MSG_DS_DC_IMPOR"
+    "T_INFO_SEND_ACK\022\016\n\006taskID\030\001 \002(\r\022\022\n\nstatu"
+    "sCode\030\002 \002(\005\022\021\n\tstatusMsg\030\003 \002(\t", 350);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "MSG_DC_DS_IMPORT_INFO_SEND.proto", &protobuf_RegisterTypes);
   MSG_DC_DS_IMPORT_INFO_SEND::default_instance_ = new MSG_DC_DS_IMPORT_INFO_SEND();
@@ -551,6 +554,8 @@ void MSG_DC_DS_IMPORT_INFO_SEND_TABLE_INFO::Swap(MSG_DC_DS_IMPORT_INFO_SEND_TABL
 #ifndef _MSC_VER
 const int MSG_DC_DS_IMPORT_INFO_SEND::kTaskIDFieldNumber;
 const int MSG_DC_DS_IMPORT_INFO_SEND::kTableInfoFieldNumber;
+const int MSG_DC_DS_IMPORT_INFO_SEND::kIsDeltaFieldNumber;
+const int MSG_DC_DS_IMPORT_INFO_SEND::kTableRowNumberFieldNumber;
 #endif  // !_MSC_VER
 
 MSG_DC_DS_IMPORT_INFO_SEND::MSG_DC_DS_IMPORT_INFO_SEND()
@@ -572,6 +577,8 @@ MSG_DC_DS_IMPORT_INFO_SEND::MSG_DC_DS_IMPORT_INFO_SEND(const MSG_DC_DS_IMPORT_IN
 void MSG_DC_DS_IMPORT_INFO_SEND::SharedCtor() {
   _cached_size_ = 0;
   taskid_ = 0u;
+  isdelta_ = false;
+  tablerownumber_ = 0u;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -607,7 +614,21 @@ MSG_DC_DS_IMPORT_INFO_SEND* MSG_DC_DS_IMPORT_INFO_SEND::New() const {
 }
 
 void MSG_DC_DS_IMPORT_INFO_SEND::Clear() {
-  taskid_ = 0u;
+#define OFFSET_OF_FIELD_(f) (reinterpret_cast<char*>(      \
+  &reinterpret_cast<MSG_DC_DS_IMPORT_INFO_SEND*>(16)->f) - \
+   reinterpret_cast<char*>(16))
+
+#define ZR_(first, last) do {                              \
+    size_t f = OFFSET_OF_FIELD_(first);                    \
+    size_t n = OFFSET_OF_FIELD_(last) - f + sizeof(last);  \
+    ::memset(&first, 0, n);                                \
+  } while (0)
+
+  ZR_(taskid_, tablerownumber_);
+
+#undef OFFSET_OF_FIELD_
+#undef ZR_
+
   tableinfo_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -647,6 +668,36 @@ bool MSG_DC_DS_IMPORT_INFO_SEND::MergePartialFromCodedStream(
           goto handle_unusual;
         }
         if (input->ExpectTag(18)) goto parse_tableInfo;
+        if (input->ExpectTag(24)) goto parse_isDelta;
+        break;
+      }
+
+      // required bool isDelta = 3;
+      case 3: {
+        if (tag == 24) {
+         parse_isDelta:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &isdelta_)));
+          set_has_isdelta();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(32)) goto parse_tableRowNumber;
+        break;
+      }
+
+      // optional uint32 tableRowNumber = 4;
+      case 4: {
+        if (tag == 32) {
+         parse_tableRowNumber:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &tablerownumber_)));
+          set_has_tablerownumber();
+        } else {
+          goto handle_unusual;
+        }
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -687,6 +738,16 @@ void MSG_DC_DS_IMPORT_INFO_SEND::SerializeWithCachedSizes(
       2, this->tableinfo(i), output);
   }
 
+  // required bool isDelta = 3;
+  if (has_isdelta()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(3, this->isdelta(), output);
+  }
+
+  // optional uint32 tableRowNumber = 4;
+  if (has_tablerownumber()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->tablerownumber(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -709,6 +770,16 @@ void MSG_DC_DS_IMPORT_INFO_SEND::SerializeWithCachedSizes(
         2, this->tableinfo(i), target);
   }
 
+  // required bool isDelta = 3;
+  if (has_isdelta()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(3, this->isdelta(), target);
+  }
+
+  // optional uint32 tableRowNumber = 4;
+  if (has_tablerownumber()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(4, this->tablerownumber(), target);
+  }
+
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -726,6 +797,18 @@ int MSG_DC_DS_IMPORT_INFO_SEND::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
           this->taskid());
+    }
+
+    // required bool isDelta = 3;
+    if (has_isdelta()) {
+      total_size += 1 + 1;
+    }
+
+    // optional uint32 tableRowNumber = 4;
+    if (has_tablerownumber()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->tablerownumber());
     }
 
   }
@@ -767,6 +850,12 @@ void MSG_DC_DS_IMPORT_INFO_SEND::MergeFrom(const MSG_DC_DS_IMPORT_INFO_SEND& fro
     if (from.has_taskid()) {
       set_taskid(from.taskid());
     }
+    if (from.has_isdelta()) {
+      set_isdelta(from.isdelta());
+    }
+    if (from.has_tablerownumber()) {
+      set_tablerownumber(from.tablerownumber());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -784,7 +873,7 @@ void MSG_DC_DS_IMPORT_INFO_SEND::CopyFrom(const MSG_DC_DS_IMPORT_INFO_SEND& from
 }
 
 bool MSG_DC_DS_IMPORT_INFO_SEND::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
+  if ((_has_bits_[0] & 0x00000005) != 0x00000005) return false;
 
   if (!::google::protobuf::internal::AllAreInitialized(this->tableinfo())) return false;
   return true;
@@ -794,6 +883,8 @@ void MSG_DC_DS_IMPORT_INFO_SEND::Swap(MSG_DC_DS_IMPORT_INFO_SEND* other) {
   if (other != this) {
     std::swap(taskid_, other->taskid_);
     tableinfo_.Swap(&other->tableinfo_);
+    std::swap(isdelta_, other->isdelta_);
+    std::swap(tablerownumber_, other->tablerownumber_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

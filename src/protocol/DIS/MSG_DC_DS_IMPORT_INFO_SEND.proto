@@ -9,6 +9,8 @@ message MSG_DC_DS_IMPORT_INFO_SEND
         repeated string colName = 4;
     }
     repeated TABLE_INFO tableInfo = 2;
+    required bool isDelta = 3;       //TRUE: DELTA; FALSE:import
+    optional uint32 tableRowNumber = 4;     // the largest number of rowkey
 }
 
 message MSG_DS_DC_IMPORT_INFO_SEND_ACK

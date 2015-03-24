@@ -1,0 +1,12 @@
+import "common.proto";
+message MSG_CS_DS_ROW_TABLE_SEND
+{
+    required uint32 dbID = 1;
+    required string tableName = 2;
+    required string columnName = 3;
+    repeated ROWKEY_ENTRY rowTable = 4;
+}
+message MSG_DS_CS_ROW_TABLE_SEND_ACK
+{
+    required int32 statusCode = 1;
+}

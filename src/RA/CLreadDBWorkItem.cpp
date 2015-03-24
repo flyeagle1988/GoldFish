@@ -206,7 +206,7 @@ int CLreadDBWorkItem::process()
 						//set rowid
 						if(!rowIDVec.empty())
 						{
-							COL_DATA * colData = raImpTaskAck.add_colvalue();
+							COL_DATA * colData = raImpTaskAck.add_coldata();
 							colData->set_colname("RowID");
 							colData->set_coltype(COL_DATA_COLUMN_TYPE_STRING);
 							int n = 0;
@@ -228,7 +228,7 @@ int CLreadDBWorkItem::process()
 											it != strMap.end();
 											++it)
 							{
-								COL_DATA * colData = raImpTaskAck.add_colvalue();
+								COL_DATA * colData = raImpTaskAck.add_coldata();
 								colData->set_colname(it->first);
 								
 								colData->set_coltype(COL_DATA_COLUMN_TYPE_STRING);
@@ -255,7 +255,7 @@ int CLreadDBWorkItem::process()
 											it != numMap.end();
 											++it)
 							{
-								COL_DATA * colData = raImpTaskAck.add_colvalue();
+								COL_DATA * colData = raImpTaskAck.add_coldata();
 								colData->set_colname(it->first);
 								colData->set_coltype(COL_DATA_COLUMN_TYPE_DOUBLE);
 	
@@ -281,7 +281,7 @@ int CLreadDBWorkItem::process()
 												it != iMap.end();
 												++it)
 							{
-								COL_DATA * colData = raImpTaskAck.add_colvalue();
+								COL_DATA * colData = raImpTaskAck.add_coldata();
 								colData->set_colname(it->first);
 								colData->set_coltype(COL_DATA_COLUMN_TYPE_INT);
 								int n = 0;
@@ -304,7 +304,7 @@ int CLreadDBWorkItem::process()
 												it != fMap.end();
 												++it)
 							{
-								COL_DATA * colData = raImpTaskAck.add_colvalue();
+								COL_DATA * colData = raImpTaskAck.add_coldata();
 								colData->set_colname(it->first);
 								colData->set_coltype(COL_DATA_COLUMN_TYPE_FLOAT);
 								int n = 0;

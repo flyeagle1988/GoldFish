@@ -102,26 +102,26 @@ class MSG_RA_DC_DELTA_DATA_INFO_SEND_TABLE_INFO : public ::google::protobuf::Mes
   inline ::std::string* release_tablename();
   inline void set_allocated_tablename(::std::string* tablename);
 
-  // required uint32 tableDeltaSize = 2;
-  inline bool has_tabledeltasize() const;
-  inline void clear_tabledeltasize();
-  static const int kTableDeltaSizeFieldNumber = 2;
-  inline ::google::protobuf::uint32 tabledeltasize() const;
-  inline void set_tabledeltasize(::google::protobuf::uint32 value);
+  // required uint32 deltaRowNum = 2;
+  inline bool has_deltarownum() const;
+  inline void clear_deltarownum();
+  static const int kDeltaRowNumFieldNumber = 2;
+  inline ::google::protobuf::uint32 deltarownum() const;
+  inline void set_deltarownum(::google::protobuf::uint32 value);
 
   // @@protoc_insertion_point(class_scope:MSG_RA_DC_DELTA_DATA_INFO_SEND.TABLE_INFO)
  private:
   inline void set_has_tablename();
   inline void clear_has_tablename();
-  inline void set_has_tabledeltasize();
-  inline void clear_has_tabledeltasize();
+  inline void set_has_deltarownum();
+  inline void clear_has_deltarownum();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
   ::std::string* tablename_;
-  ::google::protobuf::uint32 tabledeltasize_;
+  ::google::protobuf::uint32 deltarownum_;
   friend void  protobuf_AddDesc_MSG_5fRA_5fDC_5fDELTA_5fDATA_5fINFO_5fSEND_2eproto();
   friend void protobuf_AssignDesc_MSG_5fRA_5fDC_5fDELTA_5fDATA_5fINFO_5fSEND_2eproto();
   friend void protobuf_ShutdownFile_MSG_5fRA_5fDC_5fDELTA_5fDATA_5fINFO_5fSEND_2eproto();
@@ -186,10 +186,17 @@ class MSG_RA_DC_DELTA_DATA_INFO_SEND : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // repeated .MSG_RA_DC_DELTA_DATA_INFO_SEND.TABLE_INFO tableDeltaInfo = 1;
+  // required uint32 dbID = 1;
+  inline bool has_dbid() const;
+  inline void clear_dbid();
+  static const int kDbIDFieldNumber = 1;
+  inline ::google::protobuf::uint32 dbid() const;
+  inline void set_dbid(::google::protobuf::uint32 value);
+
+  // repeated .MSG_RA_DC_DELTA_DATA_INFO_SEND.TABLE_INFO tableDeltaInfo = 2;
   inline int tabledeltainfo_size() const;
   inline void clear_tabledeltainfo();
-  static const int kTableDeltaInfoFieldNumber = 1;
+  static const int kTableDeltaInfoFieldNumber = 2;
   inline const ::MSG_RA_DC_DELTA_DATA_INFO_SEND_TABLE_INFO& tabledeltainfo(int index) const;
   inline ::MSG_RA_DC_DELTA_DATA_INFO_SEND_TABLE_INFO* mutable_tabledeltainfo(int index);
   inline ::MSG_RA_DC_DELTA_DATA_INFO_SEND_TABLE_INFO* add_tabledeltainfo();
@@ -200,12 +207,15 @@ class MSG_RA_DC_DELTA_DATA_INFO_SEND : public ::google::protobuf::Message {
 
   // @@protoc_insertion_point(class_scope:MSG_RA_DC_DELTA_DATA_INFO_SEND)
  private:
+  inline void set_has_dbid();
+  inline void clear_has_dbid();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
   ::google::protobuf::RepeatedPtrField< ::MSG_RA_DC_DELTA_DATA_INFO_SEND_TABLE_INFO > tabledeltainfo_;
+  ::google::protobuf::uint32 dbid_;
   friend void  protobuf_AddDesc_MSG_5fRA_5fDC_5fDELTA_5fDATA_5fINFO_5fSEND_2eproto();
   friend void protobuf_AssignDesc_MSG_5fRA_5fDC_5fDELTA_5fDATA_5fINFO_5fSEND_2eproto();
   friend void protobuf_ShutdownFile_MSG_5fRA_5fDC_5fDELTA_5fDATA_5fINFO_5fSEND_2eproto();
@@ -375,35 +385,59 @@ inline void MSG_RA_DC_DELTA_DATA_INFO_SEND_TABLE_INFO::set_allocated_tablename(:
   // @@protoc_insertion_point(field_set_allocated:MSG_RA_DC_DELTA_DATA_INFO_SEND.TABLE_INFO.tableName)
 }
 
-// required uint32 tableDeltaSize = 2;
-inline bool MSG_RA_DC_DELTA_DATA_INFO_SEND_TABLE_INFO::has_tabledeltasize() const {
+// required uint32 deltaRowNum = 2;
+inline bool MSG_RA_DC_DELTA_DATA_INFO_SEND_TABLE_INFO::has_deltarownum() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void MSG_RA_DC_DELTA_DATA_INFO_SEND_TABLE_INFO::set_has_tabledeltasize() {
+inline void MSG_RA_DC_DELTA_DATA_INFO_SEND_TABLE_INFO::set_has_deltarownum() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void MSG_RA_DC_DELTA_DATA_INFO_SEND_TABLE_INFO::clear_has_tabledeltasize() {
+inline void MSG_RA_DC_DELTA_DATA_INFO_SEND_TABLE_INFO::clear_has_deltarownum() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void MSG_RA_DC_DELTA_DATA_INFO_SEND_TABLE_INFO::clear_tabledeltasize() {
-  tabledeltasize_ = 0u;
-  clear_has_tabledeltasize();
+inline void MSG_RA_DC_DELTA_DATA_INFO_SEND_TABLE_INFO::clear_deltarownum() {
+  deltarownum_ = 0u;
+  clear_has_deltarownum();
 }
-inline ::google::protobuf::uint32 MSG_RA_DC_DELTA_DATA_INFO_SEND_TABLE_INFO::tabledeltasize() const {
-  // @@protoc_insertion_point(field_get:MSG_RA_DC_DELTA_DATA_INFO_SEND.TABLE_INFO.tableDeltaSize)
-  return tabledeltasize_;
+inline ::google::protobuf::uint32 MSG_RA_DC_DELTA_DATA_INFO_SEND_TABLE_INFO::deltarownum() const {
+  // @@protoc_insertion_point(field_get:MSG_RA_DC_DELTA_DATA_INFO_SEND.TABLE_INFO.deltaRowNum)
+  return deltarownum_;
 }
-inline void MSG_RA_DC_DELTA_DATA_INFO_SEND_TABLE_INFO::set_tabledeltasize(::google::protobuf::uint32 value) {
-  set_has_tabledeltasize();
-  tabledeltasize_ = value;
-  // @@protoc_insertion_point(field_set:MSG_RA_DC_DELTA_DATA_INFO_SEND.TABLE_INFO.tableDeltaSize)
+inline void MSG_RA_DC_DELTA_DATA_INFO_SEND_TABLE_INFO::set_deltarownum(::google::protobuf::uint32 value) {
+  set_has_deltarownum();
+  deltarownum_ = value;
+  // @@protoc_insertion_point(field_set:MSG_RA_DC_DELTA_DATA_INFO_SEND.TABLE_INFO.deltaRowNum)
 }
 
 // -------------------------------------------------------------------
 
 // MSG_RA_DC_DELTA_DATA_INFO_SEND
 
-// repeated .MSG_RA_DC_DELTA_DATA_INFO_SEND.TABLE_INFO tableDeltaInfo = 1;
+// required uint32 dbID = 1;
+inline bool MSG_RA_DC_DELTA_DATA_INFO_SEND::has_dbid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void MSG_RA_DC_DELTA_DATA_INFO_SEND::set_has_dbid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void MSG_RA_DC_DELTA_DATA_INFO_SEND::clear_has_dbid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void MSG_RA_DC_DELTA_DATA_INFO_SEND::clear_dbid() {
+  dbid_ = 0u;
+  clear_has_dbid();
+}
+inline ::google::protobuf::uint32 MSG_RA_DC_DELTA_DATA_INFO_SEND::dbid() const {
+  // @@protoc_insertion_point(field_get:MSG_RA_DC_DELTA_DATA_INFO_SEND.dbID)
+  return dbid_;
+}
+inline void MSG_RA_DC_DELTA_DATA_INFO_SEND::set_dbid(::google::protobuf::uint32 value) {
+  set_has_dbid();
+  dbid_ = value;
+  // @@protoc_insertion_point(field_set:MSG_RA_DC_DELTA_DATA_INFO_SEND.dbID)
+}
+
+// repeated .MSG_RA_DC_DELTA_DATA_INFO_SEND.TABLE_INFO tableDeltaInfo = 2;
 inline int MSG_RA_DC_DELTA_DATA_INFO_SEND::tabledeltainfo_size() const {
   return tabledeltainfo_.size();
 }

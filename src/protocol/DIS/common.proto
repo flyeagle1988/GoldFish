@@ -49,3 +49,8 @@ message GROUP_DB_INFO
     required string groupName = 1;
     repeated string databasename = 2;
 }
+message ROWKEY_ENTRY
+{
+    required uint64 rowKey = 1;
+    required uint64 entry = 2;
+}

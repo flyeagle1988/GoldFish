@@ -1,6 +1,7 @@
 #include "DS/CLcreateIndexWorkItem.h"
 #include "common/DevLog/DevLog.h"
 #include "protocol/DIS/MSG_DS_RA_IMPORT_TASK_SEND.pb.h"
+#include "DS/DGroupKey.h"
 
 extern DevLog * g_pDevLog;
 extern CLDCConnectAgent * g_pDCConnectAgent;
@@ -15,11 +16,14 @@ CLcreateIndexWorkItem::~CLcreateIndexWorkItem()
 int CLcreateIndexWorkItem::process()
 {
 	MSG_RA_DS_IMPORT_TASK_ACK impTaskAck;
-	map<string , multimap<string , uint64_t > > strMap;
-	map<string, multimap<int , uint64_t > > iMap;
-	map<string, multimap<float , uint64_t > > fMap;
-	map<string, multimap<double, uint64_t > > dMap;
-	
+	typedef map<string , multimap<string , uint64_t > > StrMap;
+	typedef map<string, multimap<int , uint64_t > > IntMap;
+	typedef map<string, multimap<float , uint64_t > > FloatMap;
+	typedef map<string, multimap<double, uint64_t > > DoubleMap;
+	StrMap strMap;
+	IntMap iMap;
+	FloatMap fMap;
+	DoubleMap dMap;
 	if(!impTaskAck.ParseFromString(getData()))
 	{
 		DEV_LOG_ERROR("CLcreateIndexWorkItem::process parse from string error!");
@@ -79,7 +83,10 @@ int CLcreateIndexWorkItem::process()
 				
 			}
 		}
-	
+	for(StrMap::iterator it = strMap.begin(); it != strMap.end(); it++)
+	{
+		DGroupKey<string> * column = constructDGroupKey(it->first,uint64_t itemCount,uint64_t base,uint64_t type,multimap < string,uint64_t > initMap);
+	}
 		
 	}
 	return SUCCESSFUL;

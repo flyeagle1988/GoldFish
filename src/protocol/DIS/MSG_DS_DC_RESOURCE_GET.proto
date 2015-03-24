@@ -21,16 +21,17 @@ message MSG_DC_DS_RESOURCE_INFO_ACK
 */
 message MSG_DS_DC_RESOURCE_GET
 {
-    required uint32 taskID = 1;
-    required uint32 importSize = 2;
+    required uint32 taskID = 1;     //内部taskid
+    repeated uint32 columnSize = 2;    //每张表每个整列的大小的列表
 }
 message CS_INFO
 {
-    required string csIP = 1;
-    required uint32 memory = 2;
+    optional string csIP = 1;       //csIP,端口读配置文件，为空时表示cs申请失败
 }
 message MSG_DC_DS_RESOURCE_GET_ACK
 {
     required uint32 taskID = 1;
     repeated CS_INFO csInfo = 2;
 }
+
+

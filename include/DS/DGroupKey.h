@@ -384,4 +384,42 @@ class DGroupKey{
 		IndexOffset* m_offset;
 };
 
+DGroupKey<string>* constructDGroupKey(string columnName, uint64_t itemCount, uint64_t base, uint64_t type, multimap<string, uint64_t> initMap)
+{
+	DGroupKey<string>* string_ptr = new DGroupKey<string>(columnName, itemCount, base, type);
+	string_ptr->constructThreeVector(initMap);
+	return string_ptr;
+}
+
+DGroupKey<int>* constructDGroupKey(string columnName, uint64_t itemCount, uint64_t base, uint64_t type, multimap<int, uint64_t> initMap)
+{
+	DGroupKey<int>* int_ptr = new DGroupKey<int>(columnName, itemCount, base, type);
+	int_ptr->constructThreeVector(initMap);
+	return int_ptr;
+}
+
+DGroupKey<double>* constructDGroupKey(string columnName, uint64_t itemCount, uint64_t base, uint64_t type, multimap<double, uint64_t> initMap)
+{
+	DGroupKey<double>* double_ptr = new DGroupKey<double>(columnName, itemCount, base, type);
+	double_ptr->constructThreeVector(initMap);
+	return double_ptr;
+}
+
+template <class T>
+vector<uint64_t> generateCompVector(Dictionary<T>* dic, const vector<T>& initVector)
+{
+	vector<uint64_t> result;
+	for(uint64_t i = 0; i < initVector.size(); i++)
+	{
+		result.push_back(dic->getPos(initVector[i]));
+	}
+	return result;
+}
+
+DRowTable* constructDRowTable(size_t attributeCount, string tableName, uint64_t base)
+{
+	return new DRowTable(attributeCount, tableName, base);
+}
+
+
 #endif

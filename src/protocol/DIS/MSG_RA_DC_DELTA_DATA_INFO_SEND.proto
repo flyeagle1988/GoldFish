@@ -1,11 +1,12 @@
 message MSG_RA_DC_DELTA_DATA_INFO_SEND
 {
+    required uint32 dbID = 1;
     message TABLE_INFO
     {
         required string tableName = 1;
-        required uint32 tableDeltaSize = 2;
+        required uint32 deltaRowNum = 2;
     }
-    repeated TABLE_INFO tableDeltaInfo = 1;
+    repeated TABLE_INFO tableDeltaInfo = 2;
 }
 
 message MSG_DC_RA_DELTA_DATA_INFO_SEND_ACK

@@ -23,7 +23,6 @@
 #include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>
 #include <google/protobuf/extension_set.h>
-#include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 
@@ -33,27 +32,9 @@ void protobuf_AssignDesc_MSG_5fDS_5fDC_5fRESOURCE_5fGET_2eproto();
 void protobuf_ShutdownFile_MSG_5fDS_5fDC_5fRESOURCE_5fGET_2eproto();
 
 class MSG_DS_DC_RESOURCE_GET;
-class MSG_DC_DS_RESOURCE_INFO_ACK;
+class CS_INFO;
+class MSG_DC_DS_RESOURCE_GET_ACK;
 
-enum MSG_DS_DC_RESOURCE_GET_TYPE {
-  MSG_DS_DC_RESOURCE_GET_TYPE_CS = 0,
-  MSG_DS_DC_RESOURCE_GET_TYPE_DS = 1
-};
-bool MSG_DS_DC_RESOURCE_GET_TYPE_IsValid(int value);
-const MSG_DS_DC_RESOURCE_GET_TYPE MSG_DS_DC_RESOURCE_GET_TYPE_TYPE_MIN = MSG_DS_DC_RESOURCE_GET_TYPE_CS;
-const MSG_DS_DC_RESOURCE_GET_TYPE MSG_DS_DC_RESOURCE_GET_TYPE_TYPE_MAX = MSG_DS_DC_RESOURCE_GET_TYPE_DS;
-const int MSG_DS_DC_RESOURCE_GET_TYPE_TYPE_ARRAYSIZE = MSG_DS_DC_RESOURCE_GET_TYPE_TYPE_MAX + 1;
-
-const ::google::protobuf::EnumDescriptor* MSG_DS_DC_RESOURCE_GET_TYPE_descriptor();
-inline const ::std::string& MSG_DS_DC_RESOURCE_GET_TYPE_Name(MSG_DS_DC_RESOURCE_GET_TYPE value) {
-  return ::google::protobuf::internal::NameOfEnum(
-    MSG_DS_DC_RESOURCE_GET_TYPE_descriptor(), value);
-}
-inline bool MSG_DS_DC_RESOURCE_GET_TYPE_Parse(
-    const ::std::string& name, MSG_DS_DC_RESOURCE_GET_TYPE* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<MSG_DS_DC_RESOURCE_GET_TYPE>(
-    MSG_DS_DC_RESOURCE_GET_TYPE_descriptor(), name, value);
-}
 // ===================================================================
 
 class MSG_DS_DC_RESOURCE_GET : public ::google::protobuf::Message {
@@ -107,69 +88,38 @@ class MSG_DS_DC_RESOURCE_GET : public ::google::protobuf::Message {
 
   // nested types ----------------------------------------------------
 
-  typedef MSG_DS_DC_RESOURCE_GET_TYPE TYPE;
-  static const TYPE CS = MSG_DS_DC_RESOURCE_GET_TYPE_CS;
-  static const TYPE DS = MSG_DS_DC_RESOURCE_GET_TYPE_DS;
-  static inline bool TYPE_IsValid(int value) {
-    return MSG_DS_DC_RESOURCE_GET_TYPE_IsValid(value);
-  }
-  static const TYPE TYPE_MIN =
-    MSG_DS_DC_RESOURCE_GET_TYPE_TYPE_MIN;
-  static const TYPE TYPE_MAX =
-    MSG_DS_DC_RESOURCE_GET_TYPE_TYPE_MAX;
-  static const int TYPE_ARRAYSIZE =
-    MSG_DS_DC_RESOURCE_GET_TYPE_TYPE_ARRAYSIZE;
-  static inline const ::google::protobuf::EnumDescriptor*
-  TYPE_descriptor() {
-    return MSG_DS_DC_RESOURCE_GET_TYPE_descriptor();
-  }
-  static inline const ::std::string& TYPE_Name(TYPE value) {
-    return MSG_DS_DC_RESOURCE_GET_TYPE_Name(value);
-  }
-  static inline bool TYPE_Parse(const ::std::string& name,
-      TYPE* value) {
-    return MSG_DS_DC_RESOURCE_GET_TYPE_Parse(name, value);
-  }
-
   // accessors -------------------------------------------------------
 
-  // required .MSG_DS_DC_RESOURCE_GET.TYPE type = 1;
-  inline bool has_type() const;
-  inline void clear_type();
-  static const int kTypeFieldNumber = 1;
-  inline ::MSG_DS_DC_RESOURCE_GET_TYPE type() const;
-  inline void set_type(::MSG_DS_DC_RESOURCE_GET_TYPE value);
+  // required uint32 taskID = 1;
+  inline bool has_taskid() const;
+  inline void clear_taskid();
+  static const int kTaskIDFieldNumber = 1;
+  inline ::google::protobuf::uint32 taskid() const;
+  inline void set_taskid(::google::protobuf::uint32 value);
 
-  // required int32 cpu = 2;
-  inline bool has_cpu() const;
-  inline void clear_cpu();
-  static const int kCpuFieldNumber = 2;
-  inline ::google::protobuf::int32 cpu() const;
-  inline void set_cpu(::google::protobuf::int32 value);
-
-  // required int32 memory = 3;
-  inline bool has_memory() const;
-  inline void clear_memory();
-  static const int kMemoryFieldNumber = 3;
-  inline ::google::protobuf::int32 memory() const;
-  inline void set_memory(::google::protobuf::int32 value);
+  // repeated uint32 columnSize = 2;
+  inline int columnsize_size() const;
+  inline void clear_columnsize();
+  static const int kColumnSizeFieldNumber = 2;
+  inline ::google::protobuf::uint32 columnsize(int index) const;
+  inline void set_columnsize(int index, ::google::protobuf::uint32 value);
+  inline void add_columnsize(::google::protobuf::uint32 value);
+  inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >&
+      columnsize() const;
+  inline ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
+      mutable_columnsize();
 
   // @@protoc_insertion_point(class_scope:MSG_DS_DC_RESOURCE_GET)
  private:
-  inline void set_has_type();
-  inline void clear_has_type();
-  inline void set_has_cpu();
-  inline void clear_has_cpu();
-  inline void set_has_memory();
-  inline void clear_has_memory();
+  inline void set_has_taskid();
+  inline void clear_has_taskid();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  int type_;
-  ::google::protobuf::int32 cpu_;
-  ::google::protobuf::int32 memory_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::uint32 > columnsize_;
+  ::google::protobuf::uint32 taskid_;
   friend void  protobuf_AddDesc_MSG_5fDS_5fDC_5fRESOURCE_5fGET_2eproto();
   friend void protobuf_AssignDesc_MSG_5fDS_5fDC_5fRESOURCE_5fGET_2eproto();
   friend void protobuf_ShutdownFile_MSG_5fDS_5fDC_5fRESOURCE_5fGET_2eproto();
@@ -179,14 +129,14 @@ class MSG_DS_DC_RESOURCE_GET : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
-class MSG_DC_DS_RESOURCE_INFO_ACK : public ::google::protobuf::Message {
+class CS_INFO : public ::google::protobuf::Message {
  public:
-  MSG_DC_DS_RESOURCE_INFO_ACK();
-  virtual ~MSG_DC_DS_RESOURCE_INFO_ACK();
+  CS_INFO();
+  virtual ~CS_INFO();
 
-  MSG_DC_DS_RESOURCE_INFO_ACK(const MSG_DC_DS_RESOURCE_INFO_ACK& from);
+  CS_INFO(const CS_INFO& from);
 
-  inline MSG_DC_DS_RESOURCE_INFO_ACK& operator=(const MSG_DC_DS_RESOURCE_INFO_ACK& from) {
+  inline CS_INFO& operator=(const CS_INFO& from) {
     CopyFrom(from);
     return *this;
   }
@@ -200,17 +150,17 @@ class MSG_DC_DS_RESOURCE_INFO_ACK : public ::google::protobuf::Message {
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const MSG_DC_DS_RESOURCE_INFO_ACK& default_instance();
+  static const CS_INFO& default_instance();
 
-  void Swap(MSG_DC_DS_RESOURCE_INFO_ACK* other);
+  void Swap(CS_INFO* other);
 
   // implements Message ----------------------------------------------
 
-  MSG_DC_DS_RESOURCE_INFO_ACK* New() const;
+  CS_INFO* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const MSG_DC_DS_RESOURCE_INFO_ACK& from);
-  void MergeFrom(const MSG_DC_DS_RESOURCE_INFO_ACK& from);
+  void CopyFrom(const CS_INFO& from);
+  void MergeFrom(const CS_INFO& from);
   void Clear();
   bool IsInitialized() const;
 
@@ -232,72 +182,126 @@ class MSG_DC_DS_RESOURCE_INFO_ACK : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // required int32 statuCode = 1;
-  inline bool has_statucode() const;
-  inline void clear_statucode();
-  static const int kStatuCodeFieldNumber = 1;
-  inline ::google::protobuf::int32 statucode() const;
-  inline void set_statucode(::google::protobuf::int32 value);
+  // optional string csIP = 1;
+  inline bool has_csip() const;
+  inline void clear_csip();
+  static const int kCsIPFieldNumber = 1;
+  inline const ::std::string& csip() const;
+  inline void set_csip(const ::std::string& value);
+  inline void set_csip(const char* value);
+  inline void set_csip(const char* value, size_t size);
+  inline ::std::string* mutable_csip();
+  inline ::std::string* release_csip();
+  inline void set_allocated_csip(::std::string* csip);
 
-  // repeated string ip = 2;
-  inline int ip_size() const;
-  inline void clear_ip();
-  static const int kIpFieldNumber = 2;
-  inline const ::std::string& ip(int index) const;
-  inline ::std::string* mutable_ip(int index);
-  inline void set_ip(int index, const ::std::string& value);
-  inline void set_ip(int index, const char* value);
-  inline void set_ip(int index, const char* value, size_t size);
-  inline ::std::string* add_ip();
-  inline void add_ip(const ::std::string& value);
-  inline void add_ip(const char* value);
-  inline void add_ip(const char* value, size_t size);
-  inline const ::google::protobuf::RepeatedPtrField< ::std::string>& ip() const;
-  inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_ip();
-
-  // repeated int32 cpu = 3;
-  inline int cpu_size() const;
-  inline void clear_cpu();
-  static const int kCpuFieldNumber = 3;
-  inline ::google::protobuf::int32 cpu(int index) const;
-  inline void set_cpu(int index, ::google::protobuf::int32 value);
-  inline void add_cpu(::google::protobuf::int32 value);
-  inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
-      cpu() const;
-  inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
-      mutable_cpu();
-
-  // repeated int32 memory = 4;
-  inline int memory_size() const;
-  inline void clear_memory();
-  static const int kMemoryFieldNumber = 4;
-  inline ::google::protobuf::int32 memory(int index) const;
-  inline void set_memory(int index, ::google::protobuf::int32 value);
-  inline void add_memory(::google::protobuf::int32 value);
-  inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
-      memory() const;
-  inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
-      mutable_memory();
-
-  // @@protoc_insertion_point(class_scope:MSG_DC_DS_RESOURCE_INFO_ACK)
+  // @@protoc_insertion_point(class_scope:CS_INFO)
  private:
-  inline void set_has_statucode();
-  inline void clear_has_statucode();
+  inline void set_has_csip();
+  inline void clear_has_csip();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::google::protobuf::RepeatedPtrField< ::std::string> ip_;
-  ::google::protobuf::RepeatedField< ::google::protobuf::int32 > cpu_;
-  ::google::protobuf::RepeatedField< ::google::protobuf::int32 > memory_;
-  ::google::protobuf::int32 statucode_;
+  ::std::string* csip_;
   friend void  protobuf_AddDesc_MSG_5fDS_5fDC_5fRESOURCE_5fGET_2eproto();
   friend void protobuf_AssignDesc_MSG_5fDS_5fDC_5fRESOURCE_5fGET_2eproto();
   friend void protobuf_ShutdownFile_MSG_5fDS_5fDC_5fRESOURCE_5fGET_2eproto();
 
   void InitAsDefaultInstance();
-  static MSG_DC_DS_RESOURCE_INFO_ACK* default_instance_;
+  static CS_INFO* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class MSG_DC_DS_RESOURCE_GET_ACK : public ::google::protobuf::Message {
+ public:
+  MSG_DC_DS_RESOURCE_GET_ACK();
+  virtual ~MSG_DC_DS_RESOURCE_GET_ACK();
+
+  MSG_DC_DS_RESOURCE_GET_ACK(const MSG_DC_DS_RESOURCE_GET_ACK& from);
+
+  inline MSG_DC_DS_RESOURCE_GET_ACK& operator=(const MSG_DC_DS_RESOURCE_GET_ACK& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const MSG_DC_DS_RESOURCE_GET_ACK& default_instance();
+
+  void Swap(MSG_DC_DS_RESOURCE_GET_ACK* other);
+
+  // implements Message ----------------------------------------------
+
+  MSG_DC_DS_RESOURCE_GET_ACK* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const MSG_DC_DS_RESOURCE_GET_ACK& from);
+  void MergeFrom(const MSG_DC_DS_RESOURCE_GET_ACK& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required uint32 taskID = 1;
+  inline bool has_taskid() const;
+  inline void clear_taskid();
+  static const int kTaskIDFieldNumber = 1;
+  inline ::google::protobuf::uint32 taskid() const;
+  inline void set_taskid(::google::protobuf::uint32 value);
+
+  // repeated .CS_INFO csInfo = 2;
+  inline int csinfo_size() const;
+  inline void clear_csinfo();
+  static const int kCsInfoFieldNumber = 2;
+  inline const ::CS_INFO& csinfo(int index) const;
+  inline ::CS_INFO* mutable_csinfo(int index);
+  inline ::CS_INFO* add_csinfo();
+  inline const ::google::protobuf::RepeatedPtrField< ::CS_INFO >&
+      csinfo() const;
+  inline ::google::protobuf::RepeatedPtrField< ::CS_INFO >*
+      mutable_csinfo();
+
+  // @@protoc_insertion_point(class_scope:MSG_DC_DS_RESOURCE_GET_ACK)
+ private:
+  inline void set_has_taskid();
+  inline void clear_has_taskid();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::RepeatedPtrField< ::CS_INFO > csinfo_;
+  ::google::protobuf::uint32 taskid_;
+  friend void  protobuf_AddDesc_MSG_5fDS_5fDC_5fRESOURCE_5fGET_2eproto();
+  friend void protobuf_AssignDesc_MSG_5fDS_5fDC_5fRESOURCE_5fGET_2eproto();
+  friend void protobuf_ShutdownFile_MSG_5fDS_5fDC_5fRESOURCE_5fGET_2eproto();
+
+  void InitAsDefaultInstance();
+  static MSG_DC_DS_RESOURCE_GET_ACK* default_instance_;
 };
 // ===================================================================
 
@@ -306,219 +310,196 @@ class MSG_DC_DS_RESOURCE_INFO_ACK : public ::google::protobuf::Message {
 
 // MSG_DS_DC_RESOURCE_GET
 
-// required .MSG_DS_DC_RESOURCE_GET.TYPE type = 1;
-inline bool MSG_DS_DC_RESOURCE_GET::has_type() const {
+// required uint32 taskID = 1;
+inline bool MSG_DS_DC_RESOURCE_GET::has_taskid() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void MSG_DS_DC_RESOURCE_GET::set_has_type() {
+inline void MSG_DS_DC_RESOURCE_GET::set_has_taskid() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void MSG_DS_DC_RESOURCE_GET::clear_has_type() {
+inline void MSG_DS_DC_RESOURCE_GET::clear_has_taskid() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void MSG_DS_DC_RESOURCE_GET::clear_type() {
-  type_ = 0;
-  clear_has_type();
+inline void MSG_DS_DC_RESOURCE_GET::clear_taskid() {
+  taskid_ = 0u;
+  clear_has_taskid();
 }
-inline ::MSG_DS_DC_RESOURCE_GET_TYPE MSG_DS_DC_RESOURCE_GET::type() const {
-  // @@protoc_insertion_point(field_get:MSG_DS_DC_RESOURCE_GET.type)
-  return static_cast< ::MSG_DS_DC_RESOURCE_GET_TYPE >(type_);
+inline ::google::protobuf::uint32 MSG_DS_DC_RESOURCE_GET::taskid() const {
+  // @@protoc_insertion_point(field_get:MSG_DS_DC_RESOURCE_GET.taskID)
+  return taskid_;
 }
-inline void MSG_DS_DC_RESOURCE_GET::set_type(::MSG_DS_DC_RESOURCE_GET_TYPE value) {
-  assert(::MSG_DS_DC_RESOURCE_GET_TYPE_IsValid(value));
-  set_has_type();
-  type_ = value;
-  // @@protoc_insertion_point(field_set:MSG_DS_DC_RESOURCE_GET.type)
-}
-
-// required int32 cpu = 2;
-inline bool MSG_DS_DC_RESOURCE_GET::has_cpu() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void MSG_DS_DC_RESOURCE_GET::set_has_cpu() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void MSG_DS_DC_RESOURCE_GET::clear_has_cpu() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void MSG_DS_DC_RESOURCE_GET::clear_cpu() {
-  cpu_ = 0;
-  clear_has_cpu();
-}
-inline ::google::protobuf::int32 MSG_DS_DC_RESOURCE_GET::cpu() const {
-  // @@protoc_insertion_point(field_get:MSG_DS_DC_RESOURCE_GET.cpu)
-  return cpu_;
-}
-inline void MSG_DS_DC_RESOURCE_GET::set_cpu(::google::protobuf::int32 value) {
-  set_has_cpu();
-  cpu_ = value;
-  // @@protoc_insertion_point(field_set:MSG_DS_DC_RESOURCE_GET.cpu)
+inline void MSG_DS_DC_RESOURCE_GET::set_taskid(::google::protobuf::uint32 value) {
+  set_has_taskid();
+  taskid_ = value;
+  // @@protoc_insertion_point(field_set:MSG_DS_DC_RESOURCE_GET.taskID)
 }
 
-// required int32 memory = 3;
-inline bool MSG_DS_DC_RESOURCE_GET::has_memory() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+// repeated uint32 columnSize = 2;
+inline int MSG_DS_DC_RESOURCE_GET::columnsize_size() const {
+  return columnsize_.size();
 }
-inline void MSG_DS_DC_RESOURCE_GET::set_has_memory() {
-  _has_bits_[0] |= 0x00000004u;
+inline void MSG_DS_DC_RESOURCE_GET::clear_columnsize() {
+  columnsize_.Clear();
 }
-inline void MSG_DS_DC_RESOURCE_GET::clear_has_memory() {
-  _has_bits_[0] &= ~0x00000004u;
+inline ::google::protobuf::uint32 MSG_DS_DC_RESOURCE_GET::columnsize(int index) const {
+  // @@protoc_insertion_point(field_get:MSG_DS_DC_RESOURCE_GET.columnSize)
+  return columnsize_.Get(index);
 }
-inline void MSG_DS_DC_RESOURCE_GET::clear_memory() {
-  memory_ = 0;
-  clear_has_memory();
+inline void MSG_DS_DC_RESOURCE_GET::set_columnsize(int index, ::google::protobuf::uint32 value) {
+  columnsize_.Set(index, value);
+  // @@protoc_insertion_point(field_set:MSG_DS_DC_RESOURCE_GET.columnSize)
 }
-inline ::google::protobuf::int32 MSG_DS_DC_RESOURCE_GET::memory() const {
-  // @@protoc_insertion_point(field_get:MSG_DS_DC_RESOURCE_GET.memory)
-  return memory_;
+inline void MSG_DS_DC_RESOURCE_GET::add_columnsize(::google::protobuf::uint32 value) {
+  columnsize_.Add(value);
+  // @@protoc_insertion_point(field_add:MSG_DS_DC_RESOURCE_GET.columnSize)
 }
-inline void MSG_DS_DC_RESOURCE_GET::set_memory(::google::protobuf::int32 value) {
-  set_has_memory();
-  memory_ = value;
-  // @@protoc_insertion_point(field_set:MSG_DS_DC_RESOURCE_GET.memory)
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >&
+MSG_DS_DC_RESOURCE_GET::columnsize() const {
+  // @@protoc_insertion_point(field_list:MSG_DS_DC_RESOURCE_GET.columnSize)
+  return columnsize_;
+}
+inline ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
+MSG_DS_DC_RESOURCE_GET::mutable_columnsize() {
+  // @@protoc_insertion_point(field_mutable_list:MSG_DS_DC_RESOURCE_GET.columnSize)
+  return &columnsize_;
 }
 
 // -------------------------------------------------------------------
 
-// MSG_DC_DS_RESOURCE_INFO_ACK
+// CS_INFO
 
-// required int32 statuCode = 1;
-inline bool MSG_DC_DS_RESOURCE_INFO_ACK::has_statucode() const {
+// optional string csIP = 1;
+inline bool CS_INFO::has_csip() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void MSG_DC_DS_RESOURCE_INFO_ACK::set_has_statucode() {
+inline void CS_INFO::set_has_csip() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void MSG_DC_DS_RESOURCE_INFO_ACK::clear_has_statucode() {
+inline void CS_INFO::clear_has_csip() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void MSG_DC_DS_RESOURCE_INFO_ACK::clear_statucode() {
-  statucode_ = 0;
-  clear_has_statucode();
+inline void CS_INFO::clear_csip() {
+  if (csip_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    csip_->clear();
+  }
+  clear_has_csip();
 }
-inline ::google::protobuf::int32 MSG_DC_DS_RESOURCE_INFO_ACK::statucode() const {
-  // @@protoc_insertion_point(field_get:MSG_DC_DS_RESOURCE_INFO_ACK.statuCode)
-  return statucode_;
+inline const ::std::string& CS_INFO::csip() const {
+  // @@protoc_insertion_point(field_get:CS_INFO.csIP)
+  return *csip_;
 }
-inline void MSG_DC_DS_RESOURCE_INFO_ACK::set_statucode(::google::protobuf::int32 value) {
-  set_has_statucode();
-  statucode_ = value;
-  // @@protoc_insertion_point(field_set:MSG_DC_DS_RESOURCE_INFO_ACK.statuCode)
+inline void CS_INFO::set_csip(const ::std::string& value) {
+  set_has_csip();
+  if (csip_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    csip_ = new ::std::string;
+  }
+  csip_->assign(value);
+  // @@protoc_insertion_point(field_set:CS_INFO.csIP)
 }
-
-// repeated string ip = 2;
-inline int MSG_DC_DS_RESOURCE_INFO_ACK::ip_size() const {
-  return ip_.size();
+inline void CS_INFO::set_csip(const char* value) {
+  set_has_csip();
+  if (csip_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    csip_ = new ::std::string;
+  }
+  csip_->assign(value);
+  // @@protoc_insertion_point(field_set_char:CS_INFO.csIP)
 }
-inline void MSG_DC_DS_RESOURCE_INFO_ACK::clear_ip() {
-  ip_.Clear();
+inline void CS_INFO::set_csip(const char* value, size_t size) {
+  set_has_csip();
+  if (csip_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    csip_ = new ::std::string;
+  }
+  csip_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:CS_INFO.csIP)
 }
-inline const ::std::string& MSG_DC_DS_RESOURCE_INFO_ACK::ip(int index) const {
-  // @@protoc_insertion_point(field_get:MSG_DC_DS_RESOURCE_INFO_ACK.ip)
-  return ip_.Get(index);
+inline ::std::string* CS_INFO::mutable_csip() {
+  set_has_csip();
+  if (csip_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    csip_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:CS_INFO.csIP)
+  return csip_;
 }
-inline ::std::string* MSG_DC_DS_RESOURCE_INFO_ACK::mutable_ip(int index) {
-  // @@protoc_insertion_point(field_mutable:MSG_DC_DS_RESOURCE_INFO_ACK.ip)
-  return ip_.Mutable(index);
+inline ::std::string* CS_INFO::release_csip() {
+  clear_has_csip();
+  if (csip_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = csip_;
+    csip_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
 }
-inline void MSG_DC_DS_RESOURCE_INFO_ACK::set_ip(int index, const ::std::string& value) {
-  // @@protoc_insertion_point(field_set:MSG_DC_DS_RESOURCE_INFO_ACK.ip)
-  ip_.Mutable(index)->assign(value);
-}
-inline void MSG_DC_DS_RESOURCE_INFO_ACK::set_ip(int index, const char* value) {
-  ip_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:MSG_DC_DS_RESOURCE_INFO_ACK.ip)
-}
-inline void MSG_DC_DS_RESOURCE_INFO_ACK::set_ip(int index, const char* value, size_t size) {
-  ip_.Mutable(index)->assign(
-    reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:MSG_DC_DS_RESOURCE_INFO_ACK.ip)
-}
-inline ::std::string* MSG_DC_DS_RESOURCE_INFO_ACK::add_ip() {
-  return ip_.Add();
-}
-inline void MSG_DC_DS_RESOURCE_INFO_ACK::add_ip(const ::std::string& value) {
-  ip_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:MSG_DC_DS_RESOURCE_INFO_ACK.ip)
-}
-inline void MSG_DC_DS_RESOURCE_INFO_ACK::add_ip(const char* value) {
-  ip_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:MSG_DC_DS_RESOURCE_INFO_ACK.ip)
-}
-inline void MSG_DC_DS_RESOURCE_INFO_ACK::add_ip(const char* value, size_t size) {
-  ip_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:MSG_DC_DS_RESOURCE_INFO_ACK.ip)
-}
-inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
-MSG_DC_DS_RESOURCE_INFO_ACK::ip() const {
-  // @@protoc_insertion_point(field_list:MSG_DC_DS_RESOURCE_INFO_ACK.ip)
-  return ip_;
-}
-inline ::google::protobuf::RepeatedPtrField< ::std::string>*
-MSG_DC_DS_RESOURCE_INFO_ACK::mutable_ip() {
-  // @@protoc_insertion_point(field_mutable_list:MSG_DC_DS_RESOURCE_INFO_ACK.ip)
-  return &ip_;
+inline void CS_INFO::set_allocated_csip(::std::string* csip) {
+  if (csip_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete csip_;
+  }
+  if (csip) {
+    set_has_csip();
+    csip_ = csip;
+  } else {
+    clear_has_csip();
+    csip_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:CS_INFO.csIP)
 }
 
-// repeated int32 cpu = 3;
-inline int MSG_DC_DS_RESOURCE_INFO_ACK::cpu_size() const {
-  return cpu_.size();
+// -------------------------------------------------------------------
+
+// MSG_DC_DS_RESOURCE_GET_ACK
+
+// required uint32 taskID = 1;
+inline bool MSG_DC_DS_RESOURCE_GET_ACK::has_taskid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void MSG_DC_DS_RESOURCE_INFO_ACK::clear_cpu() {
-  cpu_.Clear();
+inline void MSG_DC_DS_RESOURCE_GET_ACK::set_has_taskid() {
+  _has_bits_[0] |= 0x00000001u;
 }
-inline ::google::protobuf::int32 MSG_DC_DS_RESOURCE_INFO_ACK::cpu(int index) const {
-  // @@protoc_insertion_point(field_get:MSG_DC_DS_RESOURCE_INFO_ACK.cpu)
-  return cpu_.Get(index);
+inline void MSG_DC_DS_RESOURCE_GET_ACK::clear_has_taskid() {
+  _has_bits_[0] &= ~0x00000001u;
 }
-inline void MSG_DC_DS_RESOURCE_INFO_ACK::set_cpu(int index, ::google::protobuf::int32 value) {
-  cpu_.Set(index, value);
-  // @@protoc_insertion_point(field_set:MSG_DC_DS_RESOURCE_INFO_ACK.cpu)
+inline void MSG_DC_DS_RESOURCE_GET_ACK::clear_taskid() {
+  taskid_ = 0u;
+  clear_has_taskid();
 }
-inline void MSG_DC_DS_RESOURCE_INFO_ACK::add_cpu(::google::protobuf::int32 value) {
-  cpu_.Add(value);
-  // @@protoc_insertion_point(field_add:MSG_DC_DS_RESOURCE_INFO_ACK.cpu)
+inline ::google::protobuf::uint32 MSG_DC_DS_RESOURCE_GET_ACK::taskid() const {
+  // @@protoc_insertion_point(field_get:MSG_DC_DS_RESOURCE_GET_ACK.taskID)
+  return taskid_;
 }
-inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
-MSG_DC_DS_RESOURCE_INFO_ACK::cpu() const {
-  // @@protoc_insertion_point(field_list:MSG_DC_DS_RESOURCE_INFO_ACK.cpu)
-  return cpu_;
-}
-inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
-MSG_DC_DS_RESOURCE_INFO_ACK::mutable_cpu() {
-  // @@protoc_insertion_point(field_mutable_list:MSG_DC_DS_RESOURCE_INFO_ACK.cpu)
-  return &cpu_;
+inline void MSG_DC_DS_RESOURCE_GET_ACK::set_taskid(::google::protobuf::uint32 value) {
+  set_has_taskid();
+  taskid_ = value;
+  // @@protoc_insertion_point(field_set:MSG_DC_DS_RESOURCE_GET_ACK.taskID)
 }
 
-// repeated int32 memory = 4;
-inline int MSG_DC_DS_RESOURCE_INFO_ACK::memory_size() const {
-  return memory_.size();
+// repeated .CS_INFO csInfo = 2;
+inline int MSG_DC_DS_RESOURCE_GET_ACK::csinfo_size() const {
+  return csinfo_.size();
 }
-inline void MSG_DC_DS_RESOURCE_INFO_ACK::clear_memory() {
-  memory_.Clear();
+inline void MSG_DC_DS_RESOURCE_GET_ACK::clear_csinfo() {
+  csinfo_.Clear();
 }
-inline ::google::protobuf::int32 MSG_DC_DS_RESOURCE_INFO_ACK::memory(int index) const {
-  // @@protoc_insertion_point(field_get:MSG_DC_DS_RESOURCE_INFO_ACK.memory)
-  return memory_.Get(index);
+inline const ::CS_INFO& MSG_DC_DS_RESOURCE_GET_ACK::csinfo(int index) const {
+  // @@protoc_insertion_point(field_get:MSG_DC_DS_RESOURCE_GET_ACK.csInfo)
+  return csinfo_.Get(index);
 }
-inline void MSG_DC_DS_RESOURCE_INFO_ACK::set_memory(int index, ::google::protobuf::int32 value) {
-  memory_.Set(index, value);
-  // @@protoc_insertion_point(field_set:MSG_DC_DS_RESOURCE_INFO_ACK.memory)
+inline ::CS_INFO* MSG_DC_DS_RESOURCE_GET_ACK::mutable_csinfo(int index) {
+  // @@protoc_insertion_point(field_mutable:MSG_DC_DS_RESOURCE_GET_ACK.csInfo)
+  return csinfo_.Mutable(index);
 }
-inline void MSG_DC_DS_RESOURCE_INFO_ACK::add_memory(::google::protobuf::int32 value) {
-  memory_.Add(value);
-  // @@protoc_insertion_point(field_add:MSG_DC_DS_RESOURCE_INFO_ACK.memory)
+inline ::CS_INFO* MSG_DC_DS_RESOURCE_GET_ACK::add_csinfo() {
+  // @@protoc_insertion_point(field_add:MSG_DC_DS_RESOURCE_GET_ACK.csInfo)
+  return csinfo_.Add();
 }
-inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
-MSG_DC_DS_RESOURCE_INFO_ACK::memory() const {
-  // @@protoc_insertion_point(field_list:MSG_DC_DS_RESOURCE_INFO_ACK.memory)
-  return memory_;
+inline const ::google::protobuf::RepeatedPtrField< ::CS_INFO >&
+MSG_DC_DS_RESOURCE_GET_ACK::csinfo() const {
+  // @@protoc_insertion_point(field_list:MSG_DC_DS_RESOURCE_GET_ACK.csInfo)
+  return csinfo_;
 }
-inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
-MSG_DC_DS_RESOURCE_INFO_ACK::mutable_memory() {
-  // @@protoc_insertion_point(field_mutable_list:MSG_DC_DS_RESOURCE_INFO_ACK.memory)
-  return &memory_;
+inline ::google::protobuf::RepeatedPtrField< ::CS_INFO >*
+MSG_DC_DS_RESOURCE_GET_ACK::mutable_csinfo() {
+  // @@protoc_insertion_point(field_mutable_list:MSG_DC_DS_RESOURCE_GET_ACK.csInfo)
+  return &csinfo_;
 }
 
 
@@ -528,11 +509,6 @@ MSG_DC_DS_RESOURCE_INFO_ACK::mutable_memory() {
 namespace google {
 namespace protobuf {
 
-template <> struct is_proto_enum< ::MSG_DS_DC_RESOURCE_GET_TYPE> : ::google::protobuf::internal::true_type {};
-template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::MSG_DS_DC_RESOURCE_GET_TYPE>() {
-  return ::MSG_DS_DC_RESOURCE_GET_TYPE_descriptor();
-}
 
 }  // namespace google
 }  // namespace protobuf

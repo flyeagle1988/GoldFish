@@ -237,10 +237,28 @@ class MSG_DC_DS_IMPORT_INFO_SEND : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedPtrField< ::MSG_DC_DS_IMPORT_INFO_SEND_TABLE_INFO >*
       mutable_tableinfo();
 
+  // required bool isDelta = 3;
+  inline bool has_isdelta() const;
+  inline void clear_isdelta();
+  static const int kIsDeltaFieldNumber = 3;
+  inline bool isdelta() const;
+  inline void set_isdelta(bool value);
+
+  // optional uint32 tableRowNumber = 4;
+  inline bool has_tablerownumber() const;
+  inline void clear_tablerownumber();
+  static const int kTableRowNumberFieldNumber = 4;
+  inline ::google::protobuf::uint32 tablerownumber() const;
+  inline void set_tablerownumber(::google::protobuf::uint32 value);
+
   // @@protoc_insertion_point(class_scope:MSG_DC_DS_IMPORT_INFO_SEND)
  private:
   inline void set_has_taskid();
   inline void clear_has_taskid();
+  inline void set_has_isdelta();
+  inline void clear_has_isdelta();
+  inline void set_has_tablerownumber();
+  inline void clear_has_tablerownumber();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -248,6 +266,8 @@ class MSG_DC_DS_IMPORT_INFO_SEND : public ::google::protobuf::Message {
   mutable int _cached_size_;
   ::google::protobuf::RepeatedPtrField< ::MSG_DC_DS_IMPORT_INFO_SEND_TABLE_INFO > tableinfo_;
   ::google::protobuf::uint32 taskid_;
+  bool isdelta_;
+  ::google::protobuf::uint32 tablerownumber_;
   friend void  protobuf_AddDesc_MSG_5fDC_5fDS_5fIMPORT_5fINFO_5fSEND_2eproto();
   friend void protobuf_AssignDesc_MSG_5fDC_5fDS_5fIMPORT_5fINFO_5fSEND_2eproto();
   friend void protobuf_ShutdownFile_MSG_5fDC_5fDS_5fIMPORT_5fINFO_5fSEND_2eproto();
@@ -652,6 +672,54 @@ inline ::google::protobuf::RepeatedPtrField< ::MSG_DC_DS_IMPORT_INFO_SEND_TABLE_
 MSG_DC_DS_IMPORT_INFO_SEND::mutable_tableinfo() {
   // @@protoc_insertion_point(field_mutable_list:MSG_DC_DS_IMPORT_INFO_SEND.tableInfo)
   return &tableinfo_;
+}
+
+// required bool isDelta = 3;
+inline bool MSG_DC_DS_IMPORT_INFO_SEND::has_isdelta() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void MSG_DC_DS_IMPORT_INFO_SEND::set_has_isdelta() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void MSG_DC_DS_IMPORT_INFO_SEND::clear_has_isdelta() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void MSG_DC_DS_IMPORT_INFO_SEND::clear_isdelta() {
+  isdelta_ = false;
+  clear_has_isdelta();
+}
+inline bool MSG_DC_DS_IMPORT_INFO_SEND::isdelta() const {
+  // @@protoc_insertion_point(field_get:MSG_DC_DS_IMPORT_INFO_SEND.isDelta)
+  return isdelta_;
+}
+inline void MSG_DC_DS_IMPORT_INFO_SEND::set_isdelta(bool value) {
+  set_has_isdelta();
+  isdelta_ = value;
+  // @@protoc_insertion_point(field_set:MSG_DC_DS_IMPORT_INFO_SEND.isDelta)
+}
+
+// optional uint32 tableRowNumber = 4;
+inline bool MSG_DC_DS_IMPORT_INFO_SEND::has_tablerownumber() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void MSG_DC_DS_IMPORT_INFO_SEND::set_has_tablerownumber() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void MSG_DC_DS_IMPORT_INFO_SEND::clear_has_tablerownumber() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void MSG_DC_DS_IMPORT_INFO_SEND::clear_tablerownumber() {
+  tablerownumber_ = 0u;
+  clear_has_tablerownumber();
+}
+inline ::google::protobuf::uint32 MSG_DC_DS_IMPORT_INFO_SEND::tablerownumber() const {
+  // @@protoc_insertion_point(field_get:MSG_DC_DS_IMPORT_INFO_SEND.tableRowNumber)
+  return tablerownumber_;
+}
+inline void MSG_DC_DS_IMPORT_INFO_SEND::set_tablerownumber(::google::protobuf::uint32 value) {
+  set_has_tablerownumber();
+  tablerownumber_ = value;
+  // @@protoc_insertion_point(field_set:MSG_DC_DS_IMPORT_INFO_SEND.tableRowNumber)
 }
 
 // -------------------------------------------------------------------

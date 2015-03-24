@@ -38,6 +38,7 @@ class TB_INFO;
 class DATABASE_INFO;
 class TASK_INFO;
 class GROUP_DB_INFO;
+class ROWKEY_ENTRY;
 
 enum COLUMN_INFO_ColumnType {
   COLUMN_INFO_ColumnType_VARCHAR = 0,
@@ -736,6 +737,95 @@ class GROUP_DB_INFO : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static GROUP_DB_INFO* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class ROWKEY_ENTRY : public ::google::protobuf::Message {
+ public:
+  ROWKEY_ENTRY();
+  virtual ~ROWKEY_ENTRY();
+
+  ROWKEY_ENTRY(const ROWKEY_ENTRY& from);
+
+  inline ROWKEY_ENTRY& operator=(const ROWKEY_ENTRY& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ROWKEY_ENTRY& default_instance();
+
+  void Swap(ROWKEY_ENTRY* other);
+
+  // implements Message ----------------------------------------------
+
+  ROWKEY_ENTRY* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const ROWKEY_ENTRY& from);
+  void MergeFrom(const ROWKEY_ENTRY& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required uint64 rowKey = 1;
+  inline bool has_rowkey() const;
+  inline void clear_rowkey();
+  static const int kRowKeyFieldNumber = 1;
+  inline ::google::protobuf::uint64 rowkey() const;
+  inline void set_rowkey(::google::protobuf::uint64 value);
+
+  // required uint64 entry = 2;
+  inline bool has_entry() const;
+  inline void clear_entry();
+  static const int kEntryFieldNumber = 2;
+  inline ::google::protobuf::uint64 entry() const;
+  inline void set_entry(::google::protobuf::uint64 value);
+
+  // @@protoc_insertion_point(class_scope:ROWKEY_ENTRY)
+ private:
+  inline void set_has_rowkey();
+  inline void clear_has_rowkey();
+  inline void set_has_entry();
+  inline void clear_has_entry();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::uint64 rowkey_;
+  ::google::protobuf::uint64 entry_;
+  friend void  protobuf_AddDesc_common_2eproto();
+  friend void protobuf_AssignDesc_common_2eproto();
+  friend void protobuf_ShutdownFile_common_2eproto();
+
+  void InitAsDefaultInstance();
+  static ROWKEY_ENTRY* default_instance_;
 };
 // ===================================================================
 
@@ -1573,6 +1663,58 @@ inline ::google::protobuf::RepeatedPtrField< ::std::string>*
 GROUP_DB_INFO::mutable_databasename() {
   // @@protoc_insertion_point(field_mutable_list:GROUP_DB_INFO.databasename)
   return &databasename_;
+}
+
+// -------------------------------------------------------------------
+
+// ROWKEY_ENTRY
+
+// required uint64 rowKey = 1;
+inline bool ROWKEY_ENTRY::has_rowkey() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void ROWKEY_ENTRY::set_has_rowkey() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void ROWKEY_ENTRY::clear_has_rowkey() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void ROWKEY_ENTRY::clear_rowkey() {
+  rowkey_ = GOOGLE_ULONGLONG(0);
+  clear_has_rowkey();
+}
+inline ::google::protobuf::uint64 ROWKEY_ENTRY::rowkey() const {
+  // @@protoc_insertion_point(field_get:ROWKEY_ENTRY.rowKey)
+  return rowkey_;
+}
+inline void ROWKEY_ENTRY::set_rowkey(::google::protobuf::uint64 value) {
+  set_has_rowkey();
+  rowkey_ = value;
+  // @@protoc_insertion_point(field_set:ROWKEY_ENTRY.rowKey)
+}
+
+// required uint64 entry = 2;
+inline bool ROWKEY_ENTRY::has_entry() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void ROWKEY_ENTRY::set_has_entry() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void ROWKEY_ENTRY::clear_has_entry() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void ROWKEY_ENTRY::clear_entry() {
+  entry_ = GOOGLE_ULONGLONG(0);
+  clear_has_entry();
+}
+inline ::google::protobuf::uint64 ROWKEY_ENTRY::entry() const {
+  // @@protoc_insertion_point(field_get:ROWKEY_ENTRY.entry)
+  return entry_;
+}
+inline void ROWKEY_ENTRY::set_entry(::google::protobuf::uint64 value) {
+  set_has_entry();
+  entry_ = value;
+  // @@protoc_insertion_point(field_set:ROWKEY_ENTRY.entry)
 }
 
 
