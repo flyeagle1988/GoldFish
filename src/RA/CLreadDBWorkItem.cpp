@@ -47,7 +47,7 @@ int CLreadDBWorkItem::process()
 		unsigned long rowNum = 0;		//total number of the table
 		unsigned int rowNumPerSend = 0;
 		unsigned int numOfPack = 0; 	//total number send package 
-		unsigned int noOfPack = 0;		//number of send package
+		unsigned int noOfPack = 1;		//number of send package
 		CLDBManager::getInstance()->getTableSize(m_impTask.dbID, m_impTask.tableName, tableSize, rowNum);
 	
 		rowNumPerSend = (rowNum > 500000) ? 500000:rowNum;
