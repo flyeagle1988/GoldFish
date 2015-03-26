@@ -2,6 +2,8 @@
 #define CL_CREATE_INDEX_WORKITEM_H_
 
 #include "common/sys/ThreadPoolWorkItem.h"
+#include "protocol/DIS/MSG_DS_RA_IMPORT_TASK_SEND.pb.h"
+#include "protocol/DIS/MSG_DS_CS_RAW_DATA_SEND.pb.h"
 #include "DS/DGroupKey.h"
 #include <string>
 #include <map>
@@ -10,19 +12,15 @@ class CLcreateIndexWorkItem:public ThreadPoolWorkItem
 {
 	public:
 		CLcreateIndexWorkItem();
-		~CLcreateIndexWorkItem();
-		
+		~CLcreateIndexWorkItem();		
 		int process();
-		void setData(const string &data)
+		void setData(const MSG_RA_DS_IMPORT_TASK_ACK impTaskAck)
 		{
-			m_data = data;
+			m_impTaskAck = impTaskAck;
 		}
-		string getData() const
-		{
-			return m_data;
-		}
+		
 	private:
-		string m_data;
+		MSG_RA_DS_IMPORT_TASK_ACK m_impTaskAck;
 		
 };
 #endif

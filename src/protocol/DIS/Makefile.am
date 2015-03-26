@@ -6,7 +6,7 @@ nodist___top_srcdir__lib_libprotocol_la_SOURCES=$(PROTOOUTPUT)
 
 PROTOOUTPUT=common.pb.h \
 						common.pb.cc \
-						MSG_CS_DS_XVECTOR_SEND.pb.h \
+						MSG_CS_DC_RTABLE_POSITION_GET.pb.h \
 						MSG_DS_CS_RAW_DATA_SEND.pb.h \
 						MSG_DS_DC_RTABLE_POSITION_GET.pb.h \
 						MSG_DC_DS_IMPORT_INFO_SEND.pb.h     \
@@ -22,7 +22,7 @@ PROTOOUTPUT=common.pb.h \
 						MSG_CS_DS_ROW_INDEX_SEND.pb.h  \
 						MSG_DC_RA_IMPORT_SIZE_INFO_GET.pb.h \
 						MSG_DS_DC_RESOURCE_GET.pb.h			\
-						MSG_CS_DS_XVECTOR_SEND.pb.cc \
+						MSG_CS_DC_RTABLE_POSITION_GET.pb.cc \
 						MSG_DS_CS_RAW_DATA_SEND.pb.cc \
 						MSG_DS_DC_RTABLE_POSITION_GET.pb.cc \
 						MSG_DC_DS_IMPORT_INFO_SEND.pb.cc     \
@@ -39,7 +39,7 @@ PROTOOUTPUT=common.pb.h \
 						MSG_DC_RA_IMPORT_SIZE_INFO_GET.pb.cc \
 						MSG_DS_DC_RESOURCE_GET.pb.cc
 PROTOINPUT=	common.proto   \
-						MSG_CS_DS_XVECTOR_SEND.proto \
+						MSG_CS_DC_RTABLE_POSITION_GET.proto \
 						MSG_DS_CS_RAW_DATA_SEND.proto \
 						MSG_DS_DC_RTABLE_POSITION_GET.proto \
 						MSG_DC_DS_IMPORT_INFO_SEND.proto     \

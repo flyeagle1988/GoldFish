@@ -23,10 +23,10 @@ message MSG_DS_CS_RAW_DATA_SEND     //the groupkey vectors of one column
     required COL_TYPE columnType = 5;
     //repeated COL_VALUE columnValue = 6;
     repeated DIC_VALUE dicValue = 6;
-    repeated uint64 indexOffsets = 7;
-    repeated uint64 indexPosting = 8;
-    required uint32 sliceNo = 9;        //子表序号
-    required uint32 sliceNum = 10;       //子表个数
+    repeated uint32 indexOffsets = 7;
+    repeated uint32 indexPosting = 8;
+    optional uint32 sliceNo = 9;        //子表序号
+    optional uint32 sliceNum = 10;       //子表个数
 }
 message MSG_CS_DS_RAW_DATA_SEND_ACK
 {

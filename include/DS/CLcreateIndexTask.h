@@ -36,6 +36,9 @@ class CLcreateIndexTask:public BaseTask
 		unsigned int m_agentID;
 		string m_data;
 		unsigned int m_state;
+		unsigned int m_dbID;
+		string m_tableName;
+		
 };
 
 #endif

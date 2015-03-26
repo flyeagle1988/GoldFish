@@ -160,7 +160,7 @@ void protobuf_AssignDesc_MSG_5fDS_5fRA_5fIMPORT_5fTASK_5fSEND_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_RA_DS_IMPORT_TASK_ACK, tablename_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_RA_DS_IMPORT_TASK_ACK, subtaskno_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_RA_DS_IMPORT_TASK_ACK, subtasknum_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_RA_DS_IMPORT_TASK_ACK, coldata_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_RA_DS_IMPORT_TASK_ACK, colvalue_),
   };
   MSG_RA_DS_IMPORT_TASK_ACK_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -241,11 +241,11 @@ void protobuf_AddDesc_MSG_5fDS_5fRA_5fIMPORT_5fTASK_5fSEND_2eproto() {
     "A\022\017\n\007colName\030\001 \002(\t\022.\n\007colType\030\002 \002(\0162\025.CO"
     "L_DATA.COLUMN_TYPE:\006STRING\022\034\n\010colValue\030\003"
     " \003(\0132\n.COL_VALUE\"9\n\013COLUMN_TYPE\022\n\n\006STRIN"
-    "G\020\000\022\007\n\003INT\020\001\022\t\n\005FLOAT\020\002\022\n\n\006DOUBLE\020\003\"\217\001\n\031"
+    "G\020\000\022\007\n\003INT\020\001\022\t\n\005FLOAT\020\002\022\n\n\006DOUBLE\020\003\"\220\001\n\031"
     "MSG_RA_DS_IMPORT_TASK_ACK\022\016\n\006taskID\030\001 \002("
     "\r\022\014\n\004dbID\030\002 \002(\r\022\021\n\ttableName\030\003 \002(\t\022\021\n\tsu"
-    "bTaskNo\030\004 \002(\r\022\022\n\nsubTaskNum\030\005 \002(\r\022\032\n\007col"
-    "Data\030\006 \003(\0132\t.COL_DATA", 741);
+    "bTaskNo\030\004 \002(\r\022\022\n\nsubTaskNum\030\005 \002(\r\022\033\n\010col"
+    "Value\030\006 \003(\0132\t.COL_DATA", 742);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "MSG_DS_RA_IMPORT_TASK_SEND.proto", &protobuf_RegisterTypes);
   IMP_TAB_INFO::default_instance_ = new IMP_TAB_INFO();
@@ -2243,7 +2243,7 @@ const int MSG_RA_DS_IMPORT_TASK_ACK::kDbIDFieldNumber;
 const int MSG_RA_DS_IMPORT_TASK_ACK::kTableNameFieldNumber;
 const int MSG_RA_DS_IMPORT_TASK_ACK::kSubTaskNoFieldNumber;
 const int MSG_RA_DS_IMPORT_TASK_ACK::kSubTaskNumFieldNumber;
-const int MSG_RA_DS_IMPORT_TASK_ACK::kColDataFieldNumber;
+const int MSG_RA_DS_IMPORT_TASK_ACK::kColValueFieldNumber;
 #endif  // !_MSC_VER
 
 MSG_RA_DS_IMPORT_TASK_ACK::MSG_RA_DS_IMPORT_TASK_ACK()
@@ -2331,7 +2331,7 @@ void MSG_RA_DS_IMPORT_TASK_ACK::Clear() {
 #undef OFFSET_OF_FIELD_
 #undef ZR_
 
-  coldata_.Clear();
+  colvalue_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -2418,20 +2418,20 @@ bool MSG_RA_DS_IMPORT_TASK_ACK::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(50)) goto parse_colData;
+        if (input->ExpectTag(50)) goto parse_colValue;
         break;
       }
 
-      // repeated .COL_DATA colData = 6;
+      // repeated .COL_DATA colValue = 6;
       case 6: {
         if (tag == 50) {
-         parse_colData:
+         parse_colValue:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-                input, add_coldata()));
+                input, add_colvalue()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(50)) goto parse_colData;
+        if (input->ExpectTag(50)) goto parse_colValue;
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -2491,10 +2491,10 @@ void MSG_RA_DS_IMPORT_TASK_ACK::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(5, this->subtasknum(), output);
   }
 
-  // repeated .COL_DATA colData = 6;
-  for (int i = 0; i < this->coldata_size(); i++) {
+  // repeated .COL_DATA colValue = 6;
+  for (int i = 0; i < this->colvalue_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      6, this->coldata(i), output);
+      6, this->colvalue(i), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -2538,11 +2538,11 @@ void MSG_RA_DS_IMPORT_TASK_ACK::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(5, this->subtasknum(), target);
   }
 
-  // repeated .COL_DATA colData = 6;
-  for (int i = 0; i < this->coldata_size(); i++) {
+  // repeated .COL_DATA colValue = 6;
+  for (int i = 0; i < this->colvalue_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        6, this->coldata(i), target);
+        6, this->colvalue(i), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -2593,12 +2593,12 @@ int MSG_RA_DS_IMPORT_TASK_ACK::ByteSize() const {
     }
 
   }
-  // repeated .COL_DATA colData = 6;
-  total_size += 1 * this->coldata_size();
-  for (int i = 0; i < this->coldata_size(); i++) {
+  // repeated .COL_DATA colValue = 6;
+  total_size += 1 * this->colvalue_size();
+  for (int i = 0; i < this->colvalue_size(); i++) {
     total_size +=
       ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        this->coldata(i));
+        this->colvalue(i));
   }
 
   if (!unknown_fields().empty()) {
@@ -2626,7 +2626,7 @@ void MSG_RA_DS_IMPORT_TASK_ACK::MergeFrom(const ::google::protobuf::Message& fro
 
 void MSG_RA_DS_IMPORT_TASK_ACK::MergeFrom(const MSG_RA_DS_IMPORT_TASK_ACK& from) {
   GOOGLE_CHECK_NE(&from, this);
-  coldata_.MergeFrom(from.coldata_);
+  colvalue_.MergeFrom(from.colvalue_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_taskid()) {
       set_taskid(from.taskid());
@@ -2662,7 +2662,7 @@ void MSG_RA_DS_IMPORT_TASK_ACK::CopyFrom(const MSG_RA_DS_IMPORT_TASK_ACK& from) 
 bool MSG_RA_DS_IMPORT_TASK_ACK::IsInitialized() const {
   if ((_has_bits_[0] & 0x0000001f) != 0x0000001f) return false;
 
-  if (!::google::protobuf::internal::AllAreInitialized(this->coldata())) return false;
+  if (!::google::protobuf::internal::AllAreInitialized(this->colvalue())) return false;
   return true;
 }
 
@@ -2673,7 +2673,7 @@ void MSG_RA_DS_IMPORT_TASK_ACK::Swap(MSG_RA_DS_IMPORT_TASK_ACK* other) {
     std::swap(tablename_, other->tablename_);
     std::swap(subtaskno_, other->subtaskno_);
     std::swap(subtasknum_, other->subtasknum_);
-    coldata_.Swap(&other->coldata_);
+    colvalue_.Swap(&other->colvalue_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

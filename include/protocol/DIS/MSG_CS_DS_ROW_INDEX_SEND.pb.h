@@ -133,6 +133,25 @@ class MSG_CS_DS_ROW_TABLE_SEND : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedPtrField< ::ROWKEY_ENTRY >*
       mutable_rowtable();
 
+  // repeated uint32 xVector = 5;
+  inline int xvector_size() const;
+  inline void clear_xvector();
+  static const int kXVectorFieldNumber = 5;
+  inline ::google::protobuf::uint32 xvector(int index) const;
+  inline void set_xvector(int index, ::google::protobuf::uint32 value);
+  inline void add_xvector(::google::protobuf::uint32 value);
+  inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >&
+      xvector() const;
+  inline ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
+      mutable_xvector();
+
+  // required uint32 taskID = 6;
+  inline bool has_taskid() const;
+  inline void clear_taskid();
+  static const int kTaskIDFieldNumber = 6;
+  inline ::google::protobuf::uint32 taskid() const;
+  inline void set_taskid(::google::protobuf::uint32 value);
+
   // @@protoc_insertion_point(class_scope:MSG_CS_DS_ROW_TABLE_SEND)
  private:
   inline void set_has_dbid();
@@ -141,6 +160,8 @@ class MSG_CS_DS_ROW_TABLE_SEND : public ::google::protobuf::Message {
   inline void clear_has_tablename();
   inline void set_has_columnname();
   inline void clear_has_columnname();
+  inline void set_has_taskid();
+  inline void clear_has_taskid();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -148,8 +169,10 @@ class MSG_CS_DS_ROW_TABLE_SEND : public ::google::protobuf::Message {
   mutable int _cached_size_;
   ::std::string* tablename_;
   ::std::string* columnname_;
-  ::google::protobuf::RepeatedPtrField< ::ROWKEY_ENTRY > rowtable_;
   ::google::protobuf::uint32 dbid_;
+  ::google::protobuf::uint32 taskid_;
+  ::google::protobuf::RepeatedPtrField< ::ROWKEY_ENTRY > rowtable_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::uint32 > xvector_;
   friend void  protobuf_AddDesc_MSG_5fCS_5fDS_5fROW_5fINDEX_5fSEND_2eproto();
   friend void protobuf_AssignDesc_MSG_5fCS_5fDS_5fROW_5fINDEX_5fSEND_2eproto();
   friend void protobuf_ShutdownFile_MSG_5fCS_5fDS_5fROW_5fINDEX_5fSEND_2eproto();
@@ -447,6 +470,60 @@ inline ::google::protobuf::RepeatedPtrField< ::ROWKEY_ENTRY >*
 MSG_CS_DS_ROW_TABLE_SEND::mutable_rowtable() {
   // @@protoc_insertion_point(field_mutable_list:MSG_CS_DS_ROW_TABLE_SEND.rowTable)
   return &rowtable_;
+}
+
+// repeated uint32 xVector = 5;
+inline int MSG_CS_DS_ROW_TABLE_SEND::xvector_size() const {
+  return xvector_.size();
+}
+inline void MSG_CS_DS_ROW_TABLE_SEND::clear_xvector() {
+  xvector_.Clear();
+}
+inline ::google::protobuf::uint32 MSG_CS_DS_ROW_TABLE_SEND::xvector(int index) const {
+  // @@protoc_insertion_point(field_get:MSG_CS_DS_ROW_TABLE_SEND.xVector)
+  return xvector_.Get(index);
+}
+inline void MSG_CS_DS_ROW_TABLE_SEND::set_xvector(int index, ::google::protobuf::uint32 value) {
+  xvector_.Set(index, value);
+  // @@protoc_insertion_point(field_set:MSG_CS_DS_ROW_TABLE_SEND.xVector)
+}
+inline void MSG_CS_DS_ROW_TABLE_SEND::add_xvector(::google::protobuf::uint32 value) {
+  xvector_.Add(value);
+  // @@protoc_insertion_point(field_add:MSG_CS_DS_ROW_TABLE_SEND.xVector)
+}
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >&
+MSG_CS_DS_ROW_TABLE_SEND::xvector() const {
+  // @@protoc_insertion_point(field_list:MSG_CS_DS_ROW_TABLE_SEND.xVector)
+  return xvector_;
+}
+inline ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
+MSG_CS_DS_ROW_TABLE_SEND::mutable_xvector() {
+  // @@protoc_insertion_point(field_mutable_list:MSG_CS_DS_ROW_TABLE_SEND.xVector)
+  return &xvector_;
+}
+
+// required uint32 taskID = 6;
+inline bool MSG_CS_DS_ROW_TABLE_SEND::has_taskid() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void MSG_CS_DS_ROW_TABLE_SEND::set_has_taskid() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void MSG_CS_DS_ROW_TABLE_SEND::clear_has_taskid() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void MSG_CS_DS_ROW_TABLE_SEND::clear_taskid() {
+  taskid_ = 0u;
+  clear_has_taskid();
+}
+inline ::google::protobuf::uint32 MSG_CS_DS_ROW_TABLE_SEND::taskid() const {
+  // @@protoc_insertion_point(field_get:MSG_CS_DS_ROW_TABLE_SEND.taskID)
+  return taskid_;
+}
+inline void MSG_CS_DS_ROW_TABLE_SEND::set_taskid(::google::protobuf::uint32 value) {
+  set_has_taskid();
+  taskid_ = value;
+  // @@protoc_insertion_point(field_set:MSG_CS_DS_ROW_TABLE_SEND.taskID)
 }
 
 // -------------------------------------------------------------------

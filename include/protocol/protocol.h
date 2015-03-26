@@ -37,6 +37,10 @@ const unsigned int DS_RA_DELTA_DATA_SEND_ACK = 0x17;
 
 const unsigned int DS_DC_RESOURCE_GET = 0x18;
 const unsigned int DC_DS_RESOURCE_INFO_ACK = 0x19;
+
+const unsigned int DS_DC_RTABLE_POSITION_GET = 0x1a;
+const unsigned int DC_DS_RTABLE_POSITION_GET_ACK = 0x1b;
+
 /*Task State*/
 const unsigned int READ_METADATA = 1;
 const unsigned int CREATE_TASK = 5;

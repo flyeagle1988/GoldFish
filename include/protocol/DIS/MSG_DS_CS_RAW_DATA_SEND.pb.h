@@ -309,38 +309,38 @@ class MSG_DS_CS_RAW_DATA_SEND : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedPtrField< ::DIC_VALUE >*
       mutable_dicvalue();
 
-  // repeated uint64 indexOffsets = 7;
+  // repeated uint32 indexOffsets = 7;
   inline int indexoffsets_size() const;
   inline void clear_indexoffsets();
   static const int kIndexOffsetsFieldNumber = 7;
-  inline ::google::protobuf::uint64 indexoffsets(int index) const;
-  inline void set_indexoffsets(int index, ::google::protobuf::uint64 value);
-  inline void add_indexoffsets(::google::protobuf::uint64 value);
-  inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >&
+  inline ::google::protobuf::uint32 indexoffsets(int index) const;
+  inline void set_indexoffsets(int index, ::google::protobuf::uint32 value);
+  inline void add_indexoffsets(::google::protobuf::uint32 value);
+  inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >&
       indexoffsets() const;
-  inline ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >*
+  inline ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
       mutable_indexoffsets();
 
-  // repeated uint64 indexPosting = 8;
+  // repeated uint32 indexPosting = 8;
   inline int indexposting_size() const;
   inline void clear_indexposting();
   static const int kIndexPostingFieldNumber = 8;
-  inline ::google::protobuf::uint64 indexposting(int index) const;
-  inline void set_indexposting(int index, ::google::protobuf::uint64 value);
-  inline void add_indexposting(::google::protobuf::uint64 value);
-  inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >&
+  inline ::google::protobuf::uint32 indexposting(int index) const;
+  inline void set_indexposting(int index, ::google::protobuf::uint32 value);
+  inline void add_indexposting(::google::protobuf::uint32 value);
+  inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >&
       indexposting() const;
-  inline ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >*
+  inline ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
       mutable_indexposting();
 
-  // required uint32 sliceNo = 9;
+  // optional uint32 sliceNo = 9;
   inline bool has_sliceno() const;
   inline void clear_sliceno();
   static const int kSliceNoFieldNumber = 9;
   inline ::google::protobuf::uint32 sliceno() const;
   inline void set_sliceno(::google::protobuf::uint32 value);
 
-  // required uint32 sliceNum = 10;
+  // optional uint32 sliceNum = 10;
   inline bool has_slicenum() const;
   inline void clear_slicenum();
   static const int kSliceNumFieldNumber = 10;
@@ -373,10 +373,10 @@ class MSG_DS_CS_RAW_DATA_SEND : public ::google::protobuf::Message {
   ::std::string* tablename_;
   ::std::string* columnname_;
   ::google::protobuf::RepeatedPtrField< ::DIC_VALUE > dicvalue_;
-  ::google::protobuf::RepeatedField< ::google::protobuf::uint64 > indexoffsets_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::uint32 > indexoffsets_;
   int columntype_;
   ::google::protobuf::uint32 sliceno_;
-  ::google::protobuf::RepeatedField< ::google::protobuf::uint64 > indexposting_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::uint32 > indexposting_;
   ::google::protobuf::uint32 slicenum_;
   friend void  protobuf_AddDesc_MSG_5fDS_5fCS_5fRAW_5fDATA_5fSEND_2eproto();
   friend void protobuf_AssignDesc_MSG_5fDS_5fCS_5fRAW_5fDATA_5fSEND_2eproto();
@@ -888,67 +888,67 @@ MSG_DS_CS_RAW_DATA_SEND::mutable_dicvalue() {
   return &dicvalue_;
 }
 
-// repeated uint64 indexOffsets = 7;
+// repeated uint32 indexOffsets = 7;
 inline int MSG_DS_CS_RAW_DATA_SEND::indexoffsets_size() const {
   return indexoffsets_.size();
 }
 inline void MSG_DS_CS_RAW_DATA_SEND::clear_indexoffsets() {
   indexoffsets_.Clear();
 }
-inline ::google::protobuf::uint64 MSG_DS_CS_RAW_DATA_SEND::indexoffsets(int index) const {
+inline ::google::protobuf::uint32 MSG_DS_CS_RAW_DATA_SEND::indexoffsets(int index) const {
   // @@protoc_insertion_point(field_get:MSG_DS_CS_RAW_DATA_SEND.indexOffsets)
   return indexoffsets_.Get(index);
 }
-inline void MSG_DS_CS_RAW_DATA_SEND::set_indexoffsets(int index, ::google::protobuf::uint64 value) {
+inline void MSG_DS_CS_RAW_DATA_SEND::set_indexoffsets(int index, ::google::protobuf::uint32 value) {
   indexoffsets_.Set(index, value);
   // @@protoc_insertion_point(field_set:MSG_DS_CS_RAW_DATA_SEND.indexOffsets)
 }
-inline void MSG_DS_CS_RAW_DATA_SEND::add_indexoffsets(::google::protobuf::uint64 value) {
+inline void MSG_DS_CS_RAW_DATA_SEND::add_indexoffsets(::google::protobuf::uint32 value) {
   indexoffsets_.Add(value);
   // @@protoc_insertion_point(field_add:MSG_DS_CS_RAW_DATA_SEND.indexOffsets)
 }
-inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >&
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >&
 MSG_DS_CS_RAW_DATA_SEND::indexoffsets() const {
   // @@protoc_insertion_point(field_list:MSG_DS_CS_RAW_DATA_SEND.indexOffsets)
   return indexoffsets_;
 }
-inline ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >*
+inline ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
 MSG_DS_CS_RAW_DATA_SEND::mutable_indexoffsets() {
   // @@protoc_insertion_point(field_mutable_list:MSG_DS_CS_RAW_DATA_SEND.indexOffsets)
   return &indexoffsets_;
 }
 
-// repeated uint64 indexPosting = 8;
+// repeated uint32 indexPosting = 8;
 inline int MSG_DS_CS_RAW_DATA_SEND::indexposting_size() const {
   return indexposting_.size();
 }
 inline void MSG_DS_CS_RAW_DATA_SEND::clear_indexposting() {
   indexposting_.Clear();
 }
-inline ::google::protobuf::uint64 MSG_DS_CS_RAW_DATA_SEND::indexposting(int index) const {
+inline ::google::protobuf::uint32 MSG_DS_CS_RAW_DATA_SEND::indexposting(int index) const {
   // @@protoc_insertion_point(field_get:MSG_DS_CS_RAW_DATA_SEND.indexPosting)
   return indexposting_.Get(index);
 }
-inline void MSG_DS_CS_RAW_DATA_SEND::set_indexposting(int index, ::google::protobuf::uint64 value) {
+inline void MSG_DS_CS_RAW_DATA_SEND::set_indexposting(int index, ::google::protobuf::uint32 value) {
   indexposting_.Set(index, value);
   // @@protoc_insertion_point(field_set:MSG_DS_CS_RAW_DATA_SEND.indexPosting)
 }
-inline void MSG_DS_CS_RAW_DATA_SEND::add_indexposting(::google::protobuf::uint64 value) {
+inline void MSG_DS_CS_RAW_DATA_SEND::add_indexposting(::google::protobuf::uint32 value) {
   indexposting_.Add(value);
   // @@protoc_insertion_point(field_add:MSG_DS_CS_RAW_DATA_SEND.indexPosting)
 }
-inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >&
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >&
 MSG_DS_CS_RAW_DATA_SEND::indexposting() const {
   // @@protoc_insertion_point(field_list:MSG_DS_CS_RAW_DATA_SEND.indexPosting)
   return indexposting_;
 }
-inline ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >*
+inline ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
 MSG_DS_CS_RAW_DATA_SEND::mutable_indexposting() {
   // @@protoc_insertion_point(field_mutable_list:MSG_DS_CS_RAW_DATA_SEND.indexPosting)
   return &indexposting_;
 }
 
-// required uint32 sliceNo = 9;
+// optional uint32 sliceNo = 9;
 inline bool MSG_DS_CS_RAW_DATA_SEND::has_sliceno() const {
   return (_has_bits_[0] & 0x00000100u) != 0;
 }
@@ -972,7 +972,7 @@ inline void MSG_DS_CS_RAW_DATA_SEND::set_sliceno(::google::protobuf::uint32 valu
   // @@protoc_insertion_point(field_set:MSG_DS_CS_RAW_DATA_SEND.sliceNo)
 }
 
-// required uint32 sliceNum = 10;
+// optional uint32 sliceNum = 10;
 inline bool MSG_DS_CS_RAW_DATA_SEND::has_slicenum() const {
   return (_has_bits_[0] & 0x00000200u) != 0;
 }

@@ -58,6 +58,6 @@ message MSG_RA_DS_IMPORT_TASK_ACK
     required string tableName = 3;
     required uint32 subTaskNo = 4;
     required uint32 subTaskNum = 5;
-    repeated COL_DATA colData = 6;
+    repeated COL_DATA colValue = 6;
 }
 

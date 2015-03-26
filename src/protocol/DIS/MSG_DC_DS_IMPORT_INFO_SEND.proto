@@ -1,4 +1,4 @@
-message MSG_DC_DS_IMPORT_INFO_SEND
+message MSG_DC_DS_IMPORT_INFO_SEND         //增量时DC发送给所有的DS，报文可以拆分成两个
 {
     required uint32 taskID = 1;
     message TABLE_INFO
@@ -9,11 +9,28 @@ message MSG_DC_DS_IMPORT_INFO_SEND
         repeated string colName = 4;
     }
     repeated TABLE_INFO tableInfo = 2;
-    required bool isDelta = 3;       //TRUE: DELTA; FALSE:import
-    optional uint32 tableRowNumber = 4;     // the largest number of rowkey
 }
 
 message MSG_DS_DC_IMPORT_INFO_SEND_ACK
+{
+    required uint32 taskID = 1;
+    required int32 statusCode = 2;
+    required string statusMsg = 3;
+}
+message MSG_DC_DS_DELTA_INFO_SEND
+{
+    required uint32 taskID = 1;
+    message TABLE_INFO
+    {
+        required int32 dbid = 1;
+        required string raname = 2; //exam: 192.168.1.81:10011
+        required string tablename = 3;
+        repeated string colName = 4;
+		required uint32 tableRowNumber = 5;     // the largest number of rowkey
+    }
+    repeated TABLE_INFO tableInfo = 2;
+}
+message MSG_DS_DC_DELTA_INFO_SEND_ACK
 {
     required uint32 taskID = 1;
     required int32 statusCode = 2;

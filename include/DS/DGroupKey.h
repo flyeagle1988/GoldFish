@@ -10,6 +10,10 @@
 
 using namespace std;
 
+const unsigned long STRING_TYPE = 0;
+const unsigned long INT_TYPE = 1;
+const unsigned long DOUBLE_TYPE = 2;
+
 template <class T>
 class DGroupKey{
 	private:
@@ -39,7 +43,8 @@ class DGroupKey{
 				pair_t range = rawData.equal_range(value);
 				for(iterator_t iter = range.first; itr != range.second; itr++)
 				{
-					m_position->push_back((*itr).second);
+					//m_position->push_back((*itr).second);
+					m_postVec.push_back((*itr).second);		
 					i++;
 				}
 				m_offset->push_back(i);
@@ -374,12 +379,30 @@ class DGroupKey{
 				result.push_back(m_dictionary->get(*itr - m_base));
 			return result;
 		}
+		vector<uint64_t>& getPostVecRef() const
+		{
+			return m_postVec;
+		}
 
+		vector<uint64_t>& getOffsetRef() const
+		{
+			return m_offset.getOffsetVecRef();
+		}
+
+		vector<T>& getDictionaryVecRef() const
+		{
+			return m_dictionary.getDicVecRef();
+		}
+		size_t getType() const
+		{
+			return m_type;
+		}
 	private:
 		string m_columnName;
 		uint64_t m_base;//dictionary base, because search is start from dictionary
 		size_t m_type;
 		BitCompressedVector* m_position;
+		vector<uint64_t> m_postVec;			//uncompressed value for the third vector of DGK
 	    Dictionary<T>* m_dictionary;
 		IndexOffset* m_offset;
 };

@@ -47,10 +47,10 @@ message TASK_INFO
 message GROUP_DB_INFO
 {
     required string groupName = 1;
-    repeated string databasename = 2;
+    repeated string dbid = 2;
 }
 message ROWKEY_ENTRY
 {
-    required uint64 rowKey = 1;
-    required uint64 entry = 2;
+    required uint32 rowKey = 1;
+    required uint32 entry = 2;
 }

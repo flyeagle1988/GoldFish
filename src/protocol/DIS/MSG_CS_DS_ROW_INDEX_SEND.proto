@@ -5,6 +5,8 @@ message MSG_CS_DS_ROW_TABLE_SEND
     required string tableName = 2;
     required string columnName = 3;
     repeated ROWKEY_ENTRY rowTable = 4;
+	repeated uint32 xVector = 5;
+	required uint32 taskID = 6;
 }
 message MSG_DS_CS_ROW_TABLE_SEND_ACK
 {

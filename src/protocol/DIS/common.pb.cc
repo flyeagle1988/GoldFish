@@ -239,7 +239,7 @@ void protobuf_AddDesc_common_2eproto() {
     "K_INFO\022\020\n\010taskType\030\001 \002(\r\022\020\n\010schedule\030\002 \002"
     "(\r\"8\n\rGROUP_DB_INFO\022\021\n\tgroupName\030\001 \002(\t\022\024"
     "\n\014databasename\030\002 \003(\t\"-\n\014ROWKEY_ENTRY\022\016\n\006"
-    "rowKey\030\001 \002(\004\022\r\n\005entry\030\002 \002(\004", 627);
+    "rowKey\030\001 \002(\r\022\r\n\005entry\030\002 \002(\r", 627);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "common.proto", &protobuf_RegisterTypes);
   SINGLE_NODE_INFO::default_instance_ = new SINGLE_NODE_INFO();
@@ -2355,8 +2355,8 @@ ROWKEY_ENTRY::ROWKEY_ENTRY(const ROWKEY_ENTRY& from)
 
 void ROWKEY_ENTRY::SharedCtor() {
   _cached_size_ = 0;
-  rowkey_ = GOOGLE_ULONGLONG(0);
-  entry_ = GOOGLE_ULONGLONG(0);
+  rowkey_ = 0u;
+  entry_ = 0u;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -2421,11 +2421,11 @@ bool ROWKEY_ENTRY::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required uint64 rowKey = 1;
+      // required uint32 rowKey = 1;
       case 1: {
         if (tag == 8) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &rowkey_)));
           set_has_rowkey();
         } else {
@@ -2435,12 +2435,12 @@ bool ROWKEY_ENTRY::MergePartialFromCodedStream(
         break;
       }
 
-      // required uint64 entry = 2;
+      // required uint32 entry = 2;
       case 2: {
         if (tag == 16) {
          parse_entry:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &entry_)));
           set_has_entry();
         } else {
@@ -2475,14 +2475,14 @@ failure:
 void ROWKEY_ENTRY::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:ROWKEY_ENTRY)
-  // required uint64 rowKey = 1;
+  // required uint32 rowKey = 1;
   if (has_rowkey()) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt64(1, this->rowkey(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->rowkey(), output);
   }
 
-  // required uint64 entry = 2;
+  // required uint32 entry = 2;
   if (has_entry()) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt64(2, this->entry(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->entry(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -2495,14 +2495,14 @@ void ROWKEY_ENTRY::SerializeWithCachedSizes(
 ::google::protobuf::uint8* ROWKEY_ENTRY::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:ROWKEY_ENTRY)
-  // required uint64 rowKey = 1;
+  // required uint32 rowKey = 1;
   if (has_rowkey()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(1, this->rowkey(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->rowkey(), target);
   }
 
-  // required uint64 entry = 2;
+  // required uint32 entry = 2;
   if (has_entry()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(2, this->entry(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->entry(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -2517,17 +2517,17 @@ int ROWKEY_ENTRY::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required uint64 rowKey = 1;
+    // required uint32 rowKey = 1;
     if (has_rowkey()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::UInt64Size(
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
           this->rowkey());
     }
 
-    // required uint64 entry = 2;
+    // required uint32 entry = 2;
     if (has_entry()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::UInt64Size(
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
           this->entry());
     }
 

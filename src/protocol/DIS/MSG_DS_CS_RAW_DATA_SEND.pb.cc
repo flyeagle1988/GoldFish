@@ -142,9 +142,9 @@ void protobuf_AddDesc_MSG_5fDS_5fCS_5fRAW_5fDATA_5fSEND_2eproto() {
     "ID\030\002 \002(\r\022\021\n\ttableName\030\003 \002(\t\022\022\n\ncolumnNam"
     "e\030\004 \002(\t\0225\n\ncolumnType\030\005 \002(\0162!.MSG_DS_CS_"
     "RAW_DATA_SEND.COL_TYPE\022\034\n\010dicValue\030\006 \003(\013"
-    "2\n.DIC_VALUE\022\024\n\014indexOffsets\030\007 \003(\004\022\024\n\014in"
-    "dexPosting\030\010 \003(\004\022\017\n\007sliceNo\030\t \002(\r\022\020\n\010sli"
-    "ceNum\030\n \002(\r\"6\n\010COL_TYPE\022\n\n\006STRING\020\001\022\007\n\003I"
+    "2\n.DIC_VALUE\022\024\n\014indexOffsets\030\007 \003(\r\022\024\n\014in"
+    "dexPosting\030\010 \003(\r\022\017\n\007sliceNo\030\t \001(\r\022\020\n\010sli"
+    "ceNum\030\n \001(\r\"6\n\010COL_TYPE\022\n\n\006STRING\020\001\022\007\n\003I"
     "NT\020\002\022\t\n\005FLOAT\020\003\022\n\n\006DOUBLE\020\004\"A\n\033MSG_CS_DS"
     "_RAW_DATA_SEND_ACK\022\016\n\006taskID\030\001 \002(\r\022\022\n\nst"
     "atusCode\030\002 \002(\005", 494);
@@ -789,16 +789,16 @@ bool MSG_DS_CS_RAW_DATA_SEND::MergePartialFromCodedStream(
         break;
       }
 
-      // repeated uint64 indexOffsets = 7;
+      // repeated uint32 indexOffsets = 7;
       case 7: {
         if (tag == 56) {
          parse_indexOffsets:
           DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitive<
-                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  1, 56, input, this->mutable_indexoffsets())));
         } else if (tag == 58) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitiveNoInline<
-                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, this->mutable_indexoffsets())));
         } else {
           goto handle_unusual;
@@ -808,16 +808,16 @@ bool MSG_DS_CS_RAW_DATA_SEND::MergePartialFromCodedStream(
         break;
       }
 
-      // repeated uint64 indexPosting = 8;
+      // repeated uint32 indexPosting = 8;
       case 8: {
         if (tag == 64) {
          parse_indexPosting:
           DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitive<
-                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  1, 64, input, this->mutable_indexposting())));
         } else if (tag == 66) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitiveNoInline<
-                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, this->mutable_indexposting())));
         } else {
           goto handle_unusual;
@@ -827,7 +827,7 @@ bool MSG_DS_CS_RAW_DATA_SEND::MergePartialFromCodedStream(
         break;
       }
 
-      // required uint32 sliceNo = 9;
+      // optional uint32 sliceNo = 9;
       case 9: {
         if (tag == 72) {
          parse_sliceNo:
@@ -842,7 +842,7 @@ bool MSG_DS_CS_RAW_DATA_SEND::MergePartialFromCodedStream(
         break;
       }
 
-      // required uint32 sliceNum = 10;
+      // optional uint32 sliceNum = 10;
       case 10: {
         if (tag == 80) {
          parse_sliceNum:
@@ -924,24 +924,24 @@ void MSG_DS_CS_RAW_DATA_SEND::SerializeWithCachedSizes(
       6, this->dicvalue(i), output);
   }
 
-  // repeated uint64 indexOffsets = 7;
+  // repeated uint32 indexOffsets = 7;
   for (int i = 0; i < this->indexoffsets_size(); i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt64(
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(
       7, this->indexoffsets(i), output);
   }
 
-  // repeated uint64 indexPosting = 8;
+  // repeated uint32 indexPosting = 8;
   for (int i = 0; i < this->indexposting_size(); i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt64(
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(
       8, this->indexposting(i), output);
   }
 
-  // required uint32 sliceNo = 9;
+  // optional uint32 sliceNo = 9;
   if (has_sliceno()) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(9, this->sliceno(), output);
   }
 
-  // required uint32 sliceNum = 10;
+  // optional uint32 sliceNum = 10;
   if (has_slicenum()) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(10, this->slicenum(), output);
   }
@@ -1001,24 +1001,24 @@ void MSG_DS_CS_RAW_DATA_SEND::SerializeWithCachedSizes(
         6, this->dicvalue(i), target);
   }
 
-  // repeated uint64 indexOffsets = 7;
+  // repeated uint32 indexOffsets = 7;
   for (int i = 0; i < this->indexoffsets_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
-      WriteUInt64ToArray(7, this->indexoffsets(i), target);
+      WriteUInt32ToArray(7, this->indexoffsets(i), target);
   }
 
-  // repeated uint64 indexPosting = 8;
+  // repeated uint32 indexPosting = 8;
   for (int i = 0; i < this->indexposting_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
-      WriteUInt64ToArray(8, this->indexposting(i), target);
+      WriteUInt32ToArray(8, this->indexposting(i), target);
   }
 
-  // required uint32 sliceNo = 9;
+  // optional uint32 sliceNo = 9;
   if (has_sliceno()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(9, this->sliceno(), target);
   }
 
-  // required uint32 sliceNum = 10;
+  // optional uint32 sliceNum = 10;
   if (has_slicenum()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(10, this->slicenum(), target);
   }
@@ -1071,14 +1071,14 @@ int MSG_DS_CS_RAW_DATA_SEND::ByteSize() const {
 
   }
   if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
-    // required uint32 sliceNo = 9;
+    // optional uint32 sliceNo = 9;
     if (has_sliceno()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
           this->sliceno());
     }
 
-    // required uint32 sliceNum = 10;
+    // optional uint32 sliceNum = 10;
     if (has_slicenum()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
@@ -1094,22 +1094,22 @@ int MSG_DS_CS_RAW_DATA_SEND::ByteSize() const {
         this->dicvalue(i));
   }
 
-  // repeated uint64 indexOffsets = 7;
+  // repeated uint32 indexOffsets = 7;
   {
     int data_size = 0;
     for (int i = 0; i < this->indexoffsets_size(); i++) {
       data_size += ::google::protobuf::internal::WireFormatLite::
-        UInt64Size(this->indexoffsets(i));
+        UInt32Size(this->indexoffsets(i));
     }
     total_size += 1 * this->indexoffsets_size() + data_size;
   }
 
-  // repeated uint64 indexPosting = 8;
+  // repeated uint32 indexPosting = 8;
   {
     int data_size = 0;
     for (int i = 0; i < this->indexposting_size(); i++) {
       data_size += ::google::protobuf::internal::WireFormatLite::
-        UInt64Size(this->indexposting(i));
+        UInt32Size(this->indexposting(i));
     }
     total_size += 1 * this->indexposting_size() + data_size;
   }
@@ -1183,7 +1183,7 @@ void MSG_DS_CS_RAW_DATA_SEND::CopyFrom(const MSG_DS_CS_RAW_DATA_SEND& from) {
 }
 
 bool MSG_DS_CS_RAW_DATA_SEND::IsInitialized() const {
-  if ((_has_bits_[0] & 0x0000031f) != 0x0000031f) return false;
+  if ((_has_bits_[0] & 0x0000001f) != 0x0000001f) return false;
 
   return true;
 }

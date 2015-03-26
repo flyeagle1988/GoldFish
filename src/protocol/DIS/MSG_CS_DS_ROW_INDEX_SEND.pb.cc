@@ -35,11 +35,13 @@ void protobuf_AssignDesc_MSG_5fCS_5fDS_5fROW_5fINDEX_5fSEND_2eproto() {
       "MSG_CS_DS_ROW_INDEX_SEND.proto");
   GOOGLE_CHECK(file != NULL);
   MSG_CS_DS_ROW_TABLE_SEND_descriptor_ = file->message_type(0);
-  static const int MSG_CS_DS_ROW_TABLE_SEND_offsets_[4] = {
+  static const int MSG_CS_DS_ROW_TABLE_SEND_offsets_[6] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_CS_DS_ROW_TABLE_SEND, dbid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_CS_DS_ROW_TABLE_SEND, tablename_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_CS_DS_ROW_TABLE_SEND, columnname_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_CS_DS_ROW_TABLE_SEND, rowtable_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_CS_DS_ROW_TABLE_SEND, xvector_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_CS_DS_ROW_TABLE_SEND, taskid_),
   };
   MSG_CS_DS_ROW_TABLE_SEND_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -103,11 +105,12 @@ void protobuf_AddDesc_MSG_5fCS_5fDS_5fROW_5fINDEX_5fSEND_2eproto() {
   ::protobuf_AddDesc_common_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\036MSG_CS_DS_ROW_INDEX_SEND.proto\032\014common"
-    ".proto\"p\n\030MSG_CS_DS_ROW_TABLE_SEND\022\014\n\004db"
-    "ID\030\001 \002(\r\022\021\n\ttableName\030\002 \002(\t\022\022\n\ncolumnNam"
-    "e\030\003 \002(\t\022\037\n\010rowTable\030\004 \003(\0132\r.ROWKEY_ENTRY"
-    "\"2\n\034MSG_DS_CS_ROW_TABLE_SEND_ACK\022\022\n\nstat"
-    "usCode\030\001 \002(\005", 212);
+    ".proto\"\221\001\n\030MSG_CS_DS_ROW_TABLE_SEND\022\014\n\004d"
+    "bID\030\001 \002(\r\022\021\n\ttableName\030\002 \002(\t\022\022\n\ncolumnNa"
+    "me\030\003 \002(\t\022\037\n\010rowTable\030\004 \003(\0132\r.ROWKEY_ENTR"
+    "Y\022\017\n\007xVector\030\005 \003(\r\022\016\n\006taskID\030\006 \002(\r\"2\n\034MS"
+    "G_DS_CS_ROW_TABLE_SEND_ACK\022\022\n\nstatusCode"
+    "\030\001 \002(\005", 246);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "MSG_CS_DS_ROW_INDEX_SEND.proto", &protobuf_RegisterTypes);
   MSG_CS_DS_ROW_TABLE_SEND::default_instance_ = new MSG_CS_DS_ROW_TABLE_SEND();
@@ -131,6 +134,8 @@ const int MSG_CS_DS_ROW_TABLE_SEND::kDbIDFieldNumber;
 const int MSG_CS_DS_ROW_TABLE_SEND::kTableNameFieldNumber;
 const int MSG_CS_DS_ROW_TABLE_SEND::kColumnNameFieldNumber;
 const int MSG_CS_DS_ROW_TABLE_SEND::kRowTableFieldNumber;
+const int MSG_CS_DS_ROW_TABLE_SEND::kXVectorFieldNumber;
+const int MSG_CS_DS_ROW_TABLE_SEND::kTaskIDFieldNumber;
 #endif  // !_MSC_VER
 
 MSG_CS_DS_ROW_TABLE_SEND::MSG_CS_DS_ROW_TABLE_SEND()
@@ -155,6 +160,7 @@ void MSG_CS_DS_ROW_TABLE_SEND::SharedCtor() {
   dbid_ = 0u;
   tablename_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   columnname_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  taskid_ = 0u;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -196,8 +202,18 @@ MSG_CS_DS_ROW_TABLE_SEND* MSG_CS_DS_ROW_TABLE_SEND::New() const {
 }
 
 void MSG_CS_DS_ROW_TABLE_SEND::Clear() {
-  if (_has_bits_[0 / 32] & 7) {
-    dbid_ = 0u;
+#define OFFSET_OF_FIELD_(f) (reinterpret_cast<char*>(      \
+  &reinterpret_cast<MSG_CS_DS_ROW_TABLE_SEND*>(16)->f) - \
+   reinterpret_cast<char*>(16))
+
+#define ZR_(first, last) do {                              \
+    size_t f = OFFSET_OF_FIELD_(first);                    \
+    size_t n = OFFSET_OF_FIELD_(last) - f + sizeof(last);  \
+    ::memset(&first, 0, n);                                \
+  } while (0)
+
+  if (_has_bits_[0 / 32] & 39) {
+    ZR_(dbid_, taskid_);
     if (has_tablename()) {
       if (tablename_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
         tablename_->clear();
@@ -209,7 +225,12 @@ void MSG_CS_DS_ROW_TABLE_SEND::Clear() {
       }
     }
   }
+
+#undef OFFSET_OF_FIELD_
+#undef ZR_
+
   rowtable_.Clear();
+  xvector_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -282,6 +303,40 @@ bool MSG_CS_DS_ROW_TABLE_SEND::MergePartialFromCodedStream(
           goto handle_unusual;
         }
         if (input->ExpectTag(34)) goto parse_rowTable;
+        if (input->ExpectTag(40)) goto parse_xVector;
+        break;
+      }
+
+      // repeated uint32 xVector = 5;
+      case 5: {
+        if (tag == 40) {
+         parse_xVector:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 1, 40, input, this->mutable_xvector())));
+        } else if (tag == 42) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitiveNoInline<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, this->mutable_xvector())));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(40)) goto parse_xVector;
+        if (input->ExpectTag(48)) goto parse_taskID;
+        break;
+      }
+
+      // required uint32 taskID = 6;
+      case 6: {
+        if (tag == 48) {
+         parse_taskID:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &taskid_)));
+          set_has_taskid();
+        } else {
+          goto handle_unusual;
+        }
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -342,6 +397,17 @@ void MSG_CS_DS_ROW_TABLE_SEND::SerializeWithCachedSizes(
       4, this->rowtable(i), output);
   }
 
+  // repeated uint32 xVector = 5;
+  for (int i = 0; i < this->xvector_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(
+      5, this->xvector(i), output);
+  }
+
+  // required uint32 taskID = 6;
+  if (has_taskid()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(6, this->taskid(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -386,6 +452,17 @@ void MSG_CS_DS_ROW_TABLE_SEND::SerializeWithCachedSizes(
         4, this->rowtable(i), target);
   }
 
+  // repeated uint32 xVector = 5;
+  for (int i = 0; i < this->xvector_size(); i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteUInt32ToArray(5, this->xvector(i), target);
+  }
+
+  // required uint32 taskID = 6;
+  if (has_taskid()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(6, this->taskid(), target);
+  }
+
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -419,6 +496,13 @@ int MSG_CS_DS_ROW_TABLE_SEND::ByteSize() const {
           this->columnname());
     }
 
+    // required uint32 taskID = 6;
+    if (has_taskid()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->taskid());
+    }
+
   }
   // repeated .ROWKEY_ENTRY rowTable = 4;
   total_size += 1 * this->rowtable_size();
@@ -426,6 +510,16 @@ int MSG_CS_DS_ROW_TABLE_SEND::ByteSize() const {
     total_size +=
       ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
         this->rowtable(i));
+  }
+
+  // repeated uint32 xVector = 5;
+  {
+    int data_size = 0;
+    for (int i = 0; i < this->xvector_size(); i++) {
+      data_size += ::google::protobuf::internal::WireFormatLite::
+        UInt32Size(this->xvector(i));
+    }
+    total_size += 1 * this->xvector_size() + data_size;
   }
 
   if (!unknown_fields().empty()) {
@@ -454,6 +548,7 @@ void MSG_CS_DS_ROW_TABLE_SEND::MergeFrom(const ::google::protobuf::Message& from
 void MSG_CS_DS_ROW_TABLE_SEND::MergeFrom(const MSG_CS_DS_ROW_TABLE_SEND& from) {
   GOOGLE_CHECK_NE(&from, this);
   rowtable_.MergeFrom(from.rowtable_);
+  xvector_.MergeFrom(from.xvector_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_dbid()) {
       set_dbid(from.dbid());
@@ -463,6 +558,9 @@ void MSG_CS_DS_ROW_TABLE_SEND::MergeFrom(const MSG_CS_DS_ROW_TABLE_SEND& from) {
     }
     if (from.has_columnname()) {
       set_columnname(from.columnname());
+    }
+    if (from.has_taskid()) {
+      set_taskid(from.taskid());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -481,7 +579,7 @@ void MSG_CS_DS_ROW_TABLE_SEND::CopyFrom(const MSG_CS_DS_ROW_TABLE_SEND& from) {
 }
 
 bool MSG_CS_DS_ROW_TABLE_SEND::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000007) != 0x00000007) return false;
+  if ((_has_bits_[0] & 0x00000027) != 0x00000027) return false;
 
   if (!::google::protobuf::internal::AllAreInitialized(this->rowtable())) return false;
   return true;
@@ -493,6 +591,8 @@ void MSG_CS_DS_ROW_TABLE_SEND::Swap(MSG_CS_DS_ROW_TABLE_SEND* other) {
     std::swap(tablename_, other->tablename_);
     std::swap(columnname_, other->columnname_);
     rowtable_.Swap(&other->rowtable_);
+    xvector_.Swap(&other->xvector_);
+    std::swap(taskid_, other->taskid_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

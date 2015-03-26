@@ -49,7 +49,7 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 LTLIBRARIES = $(noinst_LTLIBRARIES)
 __top_srcdir__lib_libprotocol_la_LIBADD =
-am__objects_1 = common.pb.lo MSG_CS_DS_XVECTOR_SEND.pb.lo \
+am__objects_1 = common.pb.lo MSG_CS_DC_RTABLE_POSITION_GET.pb.lo \
 	MSG_DS_CS_RAW_DATA_SEND.pb.lo \
 	MSG_DS_DC_RTABLE_POSITION_GET.pb.lo \
 	MSG_DC_DS_IMPORT_INFO_SEND.pb.lo MSG_DS_CS_RTABLE_SEND.pb.lo \
@@ -255,7 +255,7 @@ BUILT_SOURCES = $(PROTOOUTPUT)
 nodist___top_srcdir__lib_libprotocol_la_SOURCES = $(PROTOOUTPUT) 
 PROTOOUTPUT = common.pb.h \
 						common.pb.cc \
-						MSG_CS_DS_XVECTOR_SEND.pb.h \
+						MSG_CS_DC_RTABLE_POSITION_GET.pb.h \
 						MSG_DS_CS_RAW_DATA_SEND.pb.h \
 						MSG_DS_DC_RTABLE_POSITION_GET.pb.h \
 						MSG_DC_DS_IMPORT_INFO_SEND.pb.h     \
@@ -271,7 +271,7 @@ PROTOOUTPUT = common.pb.h \
 						MSG_CS_DS_ROW_INDEX_SEND.pb.h  \
 						MSG_DC_RA_IMPORT_SIZE_INFO_GET.pb.h \
 						MSG_DS_DC_RESOURCE_GET.pb.h			\
-						MSG_CS_DS_XVECTOR_SEND.pb.cc \
+						MSG_CS_DC_RTABLE_POSITION_GET.pb.cc \
 						MSG_DS_CS_RAW_DATA_SEND.pb.cc \
 						MSG_DS_DC_RTABLE_POSITION_GET.pb.cc \
 						MSG_DC_DS_IMPORT_INFO_SEND.pb.cc     \
@@ -289,7 +289,7 @@ PROTOOUTPUT = common.pb.h \
 						MSG_DS_DC_RESOURCE_GET.pb.cc
 
 PROTOINPUT = common.proto   \
-						MSG_CS_DS_XVECTOR_SEND.proto \
+						MSG_CS_DC_RTABLE_POSITION_GET.proto \
 						MSG_DS_CS_RAW_DATA_SEND.proto \
 						MSG_DS_DC_RTABLE_POSITION_GET.proto \
 						MSG_DC_DS_IMPORT_INFO_SEND.proto     \
@@ -365,8 +365,8 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/MSG_CS_DC_LOCATION_INDEX_SEND.pb.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/MSG_CS_DC_RTABLE_POSITION_GET.pb.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/MSG_CS_DS_ROW_INDEX_SEND.pb.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/MSG_CS_DS_XVECTOR_SEND.pb.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/MSG_DC_DS_IMPORT_INFO_SEND.pb.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/MSG_DC_DS_RA_INFO_SEND.pb.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/MSG_DC_RA_DATABASE_INFO_GET.pb.Plo@am__quote@

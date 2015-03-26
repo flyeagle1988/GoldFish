@@ -1,13 +1,15 @@
+import "common.proto";
 message MSG_DS_CS_RTABLE_SEND
 {
     required uint32 taskID = 1;
     required uint32 dbID = 2;
     required string tableName = 3;
-    message ROW_TABLE
-    {
-        required string columnName = 1;
-        repeated uint64 entry = 2;
-        repeated uint64 rowKey = 3;
-    }
-    repeated ROW_TABLE rowTable = 4;
+	required string columnName = 4;
+	repeated ROWKEY_ENTRY rowTable = 5;
+	repeated uint32 xVector = 6;
+}
+message MSG_CS_DS_RTABLE_SEND_ACK
+{
+	required uint32 taskID = 1;
+	required uint32 statusCode = 2;
 }

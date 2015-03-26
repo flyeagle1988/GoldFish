@@ -1,5 +1,15 @@
----- analyzeTable Matches (4 in 2 files) ----
-CLDBManager.cpp (src\ra):int CLDBManager::analyzeTable(ConnectionPool * connPool, const string &tableName, DB_INFO &dbInfo)
-CLDBManager.cpp (src\ra):			DEV_LOG_ERROR("CLDBManager::analyzeTable: getConnection error!");
-CLDBManager.cpp (src\ra):		string stmsg = "CLDBManager::analyzeTable error: " + intToStr(stCode) + ", " + ex.getMessage();
-CLDBManager.h (include\ra):		int analyzeTable(ConnectionPool *, const string &, DB_INFO &);
+---- INT Matches (14 in 13 files) ----
+MSG_CS_DC_LOCATION_INDEX_SEND.pb.h (include\protocol\dis):  static const DICT_TYPE INT = INDEX_BORDER_DICT_TYPE_INT;
+MSG_DS_CS_DATA_UPLOAD.pb.h (include\protocol\dis):  static const COL_TYPE INT = MSG_DS_CS_DATA_UPLOAD_TABLE_DICT_INFO_COL_TYPE_INT;
+MSG_DS_CS_DELTA_UPLOAD.pb.h (include\protocol\dis):  static const COL_TYPE INT = MSG_DS_CS_DELTA_UPLOAD_DELTA_DATA_INFO_TABLE_DELTA_INFO_ROW_DATA_INFO_COL_TYPE_INT;
+MSG_DS_CS_RAW_DATA_SEND.pb.h (include\protocol\dis):  static const COL_TYPE INT = MSG_DS_CS_RAW_DATA_SEND_COL_TYPE_INT;
+MSG_DS_DC_LOCATION_INDEX_SEND.pb.h (include\protocol\dis):  static const DICT_TYPE INT = INDEX_BORDER_DICT_TYPE_INT;
+MSG_DS_RA_IMPORT_TASK_SEND.pb.h (include\protocol\dis):  static const COLUMN_TYPE INT = COL_DATA_COLUMN_TYPE_INT;
+MSG_RA_DS_DELTA_DATA_SEND.pb.h (include\protocol\dis):  static const COL_TYPE INT = MSG_RA_DS_DELTA_DATA_SEND_DELTA_DATA_INFO_TABLE_DELTA_INFO_ROW_DATA_INFO_COL_TYPE_INT;
+DGroupKey.h (include\ds):const unsigned long INT = 1;
+MSG_CS_DC_LOCATION_INDEX_SEND.pb.cc (src\protocol\dis):const INDEX_BORDER_DICT_TYPE INDEX_BORDER::INT;
+MSG_DS_CS_RAW_DATA_SEND.pb.cc (src\protocol\dis):const MSG_DS_CS_RAW_DATA_SEND_COL_TYPE MSG_DS_CS_RAW_DATA_SEND::INT;
+MSG_DS_RA_IMPORT_TASK_SEND.pb.cc (src\protocol\dis):const COL_DATA_COLUMN_TYPE COL_DATA::INT;
+CLcreateIndexWorkItem.cpp (src\ds):			DGroupKey<int> * column = constructDGroupKey(it->first, itemCount, 0, INT, it->second);
+testGetMetaWorkItem.cpp (test\meta_test):						case COLUMN_INFO::INT:
+testGetMetaWorkItem.cpp (test\meta_test):							cout << "INT" << endl;

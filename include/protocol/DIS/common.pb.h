@@ -793,19 +793,19 @@ class ROWKEY_ENTRY : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // required uint64 rowKey = 1;
+  // required uint32 rowKey = 1;
   inline bool has_rowkey() const;
   inline void clear_rowkey();
   static const int kRowKeyFieldNumber = 1;
-  inline ::google::protobuf::uint64 rowkey() const;
-  inline void set_rowkey(::google::protobuf::uint64 value);
+  inline ::google::protobuf::uint32 rowkey() const;
+  inline void set_rowkey(::google::protobuf::uint32 value);
 
-  // required uint64 entry = 2;
+  // required uint32 entry = 2;
   inline bool has_entry() const;
   inline void clear_entry();
   static const int kEntryFieldNumber = 2;
-  inline ::google::protobuf::uint64 entry() const;
-  inline void set_entry(::google::protobuf::uint64 value);
+  inline ::google::protobuf::uint32 entry() const;
+  inline void set_entry(::google::protobuf::uint32 value);
 
   // @@protoc_insertion_point(class_scope:ROWKEY_ENTRY)
  private:
@@ -818,8 +818,8 @@ class ROWKEY_ENTRY : public ::google::protobuf::Message {
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::google::protobuf::uint64 rowkey_;
-  ::google::protobuf::uint64 entry_;
+  ::google::protobuf::uint32 rowkey_;
+  ::google::protobuf::uint32 entry_;
   friend void  protobuf_AddDesc_common_2eproto();
   friend void protobuf_AssignDesc_common_2eproto();
   friend void protobuf_ShutdownFile_common_2eproto();
@@ -1669,7 +1669,7 @@ GROUP_DB_INFO::mutable_databasename() {
 
 // ROWKEY_ENTRY
 
-// required uint64 rowKey = 1;
+// required uint32 rowKey = 1;
 inline bool ROWKEY_ENTRY::has_rowkey() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -1680,20 +1680,20 @@ inline void ROWKEY_ENTRY::clear_has_rowkey() {
   _has_bits_[0] &= ~0x00000001u;
 }
 inline void ROWKEY_ENTRY::clear_rowkey() {
-  rowkey_ = GOOGLE_ULONGLONG(0);
+  rowkey_ = 0u;
   clear_has_rowkey();
 }
-inline ::google::protobuf::uint64 ROWKEY_ENTRY::rowkey() const {
+inline ::google::protobuf::uint32 ROWKEY_ENTRY::rowkey() const {
   // @@protoc_insertion_point(field_get:ROWKEY_ENTRY.rowKey)
   return rowkey_;
 }
-inline void ROWKEY_ENTRY::set_rowkey(::google::protobuf::uint64 value) {
+inline void ROWKEY_ENTRY::set_rowkey(::google::protobuf::uint32 value) {
   set_has_rowkey();
   rowkey_ = value;
   // @@protoc_insertion_point(field_set:ROWKEY_ENTRY.rowKey)
 }
 
-// required uint64 entry = 2;
+// required uint32 entry = 2;
 inline bool ROWKEY_ENTRY::has_entry() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -1704,14 +1704,14 @@ inline void ROWKEY_ENTRY::clear_has_entry() {
   _has_bits_[0] &= ~0x00000002u;
 }
 inline void ROWKEY_ENTRY::clear_entry() {
-  entry_ = GOOGLE_ULONGLONG(0);
+  entry_ = 0u;
   clear_has_entry();
 }
-inline ::google::protobuf::uint64 ROWKEY_ENTRY::entry() const {
+inline ::google::protobuf::uint32 ROWKEY_ENTRY::entry() const {
   // @@protoc_insertion_point(field_get:ROWKEY_ENTRY.entry)
   return entry_;
 }
-inline void ROWKEY_ENTRY::set_entry(::google::protobuf::uint64 value) {
+inline void ROWKEY_ENTRY::set_entry(::google::protobuf::uint32 value) {
   set_has_entry();
   entry_ = value;
   // @@protoc_insertion_point(field_set:ROWKEY_ENTRY.entry)

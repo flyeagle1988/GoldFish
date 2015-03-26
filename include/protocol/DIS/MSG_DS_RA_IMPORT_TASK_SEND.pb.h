@@ -812,17 +812,17 @@ class MSG_RA_DS_IMPORT_TASK_ACK : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 subtasknum() const;
   inline void set_subtasknum(::google::protobuf::uint32 value);
 
-  // repeated .COL_DATA colData = 6;
-  inline int coldata_size() const;
-  inline void clear_coldata();
-  static const int kColDataFieldNumber = 6;
-  inline const ::COL_DATA& coldata(int index) const;
-  inline ::COL_DATA* mutable_coldata(int index);
-  inline ::COL_DATA* add_coldata();
+  // repeated .COL_DATA colValue = 6;
+  inline int colvalue_size() const;
+  inline void clear_colvalue();
+  static const int kColValueFieldNumber = 6;
+  inline const ::COL_DATA& colvalue(int index) const;
+  inline ::COL_DATA* mutable_colvalue(int index);
+  inline ::COL_DATA* add_colvalue();
   inline const ::google::protobuf::RepeatedPtrField< ::COL_DATA >&
-      coldata() const;
+      colvalue() const;
   inline ::google::protobuf::RepeatedPtrField< ::COL_DATA >*
-      mutable_coldata();
+      mutable_colvalue();
 
   // @@protoc_insertion_point(class_scope:MSG_RA_DS_IMPORT_TASK_ACK)
  private:
@@ -846,7 +846,7 @@ class MSG_RA_DS_IMPORT_TASK_ACK : public ::google::protobuf::Message {
   ::std::string* tablename_;
   ::google::protobuf::uint32 subtaskno_;
   ::google::protobuf::uint32 subtasknum_;
-  ::google::protobuf::RepeatedPtrField< ::COL_DATA > coldata_;
+  ::google::protobuf::RepeatedPtrField< ::COL_DATA > colvalue_;
   friend void  protobuf_AddDesc_MSG_5fDS_5fRA_5fIMPORT_5fTASK_5fSEND_2eproto();
   friend void protobuf_AssignDesc_MSG_5fDS_5fRA_5fIMPORT_5fTASK_5fSEND_2eproto();
   friend void protobuf_ShutdownFile_MSG_5fDS_5fRA_5fIMPORT_5fTASK_5fSEND_2eproto();
@@ -1746,34 +1746,34 @@ inline void MSG_RA_DS_IMPORT_TASK_ACK::set_subtasknum(::google::protobuf::uint32
   // @@protoc_insertion_point(field_set:MSG_RA_DS_IMPORT_TASK_ACK.subTaskNum)
 }
 
-// repeated .COL_DATA colData = 6;
-inline int MSG_RA_DS_IMPORT_TASK_ACK::coldata_size() const {
-  return coldata_.size();
+// repeated .COL_DATA colValue = 6;
+inline int MSG_RA_DS_IMPORT_TASK_ACK::colvalue_size() const {
+  return colvalue_.size();
 }
-inline void MSG_RA_DS_IMPORT_TASK_ACK::clear_coldata() {
-  coldata_.Clear();
+inline void MSG_RA_DS_IMPORT_TASK_ACK::clear_colvalue() {
+  colvalue_.Clear();
 }
-inline const ::COL_DATA& MSG_RA_DS_IMPORT_TASK_ACK::coldata(int index) const {
-  // @@protoc_insertion_point(field_get:MSG_RA_DS_IMPORT_TASK_ACK.colData)
-  return coldata_.Get(index);
+inline const ::COL_DATA& MSG_RA_DS_IMPORT_TASK_ACK::colvalue(int index) const {
+  // @@protoc_insertion_point(field_get:MSG_RA_DS_IMPORT_TASK_ACK.colValue)
+  return colvalue_.Get(index);
 }
-inline ::COL_DATA* MSG_RA_DS_IMPORT_TASK_ACK::mutable_coldata(int index) {
-  // @@protoc_insertion_point(field_mutable:MSG_RA_DS_IMPORT_TASK_ACK.colData)
-  return coldata_.Mutable(index);
+inline ::COL_DATA* MSG_RA_DS_IMPORT_TASK_ACK::mutable_colvalue(int index) {
+  // @@protoc_insertion_point(field_mutable:MSG_RA_DS_IMPORT_TASK_ACK.colValue)
+  return colvalue_.Mutable(index);
 }
-inline ::COL_DATA* MSG_RA_DS_IMPORT_TASK_ACK::add_coldata() {
-  // @@protoc_insertion_point(field_add:MSG_RA_DS_IMPORT_TASK_ACK.colData)
-  return coldata_.Add();
+inline ::COL_DATA* MSG_RA_DS_IMPORT_TASK_ACK::add_colvalue() {
+  // @@protoc_insertion_point(field_add:MSG_RA_DS_IMPORT_TASK_ACK.colValue)
+  return colvalue_.Add();
 }
 inline const ::google::protobuf::RepeatedPtrField< ::COL_DATA >&
-MSG_RA_DS_IMPORT_TASK_ACK::coldata() const {
-  // @@protoc_insertion_point(field_list:MSG_RA_DS_IMPORT_TASK_ACK.colData)
-  return coldata_;
+MSG_RA_DS_IMPORT_TASK_ACK::colvalue() const {
+  // @@protoc_insertion_point(field_list:MSG_RA_DS_IMPORT_TASK_ACK.colValue)
+  return colvalue_;
 }
 inline ::google::protobuf::RepeatedPtrField< ::COL_DATA >*
-MSG_RA_DS_IMPORT_TASK_ACK::mutable_coldata() {
-  // @@protoc_insertion_point(field_mutable_list:MSG_RA_DS_IMPORT_TASK_ACK.colData)
-  return &coldata_;
+MSG_RA_DS_IMPORT_TASK_ACK::mutable_colvalue() {
+  // @@protoc_insertion_point(field_mutable_list:MSG_RA_DS_IMPORT_TASK_ACK.colValue)
+  return &colvalue_;
 }
 
 
