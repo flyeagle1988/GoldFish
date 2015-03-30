@@ -4,9 +4,9 @@
 #include <iostream>
 #include <string>
 #include <map>
-#include "BitCompressedVector.h"
-#include "Dictionary.h"
-#include "IndexOffset.h"
+#include "DS/BitCompressedVector.h"
+#include "DS/Dictionary.h"
+#include "DS/IndexOffset.h"
 
 using namespace std;
 
@@ -379,19 +379,19 @@ class DGroupKey{
 				result.push_back(m_dictionary->get(*itr - m_base));
 			return result;
 		}
-		vector<uint64_t>& getPostVecRef() const
+		vector<uint64_t> const& getPostVecRef() const
 		{
 			return m_postVec;
 		}
 
-		vector<uint64_t>& getOffsetRef() const
+		vector<uint64_t> const& getOffsetRef() const
 		{
-			return m_offset.getOffsetVecRef();
+			return m_offset->getOffsetVecRef();
 		}
 
-		vector<T>& getDictionaryVecRef() const
+		vector<T> const& getDictionaryVecRef() const
 		{
-			return m_dictionary.getDicVecRef();
+			return m_dictionary->getDicVecRef();
 		}
 		size_t getType() const
 		{
@@ -406,43 +406,6 @@ class DGroupKey{
 	    Dictionary<T>* m_dictionary;
 		IndexOffset* m_offset;
 };
-
-DGroupKey<string>* constructDGroupKey(string columnName, uint64_t itemCount, uint64_t base, uint64_t type, multimap<string, uint64_t> initMap)
-{
-	DGroupKey<string>* string_ptr = new DGroupKey<string>(columnName, itemCount, base, type);
-	string_ptr->constructThreeVector(initMap);
-	return string_ptr;
-}
-
-DGroupKey<int>* constructDGroupKey(string columnName, uint64_t itemCount, uint64_t base, uint64_t type, multimap<int, uint64_t> initMap)
-{
-	DGroupKey<int>* int_ptr = new DGroupKey<int>(columnName, itemCount, base, type);
-	int_ptr->constructThreeVector(initMap);
-	return int_ptr;
-}
-
-DGroupKey<double>* constructDGroupKey(string columnName, uint64_t itemCount, uint64_t base, uint64_t type, multimap<double, uint64_t> initMap)
-{
-	DGroupKey<double>* double_ptr = new DGroupKey<double>(columnName, itemCount, base, type);
-	double_ptr->constructThreeVector(initMap);
-	return double_ptr;
-}
-
-template <class T>
-vector<uint64_t> generateCompVector(Dictionary<T>* dic, const vector<T>& initVector)
-{
-	vector<uint64_t> result;
-	for(uint64_t i = 0; i < initVector.size(); i++)
-	{
-		result.push_back(dic->getPos(initVector[i]));
-	}
-	return result;
-}
-
-DRowTable* constructDRowTable(size_t attributeCount, string tableName, uint64_t base)
-{
-	return new DRowTable(attributeCount, tableName, base);
-}
 
 
 #endif

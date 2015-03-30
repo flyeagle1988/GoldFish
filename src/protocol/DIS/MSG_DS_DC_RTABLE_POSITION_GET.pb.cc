@@ -51,7 +51,9 @@ void protobuf_AssignDesc_MSG_5fDS_5fDC_5fRTABLE_5fPOSITION_5fGET_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(MSG_DS_DC_RTABLE_POSITION_GET));
   MSG_DC_DS_RTABLE_POSITION_GET_ACK_descriptor_ = file->message_type(1);
-  static const int MSG_DC_DS_RTABLE_POSITION_GET_ACK_offsets_[2] = {
+  static const int MSG_DC_DS_RTABLE_POSITION_GET_ACK_offsets_[4] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_DC_DS_RTABLE_POSITION_GET_ACK, dbid_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_DC_DS_RTABLE_POSITION_GET_ACK, tablename_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_DC_DS_RTABLE_POSITION_GET_ACK, csip_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_DC_DS_RTABLE_POSITION_GET_ACK, statuscode_),
   };
@@ -102,9 +104,10 @@ void protobuf_AddDesc_MSG_5fDS_5fDC_5fRTABLE_5fPOSITION_5fGET_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n#MSG_DS_DC_RTABLE_POSITION_GET.proto\"@\n"
     "\035MSG_DS_DC_RTABLE_POSITION_GET\022\014\n\004dbID\030\001"
-    " \002(\r\022\021\n\ttableName\030\002 \002(\t\"E\n!MSG_DC_DS_RTA"
-    "BLE_POSITION_GET_ACK\022\014\n\004csIP\030\001 \001(\t\022\022\n\nst"
-    "atusCode\030\002 \002(\005", 174);
+    " \002(\r\022\021\n\ttableName\030\002 \002(\t\"f\n!MSG_DC_DS_RTA"
+    "BLE_POSITION_GET_ACK\022\014\n\004dbID\030\001 \002(\r\022\021\n\tta"
+    "bleName\030\002 \002(\t\022\014\n\004csIP\030\003 \001(\t\022\022\n\nstatusCod"
+    "e\030\004 \002(\005", 207);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "MSG_DS_DC_RTABLE_POSITION_GET.proto", &protobuf_RegisterTypes);
   MSG_DS_DC_RTABLE_POSITION_GET::default_instance_ = new MSG_DS_DC_RTABLE_POSITION_GET();
@@ -409,6 +412,8 @@ void MSG_DS_DC_RTABLE_POSITION_GET::Swap(MSG_DS_DC_RTABLE_POSITION_GET* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
+const int MSG_DC_DS_RTABLE_POSITION_GET_ACK::kDbIDFieldNumber;
+const int MSG_DC_DS_RTABLE_POSITION_GET_ACK::kTableNameFieldNumber;
 const int MSG_DC_DS_RTABLE_POSITION_GET_ACK::kCsIPFieldNumber;
 const int MSG_DC_DS_RTABLE_POSITION_GET_ACK::kStatusCodeFieldNumber;
 #endif  // !_MSC_VER
@@ -432,6 +437,8 @@ MSG_DC_DS_RTABLE_POSITION_GET_ACK::MSG_DC_DS_RTABLE_POSITION_GET_ACK(const MSG_D
 void MSG_DC_DS_RTABLE_POSITION_GET_ACK::SharedCtor() {
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
+  dbid_ = 0u;
+  tablename_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   csip_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   statuscode_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -443,6 +450,9 @@ MSG_DC_DS_RTABLE_POSITION_GET_ACK::~MSG_DC_DS_RTABLE_POSITION_GET_ACK() {
 }
 
 void MSG_DC_DS_RTABLE_POSITION_GET_ACK::SharedDtor() {
+  if (tablename_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete tablename_;
+  }
   if (csip_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     delete csip_;
   }
@@ -472,14 +482,33 @@ MSG_DC_DS_RTABLE_POSITION_GET_ACK* MSG_DC_DS_RTABLE_POSITION_GET_ACK::New() cons
 }
 
 void MSG_DC_DS_RTABLE_POSITION_GET_ACK::Clear() {
-  if (_has_bits_[0 / 32] & 3) {
+#define OFFSET_OF_FIELD_(f) (reinterpret_cast<char*>(      \
+  &reinterpret_cast<MSG_DC_DS_RTABLE_POSITION_GET_ACK*>(16)->f) - \
+   reinterpret_cast<char*>(16))
+
+#define ZR_(first, last) do {                              \
+    size_t f = OFFSET_OF_FIELD_(first);                    \
+    size_t n = OFFSET_OF_FIELD_(last) - f + sizeof(last);  \
+    ::memset(&first, 0, n);                                \
+  } while (0)
+
+  if (_has_bits_[0 / 32] & 15) {
+    ZR_(dbid_, statuscode_);
+    if (has_tablename()) {
+      if (tablename_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+        tablename_->clear();
+      }
+    }
     if (has_csip()) {
       if (csip_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
         csip_->clear();
       }
     }
-    statuscode_ = 0;
   }
+
+#undef OFFSET_OF_FIELD_
+#undef ZR_
+
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -494,9 +523,41 @@ bool MSG_DC_DS_RTABLE_POSITION_GET_ACK::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional string csIP = 1;
+      // required uint32 dbID = 1;
       case 1: {
-        if (tag == 10) {
+        if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &dbid_)));
+          set_has_dbid();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_tableName;
+        break;
+      }
+
+      // required string tableName = 2;
+      case 2: {
+        if (tag == 18) {
+         parse_tableName:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_tablename()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->tablename().data(), this->tablename().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "tablename");
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(26)) goto parse_csIP;
+        break;
+      }
+
+      // optional string csIP = 3;
+      case 3: {
+        if (tag == 26) {
+         parse_csIP:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_csip()));
           ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
@@ -506,13 +567,13 @@ bool MSG_DC_DS_RTABLE_POSITION_GET_ACK::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(16)) goto parse_statusCode;
+        if (input->ExpectTag(32)) goto parse_statusCode;
         break;
       }
 
-      // required int32 statusCode = 2;
-      case 2: {
-        if (tag == 16) {
+      // required int32 statusCode = 4;
+      case 4: {
+        if (tag == 32) {
          parse_statusCode:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -550,19 +611,34 @@ failure:
 void MSG_DC_DS_RTABLE_POSITION_GET_ACK::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:MSG_DC_DS_RTABLE_POSITION_GET_ACK)
-  // optional string csIP = 1;
+  // required uint32 dbID = 1;
+  if (has_dbid()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->dbid(), output);
+  }
+
+  // required string tableName = 2;
+  if (has_tablename()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->tablename().data(), this->tablename().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "tablename");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      2, this->tablename(), output);
+  }
+
+  // optional string csIP = 3;
   if (has_csip()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->csip().data(), this->csip().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "csip");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->csip(), output);
+      3, this->csip(), output);
   }
 
-  // required int32 statusCode = 2;
+  // required int32 statusCode = 4;
   if (has_statuscode()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->statuscode(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->statuscode(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -575,7 +651,23 @@ void MSG_DC_DS_RTABLE_POSITION_GET_ACK::SerializeWithCachedSizes(
 ::google::protobuf::uint8* MSG_DC_DS_RTABLE_POSITION_GET_ACK::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:MSG_DC_DS_RTABLE_POSITION_GET_ACK)
-  // optional string csIP = 1;
+  // required uint32 dbID = 1;
+  if (has_dbid()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->dbid(), target);
+  }
+
+  // required string tableName = 2;
+  if (has_tablename()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->tablename().data(), this->tablename().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "tablename");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->tablename(), target);
+  }
+
+  // optional string csIP = 3;
   if (has_csip()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->csip().data(), this->csip().length(),
@@ -583,12 +675,12 @@ void MSG_DC_DS_RTABLE_POSITION_GET_ACK::SerializeWithCachedSizes(
       "csip");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->csip(), target);
+        3, this->csip(), target);
   }
 
-  // required int32 statusCode = 2;
+  // required int32 statusCode = 4;
   if (has_statuscode()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->statuscode(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->statuscode(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -603,14 +695,28 @@ int MSG_DC_DS_RTABLE_POSITION_GET_ACK::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional string csIP = 1;
+    // required uint32 dbID = 1;
+    if (has_dbid()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->dbid());
+    }
+
+    // required string tableName = 2;
+    if (has_tablename()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->tablename());
+    }
+
+    // optional string csIP = 3;
     if (has_csip()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->csip());
     }
 
-    // required int32 statusCode = 2;
+    // required int32 statusCode = 4;
     if (has_statuscode()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
@@ -644,6 +750,12 @@ void MSG_DC_DS_RTABLE_POSITION_GET_ACK::MergeFrom(const ::google::protobuf::Mess
 void MSG_DC_DS_RTABLE_POSITION_GET_ACK::MergeFrom(const MSG_DC_DS_RTABLE_POSITION_GET_ACK& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_dbid()) {
+      set_dbid(from.dbid());
+    }
+    if (from.has_tablename()) {
+      set_tablename(from.tablename());
+    }
     if (from.has_csip()) {
       set_csip(from.csip());
     }
@@ -667,13 +779,15 @@ void MSG_DC_DS_RTABLE_POSITION_GET_ACK::CopyFrom(const MSG_DC_DS_RTABLE_POSITION
 }
 
 bool MSG_DC_DS_RTABLE_POSITION_GET_ACK::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000002) != 0x00000002) return false;
+  if ((_has_bits_[0] & 0x0000000b) != 0x0000000b) return false;
 
   return true;
 }
 
 void MSG_DC_DS_RTABLE_POSITION_GET_ACK::Swap(MSG_DC_DS_RTABLE_POSITION_GET_ACK* other) {
   if (other != this) {
+    std::swap(dbid_, other->dbid_);
+    std::swap(tablename_, other->tablename_);
     std::swap(csip_, other->csip_);
     std::swap(statuscode_, other->statuscode_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);

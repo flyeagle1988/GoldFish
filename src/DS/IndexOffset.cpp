@@ -1,5 +1,5 @@
 #include <iostream>
-#include "IndexOffset.h"
+#include "DS/IndexOffset.h"
 
 IndexOffset::IndexOffset()
 {
@@ -39,13 +39,18 @@ uint64_t IndexOffset::getRows()
 uint64_t IndexOffset::findBinarySplitPos(uint64_t positionIndex)
 {
 	uint64_t pos = 0;
+	uint64_t ret = 0;
 	for(vector<uint64_t>::iterator itr = m_offsetVector.begin(); itr != m_offsetVector.end(); itr++)
 	{
 		if(*itr > positionIndex)
-			return pos - 1;
+		{
+			ret = pos - 1;
+			break;
+		}
 		else
 			pos++;
 	}
+	return ret;
 }
 void IndexOffset::offsetShrink(uint64_t pos, uint64_t count)
 {

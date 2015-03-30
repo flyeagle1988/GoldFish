@@ -50,12 +50,14 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am___top_srcdir__bin_DS_OBJECTS = main.$(OBJEXT) \
-	CLRAConnectAgent.$(OBJEXT) CLDCConnectAgent.$(OBJEXT) \
-	CLimpTaskManager.$(OBJEXT) CLHeartBeatTimer.$(OBJEXT) \
-	DSXmlParse.$(OBJEXT) CLcreateIndexTask.$(OBJEXT) \
+am___top_srcdir__bin_DS_OBJECTS = BitCompressedVector.$(OBJEXT) \
+	CLcreateIndexWorkItem.$(OBJEXT) CLHeartBeatTimer.$(OBJEXT) \
+	ColumnTable.$(OBJEXT) IndexOffset.$(OBJEXT) \
 	CLcreateDeltaTask.$(OBJEXT) CLCSConnectAgent.$(OBJEXT) \
-	CLcreateIndexWorkItem.$(OBJEXT)
+	CLimpTaskManager.$(OBJEXT) DRowTable.$(OBJEXT) main.$(OBJEXT) \
+	TableManager.$(OBJEXT) CLcreateIndexTask.$(OBJEXT) \
+	CLDCConnectAgent.$(OBJEXT) CLRAConnectAgent.$(OBJEXT) \
+	DSXmlParse.$(OBJEXT)
 __top_srcdir__bin_DS_OBJECTS = $(am___top_srcdir__bin_DS_OBJECTS)
 __top_srcdir__bin_DS_DEPENDENCIES = $(top_srcdir)/lib/libcommon.la \
 	$(top_srcdir)/lib/libprotocol.la
@@ -196,16 +198,21 @@ top_build_prefix = ../../
 top_builddir = ../..
 top_srcdir = ../../..
 INCLUDES = -I$(top_srcdir)/include -I$(top_srcdir)/include/protocol/DIS/ -I/usr/include/oracle/11.2/client64/ -I/usr/local/include/libxml2
-__top_srcdir__bin_DS_SOURCES = main.cpp \
-							   CLRAConnectAgent.cpp \
-							   CLDCConnectAgent.cpp \
-							   CLimpTaskManager.cpp		\
-							   CLHeartBeatTimer.cpp		\
-							   DSXmlParse.cpp  \
-							   CLcreateIndexTask.cpp \
-							   CLcreateDeltaTask.cpp \
-							   CLCSConnectAgent.cpp  \
-							   CLcreateIndexWorkItem.cpp
+__top_srcdir__bin_DS_SOURCES = BitCompressedVector.cpp \
+							   CLcreateIndexWorkItem.cpp \
+							   CLHeartBeatTimer.cpp \
+							   ColumnTable.cpp \
+							   IndexOffset.cpp \
+							   CLcreateDeltaTask.cpp  \
+							   CLCSConnectAgent.cpp   \
+						   	   CLimpTaskManager.cpp \
+							   DRowTable.cpp   \
+							   main.cpp      \
+							   TableManager.cpp  \
+							   CLcreateIndexTask.cpp  \
+							   CLDCConnectAgent.cpp   \
+						   	   CLRAConnectAgent.cpp  \
+						 	   DSXmlParse.cpp
 
 __top_srcdir__bin_DS_LDADD = $(top_srcdir)/lib/libcommon.la $(top_srcdir)/lib/libprotocol.la -L/usr/lib/oracle/11.2/client64/lib/ -lclntsh -locci -lxml2
 all: all-am
@@ -298,6 +305,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+include ./$(DEPDIR)/BitCompressedVector.Po
 include ./$(DEPDIR)/CLCSConnectAgent.Po
 include ./$(DEPDIR)/CLDCConnectAgent.Po
 include ./$(DEPDIR)/CLHeartBeatTimer.Po
@@ -306,7 +314,11 @@ include ./$(DEPDIR)/CLcreateDeltaTask.Po
 include ./$(DEPDIR)/CLcreateIndexTask.Po
 include ./$(DEPDIR)/CLcreateIndexWorkItem.Po
 include ./$(DEPDIR)/CLimpTaskManager.Po
+include ./$(DEPDIR)/ColumnTable.Po
+include ./$(DEPDIR)/DRowTable.Po
 include ./$(DEPDIR)/DSXmlParse.Po
+include ./$(DEPDIR)/IndexOffset.Po
+include ./$(DEPDIR)/TableManager.Po
 include ./$(DEPDIR)/main.Po
 
 .cpp.o:

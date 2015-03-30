@@ -109,10 +109,19 @@ class MSG_DS_RA_DELTA_GET : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedPtrField< ::IMP_DB_INFO >*
       mutable_dbinfo();
 
+  // optional uint32 rowKeyMax = 3;
+  inline bool has_rowkeymax() const;
+  inline void clear_rowkeymax();
+  static const int kRowKeyMaxFieldNumber = 3;
+  inline ::google::protobuf::uint32 rowkeymax() const;
+  inline void set_rowkeymax(::google::protobuf::uint32 value);
+
   // @@protoc_insertion_point(class_scope:MSG_DS_RA_DELTA_GET)
  private:
   inline void set_has_taskid();
   inline void clear_has_taskid();
+  inline void set_has_rowkeymax();
+  inline void clear_has_rowkeymax();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -120,6 +129,7 @@ class MSG_DS_RA_DELTA_GET : public ::google::protobuf::Message {
   mutable int _cached_size_;
   ::google::protobuf::RepeatedPtrField< ::IMP_DB_INFO > dbinfo_;
   ::google::protobuf::uint32 taskid_;
+  ::google::protobuf::uint32 rowkeymax_;
   friend void  protobuf_AddDesc_MSG_5fDS_5fRA_5fDELTA_5fGET_2eproto();
   friend void protobuf_AssignDesc_MSG_5fDS_5fRA_5fDELTA_5fGET_2eproto();
   friend void protobuf_ShutdownFile_MSG_5fDS_5fRA_5fDELTA_5fGET_2eproto();
@@ -313,6 +323,30 @@ inline ::google::protobuf::RepeatedPtrField< ::IMP_DB_INFO >*
 MSG_DS_RA_DELTA_GET::mutable_dbinfo() {
   // @@protoc_insertion_point(field_mutable_list:MSG_DS_RA_DELTA_GET.dbInfo)
   return &dbinfo_;
+}
+
+// optional uint32 rowKeyMax = 3;
+inline bool MSG_DS_RA_DELTA_GET::has_rowkeymax() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void MSG_DS_RA_DELTA_GET::set_has_rowkeymax() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void MSG_DS_RA_DELTA_GET::clear_has_rowkeymax() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void MSG_DS_RA_DELTA_GET::clear_rowkeymax() {
+  rowkeymax_ = 0u;
+  clear_has_rowkeymax();
+}
+inline ::google::protobuf::uint32 MSG_DS_RA_DELTA_GET::rowkeymax() const {
+  // @@protoc_insertion_point(field_get:MSG_DS_RA_DELTA_GET.rowKeyMax)
+  return rowkeymax_;
+}
+inline void MSG_DS_RA_DELTA_GET::set_rowkeymax(::google::protobuf::uint32 value) {
+  set_has_rowkeymax();
+  rowkeymax_ = value;
+  // @@protoc_insertion_point(field_set:MSG_DS_RA_DELTA_GET.rowKeyMax)
 }
 
 // -------------------------------------------------------------------

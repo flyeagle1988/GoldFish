@@ -1,12 +1,41 @@
+/*
+message MSG_DS_DC_RESOURCE_GET
+{
+	enum TYPE
+	{
+		CS = 0;
+		DS = 1;
+	}
+	required TYPE type = 1;
+    required int32 cpu = 2;
+    required int32 memory = 3;
+}
+
+message MSG_DC_DS_RESOURCE_INFO_ACK
+{
+    required int32 statuCode = 1;
+	repeated string ip = 2;
+	repeated int32 cpu = 3;
+	repeated int32 memory = 4;
+}
+*/
 message MSG_DS_DC_RESOURCE_GET
 {
     required uint32 taskID = 1;     //内部taskid
-    repeated uint32 columnSize = 2;    //每张表每个整列的大小的列表
+    required uint32 dbid = 2;
+    required string tablename = 3;
+    message COL_SIZE
+    {
+        required string columnname = 1;
+        required uint32 columnSize = 2;    //每张表每个整列的大小的列表
+    }
+    repeated COL_SIZE colsize = 4;
 }
 message CS_INFO
 {
     optional string csIP = 1;       //csIP,端口读配置文件，为空时表示cs申请失败
 	optional uint32 memory = 2;      //以MB为单位
+    required string columnname = 3;
 }
 message MSG_DC_DS_RESOURCE_GET_ACK
 {

@@ -54,3 +54,11 @@ message ROWKEY_ENTRY
     required uint32 rowKey = 1;
     required uint32 entry = 2;
 }
+
+message DICT_VALUE
+{
+    optional string strValue = 1;
+    optional int32 iValue = 2;
+    optional float fValue = 3;
+    optional double dValue = 4;
+}

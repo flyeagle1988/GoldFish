@@ -87,7 +87,7 @@ class Dictionary{
 		}
 
 		void clear(){m_dicVector.clear();}
-		vector_t& getDicVecRef() const
+		vector_t const& getDicVecRef() const
 		{
 			return m_dicVector;
 		}

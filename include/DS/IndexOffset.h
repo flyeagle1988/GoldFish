@@ -17,7 +17,7 @@ class IndexOffset{
 		uint64_t findBinarySplitPos(uint64_t positionIndex);
 		void offsetShrink(uint64_t pos, uint64_t count);
 		void clear();
-		vector<uint64_t>& getOffsetVecRef() const
+		vector<uint64_t> const& getOffsetVecRef() const
 		{
 			return m_offsetVector;
 		}

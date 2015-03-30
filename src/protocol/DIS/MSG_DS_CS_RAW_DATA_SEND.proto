@@ -1,12 +1,4 @@
-//获取CS列表后保持列与CS的映射，保证后续数据的发送
-message DIC_VALUE
-{
-    optional string strValue = 1;
-    optional int32 iValue = 2;
-    optional float fValue = 3;
-    optional double dValue = 4;
-        //required uint64 rowNum = 5;
-}
+import "common.proto";
 message MSG_DS_CS_RAW_DATA_SEND     //the groupkey vectors of one column
 {
     required uint32 taskID = 1;
@@ -21,8 +13,7 @@ message MSG_DS_CS_RAW_DATA_SEND     //the groupkey vectors of one column
         DOUBLE = 4;
     }    
     required COL_TYPE columnType = 5;
-    //repeated COL_VALUE columnValue = 6;
-    repeated DIC_VALUE dicValue = 6;
+    repeated DICT_VALUE dicValue = 6;
     repeated uint32 indexOffsets = 7;
     repeated uint32 indexPosting = 8;
     optional uint32 sliceNo = 9;        //子表序号

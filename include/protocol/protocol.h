@@ -22,8 +22,8 @@ const unsigned int CS_DS_DELTA_DATA_INFO_SEND_ACK = 0x0c;
 const unsigned int DS_DC_HEARTBEAT_SEND = 0x0d;
 const unsigned int DC_DS_HEARTBEAT_SEND_ACK = 0x0e;
 
-const unsigned int DS_DC_LOCATION_INDEX_SEND = 0x0f;
-const unsigned int DC_DS_LOCATION_INDEX_SEND_ACK = 0x10;
+//const unsigned int DS_DC_LOCATION_INDEX_SEND = 0x0f;
+//const unsigned int DC_DS_LOCATION_INDEX_SEND_ACK = 0x10;
 
 const unsigned int DS_RA_IMPORT_TASK_SEND = 0x11;
 const unsigned int RA_DS_IMPORT_ERROR_INFO_ACK = 0x12;
@@ -41,6 +41,17 @@ const unsigned int DC_DS_RESOURCE_INFO_ACK = 0x19;
 const unsigned int DS_DC_RTABLE_POSITION_GET = 0x1a;
 const unsigned int DC_DS_RTABLE_POSITION_GET_ACK = 0x1b;
 
+const unsigned int DS_CS_RAW_DATA_SEND = 0x1c;
+const unsigned int CS_DS_RAW_DATA_SEND_ACK = 0x1d;
+
+const unsigned int CS_DS_ROW_INDEX_SEND = 0x1e;
+const unsigned int DS_CS_ROW_INDEX_SEND_ACK = 0x1f;
+
+const unsigned int CS_DC_LOCATION_INDEX_SEND = 0x20;
+const unsigned int DC_CS_LOCATION_INDEX_SEND_ACK = 0x21;
+
+
+
 /*Task State*/
 const unsigned int READ_METADATA = 1;
 const unsigned int CREATE_TASK = 5;
@@ -50,6 +61,7 @@ const unsigned int WAIT_WORKITEM = 2;
 const unsigned int FINISH = 3;
 
 const unsigned int DS_IMP_STATE = 6;
+const unsigned int DS_WAIT_FOR_ADDR = 8;
 const unsigned int DS_DELTA_STATE = 7;
 
 /*Protobuf Error Code*/

@@ -1,4 +1,4 @@
-#include "DRowTable.h"
+#include "DS/DRowTable.h"
 
 DRowTable::DRowTable(size_t attributeCount, string tableName, uint64_t base):m_attributeCount(attributeCount), m_tableName(tableName), m_base(base)
 {

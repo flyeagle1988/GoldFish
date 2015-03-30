@@ -157,6 +157,7 @@ CLDCConnectAgent.o: ../../../src/DS/CLDCConnectAgent.cpp \
  ../../../include/protocol/DIS/MSG_DC_DS_IMPORT_INFO_SEND.pb.h \
  ../../../include/protocol/DIS/MSG_DS_RA_IMPORT_TASK_SEND.pb.h \
  /usr/local/include/google/protobuf/generated_enum_reflection.h \
+ ../../../include/protocol/DIS/MSG_DS_DC_RESOURCE_GET.pb.h \
  ../../../include/DS/CLDCConnectAgent.h \
  ../../../include/common/comm/TCPAgent.h \
  ../../../include/common/comm/Agent.h \
@@ -173,7 +174,8 @@ CLDCConnectAgent.o: ../../../src/DS/CLDCConnectAgent.cpp \
  ../../../include/DS/CLHeartBeatTimer.h \
  ../../../include/common/Timer/Timer.h ../../../include/protocol/dbInfo.h \
  ../../../include/DS/CLRAConnectAgent.h \
- ../../../include/DS/CLimpTaskManager.h
+ ../../../include/DS/CLimpTaskManager.h \
+ ../../../include/DS/CLCSAddrManager.h
 
 ../../../include/common/comm/Epoll.h:
 
@@ -557,6 +559,8 @@ CLDCConnectAgent.o: ../../../src/DS/CLDCConnectAgent.cpp \
 
 /usr/local/include/google/protobuf/generated_enum_reflection.h:
 
+../../../include/protocol/DIS/MSG_DS_DC_RESOURCE_GET.pb.h:
+
 ../../../include/DS/CLDCConnectAgent.h:
 
 ../../../include/common/comm/TCPAgent.h:
@@ -592,3 +596,5 @@ CLDCConnectAgent.o: ../../../src/DS/CLDCConnectAgent.cpp \
 ../../../include/DS/CLRAConnectAgent.h:
 
 ../../../include/DS/CLimpTaskManager.h:
+
+../../../include/DS/CLCSAddrManager.h:

@@ -41,12 +41,13 @@ class BitCompressedVector{
             if(data != NULL)
 			{
 				memset(data, 0, blockNumber * sizeof(storage_unit_t));
-                return data;
 			}
             else
             {
                 cout << "BitCompressedVector::allocMemory(uint64_t blockNumber) error" << endl;
             }
+			
+			return data;
         }
 
         inline uint64_t blockPosition(uint64_t rowID) const{

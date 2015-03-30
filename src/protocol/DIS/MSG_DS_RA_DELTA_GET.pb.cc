@@ -35,9 +35,10 @@ void protobuf_AssignDesc_MSG_5fDS_5fRA_5fDELTA_5fGET_2eproto() {
       "MSG_DS_RA_DELTA_GET.proto");
   GOOGLE_CHECK(file != NULL);
   MSG_DS_RA_DELTA_GET_descriptor_ = file->message_type(0);
-  static const int MSG_DS_RA_DELTA_GET_offsets_[2] = {
+  static const int MSG_DS_RA_DELTA_GET_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_DS_RA_DELTA_GET, taskid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_DS_RA_DELTA_GET, dbinfo_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_DS_RA_DELTA_GET, rowkeymax_),
   };
   MSG_DS_RA_DELTA_GET_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -105,12 +106,12 @@ void protobuf_AddDesc_MSG_5fDS_5fRA_5fDELTA_5fGET_2eproto() {
   ::protobuf_AddDesc_MSG_5fDS_5fRA_5fIMPORT_5fTASK_5fSEND_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\031MSG_DS_RA_DELTA_GET.proto\032 MSG_DS_RA_I"
-    "MPORT_TASK_SEND.proto\"C\n\023MSG_DS_RA_DELTA"
+    "MPORT_TASK_SEND.proto\"V\n\023MSG_DS_RA_DELTA"
     "_GET\022\016\n\006taskID\030\001 \002(\r\022\034\n\006dbInfo\030\002 \003(\0132\014.I"
-    "MP_DB_INFO\"z\n\027MSG_RA_DS_DELTA_GET_ACK\022\016\n"
-    "\006taskID\030\001 \002(\r\022\014\n\004dbID\030\002 \002(\r\022\021\n\ttableName"
-    "\030\003 \002(\t\022\021\n\trowKeyMax\030\004 \001(\r\022\033\n\010colValue\030\005 "
-    "\003(\0132\t.COL_DATA", 254);
+    "MP_DB_INFO\022\021\n\trowKeyMax\030\003 \001(\r\"z\n\027MSG_RA_"
+    "DS_DELTA_GET_ACK\022\016\n\006taskID\030\001 \002(\r\022\014\n\004dbID"
+    "\030\002 \002(\r\022\021\n\ttableName\030\003 \002(\t\022\021\n\trowKeyMax\030\004"
+    " \001(\r\022\033\n\010colValue\030\005 \003(\0132\t.COL_DATA", 273);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "MSG_DS_RA_DELTA_GET.proto", &protobuf_RegisterTypes);
   MSG_DS_RA_DELTA_GET::default_instance_ = new MSG_DS_RA_DELTA_GET();
@@ -132,6 +133,7 @@ struct StaticDescriptorInitializer_MSG_5fDS_5fRA_5fDELTA_5fGET_2eproto {
 #ifndef _MSC_VER
 const int MSG_DS_RA_DELTA_GET::kTaskIDFieldNumber;
 const int MSG_DS_RA_DELTA_GET::kDbInfoFieldNumber;
+const int MSG_DS_RA_DELTA_GET::kRowKeyMaxFieldNumber;
 #endif  // !_MSC_VER
 
 MSG_DS_RA_DELTA_GET::MSG_DS_RA_DELTA_GET()
@@ -153,6 +155,7 @@ MSG_DS_RA_DELTA_GET::MSG_DS_RA_DELTA_GET(const MSG_DS_RA_DELTA_GET& from)
 void MSG_DS_RA_DELTA_GET::SharedCtor() {
   _cached_size_ = 0;
   taskid_ = 0u;
+  rowkeymax_ = 0u;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -188,7 +191,21 @@ MSG_DS_RA_DELTA_GET* MSG_DS_RA_DELTA_GET::New() const {
 }
 
 void MSG_DS_RA_DELTA_GET::Clear() {
-  taskid_ = 0u;
+#define OFFSET_OF_FIELD_(f) (reinterpret_cast<char*>(      \
+  &reinterpret_cast<MSG_DS_RA_DELTA_GET*>(16)->f) - \
+   reinterpret_cast<char*>(16))
+
+#define ZR_(first, last) do {                              \
+    size_t f = OFFSET_OF_FIELD_(first);                    \
+    size_t n = OFFSET_OF_FIELD_(last) - f + sizeof(last);  \
+    ::memset(&first, 0, n);                                \
+  } while (0)
+
+  ZR_(taskid_, rowkeymax_);
+
+#undef OFFSET_OF_FIELD_
+#undef ZR_
+
   dbinfo_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -228,6 +245,21 @@ bool MSG_DS_RA_DELTA_GET::MergePartialFromCodedStream(
           goto handle_unusual;
         }
         if (input->ExpectTag(18)) goto parse_dbInfo;
+        if (input->ExpectTag(24)) goto parse_rowKeyMax;
+        break;
+      }
+
+      // optional uint32 rowKeyMax = 3;
+      case 3: {
+        if (tag == 24) {
+         parse_rowKeyMax:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &rowkeymax_)));
+          set_has_rowkeymax();
+        } else {
+          goto handle_unusual;
+        }
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -268,6 +300,11 @@ void MSG_DS_RA_DELTA_GET::SerializeWithCachedSizes(
       2, this->dbinfo(i), output);
   }
 
+  // optional uint32 rowKeyMax = 3;
+  if (has_rowkeymax()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->rowkeymax(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -290,6 +327,11 @@ void MSG_DS_RA_DELTA_GET::SerializeWithCachedSizes(
         2, this->dbinfo(i), target);
   }
 
+  // optional uint32 rowKeyMax = 3;
+  if (has_rowkeymax()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->rowkeymax(), target);
+  }
+
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -307,6 +349,13 @@ int MSG_DS_RA_DELTA_GET::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
           this->taskid());
+    }
+
+    // optional uint32 rowKeyMax = 3;
+    if (has_rowkeymax()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->rowkeymax());
     }
 
   }
@@ -348,6 +397,9 @@ void MSG_DS_RA_DELTA_GET::MergeFrom(const MSG_DS_RA_DELTA_GET& from) {
     if (from.has_taskid()) {
       set_taskid(from.taskid());
     }
+    if (from.has_rowkeymax()) {
+      set_rowkeymax(from.rowkeymax());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -375,6 +427,7 @@ void MSG_DS_RA_DELTA_GET::Swap(MSG_DS_RA_DELTA_GET* other) {
   if (other != this) {
     std::swap(taskid_, other->taskid_);
     dbinfo_.Swap(&other->dbinfo_);
+    std::swap(rowkeymax_, other->rowkeymax_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

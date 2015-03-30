@@ -39,6 +39,7 @@ class DATABASE_INFO;
 class TASK_INFO;
 class GROUP_DB_INFO;
 class ROWKEY_ENTRY;
+class DICT_VALUE;
 
 enum COLUMN_INFO_ColumnType {
   COLUMN_INFO_ColumnType_VARCHAR = 0,
@@ -704,21 +705,21 @@ class GROUP_DB_INFO : public ::google::protobuf::Message {
   inline ::std::string* release_groupname();
   inline void set_allocated_groupname(::std::string* groupname);
 
-  // repeated string databasename = 2;
-  inline int databasename_size() const;
-  inline void clear_databasename();
-  static const int kDatabasenameFieldNumber = 2;
-  inline const ::std::string& databasename(int index) const;
-  inline ::std::string* mutable_databasename(int index);
-  inline void set_databasename(int index, const ::std::string& value);
-  inline void set_databasename(int index, const char* value);
-  inline void set_databasename(int index, const char* value, size_t size);
-  inline ::std::string* add_databasename();
-  inline void add_databasename(const ::std::string& value);
-  inline void add_databasename(const char* value);
-  inline void add_databasename(const char* value, size_t size);
-  inline const ::google::protobuf::RepeatedPtrField< ::std::string>& databasename() const;
-  inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_databasename();
+  // repeated string dbid = 2;
+  inline int dbid_size() const;
+  inline void clear_dbid();
+  static const int kDbidFieldNumber = 2;
+  inline const ::std::string& dbid(int index) const;
+  inline ::std::string* mutable_dbid(int index);
+  inline void set_dbid(int index, const ::std::string& value);
+  inline void set_dbid(int index, const char* value);
+  inline void set_dbid(int index, const char* value, size_t size);
+  inline ::std::string* add_dbid();
+  inline void add_dbid(const ::std::string& value);
+  inline void add_dbid(const char* value);
+  inline void add_dbid(const char* value, size_t size);
+  inline const ::google::protobuf::RepeatedPtrField< ::std::string>& dbid() const;
+  inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_dbid();
 
   // @@protoc_insertion_point(class_scope:GROUP_DB_INFO)
  private:
@@ -730,7 +731,7 @@ class GROUP_DB_INFO : public ::google::protobuf::Message {
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
   ::std::string* groupname_;
-  ::google::protobuf::RepeatedPtrField< ::std::string> databasename_;
+  ::google::protobuf::RepeatedPtrField< ::std::string> dbid_;
   friend void  protobuf_AddDesc_common_2eproto();
   friend void protobuf_AssignDesc_common_2eproto();
   friend void protobuf_ShutdownFile_common_2eproto();
@@ -826,6 +827,120 @@ class ROWKEY_ENTRY : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static ROWKEY_ENTRY* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class DICT_VALUE : public ::google::protobuf::Message {
+ public:
+  DICT_VALUE();
+  virtual ~DICT_VALUE();
+
+  DICT_VALUE(const DICT_VALUE& from);
+
+  inline DICT_VALUE& operator=(const DICT_VALUE& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const DICT_VALUE& default_instance();
+
+  void Swap(DICT_VALUE* other);
+
+  // implements Message ----------------------------------------------
+
+  DICT_VALUE* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const DICT_VALUE& from);
+  void MergeFrom(const DICT_VALUE& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional string strValue = 1;
+  inline bool has_strvalue() const;
+  inline void clear_strvalue();
+  static const int kStrValueFieldNumber = 1;
+  inline const ::std::string& strvalue() const;
+  inline void set_strvalue(const ::std::string& value);
+  inline void set_strvalue(const char* value);
+  inline void set_strvalue(const char* value, size_t size);
+  inline ::std::string* mutable_strvalue();
+  inline ::std::string* release_strvalue();
+  inline void set_allocated_strvalue(::std::string* strvalue);
+
+  // optional int32 iValue = 2;
+  inline bool has_ivalue() const;
+  inline void clear_ivalue();
+  static const int kIValueFieldNumber = 2;
+  inline ::google::protobuf::int32 ivalue() const;
+  inline void set_ivalue(::google::protobuf::int32 value);
+
+  // optional float fValue = 3;
+  inline bool has_fvalue() const;
+  inline void clear_fvalue();
+  static const int kFValueFieldNumber = 3;
+  inline float fvalue() const;
+  inline void set_fvalue(float value);
+
+  // optional double dValue = 4;
+  inline bool has_dvalue() const;
+  inline void clear_dvalue();
+  static const int kDValueFieldNumber = 4;
+  inline double dvalue() const;
+  inline void set_dvalue(double value);
+
+  // @@protoc_insertion_point(class_scope:DICT_VALUE)
+ private:
+  inline void set_has_strvalue();
+  inline void clear_has_strvalue();
+  inline void set_has_ivalue();
+  inline void clear_has_ivalue();
+  inline void set_has_fvalue();
+  inline void clear_has_fvalue();
+  inline void set_has_dvalue();
+  inline void clear_has_dvalue();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::std::string* strvalue_;
+  ::google::protobuf::int32 ivalue_;
+  float fvalue_;
+  double dvalue_;
+  friend void  protobuf_AddDesc_common_2eproto();
+  friend void protobuf_AssignDesc_common_2eproto();
+  friend void protobuf_ShutdownFile_common_2eproto();
+
+  void InitAsDefaultInstance();
+  static DICT_VALUE* default_instance_;
 };
 // ===================================================================
 
@@ -1611,58 +1726,58 @@ inline void GROUP_DB_INFO::set_allocated_groupname(::std::string* groupname) {
   // @@protoc_insertion_point(field_set_allocated:GROUP_DB_INFO.groupName)
 }
 
-// repeated string databasename = 2;
-inline int GROUP_DB_INFO::databasename_size() const {
-  return databasename_.size();
+// repeated string dbid = 2;
+inline int GROUP_DB_INFO::dbid_size() const {
+  return dbid_.size();
 }
-inline void GROUP_DB_INFO::clear_databasename() {
-  databasename_.Clear();
+inline void GROUP_DB_INFO::clear_dbid() {
+  dbid_.Clear();
 }
-inline const ::std::string& GROUP_DB_INFO::databasename(int index) const {
-  // @@protoc_insertion_point(field_get:GROUP_DB_INFO.databasename)
-  return databasename_.Get(index);
+inline const ::std::string& GROUP_DB_INFO::dbid(int index) const {
+  // @@protoc_insertion_point(field_get:GROUP_DB_INFO.dbid)
+  return dbid_.Get(index);
 }
-inline ::std::string* GROUP_DB_INFO::mutable_databasename(int index) {
-  // @@protoc_insertion_point(field_mutable:GROUP_DB_INFO.databasename)
-  return databasename_.Mutable(index);
+inline ::std::string* GROUP_DB_INFO::mutable_dbid(int index) {
+  // @@protoc_insertion_point(field_mutable:GROUP_DB_INFO.dbid)
+  return dbid_.Mutable(index);
 }
-inline void GROUP_DB_INFO::set_databasename(int index, const ::std::string& value) {
-  // @@protoc_insertion_point(field_set:GROUP_DB_INFO.databasename)
-  databasename_.Mutable(index)->assign(value);
+inline void GROUP_DB_INFO::set_dbid(int index, const ::std::string& value) {
+  // @@protoc_insertion_point(field_set:GROUP_DB_INFO.dbid)
+  dbid_.Mutable(index)->assign(value);
 }
-inline void GROUP_DB_INFO::set_databasename(int index, const char* value) {
-  databasename_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:GROUP_DB_INFO.databasename)
+inline void GROUP_DB_INFO::set_dbid(int index, const char* value) {
+  dbid_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:GROUP_DB_INFO.dbid)
 }
-inline void GROUP_DB_INFO::set_databasename(int index, const char* value, size_t size) {
-  databasename_.Mutable(index)->assign(
+inline void GROUP_DB_INFO::set_dbid(int index, const char* value, size_t size) {
+  dbid_.Mutable(index)->assign(
     reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:GROUP_DB_INFO.databasename)
+  // @@protoc_insertion_point(field_set_pointer:GROUP_DB_INFO.dbid)
 }
-inline ::std::string* GROUP_DB_INFO::add_databasename() {
-  return databasename_.Add();
+inline ::std::string* GROUP_DB_INFO::add_dbid() {
+  return dbid_.Add();
 }
-inline void GROUP_DB_INFO::add_databasename(const ::std::string& value) {
-  databasename_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:GROUP_DB_INFO.databasename)
+inline void GROUP_DB_INFO::add_dbid(const ::std::string& value) {
+  dbid_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:GROUP_DB_INFO.dbid)
 }
-inline void GROUP_DB_INFO::add_databasename(const char* value) {
-  databasename_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:GROUP_DB_INFO.databasename)
+inline void GROUP_DB_INFO::add_dbid(const char* value) {
+  dbid_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:GROUP_DB_INFO.dbid)
 }
-inline void GROUP_DB_INFO::add_databasename(const char* value, size_t size) {
-  databasename_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:GROUP_DB_INFO.databasename)
+inline void GROUP_DB_INFO::add_dbid(const char* value, size_t size) {
+  dbid_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:GROUP_DB_INFO.dbid)
 }
 inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
-GROUP_DB_INFO::databasename() const {
-  // @@protoc_insertion_point(field_list:GROUP_DB_INFO.databasename)
-  return databasename_;
+GROUP_DB_INFO::dbid() const {
+  // @@protoc_insertion_point(field_list:GROUP_DB_INFO.dbid)
+  return dbid_;
 }
 inline ::google::protobuf::RepeatedPtrField< ::std::string>*
-GROUP_DB_INFO::mutable_databasename() {
-  // @@protoc_insertion_point(field_mutable_list:GROUP_DB_INFO.databasename)
-  return &databasename_;
+GROUP_DB_INFO::mutable_dbid() {
+  // @@protoc_insertion_point(field_mutable_list:GROUP_DB_INFO.dbid)
+  return &dbid_;
 }
 
 // -------------------------------------------------------------------
@@ -1715,6 +1830,158 @@ inline void ROWKEY_ENTRY::set_entry(::google::protobuf::uint32 value) {
   set_has_entry();
   entry_ = value;
   // @@protoc_insertion_point(field_set:ROWKEY_ENTRY.entry)
+}
+
+// -------------------------------------------------------------------
+
+// DICT_VALUE
+
+// optional string strValue = 1;
+inline bool DICT_VALUE::has_strvalue() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void DICT_VALUE::set_has_strvalue() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void DICT_VALUE::clear_has_strvalue() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void DICT_VALUE::clear_strvalue() {
+  if (strvalue_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    strvalue_->clear();
+  }
+  clear_has_strvalue();
+}
+inline const ::std::string& DICT_VALUE::strvalue() const {
+  // @@protoc_insertion_point(field_get:DICT_VALUE.strValue)
+  return *strvalue_;
+}
+inline void DICT_VALUE::set_strvalue(const ::std::string& value) {
+  set_has_strvalue();
+  if (strvalue_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    strvalue_ = new ::std::string;
+  }
+  strvalue_->assign(value);
+  // @@protoc_insertion_point(field_set:DICT_VALUE.strValue)
+}
+inline void DICT_VALUE::set_strvalue(const char* value) {
+  set_has_strvalue();
+  if (strvalue_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    strvalue_ = new ::std::string;
+  }
+  strvalue_->assign(value);
+  // @@protoc_insertion_point(field_set_char:DICT_VALUE.strValue)
+}
+inline void DICT_VALUE::set_strvalue(const char* value, size_t size) {
+  set_has_strvalue();
+  if (strvalue_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    strvalue_ = new ::std::string;
+  }
+  strvalue_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:DICT_VALUE.strValue)
+}
+inline ::std::string* DICT_VALUE::mutable_strvalue() {
+  set_has_strvalue();
+  if (strvalue_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    strvalue_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:DICT_VALUE.strValue)
+  return strvalue_;
+}
+inline ::std::string* DICT_VALUE::release_strvalue() {
+  clear_has_strvalue();
+  if (strvalue_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = strvalue_;
+    strvalue_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void DICT_VALUE::set_allocated_strvalue(::std::string* strvalue) {
+  if (strvalue_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete strvalue_;
+  }
+  if (strvalue) {
+    set_has_strvalue();
+    strvalue_ = strvalue;
+  } else {
+    clear_has_strvalue();
+    strvalue_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:DICT_VALUE.strValue)
+}
+
+// optional int32 iValue = 2;
+inline bool DICT_VALUE::has_ivalue() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void DICT_VALUE::set_has_ivalue() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void DICT_VALUE::clear_has_ivalue() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void DICT_VALUE::clear_ivalue() {
+  ivalue_ = 0;
+  clear_has_ivalue();
+}
+inline ::google::protobuf::int32 DICT_VALUE::ivalue() const {
+  // @@protoc_insertion_point(field_get:DICT_VALUE.iValue)
+  return ivalue_;
+}
+inline void DICT_VALUE::set_ivalue(::google::protobuf::int32 value) {
+  set_has_ivalue();
+  ivalue_ = value;
+  // @@protoc_insertion_point(field_set:DICT_VALUE.iValue)
+}
+
+// optional float fValue = 3;
+inline bool DICT_VALUE::has_fvalue() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void DICT_VALUE::set_has_fvalue() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void DICT_VALUE::clear_has_fvalue() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void DICT_VALUE::clear_fvalue() {
+  fvalue_ = 0;
+  clear_has_fvalue();
+}
+inline float DICT_VALUE::fvalue() const {
+  // @@protoc_insertion_point(field_get:DICT_VALUE.fValue)
+  return fvalue_;
+}
+inline void DICT_VALUE::set_fvalue(float value) {
+  set_has_fvalue();
+  fvalue_ = value;
+  // @@protoc_insertion_point(field_set:DICT_VALUE.fValue)
+}
+
+// optional double dValue = 4;
+inline bool DICT_VALUE::has_dvalue() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void DICT_VALUE::set_has_dvalue() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void DICT_VALUE::clear_has_dvalue() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void DICT_VALUE::clear_dvalue() {
+  dvalue_ = 0;
+  clear_has_dvalue();
+}
+inline double DICT_VALUE::dvalue() const {
+  // @@protoc_insertion_point(field_get:DICT_VALUE.dValue)
+  return dvalue_;
+}
+inline void DICT_VALUE::set_dvalue(double value) {
+  set_has_dvalue();
+  dvalue_ = value;
+  // @@protoc_insertion_point(field_set:DICT_VALUE.dValue)
 }
 
 

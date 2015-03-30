@@ -44,4 +44,6 @@ class DRowTable{
 		vector<BitCompressedVector> m_attributeVector;
 		vector<string> m_columnVector;
 };
+
+
 #endif

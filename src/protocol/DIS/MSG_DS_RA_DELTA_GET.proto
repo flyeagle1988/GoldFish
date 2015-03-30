@@ -3,6 +3,7 @@ message MSG_DS_RA_DELTA_GET
 {
     required uint32 taskID = 1;
     repeated IMP_DB_INFO dbInfo = 2;
+    optional uint32 rowKeyMax = 3;
 }
 
 message MSG_RA_DS_DELTA_GET_ACK

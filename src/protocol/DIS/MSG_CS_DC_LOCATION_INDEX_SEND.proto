@@ -1,11 +1,4 @@
-message DICT_VALUE
-{
-    optional string strValue = 1;
-    optional int32 iValue = 2;
-    optional float fValue = 3;
-    optional double dValue = 4;
-}
-
+import "common.proto";
 message INDEX_BORDER
 {
     enum DICT_TYPE

@@ -21,7 +21,7 @@ Epoll * g_pEpoll  = NULL;
 TimerManager * g_pTimerManager = NULL;
 ThreadPool *g_pThreadPool = NULL;
 ThreadPoolDispatcher *g_pDispatcher = NULL;
-CLDCConnectAgent * g_pDCConnectAgent = NULL;
+CLDCConnectAgent *g_pDCConnectAgent = NULL;
 const int EPOLLSIZE = 1024;
 const char * filePath = "../build/Config/ds_config.xml";
 DevLog *g_pDevLog = NULL;
@@ -70,7 +70,9 @@ int main(int argc, char *argv[])
         return FAILED;
     }
 	//Parse XML file
+
 	DSXmlParse dsXmlParse(filePath);
+
 	if(dsXmlParse.parse() == FAILED)
 	{
 		cerr << "main:parse xml error!" << endl;
@@ -79,7 +81,7 @@ int main(int argc, char *argv[])
 	
 	SocketAddress dcAddr;
 	string dcIP = dsXmlParse.getDCIP();	
-	unsigned dcPort = dsXmlParse.getDCPort();
+	unsigned short dcPort = dsXmlParse.getDCPort();
 	dcAddr.setAddress(dcIP.c_str(), dcPort);
 	dcIP = "DC Address: " + dcIP + ":" + intToStr(dcPort);
 	DEV_LOG(LEVENT,OUT_BOTH,dcIP);

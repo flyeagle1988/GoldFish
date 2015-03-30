@@ -1,10 +1,59 @@
-#include "DS/CLcreateIndexWorkItem.h"
 #include "common/DevLog/DevLog.h"
+#include "common/comm/TaskManager.h"
+#include "DS/CLDCConnectAgent.h"
 #include "DS/DGroupKey.h"
+#include "DS/CLcreateIndexWorkItem.h"
+#include "DS/CLcreateIndexTask.h"
+#include "DS/DRowTable.h"
+#include "DS/ColumnTable.h"
+#include "protocol/DIS/MSG_DS_CS_RAW_DATA_SEND.pb.h"
+#include "protocol/DIS/MSG_DS_CS_RTABLE_SEND.pb.h"
+#include "protocol/DIS/MSG_DS_DC_RESOURCE_GET.pb.h"
+#include "protocol/protocol.h"
 
-extern DevLog * g_pDevLog;
-extern CLDCConnectAgent * g_pDCConnectAgent;
-CLcreateIndexWorkItem::CLcreateIndexWorkItem():m_data("")
+
+extern DevLog *g_pDevLog;
+extern CLDCConnectAgent *g_pDCConnectAgent;
+DGroupKey<string>* constructDGroupKey(string columnName, uint64_t itemCount, uint64_t base, uint64_t type, multimap<string, uint64_t> initMap)
+{
+	DGroupKey<string>* string_ptr = new DGroupKey<string>(columnName, itemCount, base, type);
+	string_ptr->constructThreeVector(initMap);
+	return string_ptr;
+}
+
+DGroupKey<int>* constructDGroupKey(string columnName, uint64_t itemCount, uint64_t base, uint64_t type, multimap<int, uint64_t> initMap)
+{
+	DGroupKey<int>* int_ptr = new DGroupKey<int>(columnName, itemCount, base, type);
+	int_ptr->constructThreeVector(initMap);
+	return int_ptr;
+}
+
+DGroupKey<double>* constructDGroupKey(string columnName, uint64_t itemCount, uint64_t base, uint64_t type, multimap<double, uint64_t> initMap)
+{
+	DGroupKey<double>* double_ptr = new DGroupKey<double>(columnName, itemCount, base, type);
+	double_ptr->constructThreeVector(initMap);
+	return double_ptr;
+}
+
+template <class T>
+vector<ROW_TABLE> generateCompVector(Dictionary<T>* dic, const vector<T>& initVector, const vector<uint64_t> &rowKeyVec)
+{
+	vector<ROW_TABLE> result;
+	for(uint64_t i = 0; i < initVector.size(); i++)
+	{
+		ROW_TABLE rowTable;
+		rowTable.rowKey = rowKeyVec[i];
+		rowTable.entry = dic->getSurePos(initVector[i]);
+		result.push_back(rowTable);
+	}
+	return result;
+}
+DRowTable* constructDRowTable(size_t attributeCount, string tableName, uint64_t base)
+{
+	return new DRowTable(attributeCount, tableName, base);
+}
+
+CLcreateIndexWorkItem::CLcreateIndexWorkItem()
 {
 }
 
@@ -16,19 +65,14 @@ int CLcreateIndexWorkItem::process()
 {
 	unsigned int dbID = m_impTaskAck.dbid();
 	string tableName = m_impTaskAck.tablename();
-	size_t columnCount = m_impTaskAck.colvalue_size();
-	//ColumnTable * table = new ColumnTable(tableName);
-	DRowTable * rtable = constructDRowTable(columnCount, tableName, 0);
-	vector<string> columnNameVec;
+	MSG_DS_DC_RESOURCE_GET resourceGet;
+	resourceGet.set_taskid(getTaskID());
+	resourceGet.set_dbid(dbID);
+	resourceGet.set_tablename(tableName);
 
-	typedef map<string, vector<string> > StrMap;
-	typedef map<string, vector<int> > IntMap;
-	typedef map<string, vector<double> > NumMap;
-
-	
-	for(int i = 0; i < m_impTaskAck.colvalue_size(); ++i)
+	for(int i = 0; i < m_impTaskAck.coldata_size(); ++i)
 	{
-		const COL_DATA & colData = m_impTaskAck.colvalue(i);
+		const COL_DATA & colData = m_impTaskAck.coldata(i);
 		string columnName = colData.colname();
 
 		MSG_DS_CS_RAW_DATA_SEND rawDataSend;
@@ -39,45 +83,53 @@ int CLcreateIndexWorkItem::process()
 		rawDataSend.set_sliceno(m_impTaskAck.subtaskno());
 		rawDataSend.set_slicenum(m_impTaskAck.subtasknum());
 		uint64_t itemCount = colData.colvalue_size();
+		vector<ROW_TABLE> columnCompVector;
+		uint64_t dictLength = 0;
+		uint64_t offsetLength = 0;
+		uint64_t postLength = 0;
 		switch(colData.coltype())
 		{
 			case COL_DATA_COLUMN_TYPE_STRING:
 			{
-				rawDataSend.set_columntype(MSG_DS_CS_RAW_DATA_SEND_COL_TYPE_STRING);
-				
+				rawDataSend.set_columntype(MSG_DS_CS_RAW_DATA_SEND_COL_TYPE_STRING);			
 				multimap<string , uint64_t> strMultiMap;
 				vector<string>	strVec;
+				vector<uint64_t> rowNumVec;
 
 				for(int j = 0; j < colData.colvalue_size(); j++)
 				{
 					const COL_VALUE & colValue = colData.colvalue(j);
 					string strValue = colValue.strvalue();
-					uint64_t rowNum = colValue.rowno();
+					uint64_t rowNum = colValue.rowno();					
+					rowNumVec.push_back(rowNum);
 					strMultiMap.insert(make_pair(strValue, rowNum));
 					strVec.push_back(strValue);
 				}
 				DGroupKey<string> * column = constructDGroupKey(columnName, itemCount, 0, STRING_TYPE, strMultiMap);
-				//table->insertOneDGroupKey((void *)column, columnName, STRING_TYPE);
-				vector<uint64_t> columnCompVector = generateCompVector(column->getDictionary(),strVec);
-				rtable->fillOneColumn(columnName, itemCount, columnCompVector);
+				columnCompVector = generateCompVector(column->getDictionary(),strVec, rowNumVec);
 				
-				vector<string>& dicVec = column->getDictionaryVecRef();
-				for(vector<string>::iterator it = dicVec.begin();
+				const vector<string>& dicVec = column->getDictionaryVecRef();
+				for(vector<string>::const_iterator it = dicVec.begin();
 											it != dicVec.end();
 											++it)
 				{
 					DICT_VALUE * dicValue = rawDataSend.add_dicvalue();
 					dicValue->set_strvalue(*it);
+					dictLength += it->length();
 				}
-				vector<uint64_t>& offsetVec = column->getOffsetRef();
-				for(vector<uint64_t>::iterator it = offsetVec.begin();
+											
+				const vector<uint64_t>& offsetVec = column->getOffsetRef();
+				offsetLength = sizeof(uint64_t) * offsetVec.size();
+				for(vector<uint64_t>::const_iterator it = offsetVec.begin();
 												it != offsetVec.end();
 												++it)
 				{
 					rawDataSend.add_indexoffsets(*it);
 				}
-				vector<uint64_t>& postVec = column->getPostVecRef();
-				for(vector<uint64_t>::iterator it = postVec.begin();
+												
+				const vector<uint64_t>& postVec = column->getPostVecRef();
+				postLength = sizeof(uint64_t) * postVec.size();
+				for(vector<uint64_t>::const_iterator it = postVec.begin();
 												it != postVec.end();
 												++it)
 				{
@@ -88,39 +140,44 @@ int CLcreateIndexWorkItem::process()
 			}
 			case COL_DATA_COLUMN_TYPE_INT:
 			{
+				rawDataSend.set_columntype(MSG_DS_CS_RAW_DATA_SEND_COL_TYPE_INT);
 				multimap<int , uint64_t> iMultiMap;
-				vector<int> iVec;
+				vector<int> iVec;				
+				vector<uint64_t> rowNumVec;
 				for(int j = 0; j < colData.colvalue_size(); j++)
 				{
 					const COL_VALUE & colValue = colData.colvalue(j);
 					int iValue = colValue.ivalue();
 					uint64_t rowNum = colValue.rowno();
+					rowNumVec.push_back(rowNum);
 					iMultiMap.insert(make_pair(iValue, rowNum));
 					iVec.push_back(iValue);
 				}
 
 				DGroupKey<int> * column = constructDGroupKey(columnName, itemCount, 0, INT_TYPE, iMultiMap);
-				//table->insertOneDGroupKey((void *)column, columnName, INT_TYPE);
-				vector<uint64_t> columnCompVector = generateCompVector(column->getDictionary(),iVec);
-				rtable->fillOneColumn(columnName, itemCount, columnCompVector);
+				columnCompVector = generateCompVector(column->getDictionary(),iVec, rowNumVec);
 				
-				vector<int>& dicVec = column->getDictionaryVecRef();
-				for(vector<int>::iterator it = dicVec.begin();
+				const vector<int>& dicVec = column->getDictionaryVecRef();
+				dictLength = sizeof(int) * dicVec.size();
+				for(vector<int>::const_iterator it = dicVec.begin();
 											it != dicVec.end();
 											++it)
 				{
 					DICT_VALUE * dicValue = rawDataSend.add_dicvalue();
-					dicValue->set_strvalue(*it);
+					dicValue->set_ivalue(*it);
 				}
-				vector<uint64_t>& offsetVec = column->getOffsetRef();
-				for(vector<uint64_t>::iterator it = offsetVec.begin();
+				
+				const vector<uint64_t>& offsetVec = column->getOffsetRef();
+				offsetLength = sizeof(uint64_t) * offsetVec.size();
+				for(vector<uint64_t>::const_iterator it = offsetVec.begin();
 												it != offsetVec.end();
 												++it)
 				{
 					rawDataSend.add_indexoffsets(*it);
 				}
-				vector<uint64_t>& postVec = column->getPostVecRef();
-				for(vector<uint64_t>::iterator it = postVec.begin();
+				const vector<uint64_t>& postVec = column->getPostVecRef();
+				postLength = sizeof(uint64_t) * postVec.size();
+				for(vector<uint64_t>::const_iterator it = postVec.begin();
 												it != postVec.end();
 												++it)
 				{
@@ -130,85 +187,95 @@ int CLcreateIndexWorkItem::process()
 			}
 			case COL_DATA_COLUMN_TYPE_FLOAT:
 			{
-				multimap<float , uint64_t> fMultiMap;
+				rawDataSend.set_columntype(MSG_DS_CS_RAW_DATA_SEND_COL_TYPE_DOUBLE);
+				multimap<double, uint64_t> fMultiMap;
 				vector<double> dVec;
+				vector<uint64_t> rowNumVec;
 				for(int j = 0; j < colData.colvalue_size(); j++)
 				{
 					const COL_VALUE & colValue = colData.colvalue(j);
 					double dValue = colValue.fvalue();
 					uint64_t rowNum = colValue.rowno();
+					rowNumVec.push_back(rowNum);
 					fMultiMap.insert(make_pair(dValue, rowNum));
 					dVec.push_back(dValue);
 				}
 
 				DGroupKey<double> * column = constructDGroupKey(columnName, itemCount, 0, DOUBLE_TYPE, fMultiMap);
-				//table->insertOneDGroupKey((void *)column, columnName, DOUBLE_TYPE);
-				vector<uint64_t> columnCompVector = generateCompVector(column->getDictionary(), dVec);
-				rtable->fillOneColumn(columnName, itemCount, columnCompVector);
+				columnCompVector = generateCompVector(column->getDictionary(), dVec, rowNumVec);
 				
-				vector<double>& dicVec = column->getDictionaryVecRef();
-				for(vector<double>::iterator it = dicVec.begin();
+				const vector<double>& dicVec = column->getDictionaryVecRef();
+				dictLength = sizeof(double) * dicVec.size();
+				for(vector<double>::const_iterator it = dicVec.begin();
 											it != dicVec.end();
 											++it)
 				{
 					DICT_VALUE * dicValue = rawDataSend.add_dicvalue();
-					dicValue->set_strvalue(*it);
+					dicValue->set_dvalue(*it);
 				}
-				vector<uint64_t>& offsetVec = column->getOffsetRef();
-				for(vector<uint64_t>::iterator it = offsetVec.begin();
+				const vector<uint64_t>& offsetVec = column->getOffsetRef();				
+
+				for(vector<uint64_t>::const_iterator it = offsetVec.begin();
 												it != offsetVec.end();
 												++it)
 				{
 					rawDataSend.add_indexoffsets(*it);
 				}
-				vector<uint64_t>& postVec = column->getPostVecRef();
-				for(vector<uint64_t>::iterator it = postVec.begin();
+				const vector<uint64_t>& postVec = column->getPostVecRef();
+				for(vector<uint64_t>::const_iterator it = postVec.begin();
 												it != postVec.end();
 												++it)
 				{
 					rawDataSend.add_indexposting(*it);
 				}
+				offsetLength = sizeof(uint64_t) * offsetVec.size();
+				postLength = sizeof(uint64_t) * postVec.size();
 				break;
 			}
 			case COL_DATA_COLUMN_TYPE_DOUBLE:
 			{
+				rawDataSend.set_columntype(MSG_DS_CS_RAW_DATA_SEND_COL_TYPE_DOUBLE);
 				multimap<double, uint64_t> dMultiMap;
 				vector<double> dVec;
+				vector<uint64_t> rowNumVec;
 				for(int j = 0; j < colData.colvalue_size(); j++)
 				{
 					const COL_VALUE & colValue = colData.colvalue(j);
 					double dValue = colValue.fvalue();
 					uint64_t rowNum = colValue.rowno();
+					rowNumVec.push_back(rowNum);
 					dMultiMap.insert(make_pair(dValue, rowNum));
 				}
 
 				DGroupKey<double> * column = constructDGroupKey(columnName, itemCount, 0, DOUBLE_TYPE, dMultiMap);
-				//table->insertOneDGroupKey((void *)column, columnName, DOUBLE_TYPE);
-				vector<uint64_t> columnCompVector = generateCompVector(column->getDictionary(), dVec);
-				rtable->fillOneColumn(columnName, itemCount, columnCompVector);
+				columnCompVector = generateCompVector(column->getDictionary(), dVec, rowNumVec);
 				
-				vector<double>& dicVec = column->getDictionaryVecRef();
-				for(vector<double>::iterator it = dicVec.begin();
+				const vector<double>& dicVec = column->getDictionaryVecRef();
+				dictLength = sizeof(double) * dicVec.size();
+				for(vector<double>::const_iterator it = dicVec.begin();
 											it != dicVec.end();
 											++it)
 				{
 					DICT_VALUE * dicValue = rawDataSend.add_dicvalue();
-					dicValue->set_strvalue(*it);
+					dicValue->set_dvalue(*it);
 				}
-				vector<uint64_t>& offsetVec = column->getOffsetRef();
-				for(vector<uint64_t>::iterator it = offsetVec.begin();
+				const vector<uint64_t>& offsetVec = column->getOffsetRef();
+				for(vector<uint64_t>::const_iterator it = offsetVec.begin();
 												it != offsetVec.end();
 												++it)
 				{
 					rawDataSend.add_indexoffsets(*it);
 				}
-				vector<uint64_t>& postVec = column->getPostVecRef();
-				for(vector<uint64_t>::iterator it = postVec.begin();
+				const vector<uint64_t>& postVec = column->getPostVecRef();
+				for(vector<uint64_t>::const_iterator it = postVec.begin();
 												it != postVec.end();
 												++it)
 				{
 					rawDataSend.add_indexposting(*it);
 				}
+												
+				offsetLength = sizeof(uint64_t) * offsetVec.size();
+				postLength = sizeof(uint64_t) * postVec.size();
 				break;
 			}
 			default:
@@ -217,13 +284,31 @@ int CLcreateIndexWorkItem::process()
 				break;
 			}
 		}
+		MSG_DS_DC_RESOURCE_GET_COL_SIZE *colSize = resourceGet.add_colsize();
+		uint32_t columnSize = (dictLength + offsetLength + postLength) * m_impTaskAck.subtasknum() / (1024*1024);		
+		colSize->set_columnname(columnName);
+		colSize->set_columnsize(columnSize);
 
-		// Send protobuf package to cs
+		string data;
+		rawDataSend.SerializeToString(&data);
+		CLcreateIndexTask * pTask = dynamic_cast<CLcreateIndexTask *>(TaskManager::getInstance()->get(getTaskID()));
+		if(pTask != NULL)
+		{	
+			pTask->setDict(columnName, data);
+		}
+		else
+		{
+			DEV_LOG_ERROR("CLcreateIndexWorkItem::process get CLcreateIndexTask error: taskid " + getTaskID());
+			return FAILED;
+		}
 		
 	}
-
+	string outData;
+	resourceGet.SerializeToString(&outData);
+	MsgHeader msgHeader;
+	msgHeader.cmd = DS_DC_RESOURCE_GET;
+	msgHeader.length = outData.length();
+	g_pDCConnectAgent->sendPackage(msgHeader,outData.c_str());
 	
-	//delete table;
-	delete rtable;
 	return SUCCESSFUL;
 }

@@ -25,6 +25,7 @@
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
+#include "common.pb.h"
 // @@protoc_insertion_point(includes)
 
 // Internal implementation detail -- do not call these.
@@ -32,7 +33,6 @@ void  protobuf_AddDesc_MSG_5fDS_5fCS_5fRAW_5fDATA_5fSEND_2eproto();
 void protobuf_AssignDesc_MSG_5fDS_5fCS_5fRAW_5fDATA_5fSEND_2eproto();
 void protobuf_ShutdownFile_MSG_5fDS_5fCS_5fRAW_5fDATA_5fSEND_2eproto();
 
-class DIC_VALUE;
 class MSG_DS_CS_RAW_DATA_SEND;
 class MSG_CS_DS_RAW_DATA_SEND_ACK;
 
@@ -58,120 +58,6 @@ inline bool MSG_DS_CS_RAW_DATA_SEND_COL_TYPE_Parse(
     MSG_DS_CS_RAW_DATA_SEND_COL_TYPE_descriptor(), name, value);
 }
 // ===================================================================
-
-class DIC_VALUE : public ::google::protobuf::Message {
- public:
-  DIC_VALUE();
-  virtual ~DIC_VALUE();
-
-  DIC_VALUE(const DIC_VALUE& from);
-
-  inline DIC_VALUE& operator=(const DIC_VALUE& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const DIC_VALUE& default_instance();
-
-  void Swap(DIC_VALUE* other);
-
-  // implements Message ----------------------------------------------
-
-  DIC_VALUE* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const DIC_VALUE& from);
-  void MergeFrom(const DIC_VALUE& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // optional string strValue = 1;
-  inline bool has_strvalue() const;
-  inline void clear_strvalue();
-  static const int kStrValueFieldNumber = 1;
-  inline const ::std::string& strvalue() const;
-  inline void set_strvalue(const ::std::string& value);
-  inline void set_strvalue(const char* value);
-  inline void set_strvalue(const char* value, size_t size);
-  inline ::std::string* mutable_strvalue();
-  inline ::std::string* release_strvalue();
-  inline void set_allocated_strvalue(::std::string* strvalue);
-
-  // optional int32 iValue = 2;
-  inline bool has_ivalue() const;
-  inline void clear_ivalue();
-  static const int kIValueFieldNumber = 2;
-  inline ::google::protobuf::int32 ivalue() const;
-  inline void set_ivalue(::google::protobuf::int32 value);
-
-  // optional float fValue = 3;
-  inline bool has_fvalue() const;
-  inline void clear_fvalue();
-  static const int kFValueFieldNumber = 3;
-  inline float fvalue() const;
-  inline void set_fvalue(float value);
-
-  // optional double dValue = 4;
-  inline bool has_dvalue() const;
-  inline void clear_dvalue();
-  static const int kDValueFieldNumber = 4;
-  inline double dvalue() const;
-  inline void set_dvalue(double value);
-
-  // @@protoc_insertion_point(class_scope:DIC_VALUE)
- private:
-  inline void set_has_strvalue();
-  inline void clear_has_strvalue();
-  inline void set_has_ivalue();
-  inline void clear_has_ivalue();
-  inline void set_has_fvalue();
-  inline void clear_has_fvalue();
-  inline void set_has_dvalue();
-  inline void clear_has_dvalue();
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::google::protobuf::uint32 _has_bits_[1];
-  mutable int _cached_size_;
-  ::std::string* strvalue_;
-  ::google::protobuf::int32 ivalue_;
-  float fvalue_;
-  double dvalue_;
-  friend void  protobuf_AddDesc_MSG_5fDS_5fCS_5fRAW_5fDATA_5fSEND_2eproto();
-  friend void protobuf_AssignDesc_MSG_5fDS_5fCS_5fRAW_5fDATA_5fSEND_2eproto();
-  friend void protobuf_ShutdownFile_MSG_5fDS_5fCS_5fRAW_5fDATA_5fSEND_2eproto();
-
-  void InitAsDefaultInstance();
-  static DIC_VALUE* default_instance_;
-};
-// -------------------------------------------------------------------
 
 class MSG_DS_CS_RAW_DATA_SEND : public ::google::protobuf::Message {
  public:
@@ -297,16 +183,16 @@ class MSG_DS_CS_RAW_DATA_SEND : public ::google::protobuf::Message {
   inline ::MSG_DS_CS_RAW_DATA_SEND_COL_TYPE columntype() const;
   inline void set_columntype(::MSG_DS_CS_RAW_DATA_SEND_COL_TYPE value);
 
-  // repeated .DIC_VALUE dicValue = 6;
+  // repeated .DICT_VALUE dicValue = 6;
   inline int dicvalue_size() const;
   inline void clear_dicvalue();
   static const int kDicValueFieldNumber = 6;
-  inline const ::DIC_VALUE& dicvalue(int index) const;
-  inline ::DIC_VALUE* mutable_dicvalue(int index);
-  inline ::DIC_VALUE* add_dicvalue();
-  inline const ::google::protobuf::RepeatedPtrField< ::DIC_VALUE >&
+  inline const ::DICT_VALUE& dicvalue(int index) const;
+  inline ::DICT_VALUE* mutable_dicvalue(int index);
+  inline ::DICT_VALUE* add_dicvalue();
+  inline const ::google::protobuf::RepeatedPtrField< ::DICT_VALUE >&
       dicvalue() const;
-  inline ::google::protobuf::RepeatedPtrField< ::DIC_VALUE >*
+  inline ::google::protobuf::RepeatedPtrField< ::DICT_VALUE >*
       mutable_dicvalue();
 
   // repeated uint32 indexOffsets = 7;
@@ -372,7 +258,7 @@ class MSG_DS_CS_RAW_DATA_SEND : public ::google::protobuf::Message {
   ::google::protobuf::uint32 dbid_;
   ::std::string* tablename_;
   ::std::string* columnname_;
-  ::google::protobuf::RepeatedPtrField< ::DIC_VALUE > dicvalue_;
+  ::google::protobuf::RepeatedPtrField< ::DICT_VALUE > dicvalue_;
   ::google::protobuf::RepeatedField< ::google::protobuf::uint32 > indexoffsets_;
   int columntype_;
   ::google::protobuf::uint32 sliceno_;
@@ -478,158 +364,6 @@ class MSG_CS_DS_RAW_DATA_SEND_ACK : public ::google::protobuf::Message {
 
 
 // ===================================================================
-
-// DIC_VALUE
-
-// optional string strValue = 1;
-inline bool DIC_VALUE::has_strvalue() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void DIC_VALUE::set_has_strvalue() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void DIC_VALUE::clear_has_strvalue() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void DIC_VALUE::clear_strvalue() {
-  if (strvalue_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    strvalue_->clear();
-  }
-  clear_has_strvalue();
-}
-inline const ::std::string& DIC_VALUE::strvalue() const {
-  // @@protoc_insertion_point(field_get:DIC_VALUE.strValue)
-  return *strvalue_;
-}
-inline void DIC_VALUE::set_strvalue(const ::std::string& value) {
-  set_has_strvalue();
-  if (strvalue_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    strvalue_ = new ::std::string;
-  }
-  strvalue_->assign(value);
-  // @@protoc_insertion_point(field_set:DIC_VALUE.strValue)
-}
-inline void DIC_VALUE::set_strvalue(const char* value) {
-  set_has_strvalue();
-  if (strvalue_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    strvalue_ = new ::std::string;
-  }
-  strvalue_->assign(value);
-  // @@protoc_insertion_point(field_set_char:DIC_VALUE.strValue)
-}
-inline void DIC_VALUE::set_strvalue(const char* value, size_t size) {
-  set_has_strvalue();
-  if (strvalue_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    strvalue_ = new ::std::string;
-  }
-  strvalue_->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:DIC_VALUE.strValue)
-}
-inline ::std::string* DIC_VALUE::mutable_strvalue() {
-  set_has_strvalue();
-  if (strvalue_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    strvalue_ = new ::std::string;
-  }
-  // @@protoc_insertion_point(field_mutable:DIC_VALUE.strValue)
-  return strvalue_;
-}
-inline ::std::string* DIC_VALUE::release_strvalue() {
-  clear_has_strvalue();
-  if (strvalue_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    return NULL;
-  } else {
-    ::std::string* temp = strvalue_;
-    strvalue_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-    return temp;
-  }
-}
-inline void DIC_VALUE::set_allocated_strvalue(::std::string* strvalue) {
-  if (strvalue_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    delete strvalue_;
-  }
-  if (strvalue) {
-    set_has_strvalue();
-    strvalue_ = strvalue;
-  } else {
-    clear_has_strvalue();
-    strvalue_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  }
-  // @@protoc_insertion_point(field_set_allocated:DIC_VALUE.strValue)
-}
-
-// optional int32 iValue = 2;
-inline bool DIC_VALUE::has_ivalue() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void DIC_VALUE::set_has_ivalue() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void DIC_VALUE::clear_has_ivalue() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void DIC_VALUE::clear_ivalue() {
-  ivalue_ = 0;
-  clear_has_ivalue();
-}
-inline ::google::protobuf::int32 DIC_VALUE::ivalue() const {
-  // @@protoc_insertion_point(field_get:DIC_VALUE.iValue)
-  return ivalue_;
-}
-inline void DIC_VALUE::set_ivalue(::google::protobuf::int32 value) {
-  set_has_ivalue();
-  ivalue_ = value;
-  // @@protoc_insertion_point(field_set:DIC_VALUE.iValue)
-}
-
-// optional float fValue = 3;
-inline bool DIC_VALUE::has_fvalue() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void DIC_VALUE::set_has_fvalue() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void DIC_VALUE::clear_has_fvalue() {
-  _has_bits_[0] &= ~0x00000004u;
-}
-inline void DIC_VALUE::clear_fvalue() {
-  fvalue_ = 0;
-  clear_has_fvalue();
-}
-inline float DIC_VALUE::fvalue() const {
-  // @@protoc_insertion_point(field_get:DIC_VALUE.fValue)
-  return fvalue_;
-}
-inline void DIC_VALUE::set_fvalue(float value) {
-  set_has_fvalue();
-  fvalue_ = value;
-  // @@protoc_insertion_point(field_set:DIC_VALUE.fValue)
-}
-
-// optional double dValue = 4;
-inline bool DIC_VALUE::has_dvalue() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
-inline void DIC_VALUE::set_has_dvalue() {
-  _has_bits_[0] |= 0x00000008u;
-}
-inline void DIC_VALUE::clear_has_dvalue() {
-  _has_bits_[0] &= ~0x00000008u;
-}
-inline void DIC_VALUE::clear_dvalue() {
-  dvalue_ = 0;
-  clear_has_dvalue();
-}
-inline double DIC_VALUE::dvalue() const {
-  // @@protoc_insertion_point(field_get:DIC_VALUE.dValue)
-  return dvalue_;
-}
-inline void DIC_VALUE::set_dvalue(double value) {
-  set_has_dvalue();
-  dvalue_ = value;
-  // @@protoc_insertion_point(field_set:DIC_VALUE.dValue)
-}
-
-// -------------------------------------------------------------------
 
 // MSG_DS_CS_RAW_DATA_SEND
 
@@ -858,31 +592,31 @@ inline void MSG_DS_CS_RAW_DATA_SEND::set_columntype(::MSG_DS_CS_RAW_DATA_SEND_CO
   // @@protoc_insertion_point(field_set:MSG_DS_CS_RAW_DATA_SEND.columnType)
 }
 
-// repeated .DIC_VALUE dicValue = 6;
+// repeated .DICT_VALUE dicValue = 6;
 inline int MSG_DS_CS_RAW_DATA_SEND::dicvalue_size() const {
   return dicvalue_.size();
 }
 inline void MSG_DS_CS_RAW_DATA_SEND::clear_dicvalue() {
   dicvalue_.Clear();
 }
-inline const ::DIC_VALUE& MSG_DS_CS_RAW_DATA_SEND::dicvalue(int index) const {
+inline const ::DICT_VALUE& MSG_DS_CS_RAW_DATA_SEND::dicvalue(int index) const {
   // @@protoc_insertion_point(field_get:MSG_DS_CS_RAW_DATA_SEND.dicValue)
   return dicvalue_.Get(index);
 }
-inline ::DIC_VALUE* MSG_DS_CS_RAW_DATA_SEND::mutable_dicvalue(int index) {
+inline ::DICT_VALUE* MSG_DS_CS_RAW_DATA_SEND::mutable_dicvalue(int index) {
   // @@protoc_insertion_point(field_mutable:MSG_DS_CS_RAW_DATA_SEND.dicValue)
   return dicvalue_.Mutable(index);
 }
-inline ::DIC_VALUE* MSG_DS_CS_RAW_DATA_SEND::add_dicvalue() {
+inline ::DICT_VALUE* MSG_DS_CS_RAW_DATA_SEND::add_dicvalue() {
   // @@protoc_insertion_point(field_add:MSG_DS_CS_RAW_DATA_SEND.dicValue)
   return dicvalue_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::DIC_VALUE >&
+inline const ::google::protobuf::RepeatedPtrField< ::DICT_VALUE >&
 MSG_DS_CS_RAW_DATA_SEND::dicvalue() const {
   // @@protoc_insertion_point(field_list:MSG_DS_CS_RAW_DATA_SEND.dicValue)
   return dicvalue_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::DIC_VALUE >*
+inline ::google::protobuf::RepeatedPtrField< ::DICT_VALUE >*
 MSG_DS_CS_RAW_DATA_SEND::mutable_dicvalue() {
   // @@protoc_insertion_point(field_mutable_list:MSG_DS_CS_RAW_DATA_SEND.dicValue)
   return &dicvalue_;

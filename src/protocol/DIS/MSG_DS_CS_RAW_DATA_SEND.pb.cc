@@ -18,9 +18,6 @@
 
 namespace {
 
-const ::google::protobuf::Descriptor* DIC_VALUE_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  DIC_VALUE_reflection_ = NULL;
 const ::google::protobuf::Descriptor* MSG_DS_CS_RAW_DATA_SEND_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   MSG_DS_CS_RAW_DATA_SEND_reflection_ = NULL;
@@ -38,25 +35,7 @@ void protobuf_AssignDesc_MSG_5fDS_5fCS_5fRAW_5fDATA_5fSEND_2eproto() {
     ::google::protobuf::DescriptorPool::generated_pool()->FindFileByName(
       "MSG_DS_CS_RAW_DATA_SEND.proto");
   GOOGLE_CHECK(file != NULL);
-  DIC_VALUE_descriptor_ = file->message_type(0);
-  static const int DIC_VALUE_offsets_[4] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DIC_VALUE, strvalue_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DIC_VALUE, ivalue_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DIC_VALUE, fvalue_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DIC_VALUE, dvalue_),
-  };
-  DIC_VALUE_reflection_ =
-    new ::google::protobuf::internal::GeneratedMessageReflection(
-      DIC_VALUE_descriptor_,
-      DIC_VALUE::default_instance_,
-      DIC_VALUE_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DIC_VALUE, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DIC_VALUE, _unknown_fields_),
-      -1,
-      ::google::protobuf::DescriptorPool::generated_pool(),
-      ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(DIC_VALUE));
-  MSG_DS_CS_RAW_DATA_SEND_descriptor_ = file->message_type(1);
+  MSG_DS_CS_RAW_DATA_SEND_descriptor_ = file->message_type(0);
   static const int MSG_DS_CS_RAW_DATA_SEND_offsets_[10] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_DS_CS_RAW_DATA_SEND, taskid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_DS_CS_RAW_DATA_SEND, dbid_),
@@ -81,7 +60,7 @@ void protobuf_AssignDesc_MSG_5fDS_5fCS_5fRAW_5fDATA_5fSEND_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(MSG_DS_CS_RAW_DATA_SEND));
   MSG_DS_CS_RAW_DATA_SEND_COL_TYPE_descriptor_ = MSG_DS_CS_RAW_DATA_SEND_descriptor_->enum_type(0);
-  MSG_CS_DS_RAW_DATA_SEND_ACK_descriptor_ = file->message_type(2);
+  MSG_CS_DS_RAW_DATA_SEND_ACK_descriptor_ = file->message_type(1);
   static const int MSG_CS_DS_RAW_DATA_SEND_ACK_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_CS_DS_RAW_DATA_SEND_ACK, taskid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_CS_DS_RAW_DATA_SEND_ACK, statuscode_),
@@ -110,8 +89,6 @@ inline void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    DIC_VALUE_descriptor_, &DIC_VALUE::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     MSG_DS_CS_RAW_DATA_SEND_descriptor_, &MSG_DS_CS_RAW_DATA_SEND::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     MSG_CS_DS_RAW_DATA_SEND_ACK_descriptor_, &MSG_CS_DS_RAW_DATA_SEND_ACK::default_instance());
@@ -120,8 +97,6 @@ void protobuf_RegisterTypes(const ::std::string&) {
 }  // namespace
 
 void protobuf_ShutdownFile_MSG_5fDS_5fCS_5fRAW_5fDATA_5fSEND_2eproto() {
-  delete DIC_VALUE::default_instance_;
-  delete DIC_VALUE_reflection_;
   delete MSG_DS_CS_RAW_DATA_SEND::default_instance_;
   delete MSG_DS_CS_RAW_DATA_SEND_reflection_;
   delete MSG_CS_DS_RAW_DATA_SEND_ACK::default_instance_;
@@ -134,26 +109,23 @@ void protobuf_AddDesc_MSG_5fDS_5fCS_5fRAW_5fDATA_5fSEND_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
+  ::protobuf_AddDesc_common_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\035MSG_DS_CS_RAW_DATA_SEND.proto\"M\n\tDIC_V"
-    "ALUE\022\020\n\010strValue\030\001 \001(\t\022\016\n\006iValue\030\002 \001(\005\022\016"
-    "\n\006fValue\030\003 \001(\002\022\016\n\006dValue\030\004 \001(\001\"\272\002\n\027MSG_D"
-    "S_CS_RAW_DATA_SEND\022\016\n\006taskID\030\001 \002(\r\022\014\n\004db"
-    "ID\030\002 \002(\r\022\021\n\ttableName\030\003 \002(\t\022\022\n\ncolumnNam"
-    "e\030\004 \002(\t\0225\n\ncolumnType\030\005 \002(\0162!.MSG_DS_CS_"
-    "RAW_DATA_SEND.COL_TYPE\022\034\n\010dicValue\030\006 \003(\013"
-    "2\n.DIC_VALUE\022\024\n\014indexOffsets\030\007 \003(\r\022\024\n\014in"
-    "dexPosting\030\010 \003(\r\022\017\n\007sliceNo\030\t \001(\r\022\020\n\010sli"
-    "ceNum\030\n \001(\r\"6\n\010COL_TYPE\022\n\n\006STRING\020\001\022\007\n\003I"
-    "NT\020\002\022\t\n\005FLOAT\020\003\022\n\n\006DOUBLE\020\004\"A\n\033MSG_CS_DS"
-    "_RAW_DATA_SEND_ACK\022\016\n\006taskID\030\001 \002(\r\022\022\n\nst"
-    "atusCode\030\002 \002(\005", 494);
+    "\n\035MSG_DS_CS_RAW_DATA_SEND.proto\032\014common."
+    "proto\"\273\002\n\027MSG_DS_CS_RAW_DATA_SEND\022\016\n\006tas"
+    "kID\030\001 \002(\r\022\014\n\004dbID\030\002 \002(\r\022\021\n\ttableName\030\003 \002"
+    "(\t\022\022\n\ncolumnName\030\004 \002(\t\0225\n\ncolumnType\030\005 \002"
+    "(\0162!.MSG_DS_CS_RAW_DATA_SEND.COL_TYPE\022\035\n"
+    "\010dicValue\030\006 \003(\0132\013.DICT_VALUE\022\024\n\014indexOff"
+    "sets\030\007 \003(\r\022\024\n\014indexPosting\030\010 \003(\r\022\017\n\007slic"
+    "eNo\030\t \001(\r\022\020\n\010sliceNum\030\n \001(\r\"6\n\010COL_TYPE\022"
+    "\n\n\006STRING\020\001\022\007\n\003INT\020\002\022\t\n\005FLOAT\020\003\022\n\n\006DOUBL"
+    "E\020\004\"A\n\033MSG_CS_DS_RAW_DATA_SEND_ACK\022\016\n\006ta"
+    "skID\030\001 \002(\r\022\022\n\nstatusCode\030\002 \002(\005", 430);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "MSG_DS_CS_RAW_DATA_SEND.proto", &protobuf_RegisterTypes);
-  DIC_VALUE::default_instance_ = new DIC_VALUE();
   MSG_DS_CS_RAW_DATA_SEND::default_instance_ = new MSG_DS_CS_RAW_DATA_SEND();
   MSG_CS_DS_RAW_DATA_SEND_ACK::default_instance_ = new MSG_CS_DS_RAW_DATA_SEND_ACK();
-  DIC_VALUE::default_instance_->InitAsDefaultInstance();
   MSG_DS_CS_RAW_DATA_SEND::default_instance_->InitAsDefaultInstance();
   MSG_CS_DS_RAW_DATA_SEND_ACK::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_MSG_5fDS_5fCS_5fRAW_5fDATA_5fSEND_2eproto);
@@ -165,376 +137,6 @@ struct StaticDescriptorInitializer_MSG_5fDS_5fCS_5fRAW_5fDATA_5fSEND_2eproto {
     protobuf_AddDesc_MSG_5fDS_5fCS_5fRAW_5fDATA_5fSEND_2eproto();
   }
 } static_descriptor_initializer_MSG_5fDS_5fCS_5fRAW_5fDATA_5fSEND_2eproto_;
-
-// ===================================================================
-
-#ifndef _MSC_VER
-const int DIC_VALUE::kStrValueFieldNumber;
-const int DIC_VALUE::kIValueFieldNumber;
-const int DIC_VALUE::kFValueFieldNumber;
-const int DIC_VALUE::kDValueFieldNumber;
-#endif  // !_MSC_VER
-
-DIC_VALUE::DIC_VALUE()
-  : ::google::protobuf::Message() {
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:DIC_VALUE)
-}
-
-void DIC_VALUE::InitAsDefaultInstance() {
-}
-
-DIC_VALUE::DIC_VALUE(const DIC_VALUE& from)
-  : ::google::protobuf::Message() {
-  SharedCtor();
-  MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:DIC_VALUE)
-}
-
-void DIC_VALUE::SharedCtor() {
-  ::google::protobuf::internal::GetEmptyString();
-  _cached_size_ = 0;
-  strvalue_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  ivalue_ = 0;
-  fvalue_ = 0;
-  dvalue_ = 0;
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-DIC_VALUE::~DIC_VALUE() {
-  // @@protoc_insertion_point(destructor:DIC_VALUE)
-  SharedDtor();
-}
-
-void DIC_VALUE::SharedDtor() {
-  if (strvalue_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    delete strvalue_;
-  }
-  if (this != default_instance_) {
-  }
-}
-
-void DIC_VALUE::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* DIC_VALUE::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return DIC_VALUE_descriptor_;
-}
-
-const DIC_VALUE& DIC_VALUE::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_MSG_5fDS_5fCS_5fRAW_5fDATA_5fSEND_2eproto();
-  return *default_instance_;
-}
-
-DIC_VALUE* DIC_VALUE::default_instance_ = NULL;
-
-DIC_VALUE* DIC_VALUE::New() const {
-  return new DIC_VALUE;
-}
-
-void DIC_VALUE::Clear() {
-#define OFFSET_OF_FIELD_(f) (reinterpret_cast<char*>(      \
-  &reinterpret_cast<DIC_VALUE*>(16)->f) - \
-   reinterpret_cast<char*>(16))
-
-#define ZR_(first, last) do {                              \
-    size_t f = OFFSET_OF_FIELD_(first);                    \
-    size_t n = OFFSET_OF_FIELD_(last) - f + sizeof(last);  \
-    ::memset(&first, 0, n);                                \
-  } while (0)
-
-  if (_has_bits_[0 / 32] & 15) {
-    ZR_(ivalue_, dvalue_);
-    if (has_strvalue()) {
-      if (strvalue_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-        strvalue_->clear();
-      }
-    }
-  }
-
-#undef OFFSET_OF_FIELD_
-#undef ZR_
-
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  mutable_unknown_fields()->Clear();
-}
-
-bool DIC_VALUE::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:DIC_VALUE)
-  for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional string strValue = 1;
-      case 1: {
-        if (tag == 10) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_strvalue()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-            this->strvalue().data(), this->strvalue().length(),
-            ::google::protobuf::internal::WireFormat::PARSE,
-            "strvalue");
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(16)) goto parse_iValue;
-        break;
-      }
-
-      // optional int32 iValue = 2;
-      case 2: {
-        if (tag == 16) {
-         parse_iValue:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &ivalue_)));
-          set_has_ivalue();
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(29)) goto parse_fValue;
-        break;
-      }
-
-      // optional float fValue = 3;
-      case 3: {
-        if (tag == 29) {
-         parse_fValue:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &fvalue_)));
-          set_has_fvalue();
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(33)) goto parse_dValue;
-        break;
-      }
-
-      // optional double dValue = 4;
-      case 4: {
-        if (tag == 33) {
-         parse_dValue:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 input, &dvalue_)));
-          set_has_dvalue();
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectAtEnd()) goto success;
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0 ||
-            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:DIC_VALUE)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:DIC_VALUE)
-  return false;
-#undef DO_
-}
-
-void DIC_VALUE::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:DIC_VALUE)
-  // optional string strValue = 1;
-  if (has_strvalue()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->strvalue().data(), this->strvalue().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "strvalue");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->strvalue(), output);
-  }
-
-  // optional int32 iValue = 2;
-  if (has_ivalue()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->ivalue(), output);
-  }
-
-  // optional float fValue = 3;
-  if (has_fvalue()) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(3, this->fvalue(), output);
-  }
-
-  // optional double dValue = 4;
-  if (has_dvalue()) {
-    ::google::protobuf::internal::WireFormatLite::WriteDouble(4, this->dvalue(), output);
-  }
-
-  if (!unknown_fields().empty()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:DIC_VALUE)
-}
-
-::google::protobuf::uint8* DIC_VALUE::SerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:DIC_VALUE)
-  // optional string strValue = 1;
-  if (has_strvalue()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->strvalue().data(), this->strvalue().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "strvalue");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->strvalue(), target);
-  }
-
-  // optional int32 iValue = 2;
-  if (has_ivalue()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->ivalue(), target);
-  }
-
-  // optional float fValue = 3;
-  if (has_fvalue()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(3, this->fvalue(), target);
-  }
-
-  // optional double dValue = 4;
-  if (has_dvalue()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(4, this->dvalue(), target);
-  }
-
-  if (!unknown_fields().empty()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:DIC_VALUE)
-  return target;
-}
-
-int DIC_VALUE::ByteSize() const {
-  int total_size = 0;
-
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional string strValue = 1;
-    if (has_strvalue()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->strvalue());
-    }
-
-    // optional int32 iValue = 2;
-    if (has_ivalue()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-          this->ivalue());
-    }
-
-    // optional float fValue = 3;
-    if (has_fvalue()) {
-      total_size += 1 + 4;
-    }
-
-    // optional double dValue = 4;
-    if (has_dvalue()) {
-      total_size += 1 + 8;
-    }
-
-  }
-  if (!unknown_fields().empty()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void DIC_VALUE::MergeFrom(const ::google::protobuf::Message& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  const DIC_VALUE* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const DIC_VALUE*>(
-      &from);
-  if (source == NULL) {
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-    MergeFrom(*source);
-  }
-}
-
-void DIC_VALUE::MergeFrom(const DIC_VALUE& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_strvalue()) {
-      set_strvalue(from.strvalue());
-    }
-    if (from.has_ivalue()) {
-      set_ivalue(from.ivalue());
-    }
-    if (from.has_fvalue()) {
-      set_fvalue(from.fvalue());
-    }
-    if (from.has_dvalue()) {
-      set_dvalue(from.dvalue());
-    }
-  }
-  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-}
-
-void DIC_VALUE::CopyFrom(const ::google::protobuf::Message& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void DIC_VALUE::CopyFrom(const DIC_VALUE& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool DIC_VALUE::IsInitialized() const {
-
-  return true;
-}
-
-void DIC_VALUE::Swap(DIC_VALUE* other) {
-  if (other != this) {
-    std::swap(strvalue_, other->strvalue_);
-    std::swap(ivalue_, other->ivalue_);
-    std::swap(fvalue_, other->fvalue_);
-    std::swap(dvalue_, other->dvalue_);
-    std::swap(_has_bits_[0], other->_has_bits_[0]);
-    _unknown_fields_.Swap(&other->_unknown_fields_);
-    std::swap(_cached_size_, other->_cached_size_);
-  }
-}
-
-::google::protobuf::Metadata DIC_VALUE::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = DIC_VALUE_descriptor_;
-  metadata.reflection = DIC_VALUE_reflection_;
-  return metadata;
-}
-
 
 // ===================================================================
 
@@ -775,7 +377,7 @@ bool MSG_DS_CS_RAW_DATA_SEND::MergePartialFromCodedStream(
         break;
       }
 
-      // repeated .DIC_VALUE dicValue = 6;
+      // repeated .DICT_VALUE dicValue = 6;
       case 6: {
         if (tag == 50) {
          parse_dicValue:
@@ -918,7 +520,7 @@ void MSG_DS_CS_RAW_DATA_SEND::SerializeWithCachedSizes(
       5, this->columntype(), output);
   }
 
-  // repeated .DIC_VALUE dicValue = 6;
+  // repeated .DICT_VALUE dicValue = 6;
   for (int i = 0; i < this->dicvalue_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       6, this->dicvalue(i), output);
@@ -994,7 +596,7 @@ void MSG_DS_CS_RAW_DATA_SEND::SerializeWithCachedSizes(
       5, this->columntype(), target);
   }
 
-  // repeated .DIC_VALUE dicValue = 6;
+  // repeated .DICT_VALUE dicValue = 6;
   for (int i = 0; i < this->dicvalue_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -1086,7 +688,7 @@ int MSG_DS_CS_RAW_DATA_SEND::ByteSize() const {
     }
 
   }
-  // repeated .DIC_VALUE dicValue = 6;
+  // repeated .DICT_VALUE dicValue = 6;
   total_size += 1 * this->dicvalue_size();
   for (int i = 0; i < this->dicvalue_size(); i++) {
     total_size +=

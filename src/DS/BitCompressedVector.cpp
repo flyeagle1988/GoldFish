@@ -1,4 +1,4 @@
-#include "BitCompressedVector.h"
+#include "DS/BitCompressedVector.h"
 
 BitCompressedVector::BitCompressedVector(uint64_t rowCount):m_pData(NULL), m_rowCount(rowCount), m_currentRow(0)
 {
@@ -53,11 +53,13 @@ BitCompressedVector::~BitCompressedVector()
 
 bool BitCompressedVector::checkCapacity() //after insertion, check, if split
 {
-	//if(m_size > split_column_capacity)
-	//{
-		//return true;
-	//}
-	//return false;
+/*
+	if(m_size > split_column_capacity)
+	{
+		return true;
+	}
+*/
+	return false;
 }
 
 bool BitCompressedVector::checkSize(uint64_t totalRows)//before insertion, check, if resize; newRows = totalRows

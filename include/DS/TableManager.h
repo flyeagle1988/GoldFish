@@ -1,8 +1,8 @@
 #ifndef TABLEMANAGER_H_
 #define TABLEMANAGER_H_
 #include "DS/Singleton.h"
-#include "ColumnTable.h"
-#include "DRowTable.h"
+#include "DS/ColumnTable.h"
+#include "DS/DRowTable.h"
 #include <string>
 
 class TableManager : Singleton<TableManager>

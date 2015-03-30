@@ -104,6 +104,10 @@ void CLRAConnectAgent::readBack(InReq &req)
 				pCreateIndexTask->setData(data);
 				pCreateIndexTask->goNext();
 			}
+			else
+			{
+
+			}
 
 		}
 		

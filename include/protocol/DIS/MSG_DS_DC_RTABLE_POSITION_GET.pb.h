@@ -183,10 +183,29 @@ class MSG_DC_DS_RTABLE_POSITION_GET_ACK : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional string csIP = 1;
+  // required uint32 dbID = 1;
+  inline bool has_dbid() const;
+  inline void clear_dbid();
+  static const int kDbIDFieldNumber = 1;
+  inline ::google::protobuf::uint32 dbid() const;
+  inline void set_dbid(::google::protobuf::uint32 value);
+
+  // required string tableName = 2;
+  inline bool has_tablename() const;
+  inline void clear_tablename();
+  static const int kTableNameFieldNumber = 2;
+  inline const ::std::string& tablename() const;
+  inline void set_tablename(const ::std::string& value);
+  inline void set_tablename(const char* value);
+  inline void set_tablename(const char* value, size_t size);
+  inline ::std::string* mutable_tablename();
+  inline ::std::string* release_tablename();
+  inline void set_allocated_tablename(::std::string* tablename);
+
+  // optional string csIP = 3;
   inline bool has_csip() const;
   inline void clear_csip();
-  static const int kCsIPFieldNumber = 1;
+  static const int kCsIPFieldNumber = 3;
   inline const ::std::string& csip() const;
   inline void set_csip(const ::std::string& value);
   inline void set_csip(const char* value);
@@ -195,15 +214,19 @@ class MSG_DC_DS_RTABLE_POSITION_GET_ACK : public ::google::protobuf::Message {
   inline ::std::string* release_csip();
   inline void set_allocated_csip(::std::string* csip);
 
-  // required int32 statusCode = 2;
+  // required int32 statusCode = 4;
   inline bool has_statuscode() const;
   inline void clear_statuscode();
-  static const int kStatusCodeFieldNumber = 2;
+  static const int kStatusCodeFieldNumber = 4;
   inline ::google::protobuf::int32 statuscode() const;
   inline void set_statuscode(::google::protobuf::int32 value);
 
   // @@protoc_insertion_point(class_scope:MSG_DC_DS_RTABLE_POSITION_GET_ACK)
  private:
+  inline void set_has_dbid();
+  inline void clear_has_dbid();
+  inline void set_has_tablename();
+  inline void clear_has_tablename();
   inline void set_has_csip();
   inline void clear_has_csip();
   inline void set_has_statuscode();
@@ -213,8 +236,10 @@ class MSG_DC_DS_RTABLE_POSITION_GET_ACK : public ::google::protobuf::Message {
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::std::string* csip_;
+  ::std::string* tablename_;
+  ::google::protobuf::uint32 dbid_;
   ::google::protobuf::int32 statuscode_;
+  ::std::string* csip_;
   friend void  protobuf_AddDesc_MSG_5fDS_5fDC_5fRTABLE_5fPOSITION_5fGET_2eproto();
   friend void protobuf_AssignDesc_MSG_5fDS_5fDC_5fRTABLE_5fPOSITION_5fGET_2eproto();
   friend void protobuf_ShutdownFile_MSG_5fDS_5fDC_5fRTABLE_5fPOSITION_5fGET_2eproto();
@@ -333,15 +358,115 @@ inline void MSG_DS_DC_RTABLE_POSITION_GET::set_allocated_tablename(::std::string
 
 // MSG_DC_DS_RTABLE_POSITION_GET_ACK
 
-// optional string csIP = 1;
-inline bool MSG_DC_DS_RTABLE_POSITION_GET_ACK::has_csip() const {
+// required uint32 dbID = 1;
+inline bool MSG_DC_DS_RTABLE_POSITION_GET_ACK::has_dbid() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void MSG_DC_DS_RTABLE_POSITION_GET_ACK::set_has_csip() {
+inline void MSG_DC_DS_RTABLE_POSITION_GET_ACK::set_has_dbid() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void MSG_DC_DS_RTABLE_POSITION_GET_ACK::clear_has_csip() {
+inline void MSG_DC_DS_RTABLE_POSITION_GET_ACK::clear_has_dbid() {
   _has_bits_[0] &= ~0x00000001u;
+}
+inline void MSG_DC_DS_RTABLE_POSITION_GET_ACK::clear_dbid() {
+  dbid_ = 0u;
+  clear_has_dbid();
+}
+inline ::google::protobuf::uint32 MSG_DC_DS_RTABLE_POSITION_GET_ACK::dbid() const {
+  // @@protoc_insertion_point(field_get:MSG_DC_DS_RTABLE_POSITION_GET_ACK.dbID)
+  return dbid_;
+}
+inline void MSG_DC_DS_RTABLE_POSITION_GET_ACK::set_dbid(::google::protobuf::uint32 value) {
+  set_has_dbid();
+  dbid_ = value;
+  // @@protoc_insertion_point(field_set:MSG_DC_DS_RTABLE_POSITION_GET_ACK.dbID)
+}
+
+// required string tableName = 2;
+inline bool MSG_DC_DS_RTABLE_POSITION_GET_ACK::has_tablename() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void MSG_DC_DS_RTABLE_POSITION_GET_ACK::set_has_tablename() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void MSG_DC_DS_RTABLE_POSITION_GET_ACK::clear_has_tablename() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void MSG_DC_DS_RTABLE_POSITION_GET_ACK::clear_tablename() {
+  if (tablename_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    tablename_->clear();
+  }
+  clear_has_tablename();
+}
+inline const ::std::string& MSG_DC_DS_RTABLE_POSITION_GET_ACK::tablename() const {
+  // @@protoc_insertion_point(field_get:MSG_DC_DS_RTABLE_POSITION_GET_ACK.tableName)
+  return *tablename_;
+}
+inline void MSG_DC_DS_RTABLE_POSITION_GET_ACK::set_tablename(const ::std::string& value) {
+  set_has_tablename();
+  if (tablename_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    tablename_ = new ::std::string;
+  }
+  tablename_->assign(value);
+  // @@protoc_insertion_point(field_set:MSG_DC_DS_RTABLE_POSITION_GET_ACK.tableName)
+}
+inline void MSG_DC_DS_RTABLE_POSITION_GET_ACK::set_tablename(const char* value) {
+  set_has_tablename();
+  if (tablename_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    tablename_ = new ::std::string;
+  }
+  tablename_->assign(value);
+  // @@protoc_insertion_point(field_set_char:MSG_DC_DS_RTABLE_POSITION_GET_ACK.tableName)
+}
+inline void MSG_DC_DS_RTABLE_POSITION_GET_ACK::set_tablename(const char* value, size_t size) {
+  set_has_tablename();
+  if (tablename_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    tablename_ = new ::std::string;
+  }
+  tablename_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:MSG_DC_DS_RTABLE_POSITION_GET_ACK.tableName)
+}
+inline ::std::string* MSG_DC_DS_RTABLE_POSITION_GET_ACK::mutable_tablename() {
+  set_has_tablename();
+  if (tablename_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    tablename_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:MSG_DC_DS_RTABLE_POSITION_GET_ACK.tableName)
+  return tablename_;
+}
+inline ::std::string* MSG_DC_DS_RTABLE_POSITION_GET_ACK::release_tablename() {
+  clear_has_tablename();
+  if (tablename_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = tablename_;
+    tablename_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void MSG_DC_DS_RTABLE_POSITION_GET_ACK::set_allocated_tablename(::std::string* tablename) {
+  if (tablename_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete tablename_;
+  }
+  if (tablename) {
+    set_has_tablename();
+    tablename_ = tablename;
+  } else {
+    clear_has_tablename();
+    tablename_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:MSG_DC_DS_RTABLE_POSITION_GET_ACK.tableName)
+}
+
+// optional string csIP = 3;
+inline bool MSG_DC_DS_RTABLE_POSITION_GET_ACK::has_csip() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void MSG_DC_DS_RTABLE_POSITION_GET_ACK::set_has_csip() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void MSG_DC_DS_RTABLE_POSITION_GET_ACK::clear_has_csip() {
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline void MSG_DC_DS_RTABLE_POSITION_GET_ACK::clear_csip() {
   if (csip_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -409,15 +534,15 @@ inline void MSG_DC_DS_RTABLE_POSITION_GET_ACK::set_allocated_csip(::std::string*
   // @@protoc_insertion_point(field_set_allocated:MSG_DC_DS_RTABLE_POSITION_GET_ACK.csIP)
 }
 
-// required int32 statusCode = 2;
+// required int32 statusCode = 4;
 inline bool MSG_DC_DS_RTABLE_POSITION_GET_ACK::has_statuscode() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
+  return (_has_bits_[0] & 0x00000008u) != 0;
 }
 inline void MSG_DC_DS_RTABLE_POSITION_GET_ACK::set_has_statuscode() {
-  _has_bits_[0] |= 0x00000002u;
+  _has_bits_[0] |= 0x00000008u;
 }
 inline void MSG_DC_DS_RTABLE_POSITION_GET_ACK::clear_has_statuscode() {
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline void MSG_DC_DS_RTABLE_POSITION_GET_ACK::clear_statuscode() {
   statuscode_ = 0;

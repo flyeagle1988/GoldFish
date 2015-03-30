@@ -7,9 +7,11 @@
 #include "protocol/DIS/MSG_DC_DS_RA_INFO_SEND.pb.h"
 #include "protocol/DIS/MSG_DC_DS_IMPORT_INFO_SEND.pb.h"
 #include "protocol/DIS/MSG_DS_RA_IMPORT_TASK_SEND.pb.h"
+#include "protocol/DIS/MSG_DS_DC_RESOURCE_GET.pb.h"
 #include "DS/CLDCConnectAgent.h"
 #include "DS/CLRAConnectAgent.h"
 #include "DS/CLimpTaskManager.h"
+#include "DS/CLCSAddrManager.h"
 #include <sstream>
 
 extern DevLog * g_pDevLog;
@@ -171,6 +173,38 @@ void CLDCConnectAgent::readBack(InReq & req)
 		case DC_DS_HEARTBEAT_SEND_ACK:
 		{
 			m_pHeartBeatTimer->updateExpiredTime(HEART_OVERTIME);
+			break;
+		}
+		case DC_DS_RESOURCE_INFO_ACK:
+		{
+			string data(req.ioBuf, req.m_msgHeader.length);
+			MSG_DC_DS_RESOURCE_GET_ACK resourceGetAck;
+			resourceGetAck.ParseFromString(data);
+			vector<CS_ADDR_INFO> csAddrInfoVec;
+			for(int i = 0; i < resourceGetAck.csinfo_size(); i++)
+			{
+				const CS_INFO & csInfo = resourceGetAck.csinfo(i);
+				CS_ADDR_INFO csAddrInfo;
+				csAddrInfo.csIP = csInfo.csip();
+				csAddrInfo.csMemory = csInfo.memory();
+				csAddrInfo.columnName = csInfo.columnname();
+				csAddrInfoVec.push_back(csAddrInfo);
+			}
+			CLCSAddrManager::getInstance()->setCSAddrByTaskID(resourceGetAck.taskid(), csAddrInfoVec);
+			
+			break;
+		}
+		case DC_DS_RTABLE_POSITION_GET_ACK:
+		{
+			MSG_DC_DS_RTABLE_POSITION_GET_ACK rTableGetAck;
+			string data(req.ioBuf, req.m_msgHeader.length);
+			rTableGetAck.ParseFromString(data);
+			
+			break;
+		}
+		default:
+		{
+			DEV_LOG_ERROR("CLDCConnectAgent::readBack: wrong cmd!" + intToStr(req.m_msgHeader.cmd));
 			break;
 		}
 	}

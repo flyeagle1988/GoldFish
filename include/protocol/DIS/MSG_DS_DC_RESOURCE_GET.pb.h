@@ -32,10 +32,105 @@ void protobuf_AssignDesc_MSG_5fDS_5fDC_5fRESOURCE_5fGET_2eproto();
 void protobuf_ShutdownFile_MSG_5fDS_5fDC_5fRESOURCE_5fGET_2eproto();
 
 class MSG_DS_DC_RESOURCE_GET;
+class MSG_DS_DC_RESOURCE_GET_COL_SIZE;
 class CS_INFO;
 class MSG_DC_DS_RESOURCE_GET_ACK;
 
 // ===================================================================
+
+class MSG_DS_DC_RESOURCE_GET_COL_SIZE : public ::google::protobuf::Message {
+ public:
+  MSG_DS_DC_RESOURCE_GET_COL_SIZE();
+  virtual ~MSG_DS_DC_RESOURCE_GET_COL_SIZE();
+
+  MSG_DS_DC_RESOURCE_GET_COL_SIZE(const MSG_DS_DC_RESOURCE_GET_COL_SIZE& from);
+
+  inline MSG_DS_DC_RESOURCE_GET_COL_SIZE& operator=(const MSG_DS_DC_RESOURCE_GET_COL_SIZE& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const MSG_DS_DC_RESOURCE_GET_COL_SIZE& default_instance();
+
+  void Swap(MSG_DS_DC_RESOURCE_GET_COL_SIZE* other);
+
+  // implements Message ----------------------------------------------
+
+  MSG_DS_DC_RESOURCE_GET_COL_SIZE* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const MSG_DS_DC_RESOURCE_GET_COL_SIZE& from);
+  void MergeFrom(const MSG_DS_DC_RESOURCE_GET_COL_SIZE& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required string columnname = 1;
+  inline bool has_columnname() const;
+  inline void clear_columnname();
+  static const int kColumnnameFieldNumber = 1;
+  inline const ::std::string& columnname() const;
+  inline void set_columnname(const ::std::string& value);
+  inline void set_columnname(const char* value);
+  inline void set_columnname(const char* value, size_t size);
+  inline ::std::string* mutable_columnname();
+  inline ::std::string* release_columnname();
+  inline void set_allocated_columnname(::std::string* columnname);
+
+  // required uint32 columnSize = 2;
+  inline bool has_columnsize() const;
+  inline void clear_columnsize();
+  static const int kColumnSizeFieldNumber = 2;
+  inline ::google::protobuf::uint32 columnsize() const;
+  inline void set_columnsize(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:MSG_DS_DC_RESOURCE_GET.COL_SIZE)
+ private:
+  inline void set_has_columnname();
+  inline void clear_has_columnname();
+  inline void set_has_columnsize();
+  inline void clear_has_columnsize();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::std::string* columnname_;
+  ::google::protobuf::uint32 columnsize_;
+  friend void  protobuf_AddDesc_MSG_5fDS_5fDC_5fRESOURCE_5fGET_2eproto();
+  friend void protobuf_AssignDesc_MSG_5fDS_5fDC_5fRESOURCE_5fGET_2eproto();
+  friend void protobuf_ShutdownFile_MSG_5fDS_5fDC_5fRESOURCE_5fGET_2eproto();
+
+  void InitAsDefaultInstance();
+  static MSG_DS_DC_RESOURCE_GET_COL_SIZE* default_instance_;
+};
+// -------------------------------------------------------------------
 
 class MSG_DS_DC_RESOURCE_GET : public ::google::protobuf::Message {
  public:
@@ -88,6 +183,8 @@ class MSG_DS_DC_RESOURCE_GET : public ::google::protobuf::Message {
 
   // nested types ----------------------------------------------------
 
+  typedef MSG_DS_DC_RESOURCE_GET_COL_SIZE COL_SIZE;
+
   // accessors -------------------------------------------------------
 
   // required uint32 taskID = 1;
@@ -97,29 +194,54 @@ class MSG_DS_DC_RESOURCE_GET : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 taskid() const;
   inline void set_taskid(::google::protobuf::uint32 value);
 
-  // repeated uint32 columnSize = 2;
-  inline int columnsize_size() const;
-  inline void clear_columnsize();
-  static const int kColumnSizeFieldNumber = 2;
-  inline ::google::protobuf::uint32 columnsize(int index) const;
-  inline void set_columnsize(int index, ::google::protobuf::uint32 value);
-  inline void add_columnsize(::google::protobuf::uint32 value);
-  inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >&
-      columnsize() const;
-  inline ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
-      mutable_columnsize();
+  // required uint32 dbid = 2;
+  inline bool has_dbid() const;
+  inline void clear_dbid();
+  static const int kDbidFieldNumber = 2;
+  inline ::google::protobuf::uint32 dbid() const;
+  inline void set_dbid(::google::protobuf::uint32 value);
+
+  // required string tablename = 3;
+  inline bool has_tablename() const;
+  inline void clear_tablename();
+  static const int kTablenameFieldNumber = 3;
+  inline const ::std::string& tablename() const;
+  inline void set_tablename(const ::std::string& value);
+  inline void set_tablename(const char* value);
+  inline void set_tablename(const char* value, size_t size);
+  inline ::std::string* mutable_tablename();
+  inline ::std::string* release_tablename();
+  inline void set_allocated_tablename(::std::string* tablename);
+
+  // repeated .MSG_DS_DC_RESOURCE_GET.COL_SIZE colsize = 4;
+  inline int colsize_size() const;
+  inline void clear_colsize();
+  static const int kColsizeFieldNumber = 4;
+  inline const ::MSG_DS_DC_RESOURCE_GET_COL_SIZE& colsize(int index) const;
+  inline ::MSG_DS_DC_RESOURCE_GET_COL_SIZE* mutable_colsize(int index);
+  inline ::MSG_DS_DC_RESOURCE_GET_COL_SIZE* add_colsize();
+  inline const ::google::protobuf::RepeatedPtrField< ::MSG_DS_DC_RESOURCE_GET_COL_SIZE >&
+      colsize() const;
+  inline ::google::protobuf::RepeatedPtrField< ::MSG_DS_DC_RESOURCE_GET_COL_SIZE >*
+      mutable_colsize();
 
   // @@protoc_insertion_point(class_scope:MSG_DS_DC_RESOURCE_GET)
  private:
   inline void set_has_taskid();
   inline void clear_has_taskid();
+  inline void set_has_dbid();
+  inline void clear_has_dbid();
+  inline void set_has_tablename();
+  inline void clear_has_tablename();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::google::protobuf::RepeatedField< ::google::protobuf::uint32 > columnsize_;
   ::google::protobuf::uint32 taskid_;
+  ::google::protobuf::uint32 dbid_;
+  ::std::string* tablename_;
+  ::google::protobuf::RepeatedPtrField< ::MSG_DS_DC_RESOURCE_GET_COL_SIZE > colsize_;
   friend void  protobuf_AddDesc_MSG_5fDS_5fDC_5fRESOURCE_5fGET_2eproto();
   friend void protobuf_AssignDesc_MSG_5fDS_5fDC_5fRESOURCE_5fGET_2eproto();
   friend void protobuf_ShutdownFile_MSG_5fDS_5fDC_5fRESOURCE_5fGET_2eproto();
@@ -194,16 +316,41 @@ class CS_INFO : public ::google::protobuf::Message {
   inline ::std::string* release_csip();
   inline void set_allocated_csip(::std::string* csip);
 
+  // optional uint32 memory = 2;
+  inline bool has_memory() const;
+  inline void clear_memory();
+  static const int kMemoryFieldNumber = 2;
+  inline ::google::protobuf::uint32 memory() const;
+  inline void set_memory(::google::protobuf::uint32 value);
+
+  // required string columnname = 3;
+  inline bool has_columnname() const;
+  inline void clear_columnname();
+  static const int kColumnnameFieldNumber = 3;
+  inline const ::std::string& columnname() const;
+  inline void set_columnname(const ::std::string& value);
+  inline void set_columnname(const char* value);
+  inline void set_columnname(const char* value, size_t size);
+  inline ::std::string* mutable_columnname();
+  inline ::std::string* release_columnname();
+  inline void set_allocated_columnname(::std::string* columnname);
+
   // @@protoc_insertion_point(class_scope:CS_INFO)
  private:
   inline void set_has_csip();
   inline void clear_has_csip();
+  inline void set_has_memory();
+  inline void clear_has_memory();
+  inline void set_has_columnname();
+  inline void clear_has_columnname();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
   ::std::string* csip_;
+  ::std::string* columnname_;
+  ::google::protobuf::uint32 memory_;
   friend void  protobuf_AddDesc_MSG_5fDS_5fDC_5fRESOURCE_5fGET_2eproto();
   friend void protobuf_AssignDesc_MSG_5fDS_5fDC_5fRESOURCE_5fGET_2eproto();
   friend void protobuf_ShutdownFile_MSG_5fDS_5fDC_5fRESOURCE_5fGET_2eproto();
@@ -308,6 +455,110 @@ class MSG_DC_DS_RESOURCE_GET_ACK : public ::google::protobuf::Message {
 
 // ===================================================================
 
+// MSG_DS_DC_RESOURCE_GET_COL_SIZE
+
+// required string columnname = 1;
+inline bool MSG_DS_DC_RESOURCE_GET_COL_SIZE::has_columnname() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void MSG_DS_DC_RESOURCE_GET_COL_SIZE::set_has_columnname() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void MSG_DS_DC_RESOURCE_GET_COL_SIZE::clear_has_columnname() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void MSG_DS_DC_RESOURCE_GET_COL_SIZE::clear_columnname() {
+  if (columnname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    columnname_->clear();
+  }
+  clear_has_columnname();
+}
+inline const ::std::string& MSG_DS_DC_RESOURCE_GET_COL_SIZE::columnname() const {
+  // @@protoc_insertion_point(field_get:MSG_DS_DC_RESOURCE_GET.COL_SIZE.columnname)
+  return *columnname_;
+}
+inline void MSG_DS_DC_RESOURCE_GET_COL_SIZE::set_columnname(const ::std::string& value) {
+  set_has_columnname();
+  if (columnname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    columnname_ = new ::std::string;
+  }
+  columnname_->assign(value);
+  // @@protoc_insertion_point(field_set:MSG_DS_DC_RESOURCE_GET.COL_SIZE.columnname)
+}
+inline void MSG_DS_DC_RESOURCE_GET_COL_SIZE::set_columnname(const char* value) {
+  set_has_columnname();
+  if (columnname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    columnname_ = new ::std::string;
+  }
+  columnname_->assign(value);
+  // @@protoc_insertion_point(field_set_char:MSG_DS_DC_RESOURCE_GET.COL_SIZE.columnname)
+}
+inline void MSG_DS_DC_RESOURCE_GET_COL_SIZE::set_columnname(const char* value, size_t size) {
+  set_has_columnname();
+  if (columnname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    columnname_ = new ::std::string;
+  }
+  columnname_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:MSG_DS_DC_RESOURCE_GET.COL_SIZE.columnname)
+}
+inline ::std::string* MSG_DS_DC_RESOURCE_GET_COL_SIZE::mutable_columnname() {
+  set_has_columnname();
+  if (columnname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    columnname_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:MSG_DS_DC_RESOURCE_GET.COL_SIZE.columnname)
+  return columnname_;
+}
+inline ::std::string* MSG_DS_DC_RESOURCE_GET_COL_SIZE::release_columnname() {
+  clear_has_columnname();
+  if (columnname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = columnname_;
+    columnname_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void MSG_DS_DC_RESOURCE_GET_COL_SIZE::set_allocated_columnname(::std::string* columnname) {
+  if (columnname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete columnname_;
+  }
+  if (columnname) {
+    set_has_columnname();
+    columnname_ = columnname;
+  } else {
+    clear_has_columnname();
+    columnname_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:MSG_DS_DC_RESOURCE_GET.COL_SIZE.columnname)
+}
+
+// required uint32 columnSize = 2;
+inline bool MSG_DS_DC_RESOURCE_GET_COL_SIZE::has_columnsize() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void MSG_DS_DC_RESOURCE_GET_COL_SIZE::set_has_columnsize() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void MSG_DS_DC_RESOURCE_GET_COL_SIZE::clear_has_columnsize() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void MSG_DS_DC_RESOURCE_GET_COL_SIZE::clear_columnsize() {
+  columnsize_ = 0u;
+  clear_has_columnsize();
+}
+inline ::google::protobuf::uint32 MSG_DS_DC_RESOURCE_GET_COL_SIZE::columnsize() const {
+  // @@protoc_insertion_point(field_get:MSG_DS_DC_RESOURCE_GET.COL_SIZE.columnSize)
+  return columnsize_;
+}
+inline void MSG_DS_DC_RESOURCE_GET_COL_SIZE::set_columnsize(::google::protobuf::uint32 value) {
+  set_has_columnsize();
+  columnsize_ = value;
+  // @@protoc_insertion_point(field_set:MSG_DS_DC_RESOURCE_GET.COL_SIZE.columnSize)
+}
+
+// -------------------------------------------------------------------
+
 // MSG_DS_DC_RESOURCE_GET
 
 // required uint32 taskID = 1;
@@ -334,34 +585,134 @@ inline void MSG_DS_DC_RESOURCE_GET::set_taskid(::google::protobuf::uint32 value)
   // @@protoc_insertion_point(field_set:MSG_DS_DC_RESOURCE_GET.taskID)
 }
 
-// repeated uint32 columnSize = 2;
-inline int MSG_DS_DC_RESOURCE_GET::columnsize_size() const {
-  return columnsize_.size();
+// required uint32 dbid = 2;
+inline bool MSG_DS_DC_RESOURCE_GET::has_dbid() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void MSG_DS_DC_RESOURCE_GET::clear_columnsize() {
-  columnsize_.Clear();
+inline void MSG_DS_DC_RESOURCE_GET::set_has_dbid() {
+  _has_bits_[0] |= 0x00000002u;
 }
-inline ::google::protobuf::uint32 MSG_DS_DC_RESOURCE_GET::columnsize(int index) const {
-  // @@protoc_insertion_point(field_get:MSG_DS_DC_RESOURCE_GET.columnSize)
-  return columnsize_.Get(index);
+inline void MSG_DS_DC_RESOURCE_GET::clear_has_dbid() {
+  _has_bits_[0] &= ~0x00000002u;
 }
-inline void MSG_DS_DC_RESOURCE_GET::set_columnsize(int index, ::google::protobuf::uint32 value) {
-  columnsize_.Set(index, value);
-  // @@protoc_insertion_point(field_set:MSG_DS_DC_RESOURCE_GET.columnSize)
+inline void MSG_DS_DC_RESOURCE_GET::clear_dbid() {
+  dbid_ = 0u;
+  clear_has_dbid();
 }
-inline void MSG_DS_DC_RESOURCE_GET::add_columnsize(::google::protobuf::uint32 value) {
-  columnsize_.Add(value);
-  // @@protoc_insertion_point(field_add:MSG_DS_DC_RESOURCE_GET.columnSize)
+inline ::google::protobuf::uint32 MSG_DS_DC_RESOURCE_GET::dbid() const {
+  // @@protoc_insertion_point(field_get:MSG_DS_DC_RESOURCE_GET.dbid)
+  return dbid_;
 }
-inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >&
-MSG_DS_DC_RESOURCE_GET::columnsize() const {
-  // @@protoc_insertion_point(field_list:MSG_DS_DC_RESOURCE_GET.columnSize)
-  return columnsize_;
+inline void MSG_DS_DC_RESOURCE_GET::set_dbid(::google::protobuf::uint32 value) {
+  set_has_dbid();
+  dbid_ = value;
+  // @@protoc_insertion_point(field_set:MSG_DS_DC_RESOURCE_GET.dbid)
 }
-inline ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
-MSG_DS_DC_RESOURCE_GET::mutable_columnsize() {
-  // @@protoc_insertion_point(field_mutable_list:MSG_DS_DC_RESOURCE_GET.columnSize)
-  return &columnsize_;
+
+// required string tablename = 3;
+inline bool MSG_DS_DC_RESOURCE_GET::has_tablename() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void MSG_DS_DC_RESOURCE_GET::set_has_tablename() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void MSG_DS_DC_RESOURCE_GET::clear_has_tablename() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void MSG_DS_DC_RESOURCE_GET::clear_tablename() {
+  if (tablename_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    tablename_->clear();
+  }
+  clear_has_tablename();
+}
+inline const ::std::string& MSG_DS_DC_RESOURCE_GET::tablename() const {
+  // @@protoc_insertion_point(field_get:MSG_DS_DC_RESOURCE_GET.tablename)
+  return *tablename_;
+}
+inline void MSG_DS_DC_RESOURCE_GET::set_tablename(const ::std::string& value) {
+  set_has_tablename();
+  if (tablename_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    tablename_ = new ::std::string;
+  }
+  tablename_->assign(value);
+  // @@protoc_insertion_point(field_set:MSG_DS_DC_RESOURCE_GET.tablename)
+}
+inline void MSG_DS_DC_RESOURCE_GET::set_tablename(const char* value) {
+  set_has_tablename();
+  if (tablename_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    tablename_ = new ::std::string;
+  }
+  tablename_->assign(value);
+  // @@protoc_insertion_point(field_set_char:MSG_DS_DC_RESOURCE_GET.tablename)
+}
+inline void MSG_DS_DC_RESOURCE_GET::set_tablename(const char* value, size_t size) {
+  set_has_tablename();
+  if (tablename_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    tablename_ = new ::std::string;
+  }
+  tablename_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:MSG_DS_DC_RESOURCE_GET.tablename)
+}
+inline ::std::string* MSG_DS_DC_RESOURCE_GET::mutable_tablename() {
+  set_has_tablename();
+  if (tablename_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    tablename_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:MSG_DS_DC_RESOURCE_GET.tablename)
+  return tablename_;
+}
+inline ::std::string* MSG_DS_DC_RESOURCE_GET::release_tablename() {
+  clear_has_tablename();
+  if (tablename_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = tablename_;
+    tablename_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void MSG_DS_DC_RESOURCE_GET::set_allocated_tablename(::std::string* tablename) {
+  if (tablename_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete tablename_;
+  }
+  if (tablename) {
+    set_has_tablename();
+    tablename_ = tablename;
+  } else {
+    clear_has_tablename();
+    tablename_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:MSG_DS_DC_RESOURCE_GET.tablename)
+}
+
+// repeated .MSG_DS_DC_RESOURCE_GET.COL_SIZE colsize = 4;
+inline int MSG_DS_DC_RESOURCE_GET::colsize_size() const {
+  return colsize_.size();
+}
+inline void MSG_DS_DC_RESOURCE_GET::clear_colsize() {
+  colsize_.Clear();
+}
+inline const ::MSG_DS_DC_RESOURCE_GET_COL_SIZE& MSG_DS_DC_RESOURCE_GET::colsize(int index) const {
+  // @@protoc_insertion_point(field_get:MSG_DS_DC_RESOURCE_GET.colsize)
+  return colsize_.Get(index);
+}
+inline ::MSG_DS_DC_RESOURCE_GET_COL_SIZE* MSG_DS_DC_RESOURCE_GET::mutable_colsize(int index) {
+  // @@protoc_insertion_point(field_mutable:MSG_DS_DC_RESOURCE_GET.colsize)
+  return colsize_.Mutable(index);
+}
+inline ::MSG_DS_DC_RESOURCE_GET_COL_SIZE* MSG_DS_DC_RESOURCE_GET::add_colsize() {
+  // @@protoc_insertion_point(field_add:MSG_DS_DC_RESOURCE_GET.colsize)
+  return colsize_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::MSG_DS_DC_RESOURCE_GET_COL_SIZE >&
+MSG_DS_DC_RESOURCE_GET::colsize() const {
+  // @@protoc_insertion_point(field_list:MSG_DS_DC_RESOURCE_GET.colsize)
+  return colsize_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::MSG_DS_DC_RESOURCE_GET_COL_SIZE >*
+MSG_DS_DC_RESOURCE_GET::mutable_colsize() {
+  // @@protoc_insertion_point(field_mutable_list:MSG_DS_DC_RESOURCE_GET.colsize)
+  return &colsize_;
 }
 
 // -------------------------------------------------------------------
@@ -442,6 +793,106 @@ inline void CS_INFO::set_allocated_csip(::std::string* csip) {
     csip_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   }
   // @@protoc_insertion_point(field_set_allocated:CS_INFO.csIP)
+}
+
+// optional uint32 memory = 2;
+inline bool CS_INFO::has_memory() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void CS_INFO::set_has_memory() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void CS_INFO::clear_has_memory() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void CS_INFO::clear_memory() {
+  memory_ = 0u;
+  clear_has_memory();
+}
+inline ::google::protobuf::uint32 CS_INFO::memory() const {
+  // @@protoc_insertion_point(field_get:CS_INFO.memory)
+  return memory_;
+}
+inline void CS_INFO::set_memory(::google::protobuf::uint32 value) {
+  set_has_memory();
+  memory_ = value;
+  // @@protoc_insertion_point(field_set:CS_INFO.memory)
+}
+
+// required string columnname = 3;
+inline bool CS_INFO::has_columnname() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void CS_INFO::set_has_columnname() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void CS_INFO::clear_has_columnname() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void CS_INFO::clear_columnname() {
+  if (columnname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    columnname_->clear();
+  }
+  clear_has_columnname();
+}
+inline const ::std::string& CS_INFO::columnname() const {
+  // @@protoc_insertion_point(field_get:CS_INFO.columnname)
+  return *columnname_;
+}
+inline void CS_INFO::set_columnname(const ::std::string& value) {
+  set_has_columnname();
+  if (columnname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    columnname_ = new ::std::string;
+  }
+  columnname_->assign(value);
+  // @@protoc_insertion_point(field_set:CS_INFO.columnname)
+}
+inline void CS_INFO::set_columnname(const char* value) {
+  set_has_columnname();
+  if (columnname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    columnname_ = new ::std::string;
+  }
+  columnname_->assign(value);
+  // @@protoc_insertion_point(field_set_char:CS_INFO.columnname)
+}
+inline void CS_INFO::set_columnname(const char* value, size_t size) {
+  set_has_columnname();
+  if (columnname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    columnname_ = new ::std::string;
+  }
+  columnname_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:CS_INFO.columnname)
+}
+inline ::std::string* CS_INFO::mutable_columnname() {
+  set_has_columnname();
+  if (columnname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    columnname_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:CS_INFO.columnname)
+  return columnname_;
+}
+inline ::std::string* CS_INFO::release_columnname() {
+  clear_has_columnname();
+  if (columnname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = columnname_;
+    columnname_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void CS_INFO::set_allocated_columnname(::std::string* columnname) {
+  if (columnname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete columnname_;
+  }
+  if (columnname) {
+    set_has_columnname();
+    columnname_ = columnname;
+  } else {
+    clear_has_columnname();
+    columnname_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:CS_INFO.columnname)
 }
 
 // -------------------------------------------------------------------

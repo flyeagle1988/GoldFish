@@ -1,4 +1,4 @@
-#include "ColumnTable.h"
+#include "DS/ColumnTable.h"
 
 ColumnTable::ColumnTable(string tableName):m_tableName(tableName)
 {
@@ -45,19 +45,34 @@ pair<void*, size_t> ColumnTable::getOneDGroupKey(string columnName)
 vector<uint64_t> ColumnTable::updateOneDGroupKey(void* updatePtr, string columnName, size_t type)
 {
 	pair<void*, size_t> formerColumn = getOneDGroupKey(columnName);
+	vector<uint64_t> empty;
+	
 	switch(type)
 	{
-		case 0:{
+		case 0:
+		{
 			DGroupKey<string>* string_ptr = (DGroupKey<string>*)formerColumn.first;
 			return string_ptr->insertUpdatedData(((DGroupKey<string>*)updatePtr)->getDictionary(), ((DGroupKey<string>*)updatePtr)->getOffset(), ((DGroupKey<string>*)updatePtr)->getPosition());
-		}break;
-		case 1:{
+		}
+		break;
+		case 1:
+		{
 			return ((DGroupKey<int>*)formerColumn.first)->insertUpdatedData(((DGroupKey<int>*)updatePtr)->getDictionary(), ((DGroupKey<int>*)updatePtr)->getOffset(), ((DGroupKey<int>*)updatePtr)->getPosition());
-		}break;
-		case 2:{
+		}
+		break;
+		case 2:
+		{
 			return ((DGroupKey<double>*)formerColumn.first)->insertUpdatedData(((DGroupKey<double>*)updatePtr)->getDictionary(), ((DGroupKey<double>*)updatePtr)->getOffset(), ((DGroupKey<double>*)updatePtr)->getPosition());
-		}break;
+		}
+		break;
+		default:
+		{
+			cout << "ColumnTable::updateOneDGroupKey: Unknown Type: " << type << endl;
+			break;
+		}
 	}
+	
+	return empty;
 }
 
 string ColumnTable::getTableName()
