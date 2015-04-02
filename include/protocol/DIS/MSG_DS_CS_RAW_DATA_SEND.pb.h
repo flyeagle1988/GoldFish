@@ -37,14 +37,16 @@ class MSG_DS_CS_RAW_DATA_SEND;
 class MSG_CS_DS_RAW_DATA_SEND_ACK;
 
 enum MSG_DS_CS_RAW_DATA_SEND_COL_TYPE {
-  MSG_DS_CS_RAW_DATA_SEND_COL_TYPE_STRING = 1,
-  MSG_DS_CS_RAW_DATA_SEND_COL_TYPE_INT = 2,
-  MSG_DS_CS_RAW_DATA_SEND_COL_TYPE_FLOAT = 3,
-  MSG_DS_CS_RAW_DATA_SEND_COL_TYPE_DOUBLE = 4
+  MSG_DS_CS_RAW_DATA_SEND_COL_TYPE_VARCHAR = 0,
+  MSG_DS_CS_RAW_DATA_SEND_COL_TYPE_INTTYPE = 1,
+  MSG_DS_CS_RAW_DATA_SEND_COL_TYPE_DOUBLETYPE = 2,
+  MSG_DS_CS_RAW_DATA_SEND_COL_TYPE_TEXT = 3,
+  MSG_DS_CS_RAW_DATA_SEND_COL_TYPE_BLOB = 4,
+  MSG_DS_CS_RAW_DATA_SEND_COL_TYPE_TIMESTAMP = 5
 };
 bool MSG_DS_CS_RAW_DATA_SEND_COL_TYPE_IsValid(int value);
-const MSG_DS_CS_RAW_DATA_SEND_COL_TYPE MSG_DS_CS_RAW_DATA_SEND_COL_TYPE_COL_TYPE_MIN = MSG_DS_CS_RAW_DATA_SEND_COL_TYPE_STRING;
-const MSG_DS_CS_RAW_DATA_SEND_COL_TYPE MSG_DS_CS_RAW_DATA_SEND_COL_TYPE_COL_TYPE_MAX = MSG_DS_CS_RAW_DATA_SEND_COL_TYPE_DOUBLE;
+const MSG_DS_CS_RAW_DATA_SEND_COL_TYPE MSG_DS_CS_RAW_DATA_SEND_COL_TYPE_COL_TYPE_MIN = MSG_DS_CS_RAW_DATA_SEND_COL_TYPE_VARCHAR;
+const MSG_DS_CS_RAW_DATA_SEND_COL_TYPE MSG_DS_CS_RAW_DATA_SEND_COL_TYPE_COL_TYPE_MAX = MSG_DS_CS_RAW_DATA_SEND_COL_TYPE_TIMESTAMP;
 const int MSG_DS_CS_RAW_DATA_SEND_COL_TYPE_COL_TYPE_ARRAYSIZE = MSG_DS_CS_RAW_DATA_SEND_COL_TYPE_COL_TYPE_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* MSG_DS_CS_RAW_DATA_SEND_COL_TYPE_descriptor();
@@ -111,10 +113,12 @@ class MSG_DS_CS_RAW_DATA_SEND : public ::google::protobuf::Message {
   // nested types ----------------------------------------------------
 
   typedef MSG_DS_CS_RAW_DATA_SEND_COL_TYPE COL_TYPE;
-  static const COL_TYPE STRING = MSG_DS_CS_RAW_DATA_SEND_COL_TYPE_STRING;
-  static const COL_TYPE INT = MSG_DS_CS_RAW_DATA_SEND_COL_TYPE_INT;
-  static const COL_TYPE FLOAT = MSG_DS_CS_RAW_DATA_SEND_COL_TYPE_FLOAT;
-  static const COL_TYPE DOUBLE = MSG_DS_CS_RAW_DATA_SEND_COL_TYPE_DOUBLE;
+  static const COL_TYPE VARCHAR = MSG_DS_CS_RAW_DATA_SEND_COL_TYPE_VARCHAR;
+  static const COL_TYPE INTTYPE = MSG_DS_CS_RAW_DATA_SEND_COL_TYPE_INTTYPE;
+  static const COL_TYPE DOUBLETYPE = MSG_DS_CS_RAW_DATA_SEND_COL_TYPE_DOUBLETYPE;
+  static const COL_TYPE TEXT = MSG_DS_CS_RAW_DATA_SEND_COL_TYPE_TEXT;
+  static const COL_TYPE BLOB = MSG_DS_CS_RAW_DATA_SEND_COL_TYPE_BLOB;
+  static const COL_TYPE TIMESTAMP = MSG_DS_CS_RAW_DATA_SEND_COL_TYPE_TIMESTAMP;
   static inline bool COL_TYPE_IsValid(int value) {
     return MSG_DS_CS_RAW_DATA_SEND_COL_TYPE_IsValid(value);
   }
@@ -340,12 +344,26 @@ class MSG_CS_DS_RAW_DATA_SEND_ACK : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 statuscode() const;
   inline void set_statuscode(::google::protobuf::int32 value);
 
+  // required string columnName = 3;
+  inline bool has_columnname() const;
+  inline void clear_columnname();
+  static const int kColumnNameFieldNumber = 3;
+  inline const ::std::string& columnname() const;
+  inline void set_columnname(const ::std::string& value);
+  inline void set_columnname(const char* value);
+  inline void set_columnname(const char* value, size_t size);
+  inline ::std::string* mutable_columnname();
+  inline ::std::string* release_columnname();
+  inline void set_allocated_columnname(::std::string* columnname);
+
   // @@protoc_insertion_point(class_scope:MSG_CS_DS_RAW_DATA_SEND_ACK)
  private:
   inline void set_has_taskid();
   inline void clear_has_taskid();
   inline void set_has_statuscode();
   inline void clear_has_statuscode();
+  inline void set_has_columnname();
+  inline void clear_has_columnname();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -353,6 +371,7 @@ class MSG_CS_DS_RAW_DATA_SEND_ACK : public ::google::protobuf::Message {
   mutable int _cached_size_;
   ::google::protobuf::uint32 taskid_;
   ::google::protobuf::int32 statuscode_;
+  ::std::string* columnname_;
   friend void  protobuf_AddDesc_MSG_5fDS_5fCS_5fRAW_5fDATA_5fSEND_2eproto();
   friend void protobuf_AssignDesc_MSG_5fDS_5fCS_5fRAW_5fDATA_5fSEND_2eproto();
   friend void protobuf_ShutdownFile_MSG_5fDS_5fCS_5fRAW_5fDATA_5fSEND_2eproto();
@@ -578,7 +597,7 @@ inline void MSG_DS_CS_RAW_DATA_SEND::clear_has_columntype() {
   _has_bits_[0] &= ~0x00000010u;
 }
 inline void MSG_DS_CS_RAW_DATA_SEND::clear_columntype() {
-  columntype_ = 1;
+  columntype_ = 0;
   clear_has_columntype();
 }
 inline ::MSG_DS_CS_RAW_DATA_SEND_COL_TYPE MSG_DS_CS_RAW_DATA_SEND::columntype() const {
@@ -780,6 +799,82 @@ inline void MSG_CS_DS_RAW_DATA_SEND_ACK::set_statuscode(::google::protobuf::int3
   set_has_statuscode();
   statuscode_ = value;
   // @@protoc_insertion_point(field_set:MSG_CS_DS_RAW_DATA_SEND_ACK.statusCode)
+}
+
+// required string columnName = 3;
+inline bool MSG_CS_DS_RAW_DATA_SEND_ACK::has_columnname() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void MSG_CS_DS_RAW_DATA_SEND_ACK::set_has_columnname() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void MSG_CS_DS_RAW_DATA_SEND_ACK::clear_has_columnname() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void MSG_CS_DS_RAW_DATA_SEND_ACK::clear_columnname() {
+  if (columnname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    columnname_->clear();
+  }
+  clear_has_columnname();
+}
+inline const ::std::string& MSG_CS_DS_RAW_DATA_SEND_ACK::columnname() const {
+  // @@protoc_insertion_point(field_get:MSG_CS_DS_RAW_DATA_SEND_ACK.columnName)
+  return *columnname_;
+}
+inline void MSG_CS_DS_RAW_DATA_SEND_ACK::set_columnname(const ::std::string& value) {
+  set_has_columnname();
+  if (columnname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    columnname_ = new ::std::string;
+  }
+  columnname_->assign(value);
+  // @@protoc_insertion_point(field_set:MSG_CS_DS_RAW_DATA_SEND_ACK.columnName)
+}
+inline void MSG_CS_DS_RAW_DATA_SEND_ACK::set_columnname(const char* value) {
+  set_has_columnname();
+  if (columnname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    columnname_ = new ::std::string;
+  }
+  columnname_->assign(value);
+  // @@protoc_insertion_point(field_set_char:MSG_CS_DS_RAW_DATA_SEND_ACK.columnName)
+}
+inline void MSG_CS_DS_RAW_DATA_SEND_ACK::set_columnname(const char* value, size_t size) {
+  set_has_columnname();
+  if (columnname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    columnname_ = new ::std::string;
+  }
+  columnname_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:MSG_CS_DS_RAW_DATA_SEND_ACK.columnName)
+}
+inline ::std::string* MSG_CS_DS_RAW_DATA_SEND_ACK::mutable_columnname() {
+  set_has_columnname();
+  if (columnname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    columnname_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:MSG_CS_DS_RAW_DATA_SEND_ACK.columnName)
+  return columnname_;
+}
+inline ::std::string* MSG_CS_DS_RAW_DATA_SEND_ACK::release_columnname() {
+  clear_has_columnname();
+  if (columnname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = columnname_;
+    columnname_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void MSG_CS_DS_RAW_DATA_SEND_ACK::set_allocated_columnname(::std::string* columnname) {
+  if (columnname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete columnname_;
+  }
+  if (columnname) {
+    set_has_columnname();
+    columnname_ = columnname;
+  } else {
+    clear_has_columnname();
+    columnname_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:MSG_CS_DS_RAW_DATA_SEND_ACK.columnName)
 }
 
 

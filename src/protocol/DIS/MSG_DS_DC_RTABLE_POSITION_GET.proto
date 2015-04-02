@@ -2,6 +2,7 @@ message MSG_DS_DC_RTABLE_POSITION_GET
 {
     required uint32 dbID = 1;
     required string tableName = 2;
+    required uint32 taskID = 3;
 }
 
 message MSG_DC_DS_RTABLE_POSITION_GET_ACK
@@ -10,4 +11,5 @@ message MSG_DC_DS_RTABLE_POSITION_GET_ACK
     required string tableName = 2;
     optional string csIP = 3;
     required int32 statusCode = 4;
+    required uint32 taskID = 5;
 }

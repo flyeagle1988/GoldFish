@@ -50,8 +50,17 @@ const unsigned int DS_CS_ROW_INDEX_SEND_ACK = 0x1f;
 const unsigned int CS_DC_LOCATION_INDEX_SEND = 0x20;
 const unsigned int DC_CS_LOCATION_INDEX_SEND_ACK = 0x21;
 
+const unsigned int DS_DC_MEMORY_INFO = 0x22;
+const unsigned int DC_DS_MEMORY_INFO_ACK = 0x23;
 
+const unsigned int DS_DC_RTABLE_RESOURCE_GET = 0x24;
+const unsigned int DC_DS_RTABLE_RESOURCE_GET_ACK = 0x25;
 
+const unsigned int DS_CS_RTABLE_CREATE = 0x26;
+const unsigned int CS_DS_RTABLE_CREATE_ACK = 0x27;
+
+const unsigned int DS_CS_UPDATE_DATA_SEND = 0x28;
+const unsigned int CS_DS_UPDATE_DATA_SEND_ACK = 0x29;
 /*Task State*/
 const unsigned int READ_METADATA = 1;
 const unsigned int CREATE_TASK = 5;
@@ -61,8 +70,11 @@ const unsigned int WAIT_WORKITEM = 2;
 const unsigned int FINISH = 3;
 
 const unsigned int DS_IMP_STATE = 6;
-const unsigned int DS_WAIT_FOR_ADDR = 8;
 const unsigned int DS_DELTA_STATE = 7;
+const unsigned int DS_WAIT_FOR_ADDR = 8;
+const unsigned int DS_SEND_RTABLE = 9;
+
+const unsigned int DS_UPDATE_STATE = 10;
 
 /*Protobuf Error Code*/
 const int PROTO_PARSE_ERROR = -40;

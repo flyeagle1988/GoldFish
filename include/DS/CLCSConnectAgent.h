@@ -15,8 +15,16 @@ class CLCSConnectAgent:public TCPAgent
 
 		int connectAfter(bool);
 		int sendPackage(MsgHeader &, const char *);
+		void setSendData(const string data)
+		{
+			m_sendData = data;
+		}
+		void clearSendData()
+		{
+			m_sendData.clear();
+		}
 	private:
-		
+		string m_sendData;
 };
 
 #endif

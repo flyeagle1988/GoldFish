@@ -1,0 +1,9 @@
+message MSG_DS_DC_MEMORY_INFO_SEND
+{
+    required uint32 memory = 1;
+}
+
+message MSG_DC_DS_MEMORY_INFO_SEND_ACK
+{
+    required int32 statusCode = 1;
+}

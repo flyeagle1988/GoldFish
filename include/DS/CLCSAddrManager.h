@@ -9,6 +9,7 @@ using namespace std;
 struct CS_ADDR_INFO
 {
 	string csIP;
+	unsigned short csPort;
 	uint32_t csMemory;
 	string columnName;
 };
@@ -40,7 +41,7 @@ class CLCSAddrManager:public Singleton<CLCSAddrManager>
 		{
 			m_columnLocMap.insert(make_pair(column, csAgentID));
 		}
-		uint32_t getCSAgentIDByColumn(const string column) const
+		uint32_t getCSAgentIDByColumn(const string column)
 		{
 			ColumnLocationMap::const_iterator it = m_columnLocMap.find(column);
 			if(it != m_columnLocMap.end())

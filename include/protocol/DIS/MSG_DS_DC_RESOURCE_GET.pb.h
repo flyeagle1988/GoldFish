@@ -316,17 +316,24 @@ class CS_INFO : public ::google::protobuf::Message {
   inline ::std::string* release_csip();
   inline void set_allocated_csip(::std::string* csip);
 
-  // optional uint32 memory = 2;
+  // optional uint32 csPort = 2;
+  inline bool has_csport() const;
+  inline void clear_csport();
+  static const int kCsPortFieldNumber = 2;
+  inline ::google::protobuf::uint32 csport() const;
+  inline void set_csport(::google::protobuf::uint32 value);
+
+  // optional uint32 memory = 3;
   inline bool has_memory() const;
   inline void clear_memory();
-  static const int kMemoryFieldNumber = 2;
+  static const int kMemoryFieldNumber = 3;
   inline ::google::protobuf::uint32 memory() const;
   inline void set_memory(::google::protobuf::uint32 value);
 
-  // required string columnname = 3;
+  // required string columnname = 4;
   inline bool has_columnname() const;
   inline void clear_columnname();
-  static const int kColumnnameFieldNumber = 3;
+  static const int kColumnnameFieldNumber = 4;
   inline const ::std::string& columnname() const;
   inline void set_columnname(const ::std::string& value);
   inline void set_columnname(const char* value);
@@ -339,6 +346,8 @@ class CS_INFO : public ::google::protobuf::Message {
  private:
   inline void set_has_csip();
   inline void clear_has_csip();
+  inline void set_has_csport();
+  inline void clear_has_csport();
   inline void set_has_memory();
   inline void clear_has_memory();
   inline void set_has_columnname();
@@ -349,8 +358,9 @@ class CS_INFO : public ::google::protobuf::Message {
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
   ::std::string* csip_;
-  ::std::string* columnname_;
+  ::google::protobuf::uint32 csport_;
   ::google::protobuf::uint32 memory_;
+  ::std::string* columnname_;
   friend void  protobuf_AddDesc_MSG_5fDS_5fDC_5fRESOURCE_5fGET_2eproto();
   friend void protobuf_AssignDesc_MSG_5fDS_5fDC_5fRESOURCE_5fGET_2eproto();
   friend void protobuf_ShutdownFile_MSG_5fDS_5fDC_5fRESOURCE_5fGET_2eproto();
@@ -795,15 +805,39 @@ inline void CS_INFO::set_allocated_csip(::std::string* csip) {
   // @@protoc_insertion_point(field_set_allocated:CS_INFO.csIP)
 }
 
-// optional uint32 memory = 2;
-inline bool CS_INFO::has_memory() const {
+// optional uint32 csPort = 2;
+inline bool CS_INFO::has_csport() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void CS_INFO::set_has_memory() {
+inline void CS_INFO::set_has_csport() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void CS_INFO::clear_has_memory() {
+inline void CS_INFO::clear_has_csport() {
   _has_bits_[0] &= ~0x00000002u;
+}
+inline void CS_INFO::clear_csport() {
+  csport_ = 0u;
+  clear_has_csport();
+}
+inline ::google::protobuf::uint32 CS_INFO::csport() const {
+  // @@protoc_insertion_point(field_get:CS_INFO.csPort)
+  return csport_;
+}
+inline void CS_INFO::set_csport(::google::protobuf::uint32 value) {
+  set_has_csport();
+  csport_ = value;
+  // @@protoc_insertion_point(field_set:CS_INFO.csPort)
+}
+
+// optional uint32 memory = 3;
+inline bool CS_INFO::has_memory() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void CS_INFO::set_has_memory() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void CS_INFO::clear_has_memory() {
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline void CS_INFO::clear_memory() {
   memory_ = 0u;
@@ -819,15 +853,15 @@ inline void CS_INFO::set_memory(::google::protobuf::uint32 value) {
   // @@protoc_insertion_point(field_set:CS_INFO.memory)
 }
 
-// required string columnname = 3;
+// required string columnname = 4;
 inline bool CS_INFO::has_columnname() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+  return (_has_bits_[0] & 0x00000008u) != 0;
 }
 inline void CS_INFO::set_has_columnname() {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000008u;
 }
 inline void CS_INFO::clear_has_columnname() {
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline void CS_INFO::clear_columnname() {
   if (columnname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {

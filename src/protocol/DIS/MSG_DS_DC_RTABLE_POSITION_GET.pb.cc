@@ -35,9 +35,10 @@ void protobuf_AssignDesc_MSG_5fDS_5fDC_5fRTABLE_5fPOSITION_5fGET_2eproto() {
       "MSG_DS_DC_RTABLE_POSITION_GET.proto");
   GOOGLE_CHECK(file != NULL);
   MSG_DS_DC_RTABLE_POSITION_GET_descriptor_ = file->message_type(0);
-  static const int MSG_DS_DC_RTABLE_POSITION_GET_offsets_[2] = {
+  static const int MSG_DS_DC_RTABLE_POSITION_GET_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_DS_DC_RTABLE_POSITION_GET, dbid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_DS_DC_RTABLE_POSITION_GET, tablename_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_DS_DC_RTABLE_POSITION_GET, taskid_),
   };
   MSG_DS_DC_RTABLE_POSITION_GET_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -51,11 +52,12 @@ void protobuf_AssignDesc_MSG_5fDS_5fDC_5fRTABLE_5fPOSITION_5fGET_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(MSG_DS_DC_RTABLE_POSITION_GET));
   MSG_DC_DS_RTABLE_POSITION_GET_ACK_descriptor_ = file->message_type(1);
-  static const int MSG_DC_DS_RTABLE_POSITION_GET_ACK_offsets_[4] = {
+  static const int MSG_DC_DS_RTABLE_POSITION_GET_ACK_offsets_[5] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_DC_DS_RTABLE_POSITION_GET_ACK, dbid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_DC_DS_RTABLE_POSITION_GET_ACK, tablename_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_DC_DS_RTABLE_POSITION_GET_ACK, csip_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_DC_DS_RTABLE_POSITION_GET_ACK, statuscode_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_DC_DS_RTABLE_POSITION_GET_ACK, taskid_),
   };
   MSG_DC_DS_RTABLE_POSITION_GET_ACK_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -102,12 +104,12 @@ void protobuf_AddDesc_MSG_5fDS_5fDC_5fRTABLE_5fPOSITION_5fGET_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n#MSG_DS_DC_RTABLE_POSITION_GET.proto\"@\n"
+    "\n#MSG_DS_DC_RTABLE_POSITION_GET.proto\"P\n"
     "\035MSG_DS_DC_RTABLE_POSITION_GET\022\014\n\004dbID\030\001"
-    " \002(\r\022\021\n\ttableName\030\002 \002(\t\"f\n!MSG_DC_DS_RTA"
-    "BLE_POSITION_GET_ACK\022\014\n\004dbID\030\001 \002(\r\022\021\n\tta"
-    "bleName\030\002 \002(\t\022\014\n\004csIP\030\003 \001(\t\022\022\n\nstatusCod"
-    "e\030\004 \002(\005", 207);
+    " \002(\r\022\021\n\ttableName\030\002 \002(\t\022\016\n\006taskID\030\003 \002(\r\""
+    "v\n!MSG_DC_DS_RTABLE_POSITION_GET_ACK\022\014\n\004"
+    "dbID\030\001 \002(\r\022\021\n\ttableName\030\002 \002(\t\022\014\n\004csIP\030\003 "
+    "\001(\t\022\022\n\nstatusCode\030\004 \002(\005\022\016\n\006taskID\030\005 \002(\r", 239);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "MSG_DS_DC_RTABLE_POSITION_GET.proto", &protobuf_RegisterTypes);
   MSG_DS_DC_RTABLE_POSITION_GET::default_instance_ = new MSG_DS_DC_RTABLE_POSITION_GET();
@@ -129,6 +131,7 @@ struct StaticDescriptorInitializer_MSG_5fDS_5fDC_5fRTABLE_5fPOSITION_5fGET_2epro
 #ifndef _MSC_VER
 const int MSG_DS_DC_RTABLE_POSITION_GET::kDbIDFieldNumber;
 const int MSG_DS_DC_RTABLE_POSITION_GET::kTableNameFieldNumber;
+const int MSG_DS_DC_RTABLE_POSITION_GET::kTaskIDFieldNumber;
 #endif  // !_MSC_VER
 
 MSG_DS_DC_RTABLE_POSITION_GET::MSG_DS_DC_RTABLE_POSITION_GET()
@@ -152,6 +155,7 @@ void MSG_DS_DC_RTABLE_POSITION_GET::SharedCtor() {
   _cached_size_ = 0;
   dbid_ = 0u;
   tablename_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  taskid_ = 0u;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -190,14 +194,28 @@ MSG_DS_DC_RTABLE_POSITION_GET* MSG_DS_DC_RTABLE_POSITION_GET::New() const {
 }
 
 void MSG_DS_DC_RTABLE_POSITION_GET::Clear() {
-  if (_has_bits_[0 / 32] & 3) {
-    dbid_ = 0u;
+#define OFFSET_OF_FIELD_(f) (reinterpret_cast<char*>(      \
+  &reinterpret_cast<MSG_DS_DC_RTABLE_POSITION_GET*>(16)->f) - \
+   reinterpret_cast<char*>(16))
+
+#define ZR_(first, last) do {                              \
+    size_t f = OFFSET_OF_FIELD_(first);                    \
+    size_t n = OFFSET_OF_FIELD_(last) - f + sizeof(last);  \
+    ::memset(&first, 0, n);                                \
+  } while (0)
+
+  if (_has_bits_[0 / 32] & 7) {
+    ZR_(dbid_, taskid_);
     if (has_tablename()) {
       if (tablename_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
         tablename_->clear();
       }
     }
   }
+
+#undef OFFSET_OF_FIELD_
+#undef ZR_
+
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -236,6 +254,21 @@ bool MSG_DS_DC_RTABLE_POSITION_GET::MergePartialFromCodedStream(
             this->tablename().data(), this->tablename().length(),
             ::google::protobuf::internal::WireFormat::PARSE,
             "tablename");
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(24)) goto parse_taskID;
+        break;
+      }
+
+      // required uint32 taskID = 3;
+      case 3: {
+        if (tag == 24) {
+         parse_taskID:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &taskid_)));
+          set_has_taskid();
         } else {
           goto handle_unusual;
         }
@@ -283,6 +316,11 @@ void MSG_DS_DC_RTABLE_POSITION_GET::SerializeWithCachedSizes(
       2, this->tablename(), output);
   }
 
+  // required uint32 taskID = 3;
+  if (has_taskid()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->taskid(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -309,6 +347,11 @@ void MSG_DS_DC_RTABLE_POSITION_GET::SerializeWithCachedSizes(
         2, this->tablename(), target);
   }
 
+  // required uint32 taskID = 3;
+  if (has_taskid()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->taskid(), target);
+  }
+
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -333,6 +376,13 @@ int MSG_DS_DC_RTABLE_POSITION_GET::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->tablename());
+    }
+
+    // required uint32 taskID = 3;
+    if (has_taskid()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->taskid());
     }
 
   }
@@ -368,6 +418,9 @@ void MSG_DS_DC_RTABLE_POSITION_GET::MergeFrom(const MSG_DS_DC_RTABLE_POSITION_GE
     if (from.has_tablename()) {
       set_tablename(from.tablename());
     }
+    if (from.has_taskid()) {
+      set_taskid(from.taskid());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -385,7 +438,7 @@ void MSG_DS_DC_RTABLE_POSITION_GET::CopyFrom(const MSG_DS_DC_RTABLE_POSITION_GET
 }
 
 bool MSG_DS_DC_RTABLE_POSITION_GET::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
+  if ((_has_bits_[0] & 0x00000007) != 0x00000007) return false;
 
   return true;
 }
@@ -394,6 +447,7 @@ void MSG_DS_DC_RTABLE_POSITION_GET::Swap(MSG_DS_DC_RTABLE_POSITION_GET* other) {
   if (other != this) {
     std::swap(dbid_, other->dbid_);
     std::swap(tablename_, other->tablename_);
+    std::swap(taskid_, other->taskid_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -416,6 +470,7 @@ const int MSG_DC_DS_RTABLE_POSITION_GET_ACK::kDbIDFieldNumber;
 const int MSG_DC_DS_RTABLE_POSITION_GET_ACK::kTableNameFieldNumber;
 const int MSG_DC_DS_RTABLE_POSITION_GET_ACK::kCsIPFieldNumber;
 const int MSG_DC_DS_RTABLE_POSITION_GET_ACK::kStatusCodeFieldNumber;
+const int MSG_DC_DS_RTABLE_POSITION_GET_ACK::kTaskIDFieldNumber;
 #endif  // !_MSC_VER
 
 MSG_DC_DS_RTABLE_POSITION_GET_ACK::MSG_DC_DS_RTABLE_POSITION_GET_ACK()
@@ -441,6 +496,7 @@ void MSG_DC_DS_RTABLE_POSITION_GET_ACK::SharedCtor() {
   tablename_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   csip_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   statuscode_ = 0;
+  taskid_ = 0u;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -492,7 +548,7 @@ void MSG_DC_DS_RTABLE_POSITION_GET_ACK::Clear() {
     ::memset(&first, 0, n);                                \
   } while (0)
 
-  if (_has_bits_[0 / 32] & 15) {
+  if (_has_bits_[0 / 32] & 31) {
     ZR_(dbid_, statuscode_);
     if (has_tablename()) {
       if (tablename_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -504,6 +560,7 @@ void MSG_DC_DS_RTABLE_POSITION_GET_ACK::Clear() {
         csip_->clear();
       }
     }
+    taskid_ = 0u;
   }
 
 #undef OFFSET_OF_FIELD_
@@ -582,6 +639,21 @@ bool MSG_DC_DS_RTABLE_POSITION_GET_ACK::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
+        if (input->ExpectTag(40)) goto parse_taskID;
+        break;
+      }
+
+      // required uint32 taskID = 5;
+      case 5: {
+        if (tag == 40) {
+         parse_taskID:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &taskid_)));
+          set_has_taskid();
+        } else {
+          goto handle_unusual;
+        }
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -641,6 +713,11 @@ void MSG_DC_DS_RTABLE_POSITION_GET_ACK::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->statuscode(), output);
   }
 
+  // required uint32 taskID = 5;
+  if (has_taskid()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(5, this->taskid(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -683,6 +760,11 @@ void MSG_DC_DS_RTABLE_POSITION_GET_ACK::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->statuscode(), target);
   }
 
+  // required uint32 taskID = 5;
+  if (has_taskid()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(5, this->taskid(), target);
+  }
+
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -721,6 +803,13 @@ int MSG_DC_DS_RTABLE_POSITION_GET_ACK::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->statuscode());
+    }
+
+    // required uint32 taskID = 5;
+    if (has_taskid()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->taskid());
     }
 
   }
@@ -762,6 +851,9 @@ void MSG_DC_DS_RTABLE_POSITION_GET_ACK::MergeFrom(const MSG_DC_DS_RTABLE_POSITIO
     if (from.has_statuscode()) {
       set_statuscode(from.statuscode());
     }
+    if (from.has_taskid()) {
+      set_taskid(from.taskid());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -779,7 +871,7 @@ void MSG_DC_DS_RTABLE_POSITION_GET_ACK::CopyFrom(const MSG_DC_DS_RTABLE_POSITION
 }
 
 bool MSG_DC_DS_RTABLE_POSITION_GET_ACK::IsInitialized() const {
-  if ((_has_bits_[0] & 0x0000000b) != 0x0000000b) return false;
+  if ((_has_bits_[0] & 0x0000001b) != 0x0000001b) return false;
 
   return true;
 }
@@ -790,6 +882,7 @@ void MSG_DC_DS_RTABLE_POSITION_GET_ACK::Swap(MSG_DC_DS_RTABLE_POSITION_GET_ACK* 
     std::swap(tablename_, other->tablename_);
     std::swap(csip_, other->csip_);
     std::swap(statuscode_, other->statuscode_);
+    std::swap(taskid_, other->taskid_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

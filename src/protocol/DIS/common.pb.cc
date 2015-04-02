@@ -174,10 +174,9 @@ void protobuf_AssignDesc_common_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(ROWKEY_ENTRY));
   DICT_VALUE_descriptor_ = file->message_type(7);
-  static const int DICT_VALUE_offsets_[4] = {
+  static const int DICT_VALUE_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DICT_VALUE, strvalue_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DICT_VALUE, ivalue_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DICT_VALUE, fvalue_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DICT_VALUE, dvalue_),
   };
   DICT_VALUE_reflection_ =
@@ -264,9 +263,9 @@ void protobuf_AddDesc_common_2eproto() {
     "K_INFO\022\020\n\010taskType\030\001 \002(\r\022\020\n\010schedule\030\002 \002"
     "(\r\"0\n\rGROUP_DB_INFO\022\021\n\tgroupName\030\001 \002(\t\022\014"
     "\n\004dbid\030\002 \003(\t\"-\n\014ROWKEY_ENTRY\022\016\n\006rowKey\030\001"
-    " \002(\r\022\r\n\005entry\030\002 \002(\r\"N\n\nDICT_VALUE\022\020\n\010str"
-    "Value\030\001 \001(\t\022\016\n\006iValue\030\002 \001(\005\022\016\n\006fValue\030\003 "
-    "\001(\002\022\016\n\006dValue\030\004 \001(\001", 699);
+    " \002(\r\022\r\n\005entry\030\002 \002(\r\">\n\nDICT_VALUE\022\020\n\010str"
+    "Value\030\001 \001(\t\022\016\n\006iValue\030\002 \001(\005\022\016\n\006dValue\030\003 "
+    "\001(\001", 683);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "common.proto", &protobuf_RegisterTypes);
   SINGLE_NODE_INFO::default_instance_ = new SINGLE_NODE_INFO();
@@ -2639,7 +2638,6 @@ void ROWKEY_ENTRY::Swap(ROWKEY_ENTRY* other) {
 #ifndef _MSC_VER
 const int DICT_VALUE::kStrValueFieldNumber;
 const int DICT_VALUE::kIValueFieldNumber;
-const int DICT_VALUE::kFValueFieldNumber;
 const int DICT_VALUE::kDValueFieldNumber;
 #endif  // !_MSC_VER
 
@@ -2664,7 +2662,6 @@ void DICT_VALUE::SharedCtor() {
   _cached_size_ = 0;
   strvalue_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ivalue_ = 0;
-  fvalue_ = 0;
   dvalue_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -2714,8 +2711,8 @@ void DICT_VALUE::Clear() {
     ::memset(&first, 0, n);                                \
   } while (0)
 
-  if (_has_bits_[0 / 32] & 15) {
-    ZR_(ivalue_, dvalue_);
+  if (_has_bits_[0 / 32] & 7) {
+    ZR_(dvalue_, ivalue_);
     if (has_strvalue()) {
       if (strvalue_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
         strvalue_->clear();
@@ -2767,28 +2764,13 @@ bool DICT_VALUE::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(29)) goto parse_fValue;
+        if (input->ExpectTag(25)) goto parse_dValue;
         break;
       }
 
-      // optional float fValue = 3;
+      // optional double dValue = 3;
       case 3: {
-        if (tag == 29) {
-         parse_fValue:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &fvalue_)));
-          set_has_fvalue();
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(33)) goto parse_dValue;
-        break;
-      }
-
-      // optional double dValue = 4;
-      case 4: {
-        if (tag == 33) {
+        if (tag == 25) {
          parse_dValue:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
@@ -2841,14 +2823,9 @@ void DICT_VALUE::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->ivalue(), output);
   }
 
-  // optional float fValue = 3;
-  if (has_fvalue()) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(3, this->fvalue(), output);
-  }
-
-  // optional double dValue = 4;
+  // optional double dValue = 3;
   if (has_dvalue()) {
-    ::google::protobuf::internal::WireFormatLite::WriteDouble(4, this->dvalue(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteDouble(3, this->dvalue(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -2877,14 +2854,9 @@ void DICT_VALUE::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->ivalue(), target);
   }
 
-  // optional float fValue = 3;
-  if (has_fvalue()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(3, this->fvalue(), target);
-  }
-
-  // optional double dValue = 4;
+  // optional double dValue = 3;
   if (has_dvalue()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(4, this->dvalue(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(3, this->dvalue(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -2913,12 +2885,7 @@ int DICT_VALUE::ByteSize() const {
           this->ivalue());
     }
 
-    // optional float fValue = 3;
-    if (has_fvalue()) {
-      total_size += 1 + 4;
-    }
-
-    // optional double dValue = 4;
+    // optional double dValue = 3;
     if (has_dvalue()) {
       total_size += 1 + 8;
     }
@@ -2956,9 +2923,6 @@ void DICT_VALUE::MergeFrom(const DICT_VALUE& from) {
     if (from.has_ivalue()) {
       set_ivalue(from.ivalue());
     }
-    if (from.has_fvalue()) {
-      set_fvalue(from.fvalue());
-    }
     if (from.has_dvalue()) {
       set_dvalue(from.dvalue());
     }
@@ -2987,7 +2951,6 @@ void DICT_VALUE::Swap(DICT_VALUE* other) {
   if (other != this) {
     std::swap(strvalue_, other->strvalue_);
     std::swap(ivalue_, other->ivalue_);
-    std::swap(fvalue_, other->fvalue_);
     std::swap(dvalue_, other->dvalue_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);

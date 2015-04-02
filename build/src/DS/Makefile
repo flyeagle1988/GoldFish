@@ -53,11 +53,11 @@ PROGRAMS = $(bin_PROGRAMS)
 am___top_srcdir__bin_DS_OBJECTS = BitCompressedVector.$(OBJEXT) \
 	CLcreateIndexWorkItem.$(OBJEXT) CLHeartBeatTimer.$(OBJEXT) \
 	ColumnTable.$(OBJEXT) IndexOffset.$(OBJEXT) \
-	CLcreateDeltaTask.$(OBJEXT) CLCSConnectAgent.$(OBJEXT) \
-	CLimpTaskManager.$(OBJEXT) DRowTable.$(OBJEXT) main.$(OBJEXT) \
-	TableManager.$(OBJEXT) CLcreateIndexTask.$(OBJEXT) \
-	CLDCConnectAgent.$(OBJEXT) CLRAConnectAgent.$(OBJEXT) \
-	DSXmlParse.$(OBJEXT)
+	CLCSConnectAgent.$(OBJEXT) CLimpTaskManager.$(OBJEXT) \
+	DRowTable.$(OBJEXT) main.$(OBJEXT) TableManager.$(OBJEXT) \
+	CLcreateIndexTask.$(OBJEXT) CLDCConnectAgent.$(OBJEXT) \
+	CLRAConnectAgent.$(OBJEXT) DSXmlParse.$(OBJEXT) \
+	CLcreateUpdateTask.$(OBJEXT) CLcreateUpdateWorkItem.$(OBJEXT)
 __top_srcdir__bin_DS_OBJECTS = $(am___top_srcdir__bin_DS_OBJECTS)
 __top_srcdir__bin_DS_DEPENDENCIES = $(top_srcdir)/lib/libcommon.la \
 	$(top_srcdir)/lib/libprotocol.la
@@ -203,7 +203,6 @@ __top_srcdir__bin_DS_SOURCES = BitCompressedVector.cpp \
 							   CLHeartBeatTimer.cpp \
 							   ColumnTable.cpp \
 							   IndexOffset.cpp \
-							   CLcreateDeltaTask.cpp  \
 							   CLCSConnectAgent.cpp   \
 						   	   CLimpTaskManager.cpp \
 							   DRowTable.cpp   \
@@ -212,7 +211,9 @@ __top_srcdir__bin_DS_SOURCES = BitCompressedVector.cpp \
 							   CLcreateIndexTask.cpp  \
 							   CLDCConnectAgent.cpp   \
 						   	   CLRAConnectAgent.cpp  \
-						 	   DSXmlParse.cpp
+						 	   DSXmlParse.cpp	\
+							   CLcreateUpdateTask.cpp	\
+							   CLcreateUpdateWorkItem.cpp
 
 __top_srcdir__bin_DS_LDADD = $(top_srcdir)/lib/libcommon.la $(top_srcdir)/lib/libprotocol.la -L/usr/lib/oracle/11.2/client64/lib/ -lclntsh -locci -lxml2
 all: all-am
@@ -310,9 +311,10 @@ include ./$(DEPDIR)/CLCSConnectAgent.Po
 include ./$(DEPDIR)/CLDCConnectAgent.Po
 include ./$(DEPDIR)/CLHeartBeatTimer.Po
 include ./$(DEPDIR)/CLRAConnectAgent.Po
-include ./$(DEPDIR)/CLcreateDeltaTask.Po
 include ./$(DEPDIR)/CLcreateIndexTask.Po
 include ./$(DEPDIR)/CLcreateIndexWorkItem.Po
+include ./$(DEPDIR)/CLcreateUpdateTask.Po
+include ./$(DEPDIR)/CLcreateUpdateWorkItem.Po
 include ./$(DEPDIR)/CLimpTaskManager.Po
 include ./$(DEPDIR)/ColumnTable.Po
 include ./$(DEPDIR)/DRowTable.Po

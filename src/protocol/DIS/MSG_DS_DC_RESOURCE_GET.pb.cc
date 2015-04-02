@@ -75,8 +75,9 @@ void protobuf_AssignDesc_MSG_5fDS_5fDC_5fRESOURCE_5fGET_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(MSG_DS_DC_RESOURCE_GET_COL_SIZE));
   CS_INFO_descriptor_ = file->message_type(1);
-  static const int CS_INFO_offsets_[3] = {
+  static const int CS_INFO_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CS_INFO, csip_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CS_INFO, csport_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CS_INFO, memory_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CS_INFO, columnname_),
   };
@@ -154,10 +155,10 @@ void protobuf_AddDesc_MSG_5fDS_5fDC_5fRESOURCE_5fGET_2eproto() {
     "d\030\002 \002(\r\022\021\n\ttablename\030\003 \002(\t\0221\n\007colsize\030\004 "
     "\003(\0132 .MSG_DS_DC_RESOURCE_GET.COL_SIZE\0322\n"
     "\010COL_SIZE\022\022\n\ncolumnname\030\001 \002(\t\022\022\n\ncolumnS"
-    "ize\030\002 \002(\r\";\n\007CS_INFO\022\014\n\004csIP\030\001 \001(\t\022\016\n\006me"
-    "mory\030\002 \001(\r\022\022\n\ncolumnname\030\003 \002(\t\"F\n\032MSG_DC"
-    "_DS_RESOURCE_GET_ACK\022\016\n\006taskID\030\001 \002(\r\022\030\n\006"
-    "csInfo\030\002 \003(\0132\010.CS_INFO", 342);
+    "ize\030\002 \002(\r\"K\n\007CS_INFO\022\014\n\004csIP\030\001 \001(\t\022\016\n\006cs"
+    "Port\030\002 \001(\r\022\016\n\006memory\030\003 \001(\r\022\022\n\ncolumnname"
+    "\030\004 \002(\t\"F\n\032MSG_DC_DS_RESOURCE_GET_ACK\022\016\n\006"
+    "taskID\030\001 \002(\r\022\030\n\006csInfo\030\002 \003(\0132\010.CS_INFO", 358);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "MSG_DS_DC_RESOURCE_GET.proto", &protobuf_RegisterTypes);
   MSG_DS_DC_RESOURCE_GET::default_instance_ = new MSG_DS_DC_RESOURCE_GET();
@@ -844,6 +845,7 @@ void MSG_DS_DC_RESOURCE_GET::Swap(MSG_DS_DC_RESOURCE_GET* other) {
 
 #ifndef _MSC_VER
 const int CS_INFO::kCsIPFieldNumber;
+const int CS_INFO::kCsPortFieldNumber;
 const int CS_INFO::kMemoryFieldNumber;
 const int CS_INFO::kColumnnameFieldNumber;
 #endif  // !_MSC_VER
@@ -868,6 +870,7 @@ void CS_INFO::SharedCtor() {
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
   csip_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  csport_ = 0u;
   memory_ = 0u;
   columnname_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -911,19 +914,33 @@ CS_INFO* CS_INFO::New() const {
 }
 
 void CS_INFO::Clear() {
-  if (_has_bits_[0 / 32] & 7) {
+#define OFFSET_OF_FIELD_(f) (reinterpret_cast<char*>(      \
+  &reinterpret_cast<CS_INFO*>(16)->f) - \
+   reinterpret_cast<char*>(16))
+
+#define ZR_(first, last) do {                              \
+    size_t f = OFFSET_OF_FIELD_(first);                    \
+    size_t n = OFFSET_OF_FIELD_(last) - f + sizeof(last);  \
+    ::memset(&first, 0, n);                                \
+  } while (0)
+
+  if (_has_bits_[0 / 32] & 15) {
+    ZR_(csport_, memory_);
     if (has_csip()) {
       if (csip_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
         csip_->clear();
       }
     }
-    memory_ = 0u;
     if (has_columnname()) {
       if (columnname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
         columnname_->clear();
       }
     }
   }
+
+#undef OFFSET_OF_FIELD_
+#undef ZR_
+
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -950,13 +967,28 @@ bool CS_INFO::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(16)) goto parse_memory;
+        if (input->ExpectTag(16)) goto parse_csPort;
         break;
       }
 
-      // optional uint32 memory = 2;
+      // optional uint32 csPort = 2;
       case 2: {
         if (tag == 16) {
+         parse_csPort:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &csport_)));
+          set_has_csport();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(24)) goto parse_memory;
+        break;
+      }
+
+      // optional uint32 memory = 3;
+      case 3: {
+        if (tag == 24) {
          parse_memory:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
@@ -965,13 +997,13 @@ bool CS_INFO::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(26)) goto parse_columnname;
+        if (input->ExpectTag(34)) goto parse_columnname;
         break;
       }
 
-      // required string columnname = 3;
-      case 3: {
-        if (tag == 26) {
+      // required string columnname = 4;
+      case 4: {
+        if (tag == 34) {
          parse_columnname:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_columnname()));
@@ -1021,19 +1053,24 @@ void CS_INFO::SerializeWithCachedSizes(
       1, this->csip(), output);
   }
 
-  // optional uint32 memory = 2;
-  if (has_memory()) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->memory(), output);
+  // optional uint32 csPort = 2;
+  if (has_csport()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->csport(), output);
   }
 
-  // required string columnname = 3;
+  // optional uint32 memory = 3;
+  if (has_memory()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->memory(), output);
+  }
+
+  // required string columnname = 4;
   if (has_columnname()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->columnname().data(), this->columnname().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "columnname");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      3, this->columnname(), output);
+      4, this->columnname(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -1057,12 +1094,17 @@ void CS_INFO::SerializeWithCachedSizes(
         1, this->csip(), target);
   }
 
-  // optional uint32 memory = 2;
-  if (has_memory()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->memory(), target);
+  // optional uint32 csPort = 2;
+  if (has_csport()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->csport(), target);
   }
 
-  // required string columnname = 3;
+  // optional uint32 memory = 3;
+  if (has_memory()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->memory(), target);
+  }
+
+  // required string columnname = 4;
   if (has_columnname()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->columnname().data(), this->columnname().length(),
@@ -1070,7 +1112,7 @@ void CS_INFO::SerializeWithCachedSizes(
       "columnname");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        3, this->columnname(), target);
+        4, this->columnname(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -1092,14 +1134,21 @@ int CS_INFO::ByteSize() const {
           this->csip());
     }
 
-    // optional uint32 memory = 2;
+    // optional uint32 csPort = 2;
+    if (has_csport()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->csport());
+    }
+
+    // optional uint32 memory = 3;
     if (has_memory()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
           this->memory());
     }
 
-    // required string columnname = 3;
+    // required string columnname = 4;
     if (has_columnname()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
@@ -1136,6 +1185,9 @@ void CS_INFO::MergeFrom(const CS_INFO& from) {
     if (from.has_csip()) {
       set_csip(from.csip());
     }
+    if (from.has_csport()) {
+      set_csport(from.csport());
+    }
     if (from.has_memory()) {
       set_memory(from.memory());
     }
@@ -1159,7 +1211,7 @@ void CS_INFO::CopyFrom(const CS_INFO& from) {
 }
 
 bool CS_INFO::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000004) != 0x00000004) return false;
+  if ((_has_bits_[0] & 0x00000008) != 0x00000008) return false;
 
   return true;
 }
@@ -1167,6 +1219,7 @@ bool CS_INFO::IsInitialized() const {
 void CS_INFO::Swap(CS_INFO* other) {
   if (other != this) {
     std::swap(csip_, other->csip_);
+    std::swap(csport_, other->csport_);
     std::swap(memory_, other->memory_);
     std::swap(columnname_, other->columnname_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);

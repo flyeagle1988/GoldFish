@@ -191,8 +191,9 @@ CLcreateIndexWorkItem.o: ../../../src/DS/CLcreateIndexWorkItem.cpp \
  ../../../include/DS/ColumnTable.h ../../../include/DS/DGroupKey.h \
  ../../../include/protocol/DIS/MSG_DS_CS_RAW_DATA_SEND.pb.h \
  ../../../include/protocol/DIS/common.pb.h \
- ../../../include/protocol/DIS/MSG_DS_CS_RTABLE_SEND.pb.h \
  ../../../include/protocol/DIS/MSG_DS_DC_RESOURCE_GET.pb.h \
+ ../../../include/protocol/DIS/MSG_DS_CS_RTABLE_CREATE.pb.h \
+ ../../../include/protocol/DIS/MSG_DS_DC_RTABLE_RESOURCE_GET.pb.h \
  ../../../include/protocol/protocol.h
 
 ../../../include/common/DevLog/DevLog.h:
@@ -653,8 +654,10 @@ CLcreateIndexWorkItem.o: ../../../src/DS/CLcreateIndexWorkItem.cpp \
 
 ../../../include/protocol/DIS/common.pb.h:
 
-../../../include/protocol/DIS/MSG_DS_CS_RTABLE_SEND.pb.h:
-
 ../../../include/protocol/DIS/MSG_DS_DC_RESOURCE_GET.pb.h:
+
+../../../include/protocol/DIS/MSG_DS_CS_RTABLE_CREATE.pb.h:
+
+../../../include/protocol/DIS/MSG_DS_DC_RTABLE_RESOURCE_GET.pb.h:
 
 ../../../include/protocol/protocol.h:

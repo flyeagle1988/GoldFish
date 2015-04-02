@@ -108,12 +108,21 @@ class MSG_DS_DC_RTABLE_POSITION_GET : public ::google::protobuf::Message {
   inline ::std::string* release_tablename();
   inline void set_allocated_tablename(::std::string* tablename);
 
+  // required uint32 taskID = 3;
+  inline bool has_taskid() const;
+  inline void clear_taskid();
+  static const int kTaskIDFieldNumber = 3;
+  inline ::google::protobuf::uint32 taskid() const;
+  inline void set_taskid(::google::protobuf::uint32 value);
+
   // @@protoc_insertion_point(class_scope:MSG_DS_DC_RTABLE_POSITION_GET)
  private:
   inline void set_has_dbid();
   inline void clear_has_dbid();
   inline void set_has_tablename();
   inline void clear_has_tablename();
+  inline void set_has_taskid();
+  inline void clear_has_taskid();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -121,6 +130,7 @@ class MSG_DS_DC_RTABLE_POSITION_GET : public ::google::protobuf::Message {
   mutable int _cached_size_;
   ::std::string* tablename_;
   ::google::protobuf::uint32 dbid_;
+  ::google::protobuf::uint32 taskid_;
   friend void  protobuf_AddDesc_MSG_5fDS_5fDC_5fRTABLE_5fPOSITION_5fGET_2eproto();
   friend void protobuf_AssignDesc_MSG_5fDS_5fDC_5fRTABLE_5fPOSITION_5fGET_2eproto();
   friend void protobuf_ShutdownFile_MSG_5fDS_5fDC_5fRTABLE_5fPOSITION_5fGET_2eproto();
@@ -221,6 +231,13 @@ class MSG_DC_DS_RTABLE_POSITION_GET_ACK : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 statuscode() const;
   inline void set_statuscode(::google::protobuf::int32 value);
 
+  // required uint32 taskID = 5;
+  inline bool has_taskid() const;
+  inline void clear_taskid();
+  static const int kTaskIDFieldNumber = 5;
+  inline ::google::protobuf::uint32 taskid() const;
+  inline void set_taskid(::google::protobuf::uint32 value);
+
   // @@protoc_insertion_point(class_scope:MSG_DC_DS_RTABLE_POSITION_GET_ACK)
  private:
   inline void set_has_dbid();
@@ -231,6 +248,8 @@ class MSG_DC_DS_RTABLE_POSITION_GET_ACK : public ::google::protobuf::Message {
   inline void clear_has_csip();
   inline void set_has_statuscode();
   inline void clear_has_statuscode();
+  inline void set_has_taskid();
+  inline void clear_has_taskid();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -240,6 +259,7 @@ class MSG_DC_DS_RTABLE_POSITION_GET_ACK : public ::google::protobuf::Message {
   ::google::protobuf::uint32 dbid_;
   ::google::protobuf::int32 statuscode_;
   ::std::string* csip_;
+  ::google::protobuf::uint32 taskid_;
   friend void  protobuf_AddDesc_MSG_5fDS_5fDC_5fRTABLE_5fPOSITION_5fGET_2eproto();
   friend void protobuf_AssignDesc_MSG_5fDS_5fDC_5fRTABLE_5fPOSITION_5fGET_2eproto();
   friend void protobuf_ShutdownFile_MSG_5fDS_5fDC_5fRTABLE_5fPOSITION_5fGET_2eproto();
@@ -352,6 +372,30 @@ inline void MSG_DS_DC_RTABLE_POSITION_GET::set_allocated_tablename(::std::string
     tablename_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   }
   // @@protoc_insertion_point(field_set_allocated:MSG_DS_DC_RTABLE_POSITION_GET.tableName)
+}
+
+// required uint32 taskID = 3;
+inline bool MSG_DS_DC_RTABLE_POSITION_GET::has_taskid() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void MSG_DS_DC_RTABLE_POSITION_GET::set_has_taskid() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void MSG_DS_DC_RTABLE_POSITION_GET::clear_has_taskid() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void MSG_DS_DC_RTABLE_POSITION_GET::clear_taskid() {
+  taskid_ = 0u;
+  clear_has_taskid();
+}
+inline ::google::protobuf::uint32 MSG_DS_DC_RTABLE_POSITION_GET::taskid() const {
+  // @@protoc_insertion_point(field_get:MSG_DS_DC_RTABLE_POSITION_GET.taskID)
+  return taskid_;
+}
+inline void MSG_DS_DC_RTABLE_POSITION_GET::set_taskid(::google::protobuf::uint32 value) {
+  set_has_taskid();
+  taskid_ = value;
+  // @@protoc_insertion_point(field_set:MSG_DS_DC_RTABLE_POSITION_GET.taskID)
 }
 
 // -------------------------------------------------------------------
@@ -556,6 +600,30 @@ inline void MSG_DC_DS_RTABLE_POSITION_GET_ACK::set_statuscode(::google::protobuf
   set_has_statuscode();
   statuscode_ = value;
   // @@protoc_insertion_point(field_set:MSG_DC_DS_RTABLE_POSITION_GET_ACK.statusCode)
+}
+
+// required uint32 taskID = 5;
+inline bool MSG_DC_DS_RTABLE_POSITION_GET_ACK::has_taskid() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void MSG_DC_DS_RTABLE_POSITION_GET_ACK::set_has_taskid() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void MSG_DC_DS_RTABLE_POSITION_GET_ACK::clear_has_taskid() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void MSG_DC_DS_RTABLE_POSITION_GET_ACK::clear_taskid() {
+  taskid_ = 0u;
+  clear_has_taskid();
+}
+inline ::google::protobuf::uint32 MSG_DC_DS_RTABLE_POSITION_GET_ACK::taskid() const {
+  // @@protoc_insertion_point(field_get:MSG_DC_DS_RTABLE_POSITION_GET_ACK.taskID)
+  return taskid_;
+}
+inline void MSG_DC_DS_RTABLE_POSITION_GET_ACK::set_taskid(::google::protobuf::uint32 value) {
+  set_has_taskid();
+  taskid_ = value;
+  // @@protoc_insertion_point(field_set:MSG_DC_DS_RTABLE_POSITION_GET_ACK.taskID)
 }
 
 

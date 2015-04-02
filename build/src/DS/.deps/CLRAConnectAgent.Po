@@ -105,6 +105,7 @@ CLRAConnectAgent.o: ../../../src/DS/CLRAConnectAgent.cpp \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_multiset.h \
  /usr/include/sys/epoll.h ../../../include/DS/CLcreateIndexTask.h \
  ../../../include/common/comm/BaseTask.h \
+ ../../../include/DS/CLcreateUpdateTask.h \
  ../../../include/common/comm/Epoll.h /usr/include/sys/time.h \
  ../../../include/common/comm/AgentManager.h \
  ../../../include/common/sys/Singleton.h \
@@ -452,6 +453,8 @@ CLRAConnectAgent.o: ../../../src/DS/CLRAConnectAgent.cpp \
 ../../../include/DS/CLcreateIndexTask.h:
 
 ../../../include/common/comm/BaseTask.h:
+
+../../../include/DS/CLcreateUpdateTask.h:
 
 ../../../include/common/comm/Epoll.h:
 

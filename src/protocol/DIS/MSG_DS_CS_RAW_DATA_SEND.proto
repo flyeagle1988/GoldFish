@@ -7,10 +7,12 @@ message MSG_DS_CS_RAW_DATA_SEND     //the groupkey vectors of one column
     required string columnName = 4;
     enum COL_TYPE
     {
-        STRING = 1;
-        INT = 2;
-        FLOAT = 3;
-        DOUBLE = 4;
+        VARCHAR = 0;
+        INTTYPE = 1;
+        DOUBLETYPE = 2;
+        TEXT = 3;
+        BLOB = 4;
+        TIMESTAMP = 5;
     }    
     required COL_TYPE columnType = 5;
     repeated DICT_VALUE dicValue = 6;
@@ -23,4 +25,5 @@ message MSG_CS_DS_RAW_DATA_SEND_ACK
 {
     required uint32 taskID = 1;
     required int32 statusCode = 2;
+    required string columnName = 3;
 }

@@ -902,17 +902,10 @@ class DICT_VALUE : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 ivalue() const;
   inline void set_ivalue(::google::protobuf::int32 value);
 
-  // optional float fValue = 3;
-  inline bool has_fvalue() const;
-  inline void clear_fvalue();
-  static const int kFValueFieldNumber = 3;
-  inline float fvalue() const;
-  inline void set_fvalue(float value);
-
-  // optional double dValue = 4;
+  // optional double dValue = 3;
   inline bool has_dvalue() const;
   inline void clear_dvalue();
-  static const int kDValueFieldNumber = 4;
+  static const int kDValueFieldNumber = 3;
   inline double dvalue() const;
   inline void set_dvalue(double value);
 
@@ -922,8 +915,6 @@ class DICT_VALUE : public ::google::protobuf::Message {
   inline void clear_has_strvalue();
   inline void set_has_ivalue();
   inline void clear_has_ivalue();
-  inline void set_has_fvalue();
-  inline void clear_has_fvalue();
   inline void set_has_dvalue();
   inline void clear_has_dvalue();
 
@@ -932,9 +923,8 @@ class DICT_VALUE : public ::google::protobuf::Message {
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
   ::std::string* strvalue_;
-  ::google::protobuf::int32 ivalue_;
-  float fvalue_;
   double dvalue_;
+  ::google::protobuf::int32 ivalue_;
   friend void  protobuf_AddDesc_common_2eproto();
   friend void protobuf_AssignDesc_common_2eproto();
   friend void protobuf_ShutdownFile_common_2eproto();
@@ -1936,39 +1926,15 @@ inline void DICT_VALUE::set_ivalue(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:DICT_VALUE.iValue)
 }
 
-// optional float fValue = 3;
-inline bool DICT_VALUE::has_fvalue() const {
+// optional double dValue = 3;
+inline bool DICT_VALUE::has_dvalue() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void DICT_VALUE::set_has_fvalue() {
+inline void DICT_VALUE::set_has_dvalue() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void DICT_VALUE::clear_has_fvalue() {
-  _has_bits_[0] &= ~0x00000004u;
-}
-inline void DICT_VALUE::clear_fvalue() {
-  fvalue_ = 0;
-  clear_has_fvalue();
-}
-inline float DICT_VALUE::fvalue() const {
-  // @@protoc_insertion_point(field_get:DICT_VALUE.fValue)
-  return fvalue_;
-}
-inline void DICT_VALUE::set_fvalue(float value) {
-  set_has_fvalue();
-  fvalue_ = value;
-  // @@protoc_insertion_point(field_set:DICT_VALUE.fValue)
-}
-
-// optional double dValue = 4;
-inline bool DICT_VALUE::has_dvalue() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
-inline void DICT_VALUE::set_has_dvalue() {
-  _has_bits_[0] |= 0x00000008u;
-}
 inline void DICT_VALUE::clear_has_dvalue() {
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline void DICT_VALUE::clear_dvalue() {
   dvalue_ = 0;

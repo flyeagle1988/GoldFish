@@ -13,13 +13,12 @@ PROTOOUTPUT=common.pb.h \
 						MSG_DS_CS_RTABLE_SEND.pb.h   \
 						MSG_DS_RA_DELTA_GET.pb.h			\
 						MSG_DC_DS_RA_INFO_SEND.pb.h  \
-						MSG_DS_CS_XVECTORS_SEND.pb.h \
 						MSG_DS_RA_IMPORT_TASK_SEND.pb.h  \
 						MSG_CS_DC_LOCATION_INDEX_SEND.pb.h \
 						MSG_DC_RA_DATABASE_INFO_GET.pb.h    \
 						MSG_DS_DC_HEARTBEAT_SEND.pb.h \
 						MSG_RA_DC_DELTA_DATA_INFO_SEND.pb.h \
-						MSG_CS_DS_ROW_INDEX_SEND.pb.h  \
+						MSG_DS_CS_UPDATE_DATA_SEND.pb.h  \
 						MSG_DC_RA_IMPORT_SIZE_INFO_GET.pb.h \
 						MSG_DS_DC_RESOURCE_GET.pb.h			\
 						MSG_CS_DC_RTABLE_POSITION_GET.pb.cc \
@@ -29,15 +28,20 @@ PROTOOUTPUT=common.pb.h \
 						MSG_DS_CS_RTABLE_SEND.pb.cc   \
 						MSG_DS_RA_DELTA_GET.pb.cc			\
 						MSG_DC_DS_RA_INFO_SEND.pb.cc  \
-						MSG_DS_CS_XVECTORS_SEND.pb.cc \
 						MSG_DS_RA_IMPORT_TASK_SEND.pb.cc  \
 						MSG_CS_DC_LOCATION_INDEX_SEND.pb.cc \
 						MSG_DC_RA_DATABASE_INFO_GET.pb.cc    \
 						MSG_DS_DC_HEARTBEAT_SEND.pb.cc \
 						MSG_RA_DC_DELTA_DATA_INFO_SEND.pb.cc \
-						MSG_CS_DS_ROW_INDEX_SEND.pb.cc  \
+						MSG_DS_CS_UPDATE_DATA_SEND.pb.cc  \
 						MSG_DC_RA_IMPORT_SIZE_INFO_GET.pb.cc \
-						MSG_DS_DC_RESOURCE_GET.pb.cc
+						MSG_DS_DC_RESOURCE_GET.pb.cc	\
+						MSG_DS_DC_MEMORY_INFO_SEND.pb.h	\
+						MSG_DS_DC_MEMORY_INFO_SEND.pb.cc	\
+						MSG_DS_CS_RTABLE_CREATE.pb.h	\
+						MSG_DS_CS_RTABLE_CREATE.pb.cc 	\
+						MSG_DS_DC_RTABLE_RESOURCE_GET.pb.h	\
+						MSG_DS_DC_RTABLE_RESOURCE_GET.pb.cc
 PROTOINPUT=	common.proto   \
 						MSG_CS_DC_RTABLE_POSITION_GET.proto \
 						MSG_DS_CS_RAW_DATA_SEND.proto \
@@ -46,15 +50,17 @@ PROTOINPUT=	common.proto   \
 						MSG_DS_CS_RTABLE_SEND.proto   \
 						MSG_DS_RA_DELTA_GET.proto			\
 						MSG_DC_DS_RA_INFO_SEND.proto  \
-						MSG_DS_CS_XVECTORS_SEND.proto \
 						MSG_DS_RA_IMPORT_TASK_SEND.proto  \
 						MSG_CS_DC_LOCATION_INDEX_SEND.proto \
 						MSG_DC_RA_DATABASE_INFO_GET.proto    \
 						MSG_DS_DC_HEARTBEAT_SEND.proto \
 						MSG_RA_DC_DELTA_DATA_INFO_SEND.proto \
-						MSG_CS_DS_ROW_INDEX_SEND.proto  \
+						MSG_DS_CS_UPDATE_DATA_SEND.proto  \
 						MSG_DC_RA_IMPORT_SIZE_INFO_GET.proto \
-						MSG_DS_DC_RESOURCE_GET.proto
+						MSG_DS_DC_RESOURCE_GET.proto   \
+						MSG_DS_DC_MEMORY_INFO_SEND.proto		\
+						MSG_DS_CS_RTABLE_CREATE.proto 	\
+						MSG_DS_DC_RTABLE_RESOURCE_GET.proto
 EXTRA_DIST=$(PROTOINPUT)
 
 PROTODIR=$(top_srcdir)/src/protocol/DIS

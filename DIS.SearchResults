@@ -1,17 +1,10 @@
----- dynamic_cast Matches (16 in 6 files) ----
-CLgetMetaDataTask.cpp (src\ra):		setData((dynamic_cast<CLgetMetaWorkItem *>(pWorkItem))->getData());
-CLgetMetaDataTask.cpp (src\ra):	CLDCAgent * pAgent = dynamic_cast<CLDCAgent *>(AgentManager::getInstance()->get(getAgentID()));
-CLreadDBWorkItem.cpp (src\ra):							CLDSAgent * pAgent = dynamic_cast<CLDSAgent *>((AgentManager::getInstance())->get(getAgentID()));
-CLreadDBWorkItem.cpp (src\ra):			CLDSAgent * pAgent = dynamic_cast<CLDSAgent *>((AgentManager::getInstance())->get(getAgentID()));
-CLcreateIndexWorkItem.cpp (src\ds):			dynamic_cast<CLcreateIndexTask*>(TaskManager::getInstance())->get(getTaskID());
-CLDCConnectAgent.cpp (src\ds):						dynamic_cast<CLRAConnectAgent *>((AgentManager::getInstance())->get(agentID));
-CLreadDB.cpp (test\import_test):						CLDSAgent * pAgent = dynamic_cast<CLDSAgent *>((AgentManager::getInstance())->get(getAgentID()));
-CLreadDB.cpp (test\import_test):		CLDSAgent * pAgent = dynamic_cast<CLDSAgent *>((AgentManager::getInstance())->get(getAgentID()));
-Gtest-port.h (k:\liulu\trunk\test\gtest\internal):// both the typeid and dynamic_cast features are present.
-Gtest-port.h (k:\liulu\trunk\test\gtest\internal):// use dynamic_cast<> to double-check the downcast is legal (we die
-Gtest-port.h (k:\liulu\trunk\test\gtest\internal)://    This is the only place in the code we should use dynamic_cast<>.
-Gtest-port.h (k:\liulu\trunk\test\gtest\internal):// In particular, you SHOULDN'T be using dynamic_cast<> in order to
-Gtest-port.h (k:\liulu\trunk\test\gtest\internal)://    if (dynamic_cast<Subclass1>(foo)) HandleASubclass1Object(foo);
-Gtest-port.h (k:\liulu\trunk\test\gtest\internal)://    if (dynamic_cast<Subclass2>(foo)) HandleASubclass2Object(foo);
-Gtest-port.h (k:\liulu\trunk\test\gtest\internal):  GTEST_CHECK_(f == NULL || dynamic_cast<To>(f) != NULL);
-Gtest-port.h (k:\liulu\trunk\test\gtest\internal):  return dynamic_cast<Derived*>(base);  // NOLINT
+---- recvWorkItem Matches (9 in 8 files) ----
+BaseTask.h (include\common\comm):    virtual void recvWorkItem( ThreadPoolWorkItem* ) {}
+CLcreateIndexTask.cpp (src\ds):void CLcreateIndexTask::recvWorkItem(ThreadPoolWorkItem *pWI)
+CLcreateIndexTask.h (include\ds):		void recvWorkItem( ThreadPoolWorkItem* );
+CLgetMetaDataTask.cpp (src\ra):void CLgetMetaDataTask::recvWorkItem(ThreadPoolWorkItem *pWorkItem)
+CLgetMetaDataTask.cpp (src\ra):		DEV_LOG_ERROR("CLgetMetaDataTask::recvWorkItem:get CLDCAgent error!");
+CLgetMetaDataTask.h (include\ra):		void recvWorkItem( ThreadPoolWorkItem* );
+CLimportTask.cpp (src\ra):void CLimportTask::recvWorkItem(ThreadPoolWorkItem *pWI)
+CLimportTask.h (include\ra):			void recvWorkItem( ThreadPoolWorkItem* );
+ThreadPoolDispatcher.cpp (src\common\sys):            pTask->recvWorkItem( pWorkItem );

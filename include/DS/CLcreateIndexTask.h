@@ -41,6 +41,11 @@ class CLcreateIndexTask:public BaseTask
 		{
 			return m_dictMap[columnName];
 		}
+		bool removeDict(const string columnName)
+		{
+			DictoryMap::size_type eraseCount = m_dictMap.erase(columnName);
+			return ( eraseCount != 0 );
+		}
 		void setDataInfo(const unsigned int dbID, const string tableName)
 		{
 			m_dbID = dbID;
@@ -54,14 +59,65 @@ class CLcreateIndexTask:public BaseTask
 		{
 			return m_tableName;
 		}
+		void setRTable(const string protoStr)
+		{
+			m_rTableStr = protoStr;
+		}
+		string getRTable() const
+		{
+			return m_rTableStr;
+		}
+		
+		void removeRTable()
+		{
+			m_rTableStr.clear();
+		}
+		void setRTableSend()
+		{
+			m_isRTableSend = true;
+		}
+		bool isRTableSend()
+		{
+			return m_isRTableSend;
+		}
+		void setRTableCSIP(const string csIP)
+		{
+			m_rTableCSIP = csIP;
+		}
+		string getRTableCSIP() const
+		{
+			return m_rTableCSIP;
+		}
+		void setRTableReceived()
+		{
+			m_isRTableReceived = true;
+		}
+		bool isRTableReceived()
+		{
+			return m_isRTableReceived;
+		}
+		void setDictReceived()
+		{
+			m_isDictRecived = true;
+		}
+		bool isDictReceived()
+		{
+			return m_isDictRecived;
+		}
 	private:				
 		typedef map<string, string>	DictoryMap;	//map<columnName, groupkey string>
+		//typedef map<uint32_t, string> RTableMap;		//map<taskid, proto string>
 		unsigned int m_agentID;
 		string m_data;
 		unsigned int m_state;
 		unsigned int m_dbID;
 		string m_tableName;
 		DictoryMap m_dictMap;
+		string m_rTableStr;
+		string m_rTableCSIP;
+		bool m_isRTableSend;
+		bool m_isRTableReceived;
+		bool m_isDictRecived;
 };
 
 #endif

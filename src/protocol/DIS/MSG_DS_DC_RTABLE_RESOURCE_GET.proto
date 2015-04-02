@@ -1,0 +1,13 @@
+message MSG_DS_DC_RTABLE_RESOURCE_GET
+{
+    required uint32 taskID = 1;
+    required uint32 dbID = 2;
+    required string tableName = 3;
+    required uint32 rTableSize = 4;
+}
+message MSG_DC_DS_RTABLE_RESOURCE_GET_ACK
+{
+    required uint32 taskID = 1;
+    required string csIP = 2;
+}
+

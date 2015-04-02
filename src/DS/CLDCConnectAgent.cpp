@@ -1,6 +1,7 @@
 #include "common/comm/Epoll.h"
 #include "common/comm/SocketAddress.h"
 #include "common/comm/AgentManager.h"
+#include "common/comm/TaskManager.h"
 #include "common/log/log.h"
 #include "common/DevLog/DevLog.h"
 #include "protocol/protocol.h"
@@ -8,11 +9,18 @@
 #include "protocol/DIS/MSG_DC_DS_IMPORT_INFO_SEND.pb.h"
 #include "protocol/DIS/MSG_DS_RA_IMPORT_TASK_SEND.pb.h"
 #include "protocol/DIS/MSG_DS_DC_RESOURCE_GET.pb.h"
+#include "protocol/DIS/MSG_DS_DC_MEMORY_INFO_SEND.pb.h"
+#include "protocol/DIS/MSG_DS_DC_RTABLE_POSITION_GET.pb.h"
+#include "protocol/DIS/MSG_DS_DC_RTABLE_RESOURCE_GET.pb.h"
+
 #include "DS/CLDCConnectAgent.h"
 #include "DS/CLRAConnectAgent.h"
 #include "DS/CLimpTaskManager.h"
+#include "DS/CLcreateIndexTask.h"
 #include "DS/CLCSAddrManager.h"
+#include "DS/CLCSConnectAgent.h"
 #include <sstream>
+#include <sys/sysinfo.h>
 
 extern DevLog * g_pDevLog;
 CLDCConnectAgent::CLDCConnectAgent():m_pHeartBeatTimer(NULL)
@@ -50,6 +58,17 @@ int CLDCConnectAgent::connectAfter(bool bConnect)
 	{
 		m_pHeartBeatTimer = new CLHeartBeatTimer(HEART_OVERTIME);
 		m_pHeartBeatTimer->attachTimer();
+		MSG_DS_DC_MEMORY_INFO_SEND memoryInfo;
+		struct sysinfo si;
+		sysinfo(&si);
+		unsigned int memory = (unsigned int)(si.freeram / (1024*1024));
+		memoryInfo.set_memory(memory);
+		string data;
+		memoryInfo.SerializeToString(&data);
+		MsgHeader msgHeader;
+		msgHeader.cmd = DS_DC_MEMORY_INFO;
+		msgHeader.length = data.length();
+		sendPackage(msgHeader,data.c_str());
 	}
 	return SUCCESSFUL;
 }
@@ -188,18 +207,64 @@ void CLDCConnectAgent::readBack(InReq & req)
 				csAddrInfo.csIP = csInfo.csip();
 				csAddrInfo.csMemory = csInfo.memory();
 				csAddrInfo.columnName = csInfo.columnname();
+				csAddrInfo.csPort = (unsigned short)csInfo.csport();
 				csAddrInfoVec.push_back(csAddrInfo);
 			}
 			CLCSAddrManager::getInstance()->setCSAddrByTaskID(resourceGetAck.taskid(), csAddrInfoVec);
+			CLcreateIndexTask * pTask = 
+				dynamic_cast<CLcreateIndexTask *>(TaskManager::getInstance()->get(resourceGetAck.taskid()));
+			pTask->setState(DS_WAIT_FOR_ADDR);
+			pTask->goNext();
+			break;
+		}
+		case DC_DS_RTABLE_RESOURCE_GET_ACK:
+		{
+			string data(req.ioBuf, req.m_msgHeader.length);
+			MSG_DC_DS_RTABLE_RESOURCE_GET_ACK rTableResourceAck;
+			rTableResourceAck.ParseFromString(data);			
+			string csIP = rTableResourceAck.csip();
+			MsgHeader msgHeader;
+			msgHeader.cmd = DS_CS_RTABLE_CREATE;
+
+			CLcreateIndexTask * pTask = 
+				dynamic_cast<CLcreateIndexTask *>(TaskManager::getInstance()->get(rTableResourceAck.taskid()));
+			string rTableStr = pTask->getRTable();
+			msgHeader.length = rTableStr.length();
 			
+			bool ret = CLCSAddrManager::getInstance()->findCSAgentMap(csIP);
+			if(ret)
+			{
+				uint32_t agentID = CLCSAddrManager::getInstance()->getCSAgent(csIP);
+				CLCSConnectAgent *pCSConnectAgent = 
+					dynamic_cast<CLCSConnectAgent*>(AgentManager::getInstance()->get(agentID));
+				pCSConnectAgent->sendPackage(msgHeader,rTableStr.c_str());
+			}
+			else
+			{
+				SocketAddress addr;
+				unsigned short csPort = CLCSAddrManager::getInstance()->getCSPort();
+				addr.setAddress(csIP.c_str(),csPort);
+				CLCSConnectAgent *pCSConnectAgent = (AgentManager::getInstance())->createAgent<CLCSConnectAgent>(addr);
+				pCSConnectAgent->init();
+				pCSConnectAgent->sendPackage(msgHeader,rTableStr.c_str());
+			}
+			pTask->setRTableSend();
+
 			break;
 		}
 		case DC_DS_RTABLE_POSITION_GET_ACK:
 		{
-			MSG_DC_DS_RTABLE_POSITION_GET_ACK rTableGetAck;
+			break;
+		}
+		case DC_DS_MEMORY_INFO_ACK:
+		{
+			MSG_DC_DS_MEMORY_INFO_SEND_ACK memInfoAck;
 			string data(req.ioBuf, req.m_msgHeader.length);
-			rTableGetAck.ParseFromString(data);
-			
+			memInfoAck.ParseFromString(data);
+			if(memInfoAck.statuscode() < 0)
+			{
+				DEV_LOG_ERROR("CLDCConnectAgent::readBack:DC_DS_MEMORY_INFO_ACK status error!");
+			}
 			break;
 		}
 		default:

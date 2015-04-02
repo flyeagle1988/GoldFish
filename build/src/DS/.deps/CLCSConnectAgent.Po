@@ -86,9 +86,37 @@ CLCSConnectAgent.o: ../../../src/DS/CLCSConnectAgent.cpp \
  ../../../include/common/comm/WriteCallback.h \
  ../../../include/common/comm/AppProtoSpec.h \
  ../../../include/common/comm/TCPSocket.h \
- ../../../include/common/DevLog/DevLog.h \
- /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/fstream \
- /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/istream \
+ ../../../include/DS/CLcreateIndexTask.h \
+ ../../../include/common/comm/BaseTask.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/map \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_tree.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_map.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_multimap.h \
+ ../../../include/protocol/protocol.h \
+ ../../../include/protocol/DIS/MSG_DS_CS_RAW_DATA_SEND.pb.h \
+ /usr/local/include/google/protobuf/stubs/common.h /usr/include/assert.h \
+ /usr/include/stdlib.h /usr/include/bits/waitflags.h \
+ /usr/include/bits/waitstatus.h /usr/include/alloca.h \
+ /usr/local/include/google/protobuf/generated_message_util.h \
+ /usr/local/include/google/protobuf/stubs/once.h \
+ /usr/local/include/google/protobuf/stubs/atomicops.h \
+ /usr/local/include/google/protobuf/stubs/platform_macros.h \
+ /usr/local/include/google/protobuf/stubs/atomicops_internals_x86_gcc.h \
+ /usr/local/include/google/protobuf/message.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/vector \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_construct.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_uninitialized.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_vector.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_bvector.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/vector.tcc \
+ /usr/local/include/google/protobuf/message_lite.h \
+ /usr/local/include/google/protobuf/descriptor.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/set \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_set.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_multiset.h \
+ /usr/local/include/google/protobuf/repeated_field.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/iterator \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/ostream \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/ios \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/ios_base.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/locale_classes.h \
@@ -104,9 +132,21 @@ CLCSConnectAgent.o: ../../../src/DS/CLCSConnectAgent.cpp \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/x86_64-redhat-linux/bits/ctype_inline.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/locale_facets.tcc \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/basic_ios.tcc \
- /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/ostream \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/ostream.tcc \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/istream \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/istream.tcc \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stream_iterator.h \
+ /usr/local/include/google/protobuf/stubs/type_traits.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/utility \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_relops.h \
+ /usr/local/include/google/protobuf/stubs/template_util.h \
+ /usr/local/include/google/protobuf/extension_set.h \
+ /usr/local/include/google/protobuf/generated_enum_reflection.h \
+ /usr/local/include/google/protobuf/unknown_field_set.h \
+ ../../../include/protocol/DIS/common.pb.h \
+ ../../../include/protocol/DIS/MSG_DS_CS_RTABLE_CREATE.pb.h \
+ ../../../include/common/DevLog/DevLog.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/fstream \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/codecvt.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/cstdio \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/x86_64-redhat-linux/bits/basic_file.h \
@@ -116,7 +156,17 @@ CLCSConnectAgent.o: ../../../src/DS/CLCSConnectAgent.cpp \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/sstream \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/sstream.tcc \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/iomanip \
- ../../../include/common/DevLog/FunctionTrace.h
+ ../../../include/common/DevLog/FunctionTrace.h \
+ ../../../include/common/comm/TaskManager.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/tr1/functional \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/typeinfo \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/tr1/tuple \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/tr1/type_traits \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/tr1_impl/type_traits \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/tr1/functional_hash.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/tr1_impl/functional_hash.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/tr1_impl/functional \
+ ../../../include/common/sys/Singleton.h
 
 ../../../include/DS/CLCSConnectAgent.h:
 
@@ -348,11 +398,73 @@ CLCSConnectAgent.o: ../../../src/DS/CLCSConnectAgent.cpp \
 
 ../../../include/common/comm/TCPSocket.h:
 
-../../../include/common/DevLog/DevLog.h:
+../../../include/DS/CLcreateIndexTask.h:
 
-/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/fstream:
+../../../include/common/comm/BaseTask.h:
 
-/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/istream:
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/map:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_tree.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_map.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_multimap.h:
+
+../../../include/protocol/protocol.h:
+
+../../../include/protocol/DIS/MSG_DS_CS_RAW_DATA_SEND.pb.h:
+
+/usr/local/include/google/protobuf/stubs/common.h:
+
+/usr/include/assert.h:
+
+/usr/include/stdlib.h:
+
+/usr/include/bits/waitflags.h:
+
+/usr/include/bits/waitstatus.h:
+
+/usr/include/alloca.h:
+
+/usr/local/include/google/protobuf/generated_message_util.h:
+
+/usr/local/include/google/protobuf/stubs/once.h:
+
+/usr/local/include/google/protobuf/stubs/atomicops.h:
+
+/usr/local/include/google/protobuf/stubs/platform_macros.h:
+
+/usr/local/include/google/protobuf/stubs/atomicops_internals_x86_gcc.h:
+
+/usr/local/include/google/protobuf/message.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/vector:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_construct.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_uninitialized.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_vector.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_bvector.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/vector.tcc:
+
+/usr/local/include/google/protobuf/message_lite.h:
+
+/usr/local/include/google/protobuf/descriptor.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/set:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_set.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_multiset.h:
+
+/usr/local/include/google/protobuf/repeated_field.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/iterator:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/ostream:
 
 /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/ios:
 
@@ -384,11 +496,35 @@ CLCSConnectAgent.o: ../../../src/DS/CLCSConnectAgent.cpp \
 
 /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/basic_ios.tcc:
 
-/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/ostream:
-
 /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/ostream.tcc:
 
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/istream:
+
 /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/istream.tcc:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stream_iterator.h:
+
+/usr/local/include/google/protobuf/stubs/type_traits.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/utility:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_relops.h:
+
+/usr/local/include/google/protobuf/stubs/template_util.h:
+
+/usr/local/include/google/protobuf/extension_set.h:
+
+/usr/local/include/google/protobuf/generated_enum_reflection.h:
+
+/usr/local/include/google/protobuf/unknown_field_set.h:
+
+../../../include/protocol/DIS/common.pb.h:
+
+../../../include/protocol/DIS/MSG_DS_CS_RTABLE_CREATE.pb.h:
+
+../../../include/common/DevLog/DevLog.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/fstream:
 
 /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/codecvt.h:
 
@@ -409,3 +545,23 @@ CLCSConnectAgent.o: ../../../src/DS/CLCSConnectAgent.cpp \
 /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/iomanip:
 
 ../../../include/common/DevLog/FunctionTrace.h:
+
+../../../include/common/comm/TaskManager.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/tr1/functional:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/typeinfo:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/tr1/tuple:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/tr1/type_traits:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/tr1_impl/type_traits:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/tr1/functional_hash.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/tr1_impl/functional_hash.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/tr1_impl/functional:
+
+../../../include/common/sys/Singleton.h:

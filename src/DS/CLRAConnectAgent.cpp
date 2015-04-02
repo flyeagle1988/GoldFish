@@ -1,6 +1,7 @@
 #include "DS/CLRAConnectAgent.h"
 #include "DS/CLDCConnectAgent.h"
 #include "DS/CLcreateIndexTask.h"
+#include "DS/CLcreateUpdateTask.h"
 #include "common/comm/Epoll.h"
 #include "common/comm/SocketAddress.h"
 #include "common/comm/AgentManager.h"
@@ -87,7 +88,6 @@ void CLRAConnectAgent::readBack(InReq &req)
 					MsgHeader msgHeader;
 					msgHeader.cmd = DS_DC_IMPORT_INFO_SEND_ACK;
 					msgHeader.length = sendData.length();
-
 					g_pDCConnectAgent->sendPackage(msgHeader, sendData.c_str());
 				}
 
@@ -97,7 +97,7 @@ void CLRAConnectAgent::readBack(InReq &req)
 		case RA_DS_IMPORT_TASK_ACK:
 		{
 			string data(req.ioBuf, req.m_msgHeader.length);
-			if(req.m_msgHeader.para1 == 0)
+			if(req.m_msgHeader.para1 == 1)		//first packet
 			{
 				CLcreateIndexTask *pCreateIndexTask = TaskManager::getInstance()->create<CLcreateIndexTask>();
 				pCreateIndexTask->setAgentID(getID());
@@ -106,11 +106,18 @@ void CLRAConnectAgent::readBack(InReq &req)
 			}
 			else
 			{
-
+				CLcreateUpdateTask *pCreateUpdateTask = TaskManager::getInstance()->create<CLcreateUpdateTask>();
+				pCreateUpdateTask->setAgentID(getID());
+				pCreateUpdateTask->setData(data);
+				pCreateUpdateTask->goNext();
 			}
-
+			break;
 		}
-		
+		default:
+		{
+			DEV_LOG_ERROR("CLRAConnectAgent::readBack:default unknown cmd: " + intToStr(req.m_msgHeader.cmd));
+			break;
+		}
 	}
 }
 

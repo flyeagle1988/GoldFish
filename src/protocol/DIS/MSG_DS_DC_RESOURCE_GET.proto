@@ -34,8 +34,9 @@ message MSG_DS_DC_RESOURCE_GET
 message CS_INFO
 {
     optional string csIP = 1;       //csIP,端口读配置文件，为空时表示cs申请失败
-	optional uint32 memory = 2;      //以MB为单位
-    required string columnname = 3;
+    optional uint32 csPort = 2;
+	optional uint32 memory = 3;      //以MB为单位
+    required string columnname = 4;
 }
 message MSG_DC_DS_RESOURCE_GET_ACK
 {

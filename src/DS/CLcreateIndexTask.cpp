@@ -15,7 +15,12 @@
 
 extern DevLog *g_pDevLog;
 extern CLDCConnectAgent *g_pDCConnectAgent;
-CLcreateIndexTask::CLcreateIndexTask():m_state(DS_IMP_STATE)
+CLcreateIndexTask::CLcreateIndexTask()
+	:m_state(DS_IMP_STATE)
+	,m_rTableCSIP("")
+	,m_isRTableSend(false)
+	,m_isRTableReceived(false)
+	,m_isDictRecived(false)
 {
 }
 
@@ -79,29 +84,66 @@ int CLcreateIndexTask::goNext()
 					if(!rt)
 					{
 						SocketAddress addr;
-						unsigned short port = CLCSAddrManager::getInstance()->getCSPort();
-						addr.setAddress(it->csIP.c_str(), port);
+						addr.setAddress(it->csIP.c_str(), it->csPort);
+						CLCSAddrManager::getInstance()->setCSPort(it->csPort);
 						CLCSConnectAgent *pCSConnectAgent = (AgentManager::getInstance())->createAgent<CLCSConnectAgent>(addr);
+						pCSConnectAgent->setSendData(rawData);
+						pCSConnectAgent->init();
 						CLCSAddrManager::getInstance()->setCSAgentMap(it->csIP, pCSConnectAgent->getID());
 						string columnLocation = intToStr(getDBID()) + getTableName() + it->columnName;
 						CLCSAddrManager::getInstance()->setColumnLocation(columnLocation, pCSConnectAgent->getID());
-						pCSConnectAgent->sendPackage(msgHeader, rawData.c_str());
+						//pCSConnectAgent->sendPackage(msgHeader, rawData.c_str());
 					}
 					else
 					{
 						uint32_t agentID = CLCSAddrManager::getInstance()->getCSAgent(it->csIP);
 						CLCSConnectAgent *pCSConnectAgent = 
 							dynamic_cast<CLCSConnectAgent*>(AgentManager::getInstance()->get(agentID));
-						pCSConnectAgent->sendPackage(msgHeader, rawData.c_str());
+						if(pCSConnectAgent == NULL)
+						{
+							pCSConnectAgent->sendPackage(msgHeader, rawData.c_str());
+						}
+						else
+						{
+							DEV_LOG_ERROR("CLcreateIndexTask::goNext get CSAgent error!");
+						}
 					}
 				}
-				setState(FINISH);
-				goNext();
+				if(!isRTableSend())
+				{
+					setState(DS_SEND_RTABLE);	
+					goNext();
+				}
 			}
-			else
+			break;
+		}
+		case DS_SEND_RTABLE:
+		{
+			string csIP = getRTableCSIP();			
+			string rTableStr = getRTable();
+			MsgHeader msgHeader;
+			msgHeader.cmd = DS_CS_RTABLE_CREATE;
+			msgHeader.length = rTableStr.length();
+
+			if(csIP != "")
 			{
-				setState(DS_WAIT_FOR_ADDR);
-				goNext();
+				bool ret = CLCSAddrManager::getInstance()->findCSAgentMap(csIP);
+				if(ret)
+				{
+					uint32_t agentID = CLCSAddrManager::getInstance()->getCSAgent(csIP);
+					CLCSConnectAgent *pCSConnectAgent = 
+						dynamic_cast<CLCSConnectAgent*>(AgentManager::getInstance()->get(agentID));
+					pCSConnectAgent->sendPackage(msgHeader,rTableStr.c_str());
+				}
+				else
+				{
+					SocketAddress addr;
+					unsigned short csPort = CLCSAddrManager::getInstance()->getCSPort();
+					addr.setAddress(csIP.c_str(),csPort);
+					CLCSConnectAgent *pCSConnectAgent = (AgentManager::getInstance())->createAgent<CLCSConnectAgent>(addr);
+					pCSConnectAgent->init();
+					pCSConnectAgent->sendPackage(msgHeader,rTableStr.c_str());
+				}
 			}
 			break;
 		}
@@ -128,5 +170,5 @@ void CLcreateIndexTask::recvWorkItem(ThreadPoolWorkItem *pWI)
 		pWI = NULL;
 	}
 	setState(DS_WAIT_FOR_ADDR);
-	goNext();
+	//goNext();
 }
