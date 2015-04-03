@@ -127,11 +127,42 @@ CLcreateUpdateTask.o: ../../../src/DS/CLcreateUpdateTask.cpp \
  ../../../include/common/DevLog/FunctionTrace.h \
  ../../../include/DS/CLcreateUpdateTask.h \
  ../../../include/common/comm/BaseTask.h \
- ../../../include/DS/CLDCConnectAgent.h \
- ../../../include/common/comm/TCPAgent.h \
- ../../../include/common/comm/BaseHeader.h /usr/include/sys/types.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/vector \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_construct.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_uninitialized.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_vector.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_bvector.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/vector.tcc \
+ ../../../include/protocol/DIS/MSG_DS_CS_UPDATE_DATA_SEND.pb.h \
+ /usr/local/include/google/protobuf/stubs/common.h /usr/include/assert.h \
+ /usr/include/stdlib.h /usr/include/bits/waitflags.h \
+ /usr/include/bits/waitstatus.h /usr/include/sys/types.h \
  /usr/include/sys/select.h /usr/include/bits/select.h \
  /usr/include/bits/sigset.h /usr/include/sys/sysmacros.h \
+ /usr/include/alloca.h \
+ /usr/local/include/google/protobuf/generated_message_util.h \
+ /usr/local/include/google/protobuf/stubs/once.h \
+ /usr/local/include/google/protobuf/stubs/atomicops.h \
+ /usr/local/include/google/protobuf/stubs/platform_macros.h \
+ /usr/local/include/google/protobuf/stubs/atomicops_internals_x86_gcc.h \
+ /usr/local/include/google/protobuf/message.h \
+ /usr/local/include/google/protobuf/message_lite.h \
+ /usr/local/include/google/protobuf/descriptor.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/set \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_set.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_multiset.h \
+ /usr/local/include/google/protobuf/repeated_field.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/iterator \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stream_iterator.h \
+ /usr/local/include/google/protobuf/stubs/type_traits.h \
+ /usr/local/include/google/protobuf/stubs/template_util.h \
+ /usr/local/include/google/protobuf/extension_set.h \
+ /usr/local/include/google/protobuf/generated_enum_reflection.h \
+ /usr/local/include/google/protobuf/unknown_field_set.h \
+ ../../../include/protocol/DIS/common.pb.h \
+ ../../../include/DS/CLDCConnectAgent.h \
+ ../../../include/common/comm/TCPAgent.h \
+ ../../../include/common/comm/BaseHeader.h \
  ../../../include/common/comm/BufferManager.h /usr/include/sys/uio.h \
  /usr/include/bits/uio.h ../../../include/common/comm/BaseReq.h \
  /usr/include/netinet/in.h /usr/include/sys/socket.h \
@@ -146,39 +177,11 @@ CLcreateUpdateTask.o: ../../../src/DS/CLcreateUpdateTask.cpp \
  ../../../include/common/comm/AppProtoSpec.h \
  ../../../include/common/comm/TCPSocket.h \
  ../../../include/DS/CLHeartBeatTimer.h \
- ../../../include/common/Timer/Timer.h \
- /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/set \
- /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_set.h \
- /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_multiset.h \
- /usr/include/sys/epoll.h ../../../include/protocol/dbInfo.h \
- /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/vector \
- /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_construct.h \
- /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_uninitialized.h \
- /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_vector.h \
- /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_bvector.h \
- /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/vector.tcc \
+ ../../../include/common/Timer/Timer.h /usr/include/sys/epoll.h \
+ ../../../include/protocol/dbInfo.h \
  ../../../include/DS/CLcreateUpdateWorkItem.h \
  ../../../include/common/sys/ThreadPoolWorkItem.h \
  ../../../include/protocol/DIS/MSG_DS_RA_IMPORT_TASK_SEND.pb.h \
- /usr/local/include/google/protobuf/stubs/common.h /usr/include/assert.h \
- /usr/include/stdlib.h /usr/include/bits/waitflags.h \
- /usr/include/bits/waitstatus.h /usr/include/alloca.h \
- /usr/local/include/google/protobuf/generated_message_util.h \
- /usr/local/include/google/protobuf/stubs/once.h \
- /usr/local/include/google/protobuf/stubs/atomicops.h \
- /usr/local/include/google/protobuf/stubs/platform_macros.h \
- /usr/local/include/google/protobuf/stubs/atomicops_internals_x86_gcc.h \
- /usr/local/include/google/protobuf/message.h \
- /usr/local/include/google/protobuf/message_lite.h \
- /usr/local/include/google/protobuf/descriptor.h \
- /usr/local/include/google/protobuf/repeated_field.h \
- /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/iterator \
- /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stream_iterator.h \
- /usr/local/include/google/protobuf/stubs/type_traits.h \
- /usr/local/include/google/protobuf/stubs/template_util.h \
- /usr/local/include/google/protobuf/extension_set.h \
- /usr/local/include/google/protobuf/generated_enum_reflection.h \
- /usr/local/include/google/protobuf/unknown_field_set.h \
  ../../../include/protocol/DIS/MSG_DS_RA_DELTA_GET.pb.h \
  ../../../include/protocol/DIS/MSG_DS_RA_IMPORT_TASK_SEND.pb.h \
  ../../../include/DS/DGroupKey.h \
@@ -196,7 +199,9 @@ CLcreateUpdateTask.o: ../../../src/DS/CLcreateUpdateTask.cpp \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/algorithmfwd.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_heap.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_tempbuf.h \
- ../../../include/DS/IndexOffset.h ../../../include/protocol/protocol.h
+ ../../../include/DS/IndexOffset.h ../../../include/protocol/protocol.h \
+ ../../../include/protocol/DIS/MSG_DS_DC_RESOURCE_GET.pb.h \
+ ../../../include/protocol/DIS/MSG_DS_DC_RTABLE_POSITION_GET.pb.h
 
 ../../../include/common/comm/TaskManager.h:
 
@@ -498,11 +503,29 @@ CLcreateUpdateTask.o: ../../../src/DS/CLcreateUpdateTask.cpp \
 
 ../../../include/common/comm/BaseTask.h:
 
-../../../include/DS/CLDCConnectAgent.h:
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/vector:
 
-../../../include/common/comm/TCPAgent.h:
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_construct.h:
 
-../../../include/common/comm/BaseHeader.h:
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_uninitialized.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_vector.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_bvector.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/vector.tcc:
+
+../../../include/protocol/DIS/MSG_DS_CS_UPDATE_DATA_SEND.pb.h:
+
+/usr/local/include/google/protobuf/stubs/common.h:
+
+/usr/include/assert.h:
+
+/usr/include/stdlib.h:
+
+/usr/include/bits/waitflags.h:
+
+/usr/include/bits/waitstatus.h:
 
 /usr/include/sys/types.h:
 
@@ -513,6 +536,54 @@ CLcreateUpdateTask.o: ../../../src/DS/CLcreateUpdateTask.cpp \
 /usr/include/bits/sigset.h:
 
 /usr/include/sys/sysmacros.h:
+
+/usr/include/alloca.h:
+
+/usr/local/include/google/protobuf/generated_message_util.h:
+
+/usr/local/include/google/protobuf/stubs/once.h:
+
+/usr/local/include/google/protobuf/stubs/atomicops.h:
+
+/usr/local/include/google/protobuf/stubs/platform_macros.h:
+
+/usr/local/include/google/protobuf/stubs/atomicops_internals_x86_gcc.h:
+
+/usr/local/include/google/protobuf/message.h:
+
+/usr/local/include/google/protobuf/message_lite.h:
+
+/usr/local/include/google/protobuf/descriptor.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/set:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_set.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_multiset.h:
+
+/usr/local/include/google/protobuf/repeated_field.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/iterator:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stream_iterator.h:
+
+/usr/local/include/google/protobuf/stubs/type_traits.h:
+
+/usr/local/include/google/protobuf/stubs/template_util.h:
+
+/usr/local/include/google/protobuf/extension_set.h:
+
+/usr/local/include/google/protobuf/generated_enum_reflection.h:
+
+/usr/local/include/google/protobuf/unknown_field_set.h:
+
+../../../include/protocol/DIS/common.pb.h:
+
+../../../include/DS/CLDCConnectAgent.h:
+
+../../../include/common/comm/TCPAgent.h:
+
+../../../include/common/comm/BaseHeader.h:
 
 ../../../include/common/comm/BufferManager.h:
 
@@ -558,77 +629,15 @@ CLcreateUpdateTask.o: ../../../src/DS/CLcreateUpdateTask.cpp \
 
 ../../../include/common/Timer/Timer.h:
 
-/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/set:
-
-/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_set.h:
-
-/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_multiset.h:
-
 /usr/include/sys/epoll.h:
 
 ../../../include/protocol/dbInfo.h:
-
-/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/vector:
-
-/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_construct.h:
-
-/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_uninitialized.h:
-
-/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_vector.h:
-
-/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_bvector.h:
-
-/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/vector.tcc:
 
 ../../../include/DS/CLcreateUpdateWorkItem.h:
 
 ../../../include/common/sys/ThreadPoolWorkItem.h:
 
 ../../../include/protocol/DIS/MSG_DS_RA_IMPORT_TASK_SEND.pb.h:
-
-/usr/local/include/google/protobuf/stubs/common.h:
-
-/usr/include/assert.h:
-
-/usr/include/stdlib.h:
-
-/usr/include/bits/waitflags.h:
-
-/usr/include/bits/waitstatus.h:
-
-/usr/include/alloca.h:
-
-/usr/local/include/google/protobuf/generated_message_util.h:
-
-/usr/local/include/google/protobuf/stubs/once.h:
-
-/usr/local/include/google/protobuf/stubs/atomicops.h:
-
-/usr/local/include/google/protobuf/stubs/platform_macros.h:
-
-/usr/local/include/google/protobuf/stubs/atomicops_internals_x86_gcc.h:
-
-/usr/local/include/google/protobuf/message.h:
-
-/usr/local/include/google/protobuf/message_lite.h:
-
-/usr/local/include/google/protobuf/descriptor.h:
-
-/usr/local/include/google/protobuf/repeated_field.h:
-
-/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/iterator:
-
-/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stream_iterator.h:
-
-/usr/local/include/google/protobuf/stubs/type_traits.h:
-
-/usr/local/include/google/protobuf/stubs/template_util.h:
-
-/usr/local/include/google/protobuf/extension_set.h:
-
-/usr/local/include/google/protobuf/generated_enum_reflection.h:
-
-/usr/local/include/google/protobuf/unknown_field_set.h:
 
 ../../../include/protocol/DIS/MSG_DS_RA_DELTA_GET.pb.h:
 
@@ -675,3 +684,7 @@ CLcreateUpdateTask.o: ../../../src/DS/CLcreateUpdateTask.cpp \
 ../../../include/DS/IndexOffset.h:
 
 ../../../include/protocol/protocol.h:
+
+../../../include/protocol/DIS/MSG_DS_DC_RESOURCE_GET.pb.h:
+
+../../../include/protocol/DIS/MSG_DS_DC_RTABLE_POSITION_GET.pb.h:

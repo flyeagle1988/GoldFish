@@ -212,50 +212,6 @@ int CLcreateIndexWorkItem::process()
 				break;
 			}
 			case COL_DATA_COLUMN_TYPE_FLOAT:
-			{
-				rawDataSend.set_columntype(MSG_DS_CS_RAW_DATA_SEND_COL_TYPE_DOUBLETYPE);
-				multimap<double, uint64_t> fMultiMap;
-				vector<double> dVec;
-				for(int j = 0; j < colData.colvalue_size(); j++)
-				{
-					const COL_VALUE & colValue = colData.colvalue(j);
-					double dValue = colValue.fvalue();
-					uint64_t rowNum = colValue.rowno();
-					fMultiMap.insert(make_pair(dValue, rowNum));
-					dVec.push_back(dValue);
-				}
-
-				DGroupKey<double> * column = constructDGroupKey(columnName, itemCount, 0, DOUBLE_TYPE, fMultiMap);
-				columnCompVector = generateCompVector(column->getDictionary(), dVec);
-				
-				const vector<double>& dicVec = column->getDictionaryVecRef();
-				dictLength = sizeof(double) * dicVec.size();
-				for(vector<double>::const_iterator it = dicVec.begin();
-											it != dicVec.end();
-											++it)
-				{
-					DICT_VALUE * dicValue = rawDataSend.add_dicvalue();
-					dicValue->set_dvalue(*it);
-				}
-				const vector<uint64_t>& offsetVec = column->getOffsetRef();				
-
-				for(vector<uint64_t>::const_iterator it = offsetVec.begin();
-												it != offsetVec.end();
-												++it)
-				{
-					rawDataSend.add_indexoffsets(*it);
-				}
-				const vector<uint64_t>& postVec = column->getPostVecRef();
-				for(vector<uint64_t>::const_iterator it = postVec.begin();
-												it != postVec.end();
-												++it)
-				{
-					rawDataSend.add_indexposting(*it);
-				}
-				offsetLength = sizeof(uint64_t) * offsetVec.size();
-				postLength = sizeof(uint64_t) * postVec.size();
-				break;
-			}
 			case COL_DATA_COLUMN_TYPE_DOUBLE:
 			{
 				rawDataSend.set_columntype(MSG_DS_CS_RAW_DATA_SEND_COL_TYPE_DOUBLETYPE);
@@ -267,6 +223,7 @@ int CLcreateIndexWorkItem::process()
 					double dValue = colValue.fvalue();
 					uint64_t rowNum = colValue.rowno();
 					dMultiMap.insert(make_pair(dValue, rowNum));
+					dVec.push_back(dValue);
 				}
 
 				DGroupKey<double> * column = constructDGroupKey(columnName, itemCount, 0, DOUBLE_TYPE, dMultiMap);
@@ -346,16 +303,16 @@ int CLcreateIndexWorkItem::process()
 	msgHeader.length = outData.length();
 	g_pDCConnectAgent->sendPackage(msgHeader,outData.c_str());
 
-	string rTData;
+	string rTableResouceGetStr;
 	MSG_DS_DC_RTABLE_RESOURCE_GET rTableResouceGet;
 	rTableResouceGet.set_taskid(getTaskID());
 	rTableResouceGet.set_dbid(dbID);
 	rTableResouceGet.set_tablename(tableName);
 	rTableResouceGet.set_rtablesize(rTableSize);
-	rTableResouceGet.SerializeToString(&rTData);
+	rTableResouceGet.SerializeToString(&rTableResouceGetStr);
 	msgHeader.cmd = DS_DC_RTABLE_RESOURCE_GET;
-	msgHeader.length = rTData.length();
-	g_pDCConnectAgent->sendPackage(msgHeader,rTData.c_str());
+	msgHeader.length = rTableResouceGetStr.length();
+	g_pDCConnectAgent->sendPackage(msgHeader,rTableResouceGetStr.c_str());
 	
 	return SUCCESSFUL;
 }

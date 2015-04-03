@@ -32,11 +32,11 @@ const unsigned int RA_DS_IMPORT_TASK_ACK = 0x13;
 const unsigned int RA_DC_DELTA_DATA_INFO_SEND = 0x14;
 const unsigned int DC_RA_DELTA_DATA_INFO_SEND_ACK = 0x15;
 
-const unsigned int RA_DS_DELTA_DATA_SEND = 0x16;
-const unsigned int DS_RA_DELTA_DATA_SEND_ACK = 0x17;
+const unsigned int DS_RA_DELTA_GET = 0x16;
+const unsigned int RA_DS_DELTA_GET_ACK = 0x17;
 
 const unsigned int DS_DC_RESOURCE_GET = 0x18;
-const unsigned int DC_DS_RESOURCE_INFO_ACK = 0x19;
+const unsigned int DC_DS_RESOURCE_GET_ACK = 0x19;
 
 const unsigned int DS_DC_RTABLE_POSITION_GET = 0x1a;
 const unsigned int DC_DS_RTABLE_POSITION_GET_ACK = 0x1b;
@@ -61,6 +61,9 @@ const unsigned int CS_DS_RTABLE_CREATE_ACK = 0x27;
 
 const unsigned int DS_CS_UPDATE_DATA_SEND = 0x28;
 const unsigned int CS_DS_UPDATE_DATA_SEND_ACK = 0x29;
+
+const unsigned int DS_CS_RTABLE_SEND = 0x2a;
+const unsigned int CS_DS_RTABLE_SEND_ACK = 0x2b;
 /*Task State*/
 const unsigned int READ_METADATA = 1;
 const unsigned int CREATE_TASK = 5;
@@ -75,7 +78,11 @@ const unsigned int DS_WAIT_FOR_ADDR = 8;
 const unsigned int DS_SEND_RTABLE = 9;
 
 const unsigned int DS_UPDATE_STATE = 10;
+const unsigned int DS_WAIT_X_VECTOR = 11;
 
 /*Protobuf Error Code*/
 const int PROTO_PARSE_ERROR = -40;
+
+const uint32_t CREATE_INDEX = 1;
+const uint32_t CREATE_UPDATE = 2;
 #endif

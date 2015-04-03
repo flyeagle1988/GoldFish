@@ -263,7 +263,7 @@ void protobuf_AddDesc_common_2eproto() {
     "K_INFO\022\020\n\010taskType\030\001 \002(\r\022\020\n\010schedule\030\002 \002"
     "(\r\"0\n\rGROUP_DB_INFO\022\021\n\tgroupName\030\001 \002(\t\022\014"
     "\n\004dbid\030\002 \003(\t\"-\n\014ROWKEY_ENTRY\022\016\n\006rowKey\030\001"
-    " \002(\r\022\r\n\005entry\030\002 \002(\r\">\n\nDICT_VALUE\022\020\n\010str"
+    " \001(\r\022\r\n\005entry\030\002 \002(\r\">\n\nDICT_VALUE\022\020\n\010str"
     "Value\030\001 \001(\t\022\016\n\006iValue\030\002 \001(\005\022\016\n\006dValue\030\003 "
     "\001(\001", 683);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
@@ -2449,7 +2449,7 @@ bool ROWKEY_ENTRY::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required uint32 rowKey = 1;
+      // optional uint32 rowKey = 1;
       case 1: {
         if (tag == 8) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
@@ -2503,7 +2503,7 @@ failure:
 void ROWKEY_ENTRY::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:ROWKEY_ENTRY)
-  // required uint32 rowKey = 1;
+  // optional uint32 rowKey = 1;
   if (has_rowkey()) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->rowkey(), output);
   }
@@ -2523,7 +2523,7 @@ void ROWKEY_ENTRY::SerializeWithCachedSizes(
 ::google::protobuf::uint8* ROWKEY_ENTRY::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:ROWKEY_ENTRY)
-  // required uint32 rowKey = 1;
+  // optional uint32 rowKey = 1;
   if (has_rowkey()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->rowkey(), target);
   }
@@ -2545,7 +2545,7 @@ int ROWKEY_ENTRY::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required uint32 rowKey = 1;
+    // optional uint32 rowKey = 1;
     if (has_rowkey()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
@@ -2609,7 +2609,7 @@ void ROWKEY_ENTRY::CopyFrom(const ROWKEY_ENTRY& from) {
 }
 
 bool ROWKEY_ENTRY::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
+  if ((_has_bits_[0] & 0x00000002) != 0x00000002) return false;
 
   return true;
 }

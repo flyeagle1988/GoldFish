@@ -51,7 +51,7 @@ message GROUP_DB_INFO
 }
 message ROWKEY_ENTRY
 {
-    required uint32 rowKey = 1;
+    optional uint32 rowKey = 1;
     required uint32 entry = 2;
 }
 

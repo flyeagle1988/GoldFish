@@ -86,29 +86,35 @@ CLCSConnectAgent.o: ../../../src/DS/CLCSConnectAgent.cpp \
  ../../../include/common/comm/WriteCallback.h \
  ../../../include/common/comm/AppProtoSpec.h \
  ../../../include/common/comm/TCPSocket.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/algorithm \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_algo.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/cstdlib \
+ /usr/include/stdlib.h /usr/include/bits/waitflags.h \
+ /usr/include/bits/waitstatus.h /usr/include/alloca.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/algorithmfwd.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_heap.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_tempbuf.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_construct.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_uninitialized.h \
  ../../../include/DS/CLcreateIndexTask.h \
  ../../../include/common/comm/BaseTask.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/map \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_tree.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_map.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_multimap.h \
- ../../../include/protocol/protocol.h \
- ../../../include/protocol/DIS/MSG_DS_CS_RAW_DATA_SEND.pb.h \
+ ../../../include/DS/CLcreateUpdateTask.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/vector \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_vector.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_bvector.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/vector.tcc \
+ ../../../include/protocol/DIS/MSG_DS_CS_UPDATE_DATA_SEND.pb.h \
  /usr/local/include/google/protobuf/stubs/common.h /usr/include/assert.h \
- /usr/include/stdlib.h /usr/include/bits/waitflags.h \
- /usr/include/bits/waitstatus.h /usr/include/alloca.h \
  /usr/local/include/google/protobuf/generated_message_util.h \
  /usr/local/include/google/protobuf/stubs/once.h \
  /usr/local/include/google/protobuf/stubs/atomicops.h \
  /usr/local/include/google/protobuf/stubs/platform_macros.h \
  /usr/local/include/google/protobuf/stubs/atomicops_internals_x86_gcc.h \
  /usr/local/include/google/protobuf/message.h \
- /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/vector \
- /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_construct.h \
- /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_uninitialized.h \
- /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_vector.h \
- /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_bvector.h \
- /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/vector.tcc \
  /usr/local/include/google/protobuf/message_lite.h \
  /usr/local/include/google/protobuf/descriptor.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/set \
@@ -144,7 +150,12 @@ CLCSConnectAgent.o: ../../../src/DS/CLCSConnectAgent.cpp \
  /usr/local/include/google/protobuf/generated_enum_reflection.h \
  /usr/local/include/google/protobuf/unknown_field_set.h \
  ../../../include/protocol/DIS/common.pb.h \
+ ../../../include/DS/CLCSAddrManager.h \
+ ../../../include/common/sys/Singleton.h \
+ ../../../include/protocol/protocol.h \
+ ../../../include/protocol/DIS/MSG_DS_CS_RAW_DATA_SEND.pb.h \
  ../../../include/protocol/DIS/MSG_DS_CS_RTABLE_CREATE.pb.h \
+ ../../../include/protocol/DIS/MSG_DS_CS_RTABLE_SEND.pb.h \
  ../../../include/common/DevLog/DevLog.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/fstream \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/codecvt.h \
@@ -166,7 +177,7 @@ CLCSConnectAgent.o: ../../../src/DS/CLCSConnectAgent.cpp \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/tr1/functional_hash.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/tr1_impl/functional_hash.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/tr1_impl/functional \
- ../../../include/common/sys/Singleton.h
+ ../../../include/common/comm/AgentManager.h
 
 ../../../include/DS/CLCSConnectAgent.h:
 
@@ -398,6 +409,30 @@ CLCSConnectAgent.o: ../../../src/DS/CLCSConnectAgent.cpp \
 
 ../../../include/common/comm/TCPSocket.h:
 
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/algorithm:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_algo.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/cstdlib:
+
+/usr/include/stdlib.h:
+
+/usr/include/bits/waitflags.h:
+
+/usr/include/bits/waitstatus.h:
+
+/usr/include/alloca.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/algorithmfwd.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_heap.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_tempbuf.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_construct.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_uninitialized.h:
+
 ../../../include/DS/CLcreateIndexTask.h:
 
 ../../../include/common/comm/BaseTask.h:
@@ -410,21 +445,21 @@ CLCSConnectAgent.o: ../../../src/DS/CLCSConnectAgent.cpp \
 
 /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_multimap.h:
 
-../../../include/protocol/protocol.h:
+../../../include/DS/CLcreateUpdateTask.h:
 
-../../../include/protocol/DIS/MSG_DS_CS_RAW_DATA_SEND.pb.h:
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/vector:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_vector.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_bvector.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/vector.tcc:
+
+../../../include/protocol/DIS/MSG_DS_CS_UPDATE_DATA_SEND.pb.h:
 
 /usr/local/include/google/protobuf/stubs/common.h:
 
 /usr/include/assert.h:
-
-/usr/include/stdlib.h:
-
-/usr/include/bits/waitflags.h:
-
-/usr/include/bits/waitstatus.h:
-
-/usr/include/alloca.h:
 
 /usr/local/include/google/protobuf/generated_message_util.h:
 
@@ -437,18 +472,6 @@ CLCSConnectAgent.o: ../../../src/DS/CLCSConnectAgent.cpp \
 /usr/local/include/google/protobuf/stubs/atomicops_internals_x86_gcc.h:
 
 /usr/local/include/google/protobuf/message.h:
-
-/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/vector:
-
-/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_construct.h:
-
-/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_uninitialized.h:
-
-/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_vector.h:
-
-/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/stl_bvector.h:
-
-/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/vector.tcc:
 
 /usr/local/include/google/protobuf/message_lite.h:
 
@@ -520,7 +543,17 @@ CLCSConnectAgent.o: ../../../src/DS/CLCSConnectAgent.cpp \
 
 ../../../include/protocol/DIS/common.pb.h:
 
+../../../include/DS/CLCSAddrManager.h:
+
+../../../include/common/sys/Singleton.h:
+
+../../../include/protocol/protocol.h:
+
+../../../include/protocol/DIS/MSG_DS_CS_RAW_DATA_SEND.pb.h:
+
 ../../../include/protocol/DIS/MSG_DS_CS_RTABLE_CREATE.pb.h:
+
+../../../include/protocol/DIS/MSG_DS_CS_RTABLE_SEND.pb.h:
 
 ../../../include/common/DevLog/DevLog.h:
 
@@ -564,4 +597,4 @@ CLCSConnectAgent.o: ../../../src/DS/CLCSConnectAgent.cpp \
 
 /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/tr1_impl/functional:
 
-../../../include/common/sys/Singleton.h:
+../../../include/common/comm/AgentManager.h:

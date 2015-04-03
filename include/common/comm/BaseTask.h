@@ -54,9 +54,17 @@ public:
 
     //add for threadPool
     virtual void recvWorkItem( ThreadPoolWorkItem* ) {}
-
+	virtual void setTaskRole(const uint32_t taskRole)
+	{
+		m_taskRole = taskRole;
+	}
+	virtual uint32_t getTaskRole() const
+	{
+		return m_taskRole;
+	}
 private:
     uint64_t m_ID;
+	uint32_t m_taskRole;
 };
 
 #endif

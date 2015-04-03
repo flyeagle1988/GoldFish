@@ -17,6 +17,7 @@
 #include "DS/CLRAConnectAgent.h"
 #include "DS/CLimpTaskManager.h"
 #include "DS/CLcreateIndexTask.h"
+#include "DS/CLcreateUpdateTask.h"
 #include "DS/CLCSAddrManager.h"
 #include "DS/CLCSConnectAgent.h"
 #include <sstream>
@@ -194,7 +195,7 @@ void CLDCConnectAgent::readBack(InReq & req)
 			m_pHeartBeatTimer->updateExpiredTime(HEART_OVERTIME);
 			break;
 		}
-		case DC_DS_RESOURCE_INFO_ACK:
+		case DC_DS_RESOURCE_GET_ACK:
 		{
 			string data(req.ioBuf, req.m_msgHeader.length);
 			MSG_DC_DS_RESOURCE_GET_ACK resourceGetAck;
@@ -211,10 +212,28 @@ void CLDCConnectAgent::readBack(InReq & req)
 				csAddrInfoVec.push_back(csAddrInfo);
 			}
 			CLCSAddrManager::getInstance()->setCSAddrByTaskID(resourceGetAck.taskid(), csAddrInfoVec);
-			CLcreateIndexTask * pTask = 
-				dynamic_cast<CLcreateIndexTask *>(TaskManager::getInstance()->get(resourceGetAck.taskid()));
-			pTask->setState(DS_WAIT_FOR_ADDR);
-			pTask->goNext();
+			BaseTask* pTask = TaskManager::getInstance()->get(resourceGetAck.taskid());
+			if(pTask->getTaskRole() == CREATE_INDEX)
+			{
+				CLcreateIndexTask *pCreateIndexTask = dynamic_cast<CLcreateIndexTask *>(pTask);
+				pCreateIndexTask->setState(DS_WAIT_FOR_ADDR);
+				pCreateIndexTask->goNext();
+			}
+			else if(pTask->getTaskRole() == CREATE_UPDATE)
+			{
+				CLcreateUpdateTask *pCreateUpdateTask = dynamic_cast<CLcreateUpdateTask *>(pTask);
+				for(vector<CS_ADDR_INFO>::iterator it = csAddrInfoVec.begin();
+													it != csAddrInfoVec.end();
+													++it)
+				{
+					SocketAddress addr;
+					addr.setAddress(it->csIP.c_str(),it->csPort);
+					CLCSConnectAgent * pAgent = AgentManager::getInstance()->createAgent<CLCSConnectAgent>(addr);
+					string columnLocation = intToStr(pCreateUpdateTask->getDBID()) 
+											+ pCreateUpdateTask->getTableName() + it->columnName;
+					CLCSAddrManager::getInstance()->setColumnLocation(columnLocation, pAgent->getID());
+				}
+			}
 			break;
 		}
 		case DC_DS_RTABLE_RESOURCE_GET_ACK:
@@ -254,6 +273,19 @@ void CLDCConnectAgent::readBack(InReq & req)
 		}
 		case DC_DS_RTABLE_POSITION_GET_ACK:
 		{
+			string data(req.ioBuf, req.m_msgHeader.length);
+			MSG_DC_DS_RTABLE_POSITION_GET_ACK rTablePositionGetAck;
+			rTablePositionGetAck.ParseFromString(data);
+			if(rTablePositionGetAck.statuscode() < 0)
+			{
+				DEV_LOG_ERROR("CLDCConnectAgent::readBack:DC_DS_RTABLE_POSITION_GET_ACK error, " + intToStr(rTablePositionGetAck.statuscode()));
+			}
+			else
+			{
+				CLcreateUpdateTask *pCreateUpdateTask = 
+							dynamic_cast<CLcreateUpdateTask *>(TaskManager::getInstance()->get(rTablePositionGetAck.taskid()));
+				pCreateUpdateTask->setRTableIP(rTablePositionGetAck.csip());
+			}
 			break;
 		}
 		case DC_DS_MEMORY_INFO_ACK:

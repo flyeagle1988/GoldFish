@@ -26,18 +26,11 @@ class CLcreateUpdateWorkItem:public ThreadPoolWorkItem
 			m_sliceNo = sliceNo;
 			m_sliceNum = sliceNum;
 		}
-		void setUpdateData(const string columnName, const string updateData)
-		{
-			m_updateDataMap.insert(make_pair(columnName, updateData));
-		}
-		
 	private:
-		typedef map<string, string>	UpdateDataMap;	//map<columnName, protoString>
 		uint32_t m_dbID;
 		string m_tableName;
 		uint32_t m_sliceNo;
 		uint32_t m_sliceNum;
 		vector<COL_DATA> m_colDataVec;
-		UpdateDataMap m_updateDataMap;
 };
 #endif

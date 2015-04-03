@@ -2,7 +2,7 @@
 #define CL_CS_CONNECT_AGENT_H_
 
 #include "common/comm/TCPAgent.h"
-
+#include <algorithm>
 class CLCSConnectAgent:public TCPAgent
 {
 	public:

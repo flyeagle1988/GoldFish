@@ -794,7 +794,7 @@ class ROWKEY_ENTRY : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // required uint32 rowKey = 1;
+  // optional uint32 rowKey = 1;
   inline bool has_rowkey() const;
   inline void clear_rowkey();
   static const int kRowKeyFieldNumber = 1;
@@ -1774,7 +1774,7 @@ GROUP_DB_INFO::mutable_dbid() {
 
 // ROWKEY_ENTRY
 
-// required uint32 rowKey = 1;
+// optional uint32 rowKey = 1;
 inline bool ROWKEY_ENTRY::has_rowkey() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }

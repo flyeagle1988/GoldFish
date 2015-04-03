@@ -101,6 +101,7 @@ void CLRAConnectAgent::readBack(InReq &req)
 			{
 				CLcreateIndexTask *pCreateIndexTask = TaskManager::getInstance()->create<CLcreateIndexTask>();
 				pCreateIndexTask->setAgentID(getID());
+				pCreateIndexTask->setTaskRole(CREATE_INDEX);
 				pCreateIndexTask->setData(data);
 				pCreateIndexTask->goNext();
 			}
@@ -108,9 +109,20 @@ void CLRAConnectAgent::readBack(InReq &req)
 			{
 				CLcreateUpdateTask *pCreateUpdateTask = TaskManager::getInstance()->create<CLcreateUpdateTask>();
 				pCreateUpdateTask->setAgentID(getID());
+				pCreateUpdateTask->setTaskRole(CREATE_UPDATE);
 				pCreateUpdateTask->setData(data);
 				pCreateUpdateTask->goNext();
 			}
+			break;
+		}
+		case RA_DS_DELTA_GET_ACK:
+		{
+			string data(req.ioBuf, req.m_msgHeader.length);
+			CLcreateUpdateTask * pCreateUpdateTask = TaskManager::getInstance()->create<CLcreateUpdateTask>();
+			pCreateUpdateTask->setAgentID(getID());
+			pCreateUpdateTask->setData(data);
+			pCreateUpdateTask->setState(DS_DELTA_STATE);
+			pCreateUpdateTask->goNext();
 			break;
 		}
 		default:

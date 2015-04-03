@@ -54,15 +54,6 @@ int CLcreateIndexTask::goNext()
 		}
 		case WAIT_WORKITEM:
 		{
-			MSG_DS_DC_RTABLE_POSITION_GET rTablePosition;
-			rTablePosition.set_dbid(getDBID());
-			rTablePosition.set_tablename(getTableName());
-			string data;
-			rTablePosition.SerializeToString(&data);
-			MsgHeader msgHeader;
-			msgHeader.cmd = DS_DC_RTABLE_POSITION_GET;
-			msgHeader.length = data.length();
-			g_pDCConnectAgent->sendPackage(msgHeader,data.c_str());
 			break;
 		}
 		case DS_WAIT_FOR_ADDR:
