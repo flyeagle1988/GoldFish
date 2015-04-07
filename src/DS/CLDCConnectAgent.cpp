@@ -168,9 +168,7 @@ void CLDCConnectAgent::readBack(InReq & req)
 
 					if(pRAConnAgent == NULL)
 					{
-						string msg = "CLDCConnectAgent::readBack get RAAgent error, RA Name: " + raName;
-						//ERROR_LOG("CLDCConnectAgent::readBack get RAAgent error, RA Name: %s", raName.c_str());
-						DEV_LOG_ERROR(msg);
+						DEV_LOG_ERROR("CLDCConnectAgent::readBack get RAAgent error, RA Name: " + raName);
 					}
 					else
 					{
