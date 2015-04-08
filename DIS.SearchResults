@@ -1,9 +1,2 @@
----- rTableSend Matches (1 in 1 files) ----
-CLCSConnectAgent.cpp (src\ds):142
-				MSG_DS_CS_RTABLE_SEND rTableSend;
-				rTableSend.set_taskid(updateDataAck.taskid());
-				rTableSend.set_dbid(updateDataAck.dbid());
-				rTableSend.set_tablename(updateDataAck.tablename());
-				rTableSend.set_columnname(updateDataAck.columnname());
-				CLcreateUpdateTask * pCreateUpdateTask = 
-					dynamic_cast<CLcreateUpdateTask *>(TaskManager::getInstance()->get(updateDataAck.taskid()));
+---- setDictReceived Matches (1 in 1 files) ----
+CLcreateIndexTask.h (include\ds):		void setDictReceived()

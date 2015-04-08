@@ -90,7 +90,6 @@ void CLRAConnectAgent::readBack(InReq &req)
 					msgHeader.length = sendData.length();
 					g_pDCConnectAgent->sendPackage(msgHeader, sendData.c_str());
 				}
-
 			}
 			break;
 		}
@@ -121,6 +120,7 @@ void CLRAConnectAgent::readBack(InReq &req)
 			CLcreateUpdateTask * pCreateUpdateTask = TaskManager::getInstance()->create<CLcreateUpdateTask>();
 			pCreateUpdateTask->setAgentID(getID());
 			pCreateUpdateTask->setData(data);
+			pCreateUpdateTask->setTaskRole(CREATE_DELTA);
 			pCreateUpdateTask->setState(DS_DELTA_STATE);
 			pCreateUpdateTask->goNext();
 			break;

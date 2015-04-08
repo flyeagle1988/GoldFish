@@ -6,6 +6,7 @@
 #include "DS/CLcreateUpdateTask.h"
 #include "DS/CLDCConnectAgent.h"
 #include "DS/CLcreateUpdateWorkItem.h"
+#include "DS/CLimpTaskManager.h"
 #include "protocol/protocol.h"
 #include "protocol/DIS/MSG_DS_DC_RESOURCE_GET.pb.h"
 #include "protocol/DIS/MSG_DS_RA_IMPORT_TASK_SEND.pb.h"
@@ -30,13 +31,17 @@ int CLcreateUpdateTask::goNext()
 		{
 			MSG_RA_DS_IMPORT_TASK_ACK impTaskAck;
 			impTaskAck.ParseFromString(m_data);
-			setDBInfo(impTaskAck.dbid(),impTaskAck.tablename());
+			//string tableName = intToStr(impTaskAck.dbid()) + impTaskAck.tablename();
+			//CLimpTaskManager::getInstance()->setTaskNumber(tableName, impTaskAck.subtasknum());
+
+			setDBInfo(impTaskAck.dbid(),impTaskAck.tablename(), impTaskAck.subtaskno(), impTaskAck.subtasknum());
 			CLcreateUpdateWorkItem * pWI = new CLcreateUpdateWorkItem();
 			pWI->setTaskID(getID());
 			pWI->setDBInfo(impTaskAck.dbid(),impTaskAck.tablename(), impTaskAck.subtaskno(), impTaskAck.subtasknum());
 			for(int i = 0; i < impTaskAck.coldata_size(); i++)
 			{
 				const COL_DATA & colData = impTaskAck.coldata(i);
+				setColumnSet(colData.colname());
 				pWI->addColData(colData);
 			}
 			g_pDispatcher->postRequest(pWI);
@@ -48,6 +53,7 @@ int CLcreateUpdateTask::goNext()
 		{
 			MSG_RA_DS_DELTA_GET_ACK deltaDataGetAck;
 			deltaDataGetAck.ParseFromString(m_data);
+			setDBInfo(deltaDataGetAck.dbid(),deltaDataGetAck.tablename(), 1, 1);
 			CLcreateUpdateWorkItem *pWI = new CLcreateUpdateWorkItem();
 			pWI->setTaskID(getID());
 			pWI->setDBInfo(deltaDataGetAck.dbid(),deltaDataGetAck.tablename(), 1,1);
@@ -60,6 +66,7 @@ int CLcreateUpdateTask::goNext()
 			for(int i = 0; i < deltaDataGetAck.colvalue_size(); i++)
 			{
 				const COL_DATA & colData = deltaDataGetAck.colvalue(i);
+				setColumnSet(colData.colname());
 				pWI->addColData(colData);
 				MSG_DS_DC_RESOURCE_GET_COL_SIZE * colSize = resourseGet.add_colsize();
 				colSize->set_columnname(colData.colname());

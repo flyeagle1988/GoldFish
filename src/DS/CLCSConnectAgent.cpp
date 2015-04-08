@@ -2,11 +2,13 @@
 #include "DS/CLcreateIndexTask.h"
 #include "DS/CLcreateUpdateTask.h"
 #include "DS/CLCSAddrManager.h"
+#include "DS/CLimpTaskManager.h"
 #include "protocol/protocol.h"
 #include "protocol/DIS/MSG_DS_CS_RAW_DATA_SEND.pb.h"
 #include "protocol/DIS/MSG_DS_CS_RTABLE_CREATE.pb.h"
 #include "protocol/DIS/MSG_DS_CS_UPDATE_DATA_SEND.pb.h"
 #include "protocol/DIS/MSG_DS_CS_RTABLE_SEND.pb.h"
+#include "protocol/DIS/MSG_DS_RA_DELTA_GET.pb.h"
 #include "common/DevLog/DevLog.h"
 #include "common/comm/TaskManager.h"
 #include "common/comm/AgentManager.h"
@@ -91,8 +93,8 @@ void CLCSConnectAgent::readBack(InReq &req)
 				else
 				{
 					pTask->removeDict(rawDataAck.columnname());
-					pTask->setDictReceived();
-					if((pTask->isDictReceived())&&(pTask->isRTableReceived()))
+					//pTask->setDictReceived();
+					if((pTask->isDictEmpty())&&(pTask->isRTableReceived()))
 					{
 						pTask->setState(FINISH);
 						pTask->goNext();
@@ -122,7 +124,9 @@ void CLCSConnectAgent::readBack(InReq &req)
 				{
 					pTask->removeRTable();
 					pTask->setRTableReceived();
-					if((pTask->isDictReceived())&&(pTask->isRTableReceived()))
+					string tableName = intToStr(pTask->getDBID()) + pTask->getTableName();
+					CLimpTaskManager::getInstance()->taskNumberDecrease(tableName);
+					if((pTask->isDictEmpty())&&(pTask->isRTableReceived()))
 					{
 						pTask->setState(FINISH);
 						pTask->goNext();
@@ -230,6 +234,26 @@ void CLCSConnectAgent::readBack(InReq &req)
 						pAgent->sendPackage(msgHeader,rTableSendStr.c_str());
 						rTableSendStr.clear();
 					}
+				}
+			}
+			break;
+		}
+		case CS_DS_RTABLE_SEND_ACK:
+		{
+			string data(req.ioBuf, req.m_msgHeader.length);
+			MSG_CS_DS_RTABLE_SEND_ACK rTableSendAck;
+			rTableSendAck.ParseFromString(data);
+			
+			CLcreateUpdateTask * pCreateUpdateTask = 
+				dynamic_cast<CLcreateUpdateTask *>(TaskManager::getInstance()->get(rTableSendAck.taskid()));
+			if(pCreateUpdateTask != NULL)
+			{
+				pCreateUpdateTask->removeColumnSet(rTableSendAck.columnname());
+				//uint32_t taskRole = pCreateUpdateTask->getTaskRole();
+				if(pCreateUpdateTask->isColumnEmpty())
+				{
+					string tableName = intToStr(pCreateUpdateTask->getDBID()) + pCreateUpdateTask->getTableName();
+					CLimpTaskManager::getInstance()->taskNumberDecrease(tableName);
 				}
 			}
 			break;

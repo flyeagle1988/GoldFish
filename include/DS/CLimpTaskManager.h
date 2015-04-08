@@ -21,20 +21,38 @@ class CLimpTaskManager:public Singleton<CLimpTaskManager>
 		{
 			m_raMap.insert(make_pair(raName, agentID));
 		}
-		void setImpTaskID(const unsigned int taskid, const unsigned int dcAgentID)
+		void setImpTaskID(const string tableName, const unsigned int impTaskID)
 		{
 			//m_impTaskIDDCMap[taskid] = dcAgentID;
-			m_impTaskIDDCMap.insert(make_pair(taskid, dcAgentID));
+			m_impTaskIDDCMap.insert(make_pair(tableName, impTaskID));
 		}
-		unsigned int getDCAgentID(unsigned int taskid)
+		unsigned int getImpTaskID(const string tableName)
 		{
-			return m_impTaskIDDCMap[taskid];
+			return m_impTaskIDDCMap[tableName];
+		}
+		void setTaskNumber(const string tableName, const unsigned int sliceNumber)
+		{
+			m_taskNumberMap.insert(make_pair(tableName,sliceNumber));
+		}
+		unsigned int getTaskNumber(const string tableName)
+		{
+			return m_taskNumberMap[tableName];
+		}
+		void taskNumberDecrease(const string tableName)
+		{
+			m_taskNumberMap[tableName]--;
+		}
+		bool isTaskNumberZero(const string tableName)
+		{
+			return (m_taskNumberMap[tableName] == 0);
 		}
 	private:
 		typedef map<string, unsigned int> RAMap;	//map<raName, raAgentID>
-		typedef map<unsigned int, unsigned int> TaskIdDCMap;
+		typedef map<string, unsigned int> TaskIdDCMap;	//map<DBID+TableName, dcImpTaskID>
+		typedef map<string, unsigned int>	TaskNumberMap;	//map<DBID+TableName, sliceNumber>
 		RAMap m_raMap;
 		TaskIdDCMap m_impTaskIDDCMap;
+		TaskNumberMap m_taskNumberMap;
 };
 
 #endif

@@ -457,6 +457,13 @@ class MSG_CS_DS_UPDATE_DATA_SEND_ACK : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 statuscode() const;
   inline void set_statuscode(::google::protobuf::int32 value);
 
+  // optional uint32 sliceNo = 9;
+  inline bool has_sliceno() const;
+  inline void clear_sliceno();
+  static const int kSliceNoFieldNumber = 9;
+  inline ::google::protobuf::uint32 sliceno() const;
+  inline void set_sliceno(::google::protobuf::uint32 value);
+
   // @@protoc_insertion_point(class_scope:MSG_CS_DS_UPDATE_DATA_SEND_ACK)
  private:
   inline void set_has_dbid();
@@ -471,6 +478,8 @@ class MSG_CS_DS_UPDATE_DATA_SEND_ACK : public ::google::protobuf::Message {
   inline void clear_has_taskid();
   inline void set_has_statuscode();
   inline void clear_has_statuscode();
+  inline void set_has_sliceno();
+  inline void clear_has_sliceno();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -484,6 +493,7 @@ class MSG_CS_DS_UPDATE_DATA_SEND_ACK : public ::google::protobuf::Message {
   ::google::protobuf::RepeatedField< ::google::protobuf::uint32 > xvector_;
   ::google::protobuf::uint32 taskid_;
   ::google::protobuf::int32 statuscode_;
+  ::google::protobuf::uint32 sliceno_;
   friend void  protobuf_AddDesc_MSG_5fDS_5fCS_5fUPDATE_5fDATA_5fSEND_2eproto();
   friend void protobuf_AssignDesc_MSG_5fDS_5fCS_5fUPDATE_5fDATA_5fSEND_2eproto();
   friend void protobuf_ShutdownFile_MSG_5fDS_5fCS_5fUPDATE_5fDATA_5fSEND_2eproto();
@@ -1172,6 +1182,30 @@ inline void MSG_CS_DS_UPDATE_DATA_SEND_ACK::set_statuscode(::google::protobuf::i
   set_has_statuscode();
   statuscode_ = value;
   // @@protoc_insertion_point(field_set:MSG_CS_DS_UPDATE_DATA_SEND_ACK.statusCode)
+}
+
+// optional uint32 sliceNo = 9;
+inline bool MSG_CS_DS_UPDATE_DATA_SEND_ACK::has_sliceno() const {
+  return (_has_bits_[0] & 0x00000100u) != 0;
+}
+inline void MSG_CS_DS_UPDATE_DATA_SEND_ACK::set_has_sliceno() {
+  _has_bits_[0] |= 0x00000100u;
+}
+inline void MSG_CS_DS_UPDATE_DATA_SEND_ACK::clear_has_sliceno() {
+  _has_bits_[0] &= ~0x00000100u;
+}
+inline void MSG_CS_DS_UPDATE_DATA_SEND_ACK::clear_sliceno() {
+  sliceno_ = 0u;
+  clear_has_sliceno();
+}
+inline ::google::protobuf::uint32 MSG_CS_DS_UPDATE_DATA_SEND_ACK::sliceno() const {
+  // @@protoc_insertion_point(field_get:MSG_CS_DS_UPDATE_DATA_SEND_ACK.sliceNo)
+  return sliceno_;
+}
+inline void MSG_CS_DS_UPDATE_DATA_SEND_ACK::set_sliceno(::google::protobuf::uint32 value) {
+  set_has_sliceno();
+  sliceno_ = value;
+  // @@protoc_insertion_point(field_set:MSG_CS_DS_UPDATE_DATA_SEND_ACK.sliceNo)
 }
 
 

@@ -1,5 +1,5 @@
 INCLUDES=-I$(top_srcdir)/include
-noinst_LTLIBRARIES=$(top_srcdir)/lib/libcommon.la
+noinst_LTLIBRARIES=$(top_srcdir)/lib/libcommon.la 
 SUBDIRS=comm daemon DevLog log sys Timer util xml
 __top_srcdir__lib_libcommon_la_SOURCES=
 __top_srcdir__lib_libcommon_la_LIBADD=comm/libcomm.la \

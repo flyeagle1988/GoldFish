@@ -38,10 +38,7 @@ bin_PROGRAMS = $(top_srcdir)/bin/RA$(EXEEXT)
 subdir = src/RA
 DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
-am__aclocal_m4_deps = $(top_srcdir)/m4/libtool.m4 \
-	$(top_srcdir)/m4/ltoptions.m4 $(top_srcdir)/m4/ltsugar.m4 \
-	$(top_srcdir)/m4/ltversion.m4 $(top_srcdir)/m4/lt~obsolete.m4 \
-	$(top_srcdir)/configure.ac
+am__aclocal_m4_deps = $(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 mkinstalldirs = $(install_sh) -d
@@ -129,7 +126,7 @@ OBJEXT = o
 OTOOL = 
 OTOOL64 = 
 PACKAGE = IPPC
-PACKAGE_BUGREPORT = marxxk@163.com
+PACKAGE_BUGREPORT = wangjin@163.com
 PACKAGE_NAME = NDSLcommon
 PACKAGE_STRING = NDSLcommon 1.0
 PACKAGE_TARNAME = ndslcommon
@@ -219,9 +216,9 @@ $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign src/RA/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu src/RA/Makefile'; \
 	$(am__cd) $(top_srcdir) && \
-	  $(AUTOMAKE) --foreign src/RA/Makefile
+	  $(AUTOMAKE) --gnu src/RA/Makefile
 .PRECIOUS: Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \

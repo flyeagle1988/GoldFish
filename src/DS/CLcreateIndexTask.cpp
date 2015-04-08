@@ -20,7 +20,6 @@ CLcreateIndexTask::CLcreateIndexTask()
 	,m_rTableCSIP("")
 	,m_isRTableSend(false)
 	,m_isRTableReceived(false)
-	,m_isDictRecived(false)
 {
 }
 
@@ -42,12 +41,14 @@ int CLcreateIndexTask::goNext()
 			}
 			else
 			{
+				//string tableName = intToStr(impTaskAck.dbid()) + impTaskAck.tablename();
+				//CLimpTaskManager::getInstance()->setTaskNumber(tableName, impTaskAck.subtasknum());
+				setDataInfo(impTaskAck.dbid(), impTaskAck.tablename(), impTaskAck.subtaskno(), impTaskAck.subtasknum());
 				CLcreateIndexWorkItem *pCreateIndexWI = new CLcreateIndexWorkItem();
 				pCreateIndexWI->setTaskID(getID());
 				pCreateIndexWI->setData(impTaskAck);
 				g_pDispatcher->postRequest(pCreateIndexWI);
 				setState(WAIT_WORKITEM);
-				setDataInfo(impTaskAck.dbid(), impTaskAck.tablename());
 				goNext();
 			}
 			break;
@@ -100,23 +101,18 @@ int CLcreateIndexTask::goNext()
 						}
 					}
 				}
-				if(!isRTableSend())
-				{
-					setState(DS_SEND_RTABLE);	
-					goNext();
-				}
 			}
 			break;
 		}
 		case DS_SEND_RTABLE:
 		{
 			string csIP = getRTableCSIP();			
-			string rTableStr = getRTable();
+			//string rTableStr = getRTable();
 			MsgHeader msgHeader;
 			msgHeader.cmd = DS_CS_RTABLE_CREATE;
-			msgHeader.length = rTableStr.length();
+			msgHeader.length = m_rTableStr.length();
 
-			if(csIP != "")
+			if(!csIP.empty())
 			{
 				bool ret = CLCSAddrManager::getInstance()->findCSAgentMap(csIP);
 				if(ret)
@@ -124,7 +120,7 @@ int CLcreateIndexTask::goNext()
 					uint32_t agentID = CLCSAddrManager::getInstance()->getCSAgent(csIP);
 					CLCSConnectAgent *pCSConnectAgent = 
 						dynamic_cast<CLCSConnectAgent*>(AgentManager::getInstance()->get(agentID));
-					pCSConnectAgent->sendPackage(msgHeader,rTableStr.c_str());
+					pCSConnectAgent->sendPackage(msgHeader,m_rTableStr.c_str());
 				}
 				else
 				{
@@ -133,8 +129,9 @@ int CLcreateIndexTask::goNext()
 					addr.setAddress(csIP.c_str(),csPort);
 					CLCSConnectAgent *pCSConnectAgent = (AgentManager::getInstance())->createAgent<CLCSConnectAgent>(addr);
 					pCSConnectAgent->init();
-					pCSConnectAgent->sendPackage(msgHeader,rTableStr.c_str());
+					pCSConnectAgent->sendPackage(msgHeader,m_rTableStr.c_str());
 				}
+				setRTableSend();
 			}
 			break;
 		}

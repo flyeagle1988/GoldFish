@@ -4,6 +4,7 @@
 #include <string>
 #include <map>
 #include <vector>
+#include <set>
 #include "protocol/DIS/MSG_DS_CS_UPDATE_DATA_SEND.pb.h"
 using namespace std;
 
@@ -89,10 +90,12 @@ class CLcreateUpdateTask:public BaseTask
 		{
 			return m_rTableIP;
 		}
-		void setDBInfo(const uint32_t dbID, const string tableName)
+		void setDBInfo(const uint32_t dbID, const string tableName, const uint32_t sliceNo, const uint32_t sliceNum)
 		{
 			m_dbID = dbID;
 			m_tableName = tableName;
+			m_sliceNo = sliceNo;
+			m_sliceNum = sliceNum;
 		}
 		uint32_t getDBID() const
 		{
@@ -102,20 +105,36 @@ class CLcreateUpdateTask:public BaseTask
 		{
 			return m_tableName;
 		}
+		void setColumnSet(const string column)
+		{
+			m_columnSet.insert(column);
+		}
+		void removeColumnSet(const string column)
+		{
+			m_columnSet.erase(column);
+		}
+		bool isColumnEmpty()
+		{
+			return m_columnSet.empty();
+		}
 	private:
 		typedef map<string, vector<string> > StringMap;
 		typedef map<string, vector<int> > IntMap;
 		typedef map<string, vector<double> > DoubleMap;
+		typedef set<string>	ColumnSet;
 		uint32_t m_state;
 		uint32_t m_agentID;
 		string m_data;
 		StringMap m_strMap;
 		IntMap m_intMap;
 		DoubleMap m_doubleMap;
-		map<string, string> m_updateData;	//map<column, dictproto>
+		map<string, string> m_updateData;	//map<column, dictprotoStr>
 		string m_rTableIP;
 		uint32_t m_dbID;
 		string m_tableName;
+		uint32_t m_sliceNo;
+		uint32_t m_sliceNum;
+		ColumnSet m_columnSet;
 };
 
 #endif

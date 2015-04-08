@@ -42,4 +42,5 @@ message MSG_CS_DS_UPDATE_DATA_SEND_ACK
     repeated uint32 xVector = 6;
 	required uint32 taskID = 7;
     optional int32 statusCode = 8;
+    optional uint32 sliceNo = 9;        //子表序号
 }

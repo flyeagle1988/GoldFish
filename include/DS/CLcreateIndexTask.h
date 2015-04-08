@@ -46,10 +46,16 @@ class CLcreateIndexTask:public BaseTask
 			DictoryMap::size_type eraseCount = m_dictMap.erase(columnName);
 			return ( eraseCount != 0 );
 		}
-		void setDataInfo(const unsigned int dbID, const string tableName)
+		bool isDictEmpty()
+		{
+			return m_dictMap.empty();
+		}
+		void setDataInfo(const unsigned int dbID, const string tableName, const uint32_t sliceNo, const uint32_t sliceNum)
 		{
 			m_dbID = dbID;
 			m_tableName = tableName;
+			m_sliceNo = sliceNo;
+			m_sliceNum = sliceNum;
 		}
 		unsigned int getDBID() const
 		{
@@ -96,14 +102,7 @@ class CLcreateIndexTask:public BaseTask
 		{
 			return m_isRTableReceived;
 		}
-		void setDictReceived()
-		{
-			m_isDictRecived = true;
-		}
-		bool isDictReceived()
-		{
-			return m_isDictRecived;
-		}
+
 	private:				
 		typedef map<string, string>	DictoryMap;	//map<columnName, groupkey string>
 		//typedef map<uint32_t, string> RTableMap;		//map<taskid, proto string>
@@ -117,7 +116,8 @@ class CLcreateIndexTask:public BaseTask
 		string m_rTableCSIP;
 		bool m_isRTableSend;
 		bool m_isRTableReceived;
-		bool m_isDictRecived;
+		uint32_t m_sliceNo;
+		uint32_t m_sliceNum;
 };
 
 #endif

@@ -12,7 +12,7 @@
 #include "protocol/DIS/MSG_DS_DC_MEMORY_INFO_SEND.pb.h"
 #include "protocol/DIS/MSG_DS_DC_RTABLE_POSITION_GET.pb.h"
 #include "protocol/DIS/MSG_DS_DC_RTABLE_RESOURCE_GET.pb.h"
-
+#include "protocol/DIS/MSG_DS_RA_DELTA_GET.pb.h"
 #include "DS/CLDCConnectAgent.h"
 #include "DS/CLRAConnectAgent.h"
 #include "DS/CLimpTaskManager.h"
@@ -139,17 +139,21 @@ void CLDCConnectAgent::readBack(InReq & req)
 			}
 			else
 			{
-				CLimpTaskManager::getInstance()->setImpTaskID(impInfo.taskid(), getID());
 				for(int i = 0; i < impInfo.tableinfo_size(); i++)
 				{
 					const MSG_DC_DS_IMPORT_INFO_SEND_TABLE_INFO & impInfoTableInfo = impInfo.tableinfo(i);
 					MSG_DS_RA_IMPORT_TASK_SEND impTask;
 					impTask.set_taskid(impInfo.taskid());
+
 					IMP_DB_INFO * impDBInfo = impTask.add_dbinfo();
 					impDBInfo->set_dbid(impInfoTableInfo.dbid());
+
 					IMP_TAB_INFO * impTabInfo = impDBInfo->add_tableinfo();
-					string tableName = impTabInfo->tablename();
+					string tableName = impInfoTableInfo.tablename();
 					impTabInfo->set_tablename(tableName);
+
+					//string impTableName = intToStr(impInfoTableInfo.dbid()) + tableName;
+					//CLimpTaskManager::getInstance()->setImpTaskID(impTableName, impInfo.taskid());
 
 					for(int j = 0; j < impInfoTableInfo.colname_size(); j++)
 					{
@@ -188,6 +192,69 @@ void CLDCConnectAgent::readBack(InReq & req)
 			}
 			break;
 		}
+		case DC_DS_DELTA_INFO_SEND:
+		{
+			string data(req.ioBuf, req.m_msgHeader.length);
+			MSG_DC_DS_DELTA_INFO_SEND deltaInfoSend;
+			if(!deltaInfoSend.ParseFromString(data))
+			{
+				DEV_LOG_ERROR("CLDCConnectAgent::readBack DC_DS_DELTA_INFO_SEND parse from string error!");
+			}
+			else
+			{
+				for(int i = 0; i < deltaInfoSend.tableinfo_size(); i++)
+				{
+					const MSG_DC_DS_DELTA_INFO_SEND_TABLE_INFO & deltaInfo = deltaInfoSend.tableinfo(i);
+					MSG_DS_RA_DELTA_GET deltaGet;
+					deltaGet.set_taskid(deltaInfoSend.taskid());
+					deltaGet.set_rowkeymax(deltaInfo.tablerownumber());
+
+					IMP_DB_INFO * impDBInfo = deltaGet.add_dbinfo();
+					impDBInfo->set_dbid(deltaInfo.dbid());
+
+					IMP_TAB_INFO * impTabInfo = impDBInfo->add_tableinfo();
+					impTabInfo->set_tablename(deltaInfo.tablename());
+
+					for(int j = 0; j < deltaInfo.colname_size(); j++)
+					{
+						string colName = deltaInfo.colname(j);
+						impTabInfo->add_colname(colName);
+					}
+
+					string deltaSendTask;
+					deltaGet.SerializeToString(&deltaSendTask);
+					MsgHeader msgHeader;
+					msgHeader.cmd = DS_RA_DELTA_GET;
+					msgHeader.length = deltaSendTask.length();
+					string raName = deltaInfo.raname();
+					unsigned int agentID = CLimpTaskManager::getInstance()->getRAAgentID(raName);
+					
+					CLRAConnectAgent * pRAConnAgent = 
+						dynamic_cast<CLRAConnectAgent *>((AgentManager::getInstance())->get(agentID));
+
+					if(pRAConnAgent == NULL)
+					{
+						DEV_LOG_ERROR("CLDCConnectAgent::readBack get RAAgent error, RA Name: " + raName);
+					}
+					else
+					{
+						pRAConnAgent->sendPackage(msgHeader,deltaSendTask.c_str());
+					}
+				}
+				
+				MsgHeader msgheader;
+				msgheader.cmd = DS_DC_DELTA_INFO_SEND_ACK;
+				MSG_DS_DC_DELTA_INFO_SEND_ACK deltaInfoSendAck;
+				deltaInfoSendAck.set_taskid(deltaInfoSend.taskid());
+				deltaInfoSendAck.set_statuscode(0);
+				deltaInfoSendAck.set_statusmsg("Import info received!");
+				string sdData;
+				deltaInfoSendAck.SerializeToString(&sdData);
+				sendPackage(msgheader, sdData.c_str());
+			}
+			
+			break;
+		}
 		case DC_DS_HEARTBEAT_SEND_ACK:
 		{
 			m_pHeartBeatTimer->updateExpiredTime(HEART_OVERTIME);
@@ -217,7 +284,7 @@ void CLDCConnectAgent::readBack(InReq & req)
 				pCreateIndexTask->setState(DS_WAIT_FOR_ADDR);
 				pCreateIndexTask->goNext();
 			}
-			else if(pTask->getTaskRole() == CREATE_UPDATE)
+			else if(pTask->getTaskRole() == CREATE_DELTA)
 			{
 				CLcreateUpdateTask *pCreateUpdateTask = dynamic_cast<CLcreateUpdateTask *>(pTask);
 				for(vector<CS_ADDR_INFO>::iterator it = csAddrInfoVec.begin();
@@ -245,6 +312,18 @@ void CLDCConnectAgent::readBack(InReq & req)
 
 			CLcreateIndexTask * pTask = 
 				dynamic_cast<CLcreateIndexTask *>(TaskManager::getInstance()->get(rTableResourceAck.taskid()));
+	#ifdef DEBUG
+			cout << "pTask:" << pTask << endl;
+	#endif
+			if(pTask != NULL)
+			{
+				pTask->setRTableCSIP(csIP);
+				pTask->setState(DS_SEND_RTABLE);
+				pTask->goNext();
+			}
+			else
+				DEV_LOG_ERROR("CLDCConnectAgent::readBack DC_DS_RTABLE_RESOURCE_GET_ACK: getTask error, " + intToStr(rTableResourceAck.taskid()));
+			/*
 			string rTableStr = pTask->getRTable();
 			msgHeader.length = rTableStr.length();
 			
@@ -266,7 +345,7 @@ void CLDCConnectAgent::readBack(InReq & req)
 				pCSConnectAgent->sendPackage(msgHeader,rTableStr.c_str());
 			}
 			pTask->setRTableSend();
-
+			*/
 			break;
 		}
 		case DC_DS_RTABLE_POSITION_GET_ACK:
@@ -297,6 +376,7 @@ void CLDCConnectAgent::readBack(InReq & req)
 			}
 			break;
 		}
+
 		default:
 		{
 			DEV_LOG_ERROR("CLDCConnectAgent::readBack: wrong cmd!" + intToStr(req.m_msgHeader.cmd));

@@ -62,7 +62,7 @@ void protobuf_AssignDesc_MSG_5fDS_5fCS_5fUPDATE_5fDATA_5fSEND_2eproto() {
       sizeof(MSG_DS_CS_UPDATE_DATA_SEND));
   MSG_DS_CS_UPDATE_DATA_SEND_COL_TYPE_descriptor_ = MSG_DS_CS_UPDATE_DATA_SEND_descriptor_->enum_type(0);
   MSG_CS_DS_UPDATE_DATA_SEND_ACK_descriptor_ = file->message_type(1);
-  static const int MSG_CS_DS_UPDATE_DATA_SEND_ACK_offsets_[8] = {
+  static const int MSG_CS_DS_UPDATE_DATA_SEND_ACK_offsets_[9] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_CS_DS_UPDATE_DATA_SEND_ACK, dbid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_CS_DS_UPDATE_DATA_SEND_ACK, tablename_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_CS_DS_UPDATE_DATA_SEND_ACK, columnname_),
@@ -71,6 +71,7 @@ void protobuf_AssignDesc_MSG_5fDS_5fCS_5fUPDATE_5fDATA_5fSEND_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_CS_DS_UPDATE_DATA_SEND_ACK, xvector_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_CS_DS_UPDATE_DATA_SEND_ACK, taskid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_CS_DS_UPDATE_DATA_SEND_ACK, statuscode_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_CS_DS_UPDATE_DATA_SEND_ACK, sliceno_),
   };
   MSG_CS_DS_UPDATE_DATA_SEND_ACK_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -129,15 +130,15 @@ void protobuf_AddDesc_MSG_5fDS_5fCS_5fUPDATE_5fDATA_5fSEND_2eproto() {
     "\r\022\017\n\007sliceNo\030\t \001(\r\022\020\n\010sliceNum\030\n \001(\r\"W\n\010"
     "COL_TYPE\022\013\n\007VARCHAR\020\000\022\013\n\007INTTYPE\020\001\022\016\n\nDO"
     "UBLETYPE\020\002\022\010\n\004TEXT\020\003\022\010\n\004BLOB\020\004\022\r\n\tTIMEST"
-    "AMP\020\005\"\300\002\n\036MSG_CS_DS_UPDATE_DATA_SEND_ACK"
+    "AMP\020\005\"\321\002\n\036MSG_CS_DS_UPDATE_DATA_SEND_ACK"
     "\022\014\n\004dbID\030\001 \002(\r\022\021\n\ttableName\030\002 \002(\t\022\022\n\ncol"
     "umnName\030\003 \002(\t\022<\n\ncolumnType\030\004 \002(\0162(.MSG_"
     "CS_DS_UPDATE_DATA_SEND_ACK.COL_TYPE\022\035\n\010d"
     "icValue\030\005 \003(\0132\013.DICT_VALUE\022\017\n\007xVector\030\006 "
-    "\003(\r\022\016\n\006taskID\030\007 \002(\r\022\022\n\nstatusCode\030\010 \001(\005\""
-    "W\n\010COL_TYPE\022\013\n\007VARCHAR\020\000\022\013\n\007INTTYPE\020\001\022\016\n"
-    "\nDOUBLETYPE\020\002\022\010\n\004TEXT\020\003\022\010\n\004BLOB\020\004\022\r\n\tTIM"
-    "ESTAMP\020\005", 728);
+    "\003(\r\022\016\n\006taskID\030\007 \002(\r\022\022\n\nstatusCode\030\010 \001(\005\022"
+    "\017\n\007sliceNo\030\t \001(\r\"W\n\010COL_TYPE\022\013\n\007VARCHAR\020"
+    "\000\022\013\n\007INTTYPE\020\001\022\016\n\nDOUBLETYPE\020\002\022\010\n\004TEXT\020\003"
+    "\022\010\n\004BLOB\020\004\022\r\n\tTIMESTAMP\020\005", 745);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "MSG_DS_CS_UPDATE_DATA_SEND.proto", &protobuf_RegisterTypes);
   MSG_DS_CS_UPDATE_DATA_SEND::default_instance_ = new MSG_DS_CS_UPDATE_DATA_SEND();
@@ -877,6 +878,7 @@ const int MSG_CS_DS_UPDATE_DATA_SEND_ACK::kDicValueFieldNumber;
 const int MSG_CS_DS_UPDATE_DATA_SEND_ACK::kXVectorFieldNumber;
 const int MSG_CS_DS_UPDATE_DATA_SEND_ACK::kTaskIDFieldNumber;
 const int MSG_CS_DS_UPDATE_DATA_SEND_ACK::kStatusCodeFieldNumber;
+const int MSG_CS_DS_UPDATE_DATA_SEND_ACK::kSliceNoFieldNumber;
 #endif  // !_MSC_VER
 
 MSG_CS_DS_UPDATE_DATA_SEND_ACK::MSG_CS_DS_UPDATE_DATA_SEND_ACK()
@@ -904,6 +906,7 @@ void MSG_CS_DS_UPDATE_DATA_SEND_ACK::SharedCtor() {
   columntype_ = 0;
   taskid_ = 0u;
   statuscode_ = 0;
+  sliceno_ = 0u;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -969,6 +972,7 @@ void MSG_CS_DS_UPDATE_DATA_SEND_ACK::Clear() {
       }
     }
   }
+  sliceno_ = 0u;
 
 #undef OFFSET_OF_FIELD_
 #undef ZR_
@@ -1116,6 +1120,21 @@ bool MSG_CS_DS_UPDATE_DATA_SEND_ACK::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
+        if (input->ExpectTag(72)) goto parse_sliceNo;
+        break;
+      }
+
+      // optional uint32 sliceNo = 9;
+      case 9: {
+        if (tag == 72) {
+         parse_sliceNo:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &sliceno_)));
+          set_has_sliceno();
+        } else {
+          goto handle_unusual;
+        }
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -1198,6 +1217,11 @@ void MSG_CS_DS_UPDATE_DATA_SEND_ACK::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(8, this->statuscode(), output);
   }
 
+  // optional uint32 sliceNo = 9;
+  if (has_sliceno()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(9, this->sliceno(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -1264,6 +1288,11 @@ void MSG_CS_DS_UPDATE_DATA_SEND_ACK::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(8, this->statuscode(), target);
   }
 
+  // optional uint32 sliceNo = 9;
+  if (has_sliceno()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(9, this->sliceno(), target);
+  }
+
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -1315,6 +1344,15 @@ int MSG_CS_DS_UPDATE_DATA_SEND_ACK::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->statuscode());
+    }
+
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    // optional uint32 sliceNo = 9;
+    if (has_sliceno()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->sliceno());
     }
 
   }
@@ -1383,6 +1421,11 @@ void MSG_CS_DS_UPDATE_DATA_SEND_ACK::MergeFrom(const MSG_CS_DS_UPDATE_DATA_SEND_
       set_statuscode(from.statuscode());
     }
   }
+  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    if (from.has_sliceno()) {
+      set_sliceno(from.sliceno());
+    }
+  }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
@@ -1414,6 +1457,7 @@ void MSG_CS_DS_UPDATE_DATA_SEND_ACK::Swap(MSG_CS_DS_UPDATE_DATA_SEND_ACK* other)
     xvector_.Swap(&other->xvector_);
     std::swap(taskid_, other->taskid_);
     std::swap(statuscode_, other->statuscode_);
+    std::swap(sliceno_, other->sliceno_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

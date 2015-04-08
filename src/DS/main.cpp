@@ -99,11 +99,6 @@ int main(int argc, char *argv[])
 		DEV_LOG_ERROR("main: init TimerManager error!");
 		return FAILED;
 	}
-	
-    //raAddr.setAddress(argv[1],conv<unsigned short,char*>(argv[2]));
-    //g_RAConnectAgent = (AgentManager::getInstance())->createAgent<CLRAConnectAgent>(raAddr);
-    //g_RAConnectAgent->init();
-
 
     if ( signal(SIGINT, doExit) == SIG_ERR )
     {

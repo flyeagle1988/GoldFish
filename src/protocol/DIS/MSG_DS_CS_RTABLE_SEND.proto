@@ -12,4 +12,5 @@ message MSG_CS_DS_RTABLE_SEND_ACK
 {
 	required uint32 taskID = 1;
 	required uint32 statusCode = 2;
+	required string columnName = 3;
 }

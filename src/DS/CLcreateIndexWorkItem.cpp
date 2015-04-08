@@ -295,7 +295,7 @@ int CLcreateIndexWorkItem::process()
 	rTableCreate.SerializeToString(&rTableData);
 	CLcreateIndexTask * pTask = dynamic_cast<CLcreateIndexTask *>(TaskManager::getInstance()->get(getTaskID()));
 	pTask->setRTable(rTableData);
-	
+#ifndef UNIT_TEST	
 	string outData;
 	resourceGet.SerializeToString(&outData);
 	MsgHeader msgHeader;
@@ -313,6 +313,6 @@ int CLcreateIndexWorkItem::process()
 	msgHeader.cmd = DS_DC_RTABLE_RESOURCE_GET;
 	msgHeader.length = rTableResouceGetStr.length();
 	g_pDCConnectAgent->sendPackage(msgHeader,rTableResouceGetStr.c_str());
-	
+#endif
 	return SUCCESSFUL;
 }

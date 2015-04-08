@@ -249,12 +249,26 @@ class MSG_CS_DS_RTABLE_SEND_ACK : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 statuscode() const;
   inline void set_statuscode(::google::protobuf::uint32 value);
 
+  // required string columnName = 3;
+  inline bool has_columnname() const;
+  inline void clear_columnname();
+  static const int kColumnNameFieldNumber = 3;
+  inline const ::std::string& columnname() const;
+  inline void set_columnname(const ::std::string& value);
+  inline void set_columnname(const char* value);
+  inline void set_columnname(const char* value, size_t size);
+  inline ::std::string* mutable_columnname();
+  inline ::std::string* release_columnname();
+  inline void set_allocated_columnname(::std::string* columnname);
+
   // @@protoc_insertion_point(class_scope:MSG_CS_DS_RTABLE_SEND_ACK)
  private:
   inline void set_has_taskid();
   inline void clear_has_taskid();
   inline void set_has_statuscode();
   inline void clear_has_statuscode();
+  inline void set_has_columnname();
+  inline void clear_has_columnname();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -262,6 +276,7 @@ class MSG_CS_DS_RTABLE_SEND_ACK : public ::google::protobuf::Message {
   mutable int _cached_size_;
   ::google::protobuf::uint32 taskid_;
   ::google::protobuf::uint32 statuscode_;
+  ::std::string* columnname_;
   friend void  protobuf_AddDesc_MSG_5fDS_5fCS_5fRTABLE_5fSEND_2eproto();
   friend void protobuf_AssignDesc_MSG_5fDS_5fCS_5fRTABLE_5fSEND_2eproto();
   friend void protobuf_ShutdownFile_MSG_5fDS_5fCS_5fRTABLE_5fSEND_2eproto();
@@ -586,6 +601,82 @@ inline void MSG_CS_DS_RTABLE_SEND_ACK::set_statuscode(::google::protobuf::uint32
   set_has_statuscode();
   statuscode_ = value;
   // @@protoc_insertion_point(field_set:MSG_CS_DS_RTABLE_SEND_ACK.statusCode)
+}
+
+// required string columnName = 3;
+inline bool MSG_CS_DS_RTABLE_SEND_ACK::has_columnname() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void MSG_CS_DS_RTABLE_SEND_ACK::set_has_columnname() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void MSG_CS_DS_RTABLE_SEND_ACK::clear_has_columnname() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void MSG_CS_DS_RTABLE_SEND_ACK::clear_columnname() {
+  if (columnname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    columnname_->clear();
+  }
+  clear_has_columnname();
+}
+inline const ::std::string& MSG_CS_DS_RTABLE_SEND_ACK::columnname() const {
+  // @@protoc_insertion_point(field_get:MSG_CS_DS_RTABLE_SEND_ACK.columnName)
+  return *columnname_;
+}
+inline void MSG_CS_DS_RTABLE_SEND_ACK::set_columnname(const ::std::string& value) {
+  set_has_columnname();
+  if (columnname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    columnname_ = new ::std::string;
+  }
+  columnname_->assign(value);
+  // @@protoc_insertion_point(field_set:MSG_CS_DS_RTABLE_SEND_ACK.columnName)
+}
+inline void MSG_CS_DS_RTABLE_SEND_ACK::set_columnname(const char* value) {
+  set_has_columnname();
+  if (columnname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    columnname_ = new ::std::string;
+  }
+  columnname_->assign(value);
+  // @@protoc_insertion_point(field_set_char:MSG_CS_DS_RTABLE_SEND_ACK.columnName)
+}
+inline void MSG_CS_DS_RTABLE_SEND_ACK::set_columnname(const char* value, size_t size) {
+  set_has_columnname();
+  if (columnname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    columnname_ = new ::std::string;
+  }
+  columnname_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:MSG_CS_DS_RTABLE_SEND_ACK.columnName)
+}
+inline ::std::string* MSG_CS_DS_RTABLE_SEND_ACK::mutable_columnname() {
+  set_has_columnname();
+  if (columnname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    columnname_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:MSG_CS_DS_RTABLE_SEND_ACK.columnName)
+  return columnname_;
+}
+inline ::std::string* MSG_CS_DS_RTABLE_SEND_ACK::release_columnname() {
+  clear_has_columnname();
+  if (columnname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = columnname_;
+    columnname_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void MSG_CS_DS_RTABLE_SEND_ACK::set_allocated_columnname(::std::string* columnname) {
+  if (columnname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete columnname_;
+  }
+  if (columnname) {
+    set_has_columnname();
+    columnname_ = columnname;
+  } else {
+    clear_has_columnname();
+    columnname_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:MSG_CS_DS_RTABLE_SEND_ACK.columnName)
 }
 
 

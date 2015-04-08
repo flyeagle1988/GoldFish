@@ -64,6 +64,9 @@ const unsigned int CS_DS_UPDATE_DATA_SEND_ACK = 0x29;
 
 const unsigned int DS_CS_RTABLE_SEND = 0x2a;
 const unsigned int CS_DS_RTABLE_SEND_ACK = 0x2b;
+
+const unsigned int DC_DS_DELTA_INFO_SEND = 0x2c;
+const unsigned int DS_DC_DELTA_INFO_SEND_ACK = 0x2d;
 /*Task State*/
 const unsigned int READ_METADATA = 1;
 const unsigned int CREATE_TASK = 5;
@@ -85,4 +88,5 @@ const int PROTO_PARSE_ERROR = -40;
 
 const uint32_t CREATE_INDEX = 1;
 const uint32_t CREATE_UPDATE = 2;
+const uint32_t CREATE_DELTA = 3;
 #endif

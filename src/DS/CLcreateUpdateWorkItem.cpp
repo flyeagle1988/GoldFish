@@ -176,7 +176,9 @@ int CLcreateUpdateWorkItem::process()
 		}
 		string updateStr;
 		updateDataSend.SerializeToString(&updateStr);
+
 		string columnLocation = intToStr(m_dbID) + m_tableName + columnName;
+		
 		uint32_t agentID = CLCSAddrManager::getInstance()->getCSAgentIDByColumn(columnLocation);
 		if(agentID != 0)
 		{
@@ -193,7 +195,7 @@ int CLcreateUpdateWorkItem::process()
 				dynamic_cast<CLcreateUpdateTask *>(TaskManager::getInstance()->get(getTaskID()));
 			pCreateUpdateTask->setUpdateData(columnName,updateStr);
 		}
-		
 	}
+
 	return SUCCESSFUL;
 }

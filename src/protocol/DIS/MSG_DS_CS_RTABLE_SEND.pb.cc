@@ -55,9 +55,10 @@ void protobuf_AssignDesc_MSG_5fDS_5fCS_5fRTABLE_5fSEND_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(MSG_DS_CS_RTABLE_SEND));
   MSG_CS_DS_RTABLE_SEND_ACK_descriptor_ = file->message_type(1);
-  static const int MSG_CS_DS_RTABLE_SEND_ACK_offsets_[2] = {
+  static const int MSG_CS_DS_RTABLE_SEND_ACK_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_CS_DS_RTABLE_SEND_ACK, taskid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_CS_DS_RTABLE_SEND_ACK, statuscode_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MSG_CS_DS_RTABLE_SEND_ACK, columnname_),
   };
   MSG_CS_DS_RTABLE_SEND_ACK_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -109,9 +110,9 @@ void protobuf_AddDesc_MSG_5fDS_5fCS_5fRTABLE_5fSEND_2eproto() {
     "oto\"\216\001\n\025MSG_DS_CS_RTABLE_SEND\022\016\n\006taskID\030"
     "\001 \002(\r\022\014\n\004dbID\030\002 \002(\r\022\021\n\ttableName\030\003 \002(\t\022\022"
     "\n\ncolumnName\030\004 \002(\t\022\037\n\010rowTable\030\005 \003(\0132\r.R"
-    "OWKEY_ENTRY\022\017\n\007xVector\030\006 \003(\r\"\?\n\031MSG_CS_D"
+    "OWKEY_ENTRY\022\017\n\007xVector\030\006 \003(\r\"S\n\031MSG_CS_D"
     "S_RTABLE_SEND_ACK\022\016\n\006taskID\030\001 \002(\r\022\022\n\nsta"
-    "tusCode\030\002 \002(\r", 253);
+    "tusCode\030\002 \002(\r\022\022\n\ncolumnName\030\003 \002(\t", 273);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "MSG_DS_CS_RTABLE_SEND.proto", &protobuf_RegisterTypes);
   MSG_DS_CS_RTABLE_SEND::default_instance_ = new MSG_DS_CS_RTABLE_SEND();
@@ -614,6 +615,7 @@ void MSG_DS_CS_RTABLE_SEND::Swap(MSG_DS_CS_RTABLE_SEND* other) {
 #ifndef _MSC_VER
 const int MSG_CS_DS_RTABLE_SEND_ACK::kTaskIDFieldNumber;
 const int MSG_CS_DS_RTABLE_SEND_ACK::kStatusCodeFieldNumber;
+const int MSG_CS_DS_RTABLE_SEND_ACK::kColumnNameFieldNumber;
 #endif  // !_MSC_VER
 
 MSG_CS_DS_RTABLE_SEND_ACK::MSG_CS_DS_RTABLE_SEND_ACK()
@@ -633,9 +635,11 @@ MSG_CS_DS_RTABLE_SEND_ACK::MSG_CS_DS_RTABLE_SEND_ACK(const MSG_CS_DS_RTABLE_SEND
 }
 
 void MSG_CS_DS_RTABLE_SEND_ACK::SharedCtor() {
+  ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
   taskid_ = 0u;
   statuscode_ = 0u;
+  columnname_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -645,6 +649,9 @@ MSG_CS_DS_RTABLE_SEND_ACK::~MSG_CS_DS_RTABLE_SEND_ACK() {
 }
 
 void MSG_CS_DS_RTABLE_SEND_ACK::SharedDtor() {
+  if (columnname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete columnname_;
+  }
   if (this != default_instance_) {
   }
 }
@@ -681,7 +688,14 @@ void MSG_CS_DS_RTABLE_SEND_ACK::Clear() {
     ::memset(&first, 0, n);                                \
   } while (0)
 
-  ZR_(taskid_, statuscode_);
+  if (_has_bits_[0 / 32] & 7) {
+    ZR_(taskid_, statuscode_);
+    if (has_columnname()) {
+      if (columnname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+        columnname_->clear();
+      }
+    }
+  }
 
 #undef OFFSET_OF_FIELD_
 #undef ZR_
@@ -725,6 +739,23 @@ bool MSG_CS_DS_RTABLE_SEND_ACK::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
+        if (input->ExpectTag(26)) goto parse_columnName;
+        break;
+      }
+
+      // required string columnName = 3;
+      case 3: {
+        if (tag == 26) {
+         parse_columnName:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_columnname()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->columnname().data(), this->columnname().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "columnname");
+        } else {
+          goto handle_unusual;
+        }
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -764,6 +795,16 @@ void MSG_CS_DS_RTABLE_SEND_ACK::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->statuscode(), output);
   }
 
+  // required string columnName = 3;
+  if (has_columnname()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->columnname().data(), this->columnname().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "columnname");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      3, this->columnname(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -782,6 +823,17 @@ void MSG_CS_DS_RTABLE_SEND_ACK::SerializeWithCachedSizes(
   // required uint32 statusCode = 2;
   if (has_statuscode()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->statuscode(), target);
+  }
+
+  // required string columnName = 3;
+  if (has_columnname()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->columnname().data(), this->columnname().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "columnname");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        3, this->columnname(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -808,6 +860,13 @@ int MSG_CS_DS_RTABLE_SEND_ACK::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
           this->statuscode());
+    }
+
+    // required string columnName = 3;
+    if (has_columnname()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->columnname());
     }
 
   }
@@ -843,6 +902,9 @@ void MSG_CS_DS_RTABLE_SEND_ACK::MergeFrom(const MSG_CS_DS_RTABLE_SEND_ACK& from)
     if (from.has_statuscode()) {
       set_statuscode(from.statuscode());
     }
+    if (from.has_columnname()) {
+      set_columnname(from.columnname());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -860,7 +922,7 @@ void MSG_CS_DS_RTABLE_SEND_ACK::CopyFrom(const MSG_CS_DS_RTABLE_SEND_ACK& from) 
 }
 
 bool MSG_CS_DS_RTABLE_SEND_ACK::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
+  if ((_has_bits_[0] & 0x00000007) != 0x00000007) return false;
 
   return true;
 }
@@ -869,6 +931,7 @@ void MSG_CS_DS_RTABLE_SEND_ACK::Swap(MSG_CS_DS_RTABLE_SEND_ACK* other) {
   if (other != this) {
     std::swap(taskid_, other->taskid_);
     std::swap(statuscode_, other->statuscode_);
+    std::swap(columnname_, other->columnname_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

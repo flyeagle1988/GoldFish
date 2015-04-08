@@ -170,6 +170,8 @@ CLDCConnectAgent.o: ../../../src/DS/CLDCConnectAgent.cpp \
  ../../../include/protocol/DIS/MSG_DS_DC_MEMORY_INFO_SEND.pb.h \
  ../../../include/protocol/DIS/MSG_DS_DC_RTABLE_POSITION_GET.pb.h \
  ../../../include/protocol/DIS/MSG_DS_DC_RTABLE_RESOURCE_GET.pb.h \
+ ../../../include/protocol/DIS/MSG_DS_RA_DELTA_GET.pb.h \
+ ../../../include/protocol/DIS/MSG_DS_RA_IMPORT_TASK_SEND.pb.h \
  ../../../include/DS/CLDCConnectAgent.h \
  ../../../include/common/comm/TCPAgent.h \
  ../../../include/common/comm/Agent.h \
@@ -609,6 +611,10 @@ CLDCConnectAgent.o: ../../../src/DS/CLDCConnectAgent.cpp \
 ../../../include/protocol/DIS/MSG_DS_DC_RTABLE_POSITION_GET.pb.h:
 
 ../../../include/protocol/DIS/MSG_DS_DC_RTABLE_RESOURCE_GET.pb.h:
+
+../../../include/protocol/DIS/MSG_DS_RA_DELTA_GET.pb.h:
+
+../../../include/protocol/DIS/MSG_DS_RA_IMPORT_TASK_SEND.pb.h:
 
 ../../../include/DS/CLDCConnectAgent.h:
 

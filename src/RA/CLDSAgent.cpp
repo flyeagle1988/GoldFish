@@ -67,7 +67,7 @@ void CLDSAgent::readBack(InReq & req)
 			}	
 			break;
 		}
-		case DS_RA_DELTA_DATA_SEND_ACK:
+		case DS_RA_DELTA_GET:
 		{
 
 			break;

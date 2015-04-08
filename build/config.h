@@ -56,7 +56,7 @@
 #define PACKAGE "IPPC"
 
 /* Define to the address where bug reports for this package should be sent. */
-#define PACKAGE_BUGREPORT "marxxk@163.com"
+#define PACKAGE_BUGREPORT "wangjin@163.com"
 
 /* Define to the full name of this package. */
 #define PACKAGE_NAME "NDSLcommon"
