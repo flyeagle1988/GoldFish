@@ -1,2 +1,5 @@
----- setDictReceived Matches (1 in 1 files) ----
-CLcreateIndexTask.h (include\ds):		void setDictReceived()
+---- ROW_TABLE Matches (4 in 2 files) ----
+CLcreateIndexWorkItem.cpp (src\ds):vector<ROW_TABLE> generateCompVector(Dictionary<T>* dic, const vector<T>& initVector, const vector<uint64_t> &rowKeyVec)
+CLcreateIndexWorkItem.cpp (src\ds):	vector<ROW_TABLE> result;
+CLcreateIndexWorkItem.cpp (src\ds):		ROW_TABLE rowTable;
+CLcreateIndexWorkItem.h (include\ds):struct ROW_TABLE

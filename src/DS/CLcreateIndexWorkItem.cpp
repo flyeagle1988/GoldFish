@@ -82,6 +82,10 @@ int CLcreateIndexWorkItem::process()
 	unsigned int dbID = m_impTaskAck.dbid();
 	string tableName = m_impTaskAck.tablename();
 	//向 DC 请求  CS 节点资源
+	#ifdef	DEBUG
+		cout << "DBID: " << dbID << endl;
+		cout << "tableName:" << tableName << endl;
+	#endif
 	MSG_DS_DC_RESOURCE_GET resourceGet;
 	resourceGet.set_taskid(getTaskID());
 	resourceGet.set_dbid(dbID);
@@ -274,6 +278,11 @@ int CLcreateIndexWorkItem::process()
 		//向DC发送字典数据大小								
 		MSG_DS_DC_RESOURCE_GET_COL_SIZE *colSize = resourceGet.add_colsize();
 		uint32_t columnSize = (dictLength + offsetLength + postLength) * m_impTaskAck.subtasknum() / (1024*1024);		
+		#ifdef DEBUG 
+		cout << "dictLength: " << dictLength << '\t'
+			 << "offsetLength: " << offsetLength << '\t'
+			 << "postLength: " << postLength << endl;
+		#endif
 		colSize->set_columnname(columnName);
 		colSize->set_columnsize(columnSize);
 
@@ -294,8 +303,13 @@ int CLcreateIndexWorkItem::process()
 	string rTableData;
 	rTableCreate.SerializeToString(&rTableData);
 	CLcreateIndexTask * pTask = dynamic_cast<CLcreateIndexTask *>(TaskManager::getInstance()->get(getTaskID()));
-	pTask->setRTable(rTableData);
-#ifndef UNIT_TEST	
+	if(pTask != NULL)
+	{
+		pTask->setRTable(rTableData);
+	}
+	else
+		DEV_LOG_ERROR("CLcreateIndexWorkItem::process wrong taskID" + intToStr(getTaskID()));
+
 	string outData;
 	resourceGet.SerializeToString(&outData);
 	MsgHeader msgHeader;
@@ -313,6 +327,6 @@ int CLcreateIndexWorkItem::process()
 	msgHeader.cmd = DS_DC_RTABLE_RESOURCE_GET;
 	msgHeader.length = rTableResouceGetStr.length();
 	g_pDCConnectAgent->sendPackage(msgHeader,rTableResouceGetStr.c_str());
-#endif
+
 	return SUCCESSFUL;
 }

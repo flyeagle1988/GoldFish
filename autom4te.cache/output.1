@@ -8116,6 +8116,10 @@ _lt_linker_boilerplate=`cat conftest.err`
 $RM -r conftest*
 
 
+## CAVEAT EMPTOR:
+## There is no encapsulation within the following macros, do not change
+## the running order or otherwise move them around unless you know exactly
+## what you are doing...
 if test -n "$compiler"; then
   
 lt_prog_compiler_no_builtin_flag=
@@ -17338,7 +17342,7 @@ fi
 
 # Checks for library functions.
 
-ac_config_files="$ac_config_files Makefile src/Makefile src/common/Makefile src/common/comm/Makefile src/common/daemon/Makefile src/common/DevLog/Makefile src/common/log/Makefile src/common/sys/Makefile src/common/Timer/Makefile src/common/util/Makefile src/common/xml/Makefile src/protocol/Makefile src/protocol/DIS/Makefile src/RA/Makefile src/DS/Makefile test/Makefile test/RA_TEST/Makefile test/DB_TEST/Makefile test/META_TEST/Makefile test/IMPORT_TEST/Makefile"
+ac_config_files="$ac_config_files Makefile src/Makefile src/common/Makefile src/common/comm/Makefile src/common/daemon/Makefile src/common/DevLog/Makefile src/common/log/Makefile src/common/sys/Makefile src/common/Timer/Makefile src/common/util/Makefile src/common/xml/Makefile src/protocol/Makefile src/protocol/DIS/Makefile src/RA/Makefile src/DS/Makefile test/Makefile test/RA_TEST/Makefile test/DB_TEST/Makefile test/META_TEST/Makefile test/IMPORT_TEST/Makefile test/DS_TEST/Makefile"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -18382,6 +18386,7 @@ do
     "test/DB_TEST/Makefile") CONFIG_FILES="$CONFIG_FILES test/DB_TEST/Makefile" ;;
     "test/META_TEST/Makefile") CONFIG_FILES="$CONFIG_FILES test/META_TEST/Makefile" ;;
     "test/IMPORT_TEST/Makefile") CONFIG_FILES="$CONFIG_FILES test/IMPORT_TEST/Makefile" ;;
+    "test/DS_TEST/Makefile") CONFIG_FILES="$CONFIG_FILES test/DS_TEST/Makefile" ;;
 
   *) { { $as_echo "$as_me:$LINENO: error: invalid argument: $ac_config_target" >&5
 $as_echo "$as_me: error: invalid argument: $ac_config_target" >&2;}

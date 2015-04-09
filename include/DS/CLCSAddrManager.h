@@ -86,6 +86,14 @@ class CLCSAddrManager:public Singleton<CLCSAddrManager>
 		{
 			return m_csPort;
 		}
+		void setRTableAddr(const string tableLocation, const string csIP)
+		{
+			m_rTableAddr.insert(make_pair(tableLocation, csIP));
+		}
+		string getRTableAddr(const string tableLocation)
+		{
+			return m_rTableAddr[tableLocation];
+		}
 	private:
 		typedef map<uint32_t, vector<CS_ADDR_INFO> > CSAddrMap;	//map<taskID, CSIP >
 		typedef map<string, uint32_t> CSAgentMap;
@@ -94,6 +102,7 @@ class CLCSAddrManager:public Singleton<CLCSAddrManager>
 		ColumnLocationMap m_columnLocMap;
 		CSAgentMap m_csAgentMap;
 		unsigned short m_csPort;
+		map<string, string> m_rTableAddr;	//map<DBID+TABLENAME, rTableIp>
 };
 
 #endif

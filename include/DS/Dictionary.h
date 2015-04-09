@@ -26,10 +26,35 @@ class Dictionary{
 		}
 		T get(uint64_t pos){return m_dicVector[pos];}
 		uint64_t getRows(){return m_dicVector.size();}
+/*
 		uint64_t getSurePos(T value)
 		{
 			typename vector_t::iterator itr = find(m_dicVector.begin(), m_dicVector.end(), value);
 			return distance(m_dicVector.begin(), itr);
+		}
+*/
+		uint64_t getSurePos(T value)
+		{
+			uint64_t lowerBound = 0;    
+			uint64_t highBound = m_dicVector.size() - 1;  
+			uint64_t middle = 0;     
+			while(lowerBound <= highBound)
+			{
+				middle = ( lowerBound + highBound ) / 2;       
+				if( m_dicVector[middle] < value )
+				{
+					lowerBound = middle + 1;      
+				}
+				else if( m_dicVector[middle] > value )
+				{
+					highBound = middle - 1;    
+				}
+				else
+				{
+					return middle;
+				} 
+			} 
+			
 		}
 		bool ifExist(T value)
 		{

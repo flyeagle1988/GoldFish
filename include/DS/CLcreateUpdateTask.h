@@ -18,6 +18,10 @@ class CLcreateUpdateTask:public BaseTask
 		{
 			m_state = state;
 		}
+		uint32_t getState() const
+		{
+			return m_state;
+		}
 		void setAgentID(const uint32_t agentID)
 		{
 			m_agentID = agentID;
@@ -29,6 +33,10 @@ class CLcreateUpdateTask:public BaseTask
 		void setData(const string &data)
 		{
 			m_data = data;
+		}
+		string getData() const
+		{
+			return m_data;
 		}
 		void recvWorkItem( ThreadPoolWorkItem* );
 		void setStringMap(const string colName, vector<string> sData)
@@ -78,6 +86,10 @@ class CLcreateUpdateTask:public BaseTask
 		{
 			return m_updateData[column];
 		}
+		void clearUpdateData()
+		{
+			m_updateData.clear();
+		}
 		bool isUpdateDataEmpty()
 		{
 			return m_updateData.empty();
@@ -89,6 +101,10 @@ class CLcreateUpdateTask:public BaseTask
 		string getRTableIP() const
 		{
 			return m_rTableIP;
+		}
+		bool isRTableIPEmpty()
+		{
+			return m_rTableIP.empty();
 		}
 		void setDBInfo(const uint32_t dbID, const string tableName, const uint32_t sliceNo, const uint32_t sliceNum)
 		{
@@ -117,6 +133,34 @@ class CLcreateUpdateTask:public BaseTask
 		{
 			return m_columnSet.empty();
 		}
+		void setResourceAddrGet()
+		{
+			m_resourceAddrGet = true;
+		}
+		bool isResourceAddrGet()
+		{
+			return m_resourceAddrGet;
+		}
+		void setDictSend()
+		{
+			m_dictSend = true;
+		}
+		bool isDictSend()
+		{
+			return m_dictSend;
+		}
+		void setNewRTable(const string recvDictProtoStr)
+		{
+			m_newRTableAndXvector.push_back(recvDictProtoStr);
+		}
+		bool isNewRTableEmpty()
+		{
+			return m_newRTableAndXvector.empty();
+		}
+		void clearNewRTable()
+		{
+			m_newRTableAndXvector.clear();
+		}
 	private:
 		typedef map<string, vector<string> > StringMap;
 		typedef map<string, vector<int> > IntMap;
@@ -135,6 +179,10 @@ class CLcreateUpdateTask:public BaseTask
 		uint32_t m_sliceNo;
 		uint32_t m_sliceNum;
 		ColumnSet m_columnSet;
+		bool m_resourceAddrGet;
+		bool m_dictSend;
+		//map<string, string> m_newRTableAndXvector;	//map<column, new-rtable-and-x-vectors-ProtoStr>
+		vector<string> m_newRTableAndXvector;	//vector<string>  new-rtable-and-x-vectors-ProtoStr
 };
 
 #endif

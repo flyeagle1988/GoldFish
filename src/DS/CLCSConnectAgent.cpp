@@ -152,11 +152,13 @@ void CLCSConnectAgent::readBack(InReq &req)
 				rTableSend.set_dbid(updateDataAck.dbid());
 				rTableSend.set_tablename(updateDataAck.tablename());
 				rTableSend.set_columnname(updateDataAck.columnname());
+
 				for(int i = 0; i < updateDataAck.xvector_size(); i++)
 				{
 					rTableSend.add_xvector(updateDataAck.xvector(i));
 				}
 				vector<uint64_t> appendRTableVec;
+
 				CLcreateUpdateTask * pCreateUpdateTask = 
 					dynamic_cast<CLcreateUpdateTask *>(TaskManager::getInstance()->get(updateDataAck.taskid()));
 				switch(updateDataAck.columntype())
@@ -219,21 +221,28 @@ void CLCSConnectAgent::readBack(InReq &req)
 					rowKeyEntry->set_entry(*it);
 				}
 				//string columnLocation = intToStr(updateDataAck.dbid()) + updateDataAck.tablename() + updateDataAck.columnname();
-				string rTableIP = pCreateUpdateTask->getRTableIP();
-				if(rTableIP != "")
+				string rTableIP = pCreateUpdateTask->getRTableIP();				
+				string rTableSendStr;
+				rTableSend.SerializeToString(&rTableSendStr);
+
+				if(!rTableIP.empty())
 				{
 					uint32_t agentID = CLCSAddrManager::getInstance()->getCSAgent(rTableIP);
 					CLCSConnectAgent * pAgent = dynamic_cast<CLCSConnectAgent *>(AgentManager::getInstance()->get(agentID));
 					if(pAgent != NULL)
 					{
-						string rTableSendStr;
-						rTableSend.SerializeToString(&rTableSendStr);
 						MsgHeader msgHeader;
 						msgHeader.cmd = DS_CS_RTABLE_SEND;
 						msgHeader.length = rTableSendStr.length();
 						pAgent->sendPackage(msgHeader,rTableSendStr.c_str());
 						rTableSendStr.clear();
 					}
+					else
+						DEV_LOG_ERROR("CLCSConnectAgent::readBack:CS_DS_UPDATE_DATA_SEND_ACK wrong agent!");
+				}
+				else
+				{
+					pCreateUpdateTask->setNewRTable(rTableSendStr);
 				}
 			}
 			break;

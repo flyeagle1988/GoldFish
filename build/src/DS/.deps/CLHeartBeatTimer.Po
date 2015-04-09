@@ -50,7 +50,7 @@ CLHeartBeatTimer.o: ../../../src/DS/CLHeartBeatTimer.cpp \
  /usr/include/libio.h /usr/include/_G_config.h /usr/include/wchar.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/include/stdarg.h \
  /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h \
- ../../../include/DS/CLDCConnectAgent.h \
+ /usr/include/bits/stdio.h ../../../include/DS/CLDCConnectAgent.h \
  ../../../include/common/comm/TCPAgent.h \
  ../../../include/common/comm/BaseHeader.h \
  ../../../include/common/comm/BufferManager.h \
@@ -287,6 +287,8 @@ CLHeartBeatTimer.o: ../../../src/DS/CLHeartBeatTimer.cpp \
 /usr/include/bits/stdio_lim.h:
 
 /usr/include/bits/sys_errlist.h:
+
+/usr/include/bits/stdio.h:
 
 ../../../include/DS/CLDCConnectAgent.h:
 

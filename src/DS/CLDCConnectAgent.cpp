@@ -92,7 +92,7 @@ void CLDCConnectAgent::readBack(InReq & req)
 				string sendData;
 				MsgHeader msgHeader;
 				msgHeader.cmd = DS_DC_RA_INFO_SEND_ACK;
-				int statusCode;
+				int statusCode = 0;
 				for(int i = 0; i < raInfo.rainfo_size(); i++)//待修改，无法保证某个结点连接出错时返回错误信息
 				{
 					const MSG_DC_DS_RA_INFO_SEND_RA_INFO & raAddrInfo = raInfo.rainfo(i);
@@ -294,9 +294,16 @@ void CLDCConnectAgent::readBack(InReq & req)
 					SocketAddress addr;
 					addr.setAddress(it->csIP.c_str(),it->csPort);
 					CLCSConnectAgent * pAgent = AgentManager::getInstance()->createAgent<CLCSConnectAgent>(addr);
+					pAgent->init();
 					string columnLocation = intToStr(pCreateUpdateTask->getDBID()) 
 											+ pCreateUpdateTask->getTableName() + it->columnName;
 					CLCSAddrManager::getInstance()->setColumnLocation(columnLocation, pAgent->getID());
+				}
+				pCreateUpdateTask->setResourceAddrGet();
+				if(pCreateUpdateTask->getState() == WORK_ITEM_RECEIVED)
+				{
+					pCreateUpdateTask->setState(DS_SEND_DICT);
+					pCreateUpdateTask->goNext();
 				}
 			}
 			break;
@@ -312,9 +319,6 @@ void CLDCConnectAgent::readBack(InReq & req)
 
 			CLcreateIndexTask * pTask = 
 				dynamic_cast<CLcreateIndexTask *>(TaskManager::getInstance()->get(rTableResourceAck.taskid()));
-	#ifdef DEBUG
-			cout << "pTask:" << pTask << endl;
-	#endif
 			if(pTask != NULL)
 			{
 				pTask->setRTableCSIP(csIP);
@@ -361,7 +365,19 @@ void CLDCConnectAgent::readBack(InReq & req)
 			{
 				CLcreateUpdateTask *pCreateUpdateTask = 
 							dynamic_cast<CLcreateUpdateTask *>(TaskManager::getInstance()->get(rTablePositionGetAck.taskid()));
-				pCreateUpdateTask->setRTableIP(rTablePositionGetAck.csip());
+				if(pCreateUpdateTask != NULL)
+				{
+					pCreateUpdateTask->setRTableIP(rTablePositionGetAck.csip());
+					if(!pCreateUpdateTask->isNewRTableEmpty())
+					{
+						pCreateUpdateTask->setState(DS_SEND_X_VECTOR);
+						pCreateUpdateTask->goNext();
+					}
+				}
+				else
+				{
+					DEV_LOG_ERROR("CLDCConnectAgent::readBack DC_DS_RTABLE_POSITION_GET_ACK:wrong taskID" + intToStr(rTablePositionGetAck.taskid()));
+				}
 			}
 			break;
 		}

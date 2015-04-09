@@ -75,7 +75,7 @@ CLcreateIndexTask.o: ../../../src/DS/CLcreateIndexTask.cpp \
  ../../../include/common/comm/Agent.h \
  ../../../include/common/comm/EpollEvent.h /usr/include/libio.h \
  /usr/include/_G_config.h /usr/include/bits/stdio_lim.h \
- /usr/include/bits/sys_errlist.h \
+ /usr/include/bits/sys_errlist.h /usr/include/bits/stdio.h \
  ../../../include/protocol/DIS/MSG_DS_RA_IMPORT_TASK_SEND.pb.h \
  /usr/local/include/google/protobuf/stubs/common.h /usr/include/assert.h \
  /usr/include/stdlib.h /usr/include/bits/waitflags.h \
@@ -137,6 +137,7 @@ CLcreateIndexTask.o: ../../../src/DS/CLcreateIndexTask.cpp \
  /usr/include/bits/huge_valf.h /usr/include/bits/huge_vall.h \
  /usr/include/bits/inf.h /usr/include/bits/nan.h \
  /usr/include/bits/mathdef.h /usr/include/bits/mathcalls.h \
+ /usr/include/bits/mathinline.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/cmath.tcc \
  ../../../include/DS/Dictionary.h \
  /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/algorithm \
@@ -390,6 +391,8 @@ CLcreateIndexTask.o: ../../../src/DS/CLcreateIndexTask.cpp \
 
 /usr/include/bits/sys_errlist.h:
 
+/usr/include/bits/stdio.h:
+
 ../../../include/protocol/DIS/MSG_DS_RA_IMPORT_TASK_SEND.pb.h:
 
 /usr/local/include/google/protobuf/stubs/common.h:
@@ -531,6 +534,8 @@ CLcreateIndexTask.o: ../../../src/DS/CLcreateIndexTask.cpp \
 /usr/include/bits/mathdef.h:
 
 /usr/include/bits/mathcalls.h:
+
+/usr/include/bits/mathinline.h:
 
 /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/bits/cmath.tcc:
 

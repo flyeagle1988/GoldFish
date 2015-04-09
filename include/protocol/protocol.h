@@ -81,7 +81,11 @@ const unsigned int DS_WAIT_FOR_ADDR = 8;
 const unsigned int DS_SEND_RTABLE = 9;
 
 const unsigned int DS_UPDATE_STATE = 10;
-const unsigned int DS_WAIT_X_VECTOR = 11;
+const unsigned int DS_SEND_X_VECTOR = 11;
+
+const unsigned int DS_SEND_DICT = 12;
+const unsigned int WORK_ITEM_RECEIVED = 13;
+
 
 /*Protobuf Error Code*/
 const int PROTO_PARSE_ERROR = -40;

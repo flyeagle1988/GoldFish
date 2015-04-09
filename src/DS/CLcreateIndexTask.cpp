@@ -131,6 +131,8 @@ int CLcreateIndexTask::goNext()
 					pCSConnectAgent->init();
 					pCSConnectAgent->sendPackage(msgHeader,m_rTableStr.c_str());
 				}
+				string tableLocation = intToStr(m_dbID) + m_tableName;
+				CLCSAddrManager::getInstance()->setRTableAddr(tableLocation, csIP);
 				setRTableSend();
 			}
 			break;
